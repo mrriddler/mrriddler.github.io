@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source"/>
+
+
+
+
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            缓存之旅（一） | 
+        
+        谜语糖
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="缓存真的有效？真的。嗯，根据计算机访问数据经常会呈现出的局部性原理。局部性原理又包括空间局部性和时间局部性。空间局部性就是说，计算机访问数据，而其存储在邻近的数据也经常会被访问。时间局部性就是说，在相对的一小段时间内，计算机经常会访问相同的数据。实际中是怎么运用局部性原理的呢，比如说，计算机从硬盘中读块，计算机不会只读你要的特定块，附近的快很有可能接下来要被访问，他会把这些块也一起预读出来。接下来要读附近的快的时候，就不需要再访问硬盘了。这样，运用局部性原理就减少了访问磁盘的次数。附近的块就被缓存了起来，加快了运行速度。">
+    <meta name="keywords" content=",计算机体系">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/material.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/style.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/prettify.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/prettify/tranquil-heart.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #61C0DB !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #61C0DB !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #61C0DB !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/material-icons.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/jquery.min.js", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="谜语糖">
+    <meta name="msapplication-starturl" content="http://blog.mrriddler.com/缓存之旅（一）/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="谜语糖">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://blog.mrriddler.com/缓存之旅（一）/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="缓存之旅（一） | 谜语糖">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="缓存真的有效？真的。嗯，根据计算机访问数据经常会呈现出的局部性原理。局部性原理又包括空间局部性和时间局部性。空间局部性就是说，计算机访问数据，而其存储在邻近的数据也经常会被访问。时间局部性就是说，在相对的一小段时间内，计算机经常会访问相同的数据。实际中是怎么运用局部性原理的呢，比如说，计算机从硬盘中读块，计算机不会只读你要的特定块，附近的快很有可能接下来要被访问，他会把这些块也一起预读出来。接下来要读附近的快的时候，就不需要再访问硬盘了。这样，运用局部性原理就减少了访问磁盘的次数。附近的块就被缓存了起来，加快了运行速度。">
+    <meta property="og:article:tag" content="计算机体系"> 
+
+    
+        <meta property="article:published_time" content="Sun May 15 2016 15:15:41 GMT+0800">
+        <meta property="article:modified_time" content="Thu Aug 23 2018 14:18:16 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://blog.mrriddler.com/缓存之旅（一）/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://blog.mrriddler.com/缓存之旅（一）/index.html",
+    "headline": "缓存之旅（一）",
+    "datePublished": "Sun May 15 2016 15:15:41 GMT+0800",
+    "dateModified": "Thu Aug 23 2018 14:18:16 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "mrriddler",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "谜语糖"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "谜语糖",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",计算机体系",
+    "description": "缓存真的有效？真的。嗯，根据计算机访问数据经常会呈现出的局部性原理。局部性原理又包括空间局部性和时间局部性。空间局部性就是说，计算机访问数据，而其存储在邻近的数据也经常会被访问。时间局部性就是说，在相对的一小段时间内，计算机经常会访问相同的数据。实际中是怎么运用局部性原理的呢，比如说，计算机从硬盘中读块，计算机不会只读你要的特定块，附近的快很有可能接下来要被访问，他会把这些块也一起预读出来。接下来要读附近的快的时候，就不需要再访问硬盘了。这样，运用局部性原理就减少了访问磁盘的次数。附近的块就被缓存了起来，加快了运行速度。",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#缓存真的有效？"><span class="post-toc-number">1.</span> <span class="post-toc-text">缓存真的有效？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#缓存什么？"><span class="post-toc-number">2.</span> <span class="post-toc-text">缓存什么？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#有个伟人说的好，我真tm想在客户端缓存下服务器端所有的东西，而这个伟人就是我。"><span class="post-toc-number">3.</span> <span class="post-toc-text">有个伟人说的好，我真tm想在客户端缓存下服务器端所有的东西，而这个伟人就是我。</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#好，我们有了一个Basic-Idea，如何开始呢？"><span class="post-toc-number">4.</span> <span class="post-toc-text">好，我们有了一个Basic Idea，如何开始呢？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何找到对应的缓存？"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">如何找到对应的缓存？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cpu缓存策略："><span class="post-toc-number">4.2.</span> <span class="post-toc-text">cpu缓存策略：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#抽象块："><span class="post-toc-number">4.3.</span> <span class="post-toc-text">抽象块：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#操作系统缓存策略："><span class="post-toc-number">4.4.</span> <span class="post-toc-text">操作系统缓存策略：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据库缓存策略："><span class="post-toc-number">4.5.</span> <span class="post-toc-text">数据库缓存策略：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#让Idea不仅仅是Idea："><span class="post-toc-number">5.</span> <span class="post-toc-text">让Idea不仅仅是Idea：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么？这些还不够？"><span class="post-toc-number">6.</span> <span class="post-toc-text">什么？这些还不够？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用："><span class="post-toc-number">7.</span> <span class="post-toc-text">引用：</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://o79rgqboc.bkt.clouddn.com/cache.png)">
+    
+            <p class="article-headline-p">
+                缓存之旅（一）
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>mrriddler</strong>
+        <span>5月 15, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/计算机体系/">计算机体系</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=缓存之旅（一）&url=http://blog.mrriddler.com/缓存之旅（一）/index.html&pic=http://blog.mrriddler.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=缓存之旅（一）&url=http://blog.mrriddler.com/缓存之旅（一）/index.html&via=mrriddler" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.mrriddler.com/缓存之旅（一）/index.html&title=缓存之旅（一）" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="&#x7F13;&#x5B58;&#x771F;&#x7684;&#x6709;&#x6548;&#xFF1F;"><a href="#&#x7F13;&#x5B58;&#x771F;&#x7684;&#x6709;&#x6548;&#xFF1F;" class="headerlink" title="&#x7F13;&#x5B58;&#x771F;&#x7684;&#x6709;&#x6548;&#xFF1F;"></a>&#x7F13;&#x5B58;&#x771F;&#x7684;&#x6709;&#x6548;&#xFF1F;</h2><p>&#x771F;&#x7684;&#x3002;&#x55EF;&#xFF0C;&#x6839;&#x636E;&#x8BA1;&#x7B97;&#x673A;&#x8BBF;&#x95EE;&#x6570;&#x636E;&#x7ECF;&#x5E38;&#x4F1A;&#x5448;&#x73B0;&#x51FA;&#x7684;&#x5C40;&#x90E8;&#x6027;&#x539F;&#x7406;&#x3002;&#x5C40;&#x90E8;&#x6027;&#x539F;&#x7406;&#x53C8;&#x5305;&#x62EC;&#x7A7A;&#x95F4;&#x5C40;&#x90E8;&#x6027;&#x548C;&#x65F6;&#x95F4;&#x5C40;&#x90E8;&#x6027;&#x3002;&#x7A7A;&#x95F4;&#x5C40;&#x90E8;&#x6027;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x8BA1;&#x7B97;&#x673A;&#x8BBF;&#x95EE;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x5176;&#x5B58;&#x50A8;&#x5728;&#x90BB;&#x8FD1;&#x7684;&#x6570;&#x636E;&#x4E5F;&#x7ECF;&#x5E38;&#x4F1A;&#x88AB;&#x8BBF;&#x95EE;&#x3002;&#x65F6;&#x95F4;&#x5C40;&#x90E8;&#x6027;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5728;&#x76F8;&#x5BF9;&#x7684;&#x4E00;&#x5C0F;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#xFF0C;&#x8BA1;&#x7B97;&#x673A;&#x7ECF;&#x5E38;&#x4F1A;&#x8BBF;&#x95EE;&#x76F8;&#x540C;&#x7684;&#x6570;&#x636E;&#x3002;&#x5B9E;&#x9645;&#x4E2D;&#x662F;&#x600E;&#x4E48;&#x8FD0;&#x7528;&#x5C40;&#x90E8;&#x6027;&#x539F;&#x7406;&#x7684;&#x5462;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;&#x8BA1;&#x7B97;&#x673A;&#x4ECE;&#x786C;&#x76D8;&#x4E2D;&#x8BFB;&#x5757;&#xFF0C;&#x8BA1;&#x7B97;&#x673A;&#x4E0D;&#x4F1A;&#x53EA;&#x8BFB;&#x4F60;&#x8981;&#x7684;&#x7279;&#x5B9A;&#x5757;&#xFF0C;&#x9644;&#x8FD1;&#x7684;&#x5FEB;&#x5F88;&#x6709;&#x53EF;&#x80FD;&#x63A5;&#x4E0B;&#x6765;&#x8981;&#x88AB;&#x8BBF;&#x95EE;&#xFF0C;&#x4ED6;&#x4F1A;&#x628A;&#x8FD9;&#x4E9B;&#x5757;&#x4E5F;&#x4E00;&#x8D77;&#x9884;&#x8BFB;&#x51FA;&#x6765;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x8981;&#x8BFB;&#x9644;&#x8FD1;&#x7684;&#x5FEB;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x8BBF;&#x95EE;&#x786C;&#x76D8;&#x4E86;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x8FD0;&#x7528;&#x5C40;&#x90E8;&#x6027;&#x539F;&#x7406;&#x5C31;&#x51CF;&#x5C11;&#x4E86;&#x8BBF;&#x95EE;&#x78C1;&#x76D8;&#x7684;&#x6B21;&#x6570;&#x3002;&#x9644;&#x8FD1;&#x7684;&#x5757;&#x5C31;&#x88AB;&#x7F13;&#x5B58;&#x4E86;&#x8D77;&#x6765;&#xFF0C;&#x52A0;&#x5FEB;&#x4E86;&#x8FD0;&#x884C;&#x901F;&#x5EA6;&#x3002;</p>
+<a id="more"></a>
+<h2 id="&#x7F13;&#x5B58;&#x4EC0;&#x4E48;&#xFF1F;"><a href="#&#x7F13;&#x5B58;&#x4EC0;&#x4E48;&#xFF1F;" class="headerlink" title="&#x7F13;&#x5B58;&#x4EC0;&#x4E48;&#xFF1F;"></a>&#x7F13;&#x5B58;&#x4EC0;&#x4E48;&#xFF1F;</h2><p>&#x6240;&#x6709;&#x5904;&#x7406;&#x9700;&#x8981;&#x76F8;&#x5BF9;&#x8F83;&#x957F;&#x65F6;&#x95F4;&#x7684;&#x5185;&#x5BB9;&#x90FD;&#x53EF;&#x4EE5;&#x7F13;&#x5B58;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;&#x5C06;&#x56FE;&#x50CF;&#x663E;&#x793A;&#x5230;&#x5C4F;&#x5E55;&#x4E0A;&#xFF0C;&#x56FE;&#x50CF;&#x89E3;&#x7801;&#x76F8;&#x5BF9;&#x4E8E;&#x6E32;&#x67D3;&#x6240;&#x9700;&#x65F6;&#x95F4;&#x8F83;&#x957F;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x4F1A;&#x7F13;&#x5B58;&#x56FE;&#x50CF;&#x89E3;&#x7801;&#x3002;&#x518D;&#x6BD4;&#x5982;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x83B7;&#x53D6;&#x6570;&#x636E;&#x76F8;&#x5BF9;&#x8BA1;&#x7B97;&#x6240;&#x9700;&#x65F6;&#x95F4;&#x8F83;&#x957F;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x4F1A;&#x7F13;&#x5B58;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x83B7;&#x53D6;&#x7684;&#x6570;&#x636E;&#x3002;&#x8FD9;&#x6837;&#x6700;&#x7EC8;&#x8FBE;&#x5230;&#x901F;&#x5EA6;&#x5339;&#x914D;&#xFF0C;&#x8BA9;&#x6574;&#x4E2A;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6CA1;&#x6709;&#x90A3;&#x6B65;&#x5904;&#x7406;&#x65F6;&#x95F4;&#x592A;&#x957F;&#x3002;</p>
+<p>&#x82E5;&#x60F3;&#x7406;&#x89E3;&#x7F13;&#x5B58;&#xFF0C;&#x83AB;&#x8FC7;&#x4E8E;&#x52A8;&#x624B;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x7F13;&#x5B58;&#x3002;&#x4E0B;&#x9762;&#x5C31;&#x4EE5;&#x6700;&#x5E38;&#x89C1;&#x7684;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x83B7;&#x53D6;&#x6570;&#x636E;&#x4E3A;&#x5F15;&#x5B50;&#xFF0C;&#x6765;&#x804A;&#x4E00;&#x804A;&#x7F13;&#x5B58;&#x3002;</p>
+<h2 id="&#x6709;&#x4E2A;&#x4F1F;&#x4EBA;&#x8BF4;&#x7684;&#x597D;&#xFF0C;&#x6211;&#x771F;tm&#x60F3;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x7F13;&#x5B58;&#x4E0B;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x6240;&#x6709;&#x7684;&#x4E1C;&#x897F;&#xFF0C;&#x800C;&#x8FD9;&#x4E2A;&#x4F1F;&#x4EBA;&#x5C31;&#x662F;&#x6211;&#x3002;"><a href="#&#x6709;&#x4E2A;&#x4F1F;&#x4EBA;&#x8BF4;&#x7684;&#x597D;&#xFF0C;&#x6211;&#x771F;tm&#x60F3;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x7F13;&#x5B58;&#x4E0B;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x6240;&#x6709;&#x7684;&#x4E1C;&#x897F;&#xFF0C;&#x800C;&#x8FD9;&#x4E2A;&#x4F1F;&#x4EBA;&#x5C31;&#x662F;&#x6211;&#x3002;" class="headerlink" title="&#x6709;&#x4E2A;&#x4F1F;&#x4EBA;&#x8BF4;&#x7684;&#x597D;&#xFF0C;&#x6211;&#x771F;tm&#x60F3;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x7F13;&#x5B58;&#x4E0B;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x6240;&#x6709;&#x7684;&#x4E1C;&#x897F;&#xFF0C;&#x800C;&#x8FD9;&#x4E2A;&#x4F1F;&#x4EBA;&#x5C31;&#x662F;&#x6211;&#x3002;"></a>&#x6709;&#x4E2A;&#x4F1F;&#x4EBA;&#x8BF4;&#x7684;&#x597D;&#xFF0C;&#x6211;&#x771F;tm&#x60F3;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x7F13;&#x5B58;&#x4E0B;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x6240;&#x6709;&#x7684;&#x4E1C;&#x897F;&#xFF0C;&#x800C;&#x8FD9;&#x4E2A;&#x4F1F;&#x4EBA;&#x5C31;&#x662F;&#x6211;&#x3002;</h2><p><img src="http://o79rgqboc.bkt.clouddn.com/blog_CacheClientSideAllTheThings.jpg" alt="&#x5BA2;&#x6237;&#x7AEF;&#x7F13;&#x5B58;&#x6240;&#x6709;&#x7684;&#x5185;&#x5BB9;"></p>
+<p>&#x4F46;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x7F13;&#x5B58;&#x4E0B;&#x6240;&#x6709;&#x4E1C;&#x897F;&#x5FC5;&#x5B9A;&#x4E0D;&#x53EF;&#x80FD;&#xFF0C;&#x4E0D;&#x4EC5;&#x4F60;&#x6CA1;&#x6709;&#x90A3;&#x4E48;&#x5927;&#x7684;&#x5B58;&#x50A8;&#x5668;&#xFF0C;&#x800C;&#x4E14;&#x7F13;&#x5B58;&#x4F1A;&#x5927;&#x5927;&#x589E;&#x52A0;&#x4F60;&#x7F16;&#x7A0B;&#x7684;&#x590D;&#x6742;&#x6027;&#xFF0C;&#x6240;&#x4EE5;&#x7F13;&#x5B58;&#x5FC5;&#x5B9A;&#x5C31;&#x662F;&#x4E00;&#x4E2A;trade-Off&#x7684;&#x5B58;&#x5728;&#xFF0C;&#x6743;&#x8861;&#x5404;&#x79CD;&#x5229;&#x5F0A;&#xFF0C;&#x65E0;&#x6CD5;&#x91CF;&#x5316;&#x7684;&#x65F6;&#x5019;&#x751A;&#x81F3;&#x5C31;&#x9760;&#x76F4;&#x89C9;&#x548C;&#x7ECF;&#x9A8C;&#x4E86;&#x3002;</p>
+<h2 id="&#x597D;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x4E86;&#x4E00;&#x4E2A;Basic-Idea&#xFF0C;&#x5982;&#x4F55;&#x5F00;&#x59CB;&#x5462;&#xFF1F;"><a href="#&#x597D;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x4E86;&#x4E00;&#x4E2A;Basic-Idea&#xFF0C;&#x5982;&#x4F55;&#x5F00;&#x59CB;&#x5462;&#xFF1F;" class="headerlink" title="&#x597D;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x4E86;&#x4E00;&#x4E2A;Basic Idea&#xFF0C;&#x5982;&#x4F55;&#x5F00;&#x59CB;&#x5462;&#xFF1F;"></a>&#x597D;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x4E86;&#x4E00;&#x4E2A;Basic Idea&#xFF0C;&#x5982;&#x4F55;&#x5F00;&#x59CB;&#x5462;&#xFF1F;</h2><p>&#x7F13;&#x5B58;&#x8FD9;&#x4E2A;&#x7528;&#x7A7A;&#x95F4;&#x6362;&#x65F6;&#x95F4;&#x7684;&#x6982;&#x5FF5;&#x5B58;&#x5728;&#x7740;&#x8BA1;&#x7B97;&#x673A;&#x7684;&#x5404;&#x4E2A;&#x9886;&#x57DF;&#xFF0C;cpu&#x3001;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x3001;&#x8BA1;&#x7B97;&#x673A;&#x7F51;&#x7EDC;&#x3001;&#x6570;&#x636E;&#x5E93;&#x3002;&#x4ECE;&#x8FD9;&#x4E9B;&#x9886;&#x57DF;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x501F;&#x9274;&#x4ED6;&#x4EEC;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7F13;&#x5B58;&#x7684;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x6765;&#x8003;&#x8651;&#x5B9E;&#x73B0;&#x81EA;&#x5DF1;&#x7684;&#x7F13;&#x5B58;&#x3002;&#x7F13;&#x5B58;&#x662F;&#x5206;&#x5C42;&#x6B21;&#x7684;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x8BA1;&#x7B97;&#x673A;&#x7F13;&#x5B58;&#x5C71;</p>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/blog_%E5%AD%98%E5%82%A8%E5%99%A8%E5%B1%B1.png" alt="&#x7F13;&#x5B58;&#x5668;&#x5C71;"></p>
+<p>&#x6BCF;&#x4E00;&#x5C42;&#x5B9E;&#x9645;&#x4E0A;&#x90FD;&#x53EF;&#x4EE5;&#x770B;&#x505A;&#x4E0B;&#x4E00;&#x5C42;&#x7684;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#xFF0C;&#x4ECE;&#x5C71;&#x9876;&#x5230;&#x5C71;&#x811A;&#xFF0C;&#x8BA1;&#x7B97;&#x673A;&#x8BBF;&#x95EE;&#x5230;&#x7684;&#x65F6;&#x95F4;&#x9012;&#x589E;&#xFF0C;&#x800C;&#x6BCF;&#x4E00;&#x5C42;&#x7684;&#x7269;&#x7406;&#x786C;&#x4EF6;&#x9020;&#x4EF7;&#x9012;&#x51CF;&#xFF0C;cpu&#x8BA1;&#x7B97;&#x6570;&#x636E;&#x5148;&#x4ECE;&#x5C71;&#x9876;&#x5F00;&#x59CB;&#x627E;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x679C;&#x672C;&#x5C42;&#x6CA1;&#x6709;&#x627E;&#x5230;&#x5C31;&#x53BB;&#x4E0B;&#x5C42;&#x627E;&#xFF0C;&#x6BCF;&#x5411;&#x4E0B;&#x627E;&#x4E00;&#x5C42;&#xFF0C;&#x627E;&#x7684;&#x5C42;&#x6570;&#x8D8A;&#x591A;&#xFF0C;&#x8BA1;&#x7B97;&#x6240;&#x9700;&#x7684;&#x65F6;&#x95F4;&#x81EA;&#x7136;&#x5C31;&#x8D8A;&#x591A;&#x3002;</p>
+<h3 id="&#x5982;&#x4F55;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x7F13;&#x5B58;&#xFF1F;"><a href="#&#x5982;&#x4F55;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x7F13;&#x5B58;&#xFF1F;" class="headerlink" title="&#x5982;&#x4F55;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x7F13;&#x5B58;&#xFF1F;"></a>&#x5982;&#x4F55;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x7F13;&#x5B58;&#xFF1F;</h3><p>&#x7D22;&#x5F15;+&#x6620;&#x5C04;&#x3002;&#x4E3A;&#x7F13;&#x5B58;&#x7684;&#x5185;&#x5BB9;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x7D22;&#x5F15;&#x3002;&#x5BF9;&#x4E8E;cpu&#x8FD0;&#x7B97;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x7D22;&#x5F15;&#x662F;&#x6309;&#x5730;&#x5740;&#x5212;&#x5206;&#x51FA;&#x6765;&#x7684;&#xFF0C;&#x5BF9;&#x4E8E;&#x5E94;&#x7528;&#x5C42;&#x6765;&#x8BF4;&#x7D22;&#x5F15;&#x5C31;&#x662F;&#x7F13;&#x5B58;&#x7684;key&#x503C;&#x3002;&#x7D22;&#x5F15;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4E00;&#x5BF9;&#x4E00;&#x76F8;&#x8054;&#x3001;&#x7EC4;&#x76F8;&#x8054;&#x3001;&#x5168;&#x76F8;&#x8054;&#x3002;&#x7D22;&#x5F15;&#x6784;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x7F13;&#x5B58;&#x6784;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x96C6;&#x5408;&#x4E4B;&#x95F4;&#x6709;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#xFF0C;&#x76F4;&#x63A5;&#x4ECE;&#x7D22;&#x5F15;&#x96C6;&#x5408;&#x67E5;&#x627E;&#x5C31;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x7F13;&#x5B58;&#x4E86;&#x3002;&#x90A3;&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x76F4;&#x63A5;&#x4ECE;&#x7F13;&#x5B58;&#x96C6;&#x5408;&#x627E;&#x5462;&#xFF1F;&#x5047;&#x8BBE;&#x7F13;&#x5B58;&#x5BB9;&#x91CF;&#x6709;4KB&#xFF0C;&#x6BCF;&#x4E2A;&#x7F13;&#x5B58;&#x5927;&#x5C0F;&#x4E3A;16B&#xFF0C;&#x90A3;&#x4E48;&#x4E00;&#x5171;&#x6709;256&#x4E2A;&#x7F13;&#x5B58;&#x3002;&#x7F13;&#x5B58;&#x7684;&#x7D22;&#x5F15;&#x8303;&#x56F4;&#x5C31;&#x662F;0&#x5230;255&#xFF0C;&#x7D22;&#x5F15;&#x96C6;&#x5408;&#x5360;256B&#x3002;&#x5982;&#x679C;&#x4ECE;&#x7D22;&#x5F15;&#x96C6;&#x5408;&#x67E5;&#x627E;&#xFF0C;&#x53EA;&#x9700;&#x904D;&#x5386;256B&#x7684;&#x7A7A;&#x95F4;&#xFF0C;&#x4ECE;&#x7F13;&#x5B58;&#x96C6;&#x5408;&#x67E5;&#x627E;&#x9700;&#x8981;&#x904D;&#x5386;4KB&#x7684;&#x7A7A;&#x95F4;&#xFF0C;&#x660E;&#x663E;&#x7D22;&#x5F15;&#x96C6;&#x5408;&#x53EF;&#x4EE5;&#x52A0;&#x5FEB;&#x67E5;&#x627E;&#x7684;&#x901F;&#x5EA6;&#x3002;&#x8FD9;&#x4E5F;&#x5C31;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x7528;&#x4E00;&#x4E2A;&#x5C0F;&#x7684;&#x7A7A;&#x95F4;&#x53BB;&#x6620;&#x5C04;&#x5927;&#x7684;&#x7A7A;&#x95F4;&#x3002;</p>
+<h3 id="cpu&#x7F13;&#x5B58;&#x7B56;&#x7565;&#xFF1A;"><a href="#cpu&#x7F13;&#x5B58;&#x7B56;&#x7565;&#xFF1A;" class="headerlink" title="cpu&#x7F13;&#x5B58;&#x7B56;&#x7565;&#xFF1A;"></a>cpu&#x7F13;&#x5B58;&#x7B56;&#x7565;&#xFF1A;</h3><p>cpu&#x5728;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x8BA1;&#x7B97;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x6570;&#x636E;&#x5B58;&#x50A8;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x7531;&#x4E8E;cpu&#x548C;&#x5185;&#x5B58;&#x4E4B;&#x95F4;&#x7684;&#x6027;&#x80FD;&#x9010;&#x6E10;&#x589E;&#x5927;&#xFF0C;&#x7CFB;&#x7EDF;&#x8BBE;&#x8BA1;&#x8005;&#x5728;cpu&#x548C;&#x5185;&#x5B58;&#x4E4B;&#x95F4;&#x63D2;&#x5165;&#x4E86;3&#x5C42;&#x7684;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x3002;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x6709;&#x4E09;&#x4E2A;&#x5C42;&#x7EA7;&#xFF0C;&#x5C31;&#x662F;&#x6574;&#x4E2A;&#x8BA1;&#x7B97;&#x673A;&#x7F13;&#x5B58;&#x7CFB;&#x7EDF;&#x7684;&#x4E00;&#x4E2A;&#x5C0F;&#x7F29;&#x5F71;&#x3002;</p>
+<p>&#x7F13;&#x5B58;&#x6D89;&#x53CA;&#x5230;&#xFF0C;&#x8BFB;&#x64CD;&#x4F5C;&#x3001;&#x5199;&#x64CD;&#x4F5C;&#x548C;&#x5C42;&#x7EA7;&#x4E4B;&#x95F4;&#x5982;&#x4F55;&#x534F;&#x8C03;&#x3001;&#x7F13;&#x5B58;&#x5BB9;&#x91CF;&#x6EE1;&#x4E86;&#x540E;&#x7684;&#x6DD8;&#x6C70;&#x7B97;&#x6CD5;&#x3002;&#x6DD8;&#x6C70;&#x4E0B;&#x9762;&#x4F1A;&#x8BB2;&#xFF0C;&#x8FD9;&#x91CC;&#x5173;&#x6CE8;&#x4E00;&#x4E0B;&#x8BFB;&#x5199;&#x64CD;&#x4F5C;&#x548C;&#x5C42;&#x7EA7;&#x4E4B;&#x95F4;&#x7684;&#x534F;&#x8C03;&#x3002;</p>
+<p>&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x7684;&#x8BFB;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x5148;&#x4ECE;&#x9AD8;&#x5C42;&#x8BFB;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x679C;&#x7F13;&#x5B58;&#x547D;&#x4E2D;&#x4E86;&#x5C31;&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x547D;&#x4E2D;&#x5C31;&#x53BB;&#x4F4E;&#x5C42;&#x8BFB;&#xFF0C;&#x5982;&#x679C;&#x4ECE;&#x4F4E;&#x5C42;&#x547D;&#x4E2D;&#xFF0C;&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x7684;&#x540C;&#x65F6;&#x5C06;&#x4F4E;&#x5C42;&#x7684;&#x6570;&#x636E;&#x5199;&#x5165;&#x9AD8;&#x5C42;&#x3002;</p>
+<p>&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x7684;&#x5199;&#x590D;&#x6742;&#x4E00;&#x70B9;&#xFF0C;&#x5148;&#x76F4;&#x63A5;&#x5411;&#x9AD8;&#x5C42;&#x5199;&#x5165;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x662F;&#x4F55;&#x65F6;&#x5411;&#x4F4E;&#x5C42;&#x5199;&#x5165;&#x5462;&#xFF1F;&#x4E00;&#x79CD;&#x662F;&#x76F4;&#x5199;&#xFF08;write-through&#xFF09;&#xFF0C;&#x5C31;&#x662F;&#x7ACB;&#x5373;&#x5411;&#x4F4E;&#x5C42;&#x5199;&#x5165;&#x3002;&#x53E6;&#x4E00;&#x79CD;&#x662F;&#x5199;&#x56DE;&#xFF08;write-back&#xFF09;&#xFF0C;&#x7B49;&#x5230;&#x7B97;&#x6CD5;&#x6DD8;&#x6C70;&#x7684;&#x65F6;&#x5019;&#x518D;&#x5411;&#x5E95;&#x5C42;&#x5199;&#x5165;&#x3002;&#x76F4;&#x5199;&#x5B9E;&#x73B0;&#x8D77;&#x6765;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x662F;&#x6BCF;&#x6B21;&#x5199;&#x5165;&#x90FD;&#x4F1A;&#x6709;&#x66F4;&#x591A;&#x7684;&#x603B;&#x7EBF;&#x6D41;&#x91CF;&#x3002;&#x7B2C;&#x4E8C;&#x79CD;&#xFF0C;&#x51CF;&#x5C11;&#x4E86;&#x603B;&#x7EBF;&#x6D41;&#x91CF;&#xFF0C;&#x589E;&#x52A0;&#x4E86;&#x590D;&#x6742;&#x5EA6;&#xFF0C;&#x4ED6;&#x5FC5;&#x987B;&#x4E3A;&#x6BCF;&#x4E2A;&#x7F13;&#x5B58;&#x5BF9;&#x8C61;&#x4FDD;&#x5B58;&#x662F;&#x5426;&#x4FEE;&#x6539;&#xFF08;dirty&#x4F4D;&#xFF09;&#xFF0C;&#x5373;&#x662F;&#x5426;&#x5199;&#x5165;&#x4F4E;&#x5C42;&#x3002;&#x5411;&#x4F4E;&#x5C42;&#x5199;&#xFF0C;&#x65F6;&#x95F4;&#x6D88;&#x8017;&#x4E3B;&#x8981;&#x5728;&#x8BBF;&#x95EE;&#x7684;&#x65F6;&#x95F4;&#x4E0A;&#xFF0C;&#x6BCF;&#x6B21;&#x5199;&#x7684;&#x91CF;&#x591A;&#x5C11;&#xFF0C;&#x5DEE;&#x522B;&#x4E0D;&#x5927;&#x3002;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x5C31;&#x662F;&#x4F7F;&#x7528;&#x7684;&#x5199;&#x56DE;&#xFF0C;Mongo&#x4E5F;&#x662F;&#x5199;&#x56DE;&#x3002;&#x672C;&#x6587;&#x63A8;&#x8350;&#x7F13;&#x5B58;&#x4F7F;&#x7528;&#x5199;&#x56DE;&#x3002;</p>
+<h3 id="&#x62BD;&#x8C61;&#x5757;&#xFF1A;"><a href="#&#x62BD;&#x8C61;&#x5757;&#xFF1A;" class="headerlink" title="&#x62BD;&#x8C61;&#x5757;&#xFF1A;"></a>&#x62BD;&#x8C61;&#x5757;&#xFF1A;</h3><p>&#x7406;&#x89E3;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x7F13;&#x5B58;&#x7B56;&#x7565;&#x4E4B;&#x524D;&#xFF0C;&#x6709;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x6982;&#x5FF5;&#x5C31;&#x662F;&#x62BD;&#x8C61;&#x5757;&#x3002;&#x62BD;&#x8C61;&#x5757;&#x5462;&#xFF0C;&#x4E3B;&#x8981;&#x5C31;&#x5728;&#x62BD;&#x8C61;&#x4E24;&#x5B57;&#x4E0A;&#x3002;&#x800C;&#x62BD;&#x8C61;&#x4E3B;&#x8981;&#x7684;&#x76EE;&#x7684;&#x662F;&#x4E3A;&#x4E86;&#x9690;&#x85CF;&#x4E0D;&#x540C;&#x5C42;&#x6B21;&#x7684;&#x7EC6;&#x8282;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x786C;&#x76D8;&#x4F20;&#x8F93;&#x6570;&#x636E;&#x7ED9;&#x5185;&#x5B58;&#xFF0C;&#x786C;&#x76D8;&#x4F20;&#x8F93;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x5757;&#xFF08;block&#xFF09;&#xFF0C;&#x8FD9;&#x4E2A;&#x5757;&#x5C31;&#x662F;&#x5BF9;&#x4E8E;&#x786C;&#x76D8;&#x7684;&#x62BD;&#x8C61;&#xFF0C;&#x786C;&#x76D8;&#x8981;&#x60F3;&#x627E;&#x5230;&#x6570;&#x636E;&#xFF0C;&#x5FC5;&#x987B;&#x8FDB;&#x884C;&#x78C1;&#x76D8;&#x7684;&#x65CB;&#x8F6C;&#x548C;&#x5BFB;&#x9053;&#xFF0C;&#x5185;&#x5B58;&#x6839;&#x672C;&#x4E0D;&#x7BA1;&#x5FC3;&#xFF0C;&#x786C;&#x76D8;&#x65CB;&#x8F6C;&#x4E86;&#x51E0;&#x5708;&#x8FD8;&#x662F;&#x6570;&#x636E;&#x5728;&#x90A3;&#x6761;&#x9053;&#x4E0A;&#xFF0C;&#x5185;&#x5B58;&#x53EA;&#x5173;&#x5FC3;&#x6570;&#x636E;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x786C;&#x76D8;&#x53EA;&#x7ED9;&#x5185;&#x5B58;&#x4E00;&#x4E2A;&#x5757;&#xFF08;block&#xFF09;&#xFF0C;&#x786C;&#x76D8;&#x5411;&#x5185;&#x5B58;&#x9690;&#x85CF;&#x5982;&#x4F55;&#x5B58;&#x53D6;&#x7684;&#x7EC6;&#x8282;&#x3002;&#x540C;&#x6837;&#x7684;&#x601D;&#x60F3;&#x4E5F;&#x5728;&#x7F51;&#x7EDC;&#x4E94;&#x5C42;&#x534F;&#x8BAE;&#x4E2D;&#xFF0C;&#x6BCF;&#x5C42;&#x90FD;&#x7ED9;&#x9AD8;&#x5C42;&#x6216;&#x5E95;&#x5C42;&#x4E00;&#x4E2A;&#x201C;&#x5757;&#x201D;(&#x5B9E;&#x9645;&#x4E0A;&#x53EB;&#x5305;&#xFF0C;packet)&#xFF0C;&#x672C;&#x5C42;&#x4E0D;&#x5173;&#x5FC3;&#x5176;&#x4ED6;&#x5C42;&#x7684;&#x7EC6;&#x8282;&#xFF0C;&#x672C;&#x5C42;&#x76F4;&#x63A5;&#x5728;&#x5757;&#x4E0A;&#x5934;&#x90E8;&#x548C;&#x5C3E;&#x90E8;&#x52A0;&#x4E0A;&#x81EA;&#x5DF1;&#x5C42;&#x505A;&#x7684;&#x4E8B;&#xFF0C;&#x7136;&#x540E;&#x4F20;&#x7ED9;&#x9AD8;&#x5C42;&#x6216;&#x8005;&#x4F4E;&#x5C42;&#xFF0C;&#x5E94;&#x7528;&#x5C42;&#x7BA1;&#x672C;&#x5C42;&#x7684;&#x5757;&#x53EB;&#x62A5;&#x6587;&#xFF0C;&#x4F20;&#x8F93;&#x5C42;&#x53EB;&#x62A5;&#x6587;&#x6BB5;&#xFF0C;&#x7F51;&#x7EDC;&#x5C42;&#x53EB;&#x6570;&#x636E;&#x62A5;&#x3002;</p>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/blog_%E6%AF%95%E5%8A%A0%E7%B4%A2%E7%9A%84%E7%89%9B.jpeg" alt="&#x6BD5;&#x52A0;&#x7D22;&#x7684;&#x725B;"></p>
+<p>&#x6BD5;&#x52A0;&#x7D22;&#x7684;&#x725B;&#x62BD;&#x8C61;&#x8FC7;&#x7A0B;&#xFF0C;&#x4E00;&#x6B65;&#x4E00;&#x6B65;&#x9690;&#x85CF;&#x7EC6;&#x8282;&#xFF0C;&#x55EF;&#xFF0C;&#x5230;&#x6700;&#x540E;&#x5DF2;&#x4E0D;&#x80FD;&#x770B;&#x51FA;&#x662F;&#x725B;&#x4E86;&#x3002;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7F13;&#x5B58;&#x7B56;&#x7565;&#xFF1A;"><a href="#&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7F13;&#x5B58;&#x7B56;&#x7565;&#xFF1A;" class="headerlink" title="&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7F13;&#x5B58;&#x7B56;&#x7565;&#xFF1A;"></a>&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7F13;&#x5B58;&#x7B56;&#x7565;&#xFF1A;</h3><p>&#x5728;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x786C;&#x76D8;&#x7ED9;&#x5185;&#x5B58;&#x7684;&#x62BD;&#x8C61;&#x5757;&#x5C31;&#x662F;&#x9875;&#xFF08;page&#xFF09;&#x3002;&#x4ECE;&#x78C1;&#x76D8;&#x4E0A;&#x8BFB;&#x53D6;&#x9875;&#x5BFC;&#x81F4;&#x7684;I/O&#x662F;&#x5F88;&#x8017;&#x65F6;&#x95F4;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x9875;&#x5C31;&#x88AB;&#x7F13;&#x5B58;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x9875;&#x7684;&#x7F13;&#x5B58;&#x3002;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5C31;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x9875;&#x7F13;&#x5B58;&#x3002;&#x7B80;&#x5355;&#x6765;&#x8BF4;&#xFF0C;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x9875;&#x4E5F;&#x5C31;&#x6210;&#x4E86;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x7F13;&#x5B58;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x770B;&#x4E00;&#x4E0B;linux&#x7684;cache</p>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/blog_linuxCache.jpg" alt="linux&#x7684;cache"></p>
+<p>&#x56FE;&#x4E2D;&#x4E3B;&#x8981;&#x6709;&#x4E09;&#x4E2A;&#x5173;&#x952E;&#x90E8;&#x5206;&#xFF0C;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;&#x3001;&#x865A;&#x62DF;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF08;VFS&#xFF09;&#x3001;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF0C;&#x9875;&#x5B9E;&#x9645;&#x4E0A;&#x5C06;&#x4ED6;&#x4EEC;&#x8054;&#x7CFB;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x8D1F;&#x8D23;&#x5C06;&#x9875;&#x4ECE;&#x786C;&#x76D8;&#x8BFB;&#x51FA;&#x6216;&#x5199;&#x5165;&#x786C;&#x76D8;&#xFF0C;&#x865A;&#x62DF;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x8D1F;&#x8D23;&#x5C06;&#x9875;&#x4F20;&#x9012;&#x7ED9;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;&#x548C;&#x4ECE;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;&#x63A5;&#x6536;&#x9875;&#xFF0C;&#x5185;&#x5B58;&#x8D1F;&#x8D23;&#x7BA1;&#x7406;&#x9875;&#x7684;&#x5206;&#x914D;&#x6216;&#x56DE;&#x6536;&#x548C;&#x7F6E;&#x6362;&#x7B56;&#x7565;&#x3002;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;&#x5982;&#x4F55;&#x7BA1;&#x7406;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5173;&#x6CE8;&#x7684;&#x3002;</p>
+<p>&#x5E73;&#x65F6;&#x5728;&#x7F16;&#x7A0B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5305;&#x62EC;CPU&#x63A5;&#x89E6;&#x5230;&#x7684;&#x90FD;&#x662F;&#x865A;&#x62DF;&#x5730;&#x5740;&#x800C;&#x4E0D;&#x662F;&#x771F;&#x5B9E;&#x7684;&#x7269;&#x7406;&#x5730;&#x5740;&#x3002;&#x8FD9;&#x662F;&#x865A;&#x62DF;&#x5B58;&#x50A8;&#x5668;(&#x4E5F;&#x8BD1;&#x4F5C;&#x865A;&#x62DF;&#x5185;&#x5B58;)&#x7684;&#x4E00;&#x5927;&#x4E3B;&#x8981;&#x529F;&#x80FD;&#x3002;&#x5047;&#x5982;&#x4F60;&#x6709;&#x4E2A;&#x9875;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x4F60;&#x60F3;&#x627E;&#x5230;&#x4E00;&#x4E2A;&#x9875;&#xFF0C;&#x9700;&#x8981;&#x5C06;&#x9875;&#x7684;&#x865A;&#x62DF;&#x5730;&#x5740;&#x8F6C;&#x5316;&#x4E3A;&#x9875;&#x7684;&#x7269;&#x7406;&#x5730;&#x5740;&#x3002;&#x9875;&#x8868;(page table)&#x548C;MMU&#x5C31;&#x8D1F;&#x8D23;&#x5C06;&#x9875;&#x7684;&#x865A;&#x62DF;&#x5730;&#x5740;&#x6620;&#x5C04;&#x5230;&#x7269;&#x7406;&#x5730;&#x5740;&#x3002;&#x9875;&#x8868;&#x8D1F;&#x8D23;&#x8BB0;&#x5F55;&#x54EA;&#x4E9B;&#x865A;&#x62DF;&#x9875;&#x6620;&#x5C04;&#x4E86;&#x7269;&#x7406;&#x9875;&#xFF0C;&#x4EE5;&#x53CA;&#x8FD9;&#x4E9B;&#x9875;&#x7684;PTE(&#x9875;&#x8868;&#x6761;&#x76EE;)&#x3002;&#x800C;MMU&#x662F;&#x4E00;&#x4E2A;&#x7269;&#x7406;&#x786C;&#x4EF6;&#xFF0C;MMU&#x8D1F;&#x8D23;&#x8FDB;&#x884C;&#x865A;&#x62DF;&#x5730;&#x5740;&#x8FDB;&#x884C;&#x7269;&#x7406;&#x5730;&#x5740;&#x7684;&#x7FFB;&#x8BD1;&#xFF0C;&#x7FFB;&#x8BD1;&#x8FC7;&#x7A0B;&#x4E2D;&#x9700;&#x8981;&#x4ECE;&#x9875;&#x8868;&#x83B7;&#x53D6;&#x9875;&#x7684;PTE&#xFF0C;MMU&#x4E5F;&#x4F1A;&#x7528;TLB&#x7F13;&#x5B58;&#x9875;&#x53F7;&#xFF0C;&#x8BA1;&#x7B97;&#x673A;&#x4ECE;&#x786C;&#x4EF6;&#x5230;&#x8F6F;&#x4EF6;&#x90FD;&#x6709;&#x7F13;&#x5B58;&#xFF01;</p>
+<p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&gt;&#x6B64;&#x5904;&#x8981;&#x8DD1;&#x9898;</p>
+<p>&#x9875;&#x8868;&#x4E0D;&#x4E00;&#x5B9A;&#x53EA;&#x6620;&#x865A;&#x62DF;&#x9875;&#xFF0C;&#x8FD8;&#x6709;&#x53EF;&#x80FD;&#x662F;&#x6587;&#x4EF6;&#x672C;&#x8EAB;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x5C06;&#x6587;&#x4EF6;&#x76F4;&#x63A5;&#x8F7D;&#x5165;&#x4E86;&#x5185;&#x5B58;&#xFF0C;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x5185;&#x5B58;&#x5C31;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x6587;&#x4EF6;&#x4E86;&#xFF0C;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x53EB;mmap(Memory Map)&#x3002;MongDB&#x4F7F;&#x7528;&#x7684;&#x5C31;&#x662F;mmap&#xFF0C;&#x8BE6;&#x89C1;:<a href="https://docs.mongodb.org/manual/faq/storage/" target="_blank" rel="noopener">https://docs.mongodb.org/manual/faq/storage/</a></p>
+<p>linux&#x6587;&#x4EF6;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;cache&#x5206;&#x4E3A;Page Cache&#x3001;Buffer Cache&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x8BE6;&#x7EC6;&#x53D9;&#x8FF0;&#x4E86;&#xFF0C;&#x6B64;&#x5904;&#x7559;&#x5751;&#x3002;</p>
+<p> <img src="http://o79rgqboc.bkt.clouddn.com/blog_ShutUp.jpg" alt="ShutUp"></p>
+<p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&gt;&#x6B64;&#x5904;&#x88AB;&#x4E3B;&#x9898;&#x541B;&#x62C9;&#x4E86;&#x56DE;&#x6765;</p>
+<p>&#x7EE7;&#x7EED;&#x6B63;&#x9898;&#xFF0C;&#x5982;&#x4F55;&#x53D6;&#x51FA;&#x9875;&#x7684;&#x7269;&#x7406;&#x5730;&#x5740;&#x3002;&#x4ED6;&#x4F1A;&#x5148;&#x770B;&#x865A;&#x62DF;&#x9875;&#x662F;&#x5426;&#x6709;&#x6620;&#x5C04;&#x7269;&#x7406;&#x9875;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x6620;&#x5C04;&#xFF0C;&#x5C31;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x6620;&#x5C04;&#xFF0C;&#x5C31;&#x4F1A;&#x53D1;&#x751F;&#x7F3A;&#x9875;&#x4E2D;&#x65AD;&#x3002;&#x5C06;&#x76F8;&#x5E94;&#x7684;&#x7269;&#x7406;&#x9875;&#x7F13;&#x5B58;&#x5728;&#x5185;&#x5B58;&#xFF0C;&#x5E76;&#x4E0E;&#x865A;&#x62DF;&#x9875;&#x6620;&#x5C04;&#x3002;&#x518D;&#x8FDB;&#x884C;&#x4E00;&#x6B21;&#x67E5;&#x627E;&#xFF0C;&#x8FD9;&#x6B21;&#x67E5;&#x627E;&#x865A;&#x62DF;&#x9875;&#x5C31;&#x4F1A;&#x6620;&#x5C04;&#x7269;&#x7406;&#x9875;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5185;&#x5B58;&#x5BB9;&#x91CF;&#x6709;&#x9650;&#xFF0C;&#x4E0D;&#x80FD;&#x8BA9;&#x6240;&#x6709;&#x7269;&#x7406;&#x9875;&#x90FD;&#x7F13;&#x5B58;&#xFF0C;&#x9700;&#x8981;&#x7528;&#x7B97;&#x6CD5;&#x6DD8;&#x6C70;&#x6389;&#x4E0D;&#x9700;&#x8981;&#x7684;&#x7269;&#x7406;&#x9875;&#x3002;</p>
+<p>FIFO&#xFF1A;&#x5148;&#x8FDB;&#x5148;&#x51FA;&#x7B97;&#x6CD5;&#xFF0C;&#x6BCF;&#x6B21;&#x6DD8;&#x6C70;&#x6389;&#x505C;&#x7559;&#x65F6;&#x95F4;&#x6700;&#x957F;&#x7684;&#x7B97;&#x6CD5;&#xFF0C;&#x8FD9;&#x79CD;&#x7B97;&#x6CD5;&#x5E76;&#x4E0D;&#x5E38;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x5F88;&#x53EF;&#x80FD;&#x6DD8;&#x6C70;&#x6389;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x9875;&#x9762;&#x3002;</p>
+<p>LRU(Least Recently Used)&#xFF1A;&#x9009;&#x62E9;&#x6700;&#x8FD1;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#x672A;&#x4F7F;&#x7528;&#x8FC7;&#x7684;&#x9875;&#x9762;&#x7F6E;&#x6362;&#x6389;&#x3002;&#x8FD9;&#x79CD;&#x7B97;&#x6CD5;&#x975E;&#x5E38;&#x4F18;&#x79C0;&#xFF0C;&#x4F46;&#x662F;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5B9E;&#x73B0;&#x5B83;&#x8FD8;&#x9700;&#x8981;&#x786C;&#x4EF6;&#x652F;&#x6301;&#xFF0C;&#x5B9E;&#x73B0;&#x8D77;&#x6765;&#x76F8;&#x5F53;&#x8D39;&#x65F6;&#xFF0C;&#x6240;&#x4EE5;&#x53C8;&#x6D8C;&#x73B0;&#x4E86;&#x5F88;&#x591A;&#x6A21;&#x4EFF;LRU&#x7684;&#x7B97;&#x6CD5;&#xFF0C;&#x66F4;&#x52A0;&#x5B9E;&#x7528;&#xFF0C;NRU&#x3001;NFU&#x3001;2Q&#x3001;MQ&#x3001;Clock&#x7B49;&#x3002;</p>
+<h3 id="&#x6570;&#x636E;&#x5E93;&#x7F13;&#x5B58;&#x7B56;&#x7565;&#xFF1A;"><a href="#&#x6570;&#x636E;&#x5E93;&#x7F13;&#x5B58;&#x7B56;&#x7565;&#xFF1A;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x7F13;&#x5B58;&#x7B56;&#x7565;&#xFF1A;"></a>&#x6570;&#x636E;&#x5E93;&#x7F13;&#x5B58;&#x7B56;&#x7565;&#xFF1A;</h3><p>&#x548C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7F13;&#x5B58;&#x7B56;&#x7565;&#x76F8;&#x4F3C;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x5C06;&#x5757;&#x7F13;&#x5B58;&#x5728;&#x5185;&#x5B58;&#x4E0A;&#xFF0C;&#x53EB;&#x505A;&#x7F13;&#x51B2;&#x533A;&#xFF08;buffer&#xFF09;&#xFF0C;&#x7531;&#x7F13;&#x5B58;&#x533A;&#x7BA1;&#x7406;&#x5668;&#x7BA1;&#x7406;&#xFF0C;&#x5927;&#x591A;&#x6570;&#x6570;&#x636E;&#x5E93;&#x4F7F;&#x7528;&#x7684;&#x7B97;&#x6CD5;&#x4E3A;&#x8FD1;&#x4F3C;LRU&#x7B97;&#x6CD5;&#x3002;</p>
+<p>&#x6570;&#x636E;&#x5E93;&#x7F13;&#x5B58;&#x4E3A;&#x4E86;&#x5728;&#x5D29;&#x6E83;&#x540E;&#xFF0C;&#x4E5F;&#x8981;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x6709;&#x65F6;&#x4F1A;&#x5C06;&#x5757;&#x5F3A;&#x5236;&#x5199;&#x56DE;&#xFF0C;&#x6709;&#x65F6;&#x4F1A;&#x9650;&#x5236;&#x5757;&#x7684;&#x5199;&#x56DE;&#x3002;</p>
+<h2 id="&#x8BA9;Idea&#x4E0D;&#x4EC5;&#x4EC5;&#x662F;Idea&#xFF1A;"><a href="#&#x8BA9;Idea&#x4E0D;&#x4EC5;&#x4EC5;&#x662F;Idea&#xFF1A;" class="headerlink" title="&#x8BA9;Idea&#x4E0D;&#x4EC5;&#x4EC5;&#x662F;Idea&#xFF1A;"></a>&#x8BA9;Idea&#x4E0D;&#x4EC5;&#x4EC5;&#x662F;Idea&#xFF1A;</h2><p>&#x73B0;&#x5728;&#x7740;&#x624B;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x7F13;&#x5B58;&#xFF0C;&#x6839;&#x636E;&#x5177;&#x4F53;&#x7F13;&#x5B58;&#x7684;&#x4E1C;&#x897F;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x7B56;&#x7565;&#xFF0C;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x8BED;&#x8A00;&#x4E0B;&#xFF0C;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF0C;&#x4E0D;&#x8FC7;&#xFF0C;&#x601D;&#x60F3;&#x662F;&#x4E00;&#x81F4;&#x7684;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x5B9E;&#x9645;&#x80FD;&#x8C03;&#x7528;&#x7684;&#x7F13;&#x5B58;&#x53EA;&#x6709;&#x4E24;&#x4E2A;&#x5C42;&#x7EA7;&#xFF0C;&#x5185;&#x5B58;&#x548C;&#x786C;&#x76D8;&#x3002;&#x90A3;&#x4E48;&#x5C31;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x4E8C;&#x7EA7;&#x7F13;&#x5B58;&#x3002;</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x6211;&#x4EEC;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x5185;&#x5B58;&#x7F13;&#x5B58;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x6700;&#x7B80;&#x5355;&#x7684;&#x5C31;&#x662F;&#x5BF9;&#x54C8;&#x5E0C;&#x8868;&#x7684;&#x5C01;&#x88C5;&#x2014;&#x5B57;&#x5178;&#xFF0C;&#x62E5;&#x6709;&#x5E38;&#x6570;&#x7EA7;&#x522B;&#x7684;&#x67E5;&#x8BE2;&#x590D;&#x6742;&#x5EA6;&#x3002;&#x4F46;&#x662F;&#x5982;&#x679C;&#x8981;&#x518D;&#x52A0;&#x4E0A;&#x6DD8;&#x6C70;&#x7B97;&#x6CD5;&#xFF0C;&#x5B57;&#x5178;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x5C31;&#x4E0D;&#x7406;&#x60F3;&#x4E86;&#x3002;&#x800C;iOS&#x4E2D;&#x6709;&#x7CFB;&#x7EDF;&#x7EA7;&#x5DF2;&#x5B9E;&#x73B0;&#x597D;&#x7684;NSCache&#xFF0C;&#x4F46;&#x662F;&#x5176;&#x6548;&#x7387;&#x4E0D;&#x9AD8;&#xFF0C;&#x867D;&#x8BF4;&#x63D0;&#x4F9B;&#x4E86;&#x66F4;&#x591A;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4F46;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x8FD9;&#x4E9B;&#x529F;&#x80FD;&#x3002;&#x672C;&#x6587;&#x63A8;&#x8350;&#x5927;&#x5BB6;&#x4F7F;&#x7528;LinkedHashMap&#xFF0C;&#x7B49;&#x5230;&#x4E0B;&#x6587;&#x804A;&#x5230;&#x6DD8;&#x6C70;&#x7B97;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x7EC6;&#x8BB2;&#x3002;&#x6700;&#x7EC8;&#xFF0C;&#x6839;&#x636E;&#x4F60;&#x8981;&#x5B58;&#x50A8;&#x7684;&#x5185;&#x5BB9;&#x3001;&#x590D;&#x6742;&#x6027;&#x548C;&#x6027;&#x80FD;&#x4E4B;&#x95F4;&#x7684;&#x6743;&#x8861;&#xFF0C;&#x9009;&#x62E9;&#x4E0D;&#x540C;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x8FD8;&#x8981;&#x786E;&#x5B9A;&#x7F13;&#x5B58;&#x7684;&#x5BB9;&#x91CF;&#xFF0C;&#x8FD9;&#x4E2A;&#x5BB9;&#x91CF;&#x53EF;&#x4EE5;&#x662F;&#x7F13;&#x5B58;&#x5185;&#x5BB9;&#x7684;&#x6570;&#x91CF;&#x6216;&#x8005;&#x662F;&#x7F13;&#x5B58;&#x5185;&#x5BB9;&#x7684;&#x5927;&#x5C0F;&#x3002;&#x53D6;&#x51B3;&#x4E8E;&#x4F60;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5185;&#x5B58;&#x4E2D;&#x7F13;&#x5B58;&#x7684;&#x5BB9;&#x91CF;&#x662F;&#x4E0D;&#x5BB9;&#x6613;&#x786E;&#x5B9A;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x8BA1;&#x7B97;&#x51FA;&#x5BB9;&#x91CF;&#x8981;&#x82B1;&#x8D39;&#x5F88;&#x957F;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4E0D;&#x8981;&#x53BB;&#x8BA1;&#x7B97;&#xFF0C;&#x7F13;&#x5B58;&#x672C;&#x6765;&#x76EE;&#x7684;&#x5C31;&#x662F;&#x7701;&#x65F6;&#x95F4;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x82B1;&#x8D39;&#x5F88;&#x957F;&#x65F6;&#x95F4;&#x53BB;&#x505A;&#x989D;&#x5916;&#x64CD;&#x4F5C;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x5F97;&#x4E0D;&#x507F;&#x5931;&#x4E86;&#x3002;</p>
+<p>&#x8BFB;&#x5199;&#x548C;&#x4E24;&#x5C42;&#x7684;&#x540C;&#x6B65;&#xFF0C;&#x76F4;&#x63A5;&#x53C2;&#x7167;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x7684;&#x601D;&#x60F3;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x5E76;&#x4E14;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x5199;&#x56DE;&#x3002;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x5199;&#x56DE;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E24;&#x4E2A;&#x6307;&#x6807;&#x6765;&#x89E6;&#x53D1;&#x5199;&#x56DE;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;&#x8FD8;&#x672A;&#x5199;&#x56DE;&#x7684;&#x6570;&#x91CF;&#x548C;&#x4E24;&#x6B21;&#x53D1;&#x751F;&#x5199;&#x56DE;&#x7684;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x3002;&#x8FD9;&#x4E24;&#x4E2A;&#x6307;&#x6807;&#x662F;&#x6216;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x8FBE;&#x6807;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x89E6;&#x53D1;&#x5199;&#x56DE;&#x3002;&#x6BCF;&#x6B21;&#x5199;&#x5165;&#x7F13;&#x5B58;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x68C0;&#x67E5;&#x4E00;&#x4E0B;&#x672A;&#x5199;&#x56DE;&#x7684;&#x6570;&#x91CF;&#xFF0C;&#x5982;&#x679C;&#x8D85;&#x6807;&#x4E86;&#x5C31;&#x5199;&#x56DE;&#x3002;&#x518D;&#x7528;&#x4E00;&#x4E2A;&#x8BA1;&#x65F6;&#x5668;&#xFF0C;&#x6BCF;&#x9694;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x89E6;&#x53D1;&#x5199;&#x56DE;&#x3002;&#x8FD8;&#x6709;&#x5F53;app&#x5C06;&#x8981;&#x9000;&#x51FA;&#x7684;&#x65F6;&#x5019;&#x4E5F;&#x8981;&#x5199;&#x56DE;&#x3002;</p>
+<p>&#x7F13;&#x5B58;&#x8BFB;&#x5199;&#xFF1A;</p>
+<pre><code>- (void)setObject:(id)object forKeyedSubscript:(id)key {
+    self.memoryCache[key] = object;
+    self.syncDic[key] = key;
+
+    if (self.syncDic.count &gt;= self.syncCount) {
+        dispatch_async(_queue, ^{
+            [self sync];
+        });
+    }
+}
+
+- (id)objectForKeyedSubscript:(id)key {
+    id object = nil;
+
+    if (self.memoryCache[key]) {
+        object = self.memoryCache[key];
+        [self.diskCache setModificationDate:[[NSDate alloc] init] forKey:key];
+    }else if (self.diskCache[key]) {
+        object = self.diskCache[key];
+        self.memoryCache[key] = object;
+    }
+
+    return object;
+}
+
+- (void)syncRecursively {
+    __weak typeof(self) weakSelf = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.syncInterval * NSEC_PER_SEC)), _queue, ^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+
+        [strongSelf sync];
+        [strongSelf syncRecursively];
+    });
+}
+
+- (void)sync {    
+    [self.syncDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull keyToo, BOOL * _Nonnull stop) {
+        id obj = self.memoryCache[key];
+        if (obj) {
+            self.diskCache[key] = obj;
+        }
+    }];
+
+    [self.syncDic removeAllObjects];    
+}
+</code></pre><p>&#x6DD8;&#x6C70;&#x7684;&#x7B97;&#x6CD5;&#x5462;&#xFF0C;&#x5E78;&#x8FD0;&#x7684;&#x662F;&#x5E94;&#x7528;&#x5C42;&#xFF0C;&#x5B9E;&#x73B0;LRU&#x5F88;&#x7B80;&#x5355;&#x3002;&#x53EA;&#x8981;&#x7528;&#x4E00;&#x4E2A;&#x4E0A;&#x6587;&#x63D0;&#x5230;&#x7684;LinkedHashMap&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;java&#x4E2D;&#x6709;&#x7CFB;&#x7EDF;&#x5B9E;&#x73B0;&#x7684;LinkedHashMap&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x3002;&#x5148;&#x7528;&#x4E00;&#x4E2A;&#x94FE;&#x8868;&#x6765;&#x5B9E;&#x73B0;&#x6700;&#x8FD1;&#x6700;&#x5C11;&#x4F7F;&#x7528;&#xFF0C;&#x6BCF;&#x6B21;&#x63D2;&#x5165;&#x6570;&#x636E;&#xFF0C;&#x63D2;&#x5165;&#x5230;&#x8868;&#x5934;&#xFF0C;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x4E5F;&#x628A;&#x6570;&#x636E;&#x63D2;&#x5165;&#x5230;&#x8868;&#x5934;&#xFF0C;&#x5220;&#x9664;&#x6570;&#x636E;&#x4ECE;&#x8868;&#x5C3E;&#x5220;&#x9664;&#xFF0C;&#x8D8A;&#x5E38;&#x7528;&#x7684;&#x4F1A;&#x8D8A;&#x9760;&#x8FD1;&#x8868;&#x5934;&#xFF0C;&#x8868;&#x5C3E;&#x5C31;&#x662F;&#x6700;&#x4E0D;&#x5E38;&#x7528;&#x7684;&#x4E86;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x94FE;&#x8868;&#x67E5;&#x8BE2;&#x590D;&#x6742;&#x5EA6;&#x662F;&#x7EBF;&#x6027;&#x7684;&#xFF0C;&#x641E;&#x4E0D;&#x597D;&#x8981;&#x8BBF;&#x95EE;&#x7684;&#x6570;&#x636E;&#x5728;&#x8868;&#x5C3E;&#xFF0C;&#x5C31;&#x5F97;&#x904D;&#x5386;&#x4E00;&#x6B21;&#x8868;&#x3002;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x5C31;&#x662F;&#x5F15;&#x5165;&#x54C8;&#x5E0C;&#x8868;&#x3002;&#x5229;&#x7528;&#x54C8;&#x5E0C;&#x8868;&#x5E38;&#x6570;&#x7EA7;&#x7684;&#x67E5;&#x8BE2;&#x590D;&#x6742;&#x5EA6;&#x3002;&#x6700;&#x540E;&#x624D;&#x53EB;&#x505A;linkedHashMap&#x3002;&#x4E0B;&#x9762;&#x662F;&#x7528;OC&#x5199;&#x7684;&#xFF0C;&#x7FFB;&#x6210;&#x522B;&#x7684;&#x8BED;&#x8A00;&#x4E5F;&#x4E0D;&#x8D39;&#x52B2;&#x3002;</p>
+<pre><code class="lang-objc">@interface RBELinkedHashMapNode : NSObject {
+    @package
+    id _key;
+    id _value;
+    __unsafe_unretained RBELinkedHashMapNode *_prev;
+    __unsafe_unretained RBELinkedHashMapNode *_next;
+}
+
+@end
+
+@implementation RBELinkedHashMapNode
+@end
+
+@interface RBELinkedHashMap : NSObject
+
+- (id)findObjctForKey:(id)key;
+
+- (void)insertObject:(id)obj forKey:(id)key;
+
+- (void)eraseLastObject;
+
+- (void)eraseObjectForKey:(id)key;
+
+- (void)eraseAll;
+
+- (NSUInteger)currentTotalUsage;
+
+@end
+
+@implementation RBELinkedHashMap {
+    @package
+    CFMutableDictionaryRef _hashMap;
+    NSUInteger _totalUsage;
+    RBELinkedHashMapNode *_head;
+    RBELinkedHashMapNode *_tail;
+}
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _hashMap = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &amp;kCFTypeDictionaryKeyCallBacks, &amp;kCFTypeDictionaryValueCallBacks);
+    }
+    return self;
+}
+
+- (void)dealloc {
+    CFRelease(_hashMap);
+}
+
+- (id)findObjctForKey:(id)key {
+    id obj = nil;
+    RBELinkedHashMapNode *node = CFDictionaryGetValue(_hashMap, (__bridge const void *)key);
+    if (node) {
+        [self detach:node];
+        [self attachToHead:node];
+        obj = node-&gt;_value;
+    }
+
+    return obj;
+}
+
+- (void)insertObject:(id)obj forKey:(id)key {
+    RBELinkedHashMapNode *node = CFDictionaryGetValue(_hashMap, (__bridge const void *)key);
+    if (node) {
+        node-&gt;_value = obj;
+        [self detach:node];
+        [self attachToHead:node];
+        return;
+    }
+
+    RBELinkedHashMapNode *newNode = [RBELinkedHashMapNode new];
+    newNode-&gt;_key = key;
+    newNode-&gt;_value = obj;
+
+    [self attachToHead:newNode];
+    CFDictionarySetValue(_hashMap, (__bridge const void *)key, (__bridge const void *)newNode);
+    _totalUsage ++;
+}
+
+- (void)eraseLastObject {
+    if (!_head) {
+        return;
+    }
+
+    RBELinkedHashMapNode *deleteNode = _tail;
+    if (_head == deleteNode) {
+        _head = nil;
+        _tail = nil;
+    }
+
+    [self detach:deleteNode];
+    CFDictionaryRemoveValue(_hashMap, (__bridge const void *)deleteNode-&gt;_key);
+    _totalUsage --;
+}
+
+- (void)eraseObjectForKey:(id)key {
+    if (!_head) {
+        return;
+    }
+
+    RBELinkedHashMapNode *deleteNode = CFDictionaryGetValue(_hashMap, (__bridge const void *)key);
+    if (deleteNode) {
+        if (_head == _tail) {
+            _head = nil;
+            _tail = nil;
+        }
+
+        if (deleteNode == _head) {
+            _head = _head-&gt;_next;
+            _head-&gt;_prev = nil;
+            deleteNode-&gt;_next = nil;
+        }
+
+        [self detach:deleteNode];
+        CFDictionaryRemoveValue(_hashMap, (__bridge const void *)key);
+        _totalUsage --;
+    }
+}
+
+- (void)eraseAll {
+    _totalUsage = 0;
+    if (CFDictionaryGetCount(_hashMap) &gt; 0) {
+        CFDictionaryRemoveAllValues(_hashMap);
+    }
+}
+
+- (void)detach:(RBELinkedHashMapNode *)node {
+    if (_head == _tail || _head == node) {
+        return;
+    }else if (node == _tail) {
+        _tail = _tail-&gt;_prev;
+        _tail-&gt;_next = nil;
+        node-&gt;_prev = nil;
+    }else {
+        node-&gt;_prev-&gt;_next = node-&gt;_next;
+        node-&gt;_next-&gt;_prev = node-&gt;_prev;
+    }
+}
+
+- (void)attachToHead:(RBELinkedHashMapNode *)node {
+    if (_head == nil) {
+        _head = node;
+        _tail = node;
+    }else if (_head == node) {
+        return;
+    }else{
+        _head-&gt;_prev = node;
+        node-&gt;_next = _head;
+        _head = node;
+    }
+}
+
+- (NSUInteger)currentTotalUsage {
+    return _totalUsage;
+}
+
+@end
+</code></pre>
+<p>&#x672C;&#x6587;&#x6CA1;&#x6709;&#x804A;&#x786C;&#x76D8;&#x4E0A;&#x7684;&#x7F13;&#x5B58;&#x600E;&#x4E48;&#x505A;&#xFF0C;&#x5199;&#x5230;&#x8FD9;&#x91CC;&#x5DF2;&#x7ECF;&#x611F;&#x89C9;&#x592A;&#x591A;&#x4E86;&#xFF0C;&#x4EE5;&#x540E;&#x6709;&#x65F6;&#x95F4;&#x6162;&#x6162;&#x586B;&#x5427;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#x591A;&#x7EBF;&#x7A0B;&#xFF01;&#x7F13;&#x5B58;&#x65F6;&#x5E38;&#x5728;&#x591A;&#x7EBF;&#x7A0B;&#x4E0A;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x90A3;&#x4E48;&#x5171;&#x4EAB;&#x53D8;&#x91CF;&#x5C31;&#x4E00;&#x5B9A;&#x8981;&#x52A0;&#x9501;&#x3002;&#x5EFA;&#x8BAE;&#x5185;&#x5B58;&#x7F13;&#x5B58;&#x4F7F;&#x7528;&#x81EA;&#x65CB;&#x9501;&#xFF0C;&#x78C1;&#x76D8;&#x7F13;&#x5B58;&#x4F7F;&#x7528;&#x4FE1;&#x53F7;&#x91CF;&#x3002;&#x81EA;&#x65CB;&#x9501;&#xFF0C;&#x4F1A;&#x4E00;&#x76F4;&#x8BE2;&#x95EE;&#x9501;&#x662F;&#x5426;&#x5F00;&#x4E86;&#xFF0C;&#x4F1A;&#x5360;&#x7528;&#x5927;&#x91CF;&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x53EA;&#x9002;&#x5408;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#x5F88;&#x77ED;&#x5C31;&#x80FD;&#x8FDB;&#x884C;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x4FE1;&#x53F7;&#x91CF;&#x4F1A;&#x5728;&#x95EE;&#x5B8C;&#x662F;&#x5426;&#x5F00;&#x4EE5;&#x540E;&#xFF0C;&#x7761;&#x7720;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#xFF0C;&#x66F4;&#x9002;&#x5408;&#x957F;&#x65F6;&#x95F4;&#x7B49;&#x5F85;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x800C;OSSpinLock&#x5728;iOS&#x4E2D;&#x5E76;&#x4E0D;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x5728;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;mutex&#x9501;&#x66FF;&#x4EE3;&#x3002;&#x8BE6;&#x89C1;<a href="http://blog.ibireme.com/2016/01/16/spinlock_is_unsafe_in_ios/" target="_blank" rel="noopener">http://blog.ibireme.com/2016/01/16/spinlock_is_unsafe_in_ios/</a></p>
+<p>&#x5185;&#x5B58;&#x7F13;&#x5B58;&#x9501;&#xFF0C;&#x6216;&#x8005;&#x4F7F;&#x7528;&#x5B8F;&#x9884;&#x5904;&#x7406;</p>
+<pre><code>- (void)mutexLock {
+    pthread_mutex_lock(&amp;_mutexLock);
+}
+
+- (void)mutexUnLock {
+    pthread_mutex_unlock(&amp;_mutexLock);
+}
+</code></pre><h2 id="&#x4EC0;&#x4E48;&#xFF1F;&#x8FD9;&#x4E9B;&#x8FD8;&#x4E0D;&#x591F;&#xFF1F;"><a href="#&#x4EC0;&#x4E48;&#xFF1F;&#x8FD9;&#x4E9B;&#x8FD8;&#x4E0D;&#x591F;&#xFF1F;" class="headerlink" title="&#x4EC0;&#x4E48;&#xFF1F;&#x8FD9;&#x4E9B;&#x8FD8;&#x4E0D;&#x591F;&#xFF1F;"></a>&#x4EC0;&#x4E48;&#xFF1F;&#x8FD9;&#x4E9B;&#x8FD8;&#x4E0D;&#x591F;&#xFF1F;</h2><p><img src="http://o79rgqboc.bkt.clouddn.com/blog_%E4%BD%A0%E7%9C%9F%E6%A3%92.jpg" alt="&#x4F60;&#x771F;&#x68D2;"></p>
+<p>&#x5982;&#x679C;&#x4F60;&#x7F13;&#x5B58;&#x7684;&#x5185;&#x5BB9;&#x662F;&#x4ECE;&#x7F51;&#x7EDC;&#x83B7;&#x53D6;&#x7684;&#x8BDD;&#xFF0C;&#x8FD8;&#x6709;&#x5F88;&#x591A;&#x53EF;&#x4EE5;&#x505A;&#x7684;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x62FF;&#x5230;&#x6570;&#x636E;&#x662F;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x4E00;&#x4E2A;&#x8868;&#x8FF0;&#xFF0C;&#x4E00;&#x4E2A;&#x526F;&#x672C;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x539F;&#x6765;&#x7684;&#x5B9E;&#x4F53;&#xFF0C;&#x8BF4;&#x767D;&#x4E86;&#x5C31;&#x662F;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x53EA;&#x6709;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684;&#x4E00;&#x4E2A;&#x7F13;&#x5B58;&#x3002;&#x800C;&#x7F51;&#x7EDC;&#x7F13;&#x5B58;&#x5C31;&#x662F;&#x4F7F;&#x7528;http&#x63D0;&#x4F9B;&#x7684;&#x7F13;&#x5B58;&#x62A5;&#x5934;&#x5B57;&#x6BB5;&#xFF0C;Expires&#x3001;E-Tag&#x3001;Last-Modified&#x3002;&#x5177;&#x4F53;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x7EC6;&#x8BF4;&#x4E86;&#xFF0C;&#x603B;&#x4F53;&#x7B56;&#x7565;&#x5C31;&#x662F;&#xFF0C;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#xFF0C;&#x7B49;&#x5230;&#x8FC7;&#x671F;&#x624D;&#x56DE;&#x53BB;&#x670D;&#x52A1;&#x5668;&#x8BF7;&#x6C42;&#xFF0C;&#x8BF7;&#x6C42;&#x8FD8;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x670D;&#x52A1;&#x5668;&#x7684;&#x5B9E;&#x4F53;&#x662F;&#x5426;&#x53D1;&#x751F;&#x4E86;&#x53D8;&#x5316;&#xFF0C;&#x6CA1;&#x6709;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x5C31;&#x53EA;&#x9700;&#x8981;&#x544A;&#x8BC9;&#x5BA2;&#x6237;&#x7AEF;&#x6CA1;&#x6709;&#x53D8;&#x5316;&#xFF0C;&#x4E0D;&#x7528;&#x518D;&#x8FD4;&#x56DE;&#x4E00;&#x904D;&#x6240;&#x8BF7;&#x6C42;&#x6570;&#x636E;&#xFF0C;&#x6D6A;&#x8D39;&#x6D41;&#x91CF;&#x3002;</p>
+<h2 id="&#x5F15;&#x7528;&#xFF1A;"><a href="#&#x5F15;&#x7528;&#xFF1A;" class="headerlink" title="&#x5F15;&#x7528;&#xFF1A;"></a>&#x5F15;&#x7528;&#xFF1A;</h2><ul>
+<li>&#x7F13;&#x5B58;&#x6982;&#x5FF5;&#xFF1A;<a href="https://zh.wikipedia.org/wiki/CPU%E7%BC%93%E5%AD%98" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/CPU%E7%BC%93%E5%AD%98</a></li>
+<li>&#x5B58;&#x50A8;&#x5668;&#x5C71;&#x4E66;&#x7C4D;&#xFF1A;&#x6DF1;&#x5165;&#x7406;&#x89E3;&#x8BA1;&#x7B97;&#x673A;&#x7CFB;&#x7EDF;</li>
+<li>&#x9875;&#x9762;&#x7F6E;&#x6362;&#x4E66;&#x7C4D;&#xFF1A;&#x73B0;&#x4EE3;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;</li>
+<li>http&#x7F13;&#x5B58;&#x4E66;&#x7C4D;&#xFF1A;http&#x6743;&#x5A01;&#x6307;&#x5357;</li>
+<li>&#x6570;&#x636E;&#x5E93;&#x7F13;&#x5B58;&#xFF1A;<a href="http://www.devbean.net/2016/04/how-database-works-6/" target="_blank" rel="noopener">http://www.devbean.net/2016/04/how-database-works-6/</a></li>
+<li>iOS&#x7AEF;cache&#x7684;&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x4EE5;&#x53CA;YYCache&#xFF1A;<a href="http://blog.ibireme.com/2015/10/26/yycache/" target="_blank" rel="noopener">http://blog.ibireme.com/2015/10/26/yycache/</a></li>
+</ul>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            共享声明：本作品采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh">知识共享署名 4.0 国际许可协议</a> 转载时请注明作者和原文链接
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="http://blog.mrriddler.com/缓存之旅（一）/">http://blog.mrriddler.com/缓存之旅（一）/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 Gitalk -->
+<div id="gitalk-comment">
+    <!-- Gitalk 评论框 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+            clientID: '733efef7eec90bd2c27e',
+            clientSecret: 'd55768251fe00f869db35b201ba09118f3c68d3f',
+            repo: 'mrriddler.github.io',
+            owner: 'mrriddler',
+            admin: ['mrriddler'],
+            // facebook-like distraction free mode
+            distractionFreeMode: false
+        })
+   gitalk.render('gitalk-container')
+</script>
+</div>
+<style>
+    #gitalk-comment {
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/缓存之旅（二）/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="mrriddler's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        robbieless21@outlook.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">六月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/clang/">clang<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/iOS/">iOS<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/图片/">图片<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/存储体系/">存储体系<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构/">数据结构<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/算法/">算法<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机体系/">计算机体系<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/链接与装载/">链接与装载<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">18</span>
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+    <span id="footer-image">
+        <a href="https://wx.qq.com//" target="_blank" title="wechat_logo">
+            <img src="/img/qrcode.jpg" alt="wechat_logo"><!--
+     --></a>
+    </span>
+
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/robbie22" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/mrriddler" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+        <a href="https://www.linkedin.com/in/mrriddler" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-linkedin">
+                <span class="visuallyhidden">LinkedIn</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;谜语糖
+            
+                <br>
+                
+                    Abstract the whole universe.
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/lazyload.min.js", true)</script>
+
+
+
+    <script>lsloader.load("js_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/js.min.js", true)</script>
+
+
+
+    <script>lsloader.load("np_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/nprogress.js", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+   <!-- GitTalk -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/prettify.min.js", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 2016;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+    
+</html>

@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source"/>
+
+
+
+
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            iOS中的imageIO与image解码 | 
+        
+        谜语糖
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="ImageIOImageIO对外开放的对象有CGImageSourceRef、CGImageDestinationRef，不对外开放的对象有CGImageMetadataRef。CoreGraphics中经常与imageIO打交道的对象有CGImageRef和CGDataProvider，接下来看看这五个对象在创建一个UIImage中担任了哪些角色。">
+    <meta name="keywords" content=",iOS">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/material.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/style.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/prettify.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/prettify/tranquil-heart.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #61C0DB !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #61C0DB !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #61C0DB !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/material-icons.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/jquery.min.js", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="谜语糖">
+    <meta name="msapplication-starturl" content="http://blog.mrriddler.com/iOS中的imageIO与image解码/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="谜语糖">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://blog.mrriddler.com/iOS中的imageIO与image解码/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="iOS中的imageIO与image解码 | 谜语糖">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="ImageIOImageIO对外开放的对象有CGImageSourceRef、CGImageDestinationRef，不对外开放的对象有CGImageMetadataRef。CoreGraphics中经常与imageIO打交道的对象有CGImageRef和CGDataProvider，接下来看看这五个对象在创建一个UIImage中担任了哪些角色。">
+    <meta property="og:article:tag" content="iOS"> 
+
+    
+        <meta property="article:published_time" content="Wed Jul 20 2016 14:50:00 GMT+0800">
+        <meta property="article:modified_time" content="Thu Aug 23 2018 17:23:17 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://blog.mrriddler.com/iOS中的imageIO与image解码/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://blog.mrriddler.com/iOS中的imageIO与image解码/index.html",
+    "headline": "iOS中的imageIO与image解码",
+    "datePublished": "Wed Jul 20 2016 14:50:00 GMT+0800",
+    "dateModified": "Thu Aug 23 2018 17:23:17 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "mrriddler",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "谜语糖"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "谜语糖",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",iOS",
+    "description": "ImageIOImageIO对外开放的对象有CGImageSourceRef、CGImageDestinationRef，不对外开放的对象有CGImageMetadataRef。CoreGraphics中经常与imageIO打交道的对象有CGImageRef和CGDataProvider，接下来看看这五个对象在创建一个UIImage中担任了哪些角色。",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ImageIO"><span class="post-toc-number">1.</span> <span class="post-toc-text">ImageIO</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#测试结论"><span class="post-toc-number">2.</span> <span class="post-toc-text">测试结论</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Image解码"><span class="post-toc-number">3.</span> <span class="post-toc-text">Image解码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Image的初始化方法"><span class="post-toc-number">4.</span> <span class="post-toc-text">Image的初始化方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Image的缓存"><span class="post-toc-number">5.</span> <span class="post-toc-text">Image的缓存</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最后附上ImageIO的全家福"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">最后附上ImageIO的全家福</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://o79rgqboc.bkt.clouddn.com/ios_imageio.png)">
+    
+            <p class="article-headline-p">
+                iOS中的imageIO与image解码
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>mrriddler</strong>
+        <span>7月 20, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/iOS/">iOS</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=iOS中的imageIO与image解码&url=http://blog.mrriddler.com/iOS中的imageIO与image解码/index.html&pic=http://blog.mrriddler.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=iOS中的imageIO与image解码&url=http://blog.mrriddler.com/iOS中的imageIO与image解码/index.html&via=mrriddler" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.mrriddler.com/iOS中的imageIO与image解码/index.html&title=iOS中的imageIO与image解码" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="ImageIO"><a href="#ImageIO" class="headerlink" title="ImageIO"></a>ImageIO</h2><p>ImageIO&#x5BF9;&#x5916;&#x5F00;&#x653E;&#x7684;&#x5BF9;&#x8C61;&#x6709;<em>CGImageSourceRef</em>&#x3001;<em>CGImageDestinationRef</em>&#xFF0C;&#x4E0D;&#x5BF9;&#x5916;&#x5F00;&#x653E;&#x7684;&#x5BF9;&#x8C61;&#x6709;<em>CGImageMetadataRef</em>&#x3002;CoreGraphics&#x4E2D;&#x7ECF;&#x5E38;&#x4E0E;imageIO&#x6253;&#x4EA4;&#x9053;&#x7684;&#x5BF9;&#x8C61;&#x6709;<em>CGImageRef</em>&#x548C;<em>CGDataProvider</em>&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x770B;&#x770B;&#x8FD9;&#x4E94;&#x4E2A;&#x5BF9;&#x8C61;&#x5728;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;UIImage&#x4E2D;&#x62C5;&#x4EFB;&#x4E86;&#x54EA;&#x4E9B;&#x89D2;&#x8272;&#x3002;</p>
+<a id="more"></a>
+<p>&#x7528;TimeProfiler&#x4E00;&#x6B65;&#x4E00;&#x6B65;&#x6765;&#x770B;&#x521B;&#x5EFA;<em>UIImage</em>&#x8FC7;&#x7A0B;&#x4E2D;&#x5185;&#x90E8;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#xFF0C;&#x7531;&#x4E8E;TimeProfiler&#x7EDF;&#x8BA1;&#x51FD;&#x6570;&#x6808;&#x4E3A;&#x95F4;&#x9694;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x7EDF;&#x8BA1;&#x4E00;&#x6B21;&#xFF0C;&#x5BFC;&#x81F4;&#x6CA1;&#x6709;&#x8BB0;&#x5F55;&#x4E0B;&#x6240;&#x6709;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x800C;&#x4E14;&#x6BCF;&#x6B21;&#x51FD;&#x6570;&#x6808;&#x8FD8;&#x53EF;&#x80FD;&#x4E0D;&#x4E00;&#x81F4;&#xFF0C;&#x6240;&#x4EE5;&#x6CA1;&#x6CD5;&#x7CBE;&#x786E;&#x5224;&#x65AD;&#x51FD;&#x6570;&#x6808;&#x662F;&#x5982;&#x4F55;&#x8C03;&#x7528;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x5927;&#x6982;&#x63A8;&#x6D4B;&#x51FA;&#x6BCF;&#x6B65;&#x505A;&#x4E86;&#x4EC0;&#x4E48;&#x3002;</p>
+<p>&#x4ECE;<em>CFDataRef</em>&#x5230;<em>UIImage</em>&#x4EE3;&#x7801;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-objective-c"> NSString *resource = [[NSBundle mainBundle] pathForResource:@&quot;the_red_batman&quot; ofType:@&quot;png&quot;];
+ NSData *data = [NSData dataWithContentsOfFile:resource options:0 error:nil];
+
+ CFDataRef dataRef = (__bridge CFDataRef)data;
+
+ CGImageSourceRef source = CGImageSourceCreateWithData(dataRef, nil);
+
+ CGImageRef cgImage = CGImageSourceCreateImageAtIndex(source, 0, nil);
+
+ UIImage *image = [UIImage imageWithCGImage:cgImage];
+</code></pre>
+<p><em>CGImagSourceCreateWithData</em> <img src="http://o79rgqboc.bkt.clouddn.com/blog_CGImageSourceCreate%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8.png" alt="CGImageSourceCreate&#x51FD;&#x6570;&#x8C03;&#x7528;"></p>
+<p>&#x8C03;&#x7528;&#x4E86;&#x5185;&#x90E8;&#x51FD;&#x6570;<em>_CGImageReadCreate</em>&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;<em>CGImageSourceRef</em>&#x8DDF;&#x8BFB;&#x53D6;&#x56FE;&#x50CF;&#x6570;&#x636E;&#x6709;&#x5173;&#x3002;</p>
+<p><em>CGImageSourceCreateImageAtIndex</em></p>
+<p> <img src="http://o79rgqboc.bkt.clouddn.com/blog_CGImage%20Creat%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8-1.png" alt="CGImage Creat&#x51FD;&#x6570;&#x8C03;&#x7528;-1"></p>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/blog_CGImage%20Creat%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8-2.png" alt="CGImage Creat&#x51FD;&#x6570;&#x8C03;&#x7528;-2"></p>
+<p>&#x8C03;&#x7528;&#x4E86;<em>_cg_png_read_info</em>&#x548C;<em>CGImageMetadataCreateMutable</em>&#xFF0C;&#x5728;&#x6784;&#x5EFA;<em>CGImageRef</em>&#x65F6;&#xFF0C;&#x8BFB;&#x53D6;&#x4E86;&#x56FE;&#x7247;&#x7684;&#x57FA;&#x7840;&#x6570;&#x636E;&#x548C;&#x5143;&#x6570;&#x636E;&#xFF0C;&#x57FA;&#x7840;&#x6570;&#x636E;&#x4E2D;&#x5305;&#x62EC;Image&#x7684;header chunk&#xFF0C;&#x6BD4;&#x5982;png&#x7684;IHDR&#x3002;&#x5143;&#x6570;&#x636E;&#x662F;&#x7531;<em>CGImageMetadataRef</em>&#x6765;&#x62BD;&#x8C61;&#x7684;&#x3002;&#x5E76;&#x4E14;&#x6CA1;&#x6709;&#x8BFB;&#x53D6;&#x56FE;&#x7247;&#x7684;&#x5176;&#x4ED6;&#x6570;&#x636E;&#xFF0C;&#x66F4;&#x6CA1;&#x6709;&#x505A;&#x89E3;&#x7801;&#x7684;&#x52A8;&#x4F5C;&#x3002;</p>
+<p>&#x6709;&#x8DA3;&#x7684;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x8C03;&#x7528;<em>CGImageSourceCopyPropertiesAtIndex</em></p>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/blog_CGImageSourceCopyPropertiesAtIndex%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8.png" alt="CGImageSourceCopyPropertiesAtIndex&#x51FD;&#x6570;&#x8C03;&#x7528;"></p>
+<p><em>CGImageSourceCopyPropertiesAtIndex</em>&#x7684;&#x5185;&#x90E8;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x4E86;<em>CGImageMetadataRef</em>&#xFF0C;&#x5982;&#x679C;&#x518D;&#x52A0;&#x4E0A;<em>ImageIO/CGImageMetadata.h</em>&#x6587;&#x4EF6;&#x7684;&#x6CE8;&#x91CA;</p>
+<blockquote>
+<p>@description CGImageMetadata APIs allow clients to view and modify metadata</p>
+<p>for popular image formats. ImageIO supports the EXIF, IPTC, and XMP</p>
+<p>metadata specifications. Please refer to CGImageSource.h for functions to </p>
+<p>read metadata from a CGImageSource, and CGImageDestination.h for functions to</p>
+<p>write metadata to a CGImageDestination. CGImageDestinationCopyImageSource can</p>
+<p>be used to modify metadata without recompressing the image.</p>
+</blockquote>
+<p>&#x8BF4;&#x660E;<em>CGImageMetadataRef</em>&#x62BD;&#x8C61;&#x51FA;&#x56FE;&#x7247;&#x4E2D;EXIF&#x3001;IPTC&#x3001;XMP&#x683C;&#x5F0F;&#x7684;&#x5143;&#x6570;&#x636E;&#x63D2;&#x5165;&#x5B57;&#x6BB5;&#xFF0C;&#x800C;&#x82E5;&#x60F3;&#x83B7;&#x5F97;<em>CGImageMetadataRef</em>&#x5FC5;&#x987B;&#x8981;&#x901A;&#x8FC7;<em>CGImageSourceRef</em>&#x3002;</p>
+<p>&#x540C;&#x6837;&#xFF0C;&#x770B;&#x770B;&#x6709;&#x5173;<em>CGDataProviderRef</em>&#x7684;&#x5185;&#x90E8;&#x51FD;&#x6570;&#x8C03;&#x7528;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-objective-c">//&#x5C06;CGImageSourceRef&#x6539;&#x7531;CGDataProviderRef&#x521B;&#x5EFA;   
+CFDataRef dataRef = (__bridge CFDataRef)data;
+
+CGDataProviderRef dataProvider = CGDataProviderCreateWithCFData(dataRef);
+
+CGImageSourceRef source = CGImageSourceCreateWithDataProvider(dataProvider, nil);
+</code></pre>
+<pre><code class="lang-objective-c">//&#x6D4B;&#x8BD5;&#x7531;CGImageRef&#x83B7;&#x53D6;CGDataProviderRef&#x548C;&#x7531;CGDataProviderRef&#x521B;&#x5EFA;CGImageRef
+CGDataProviderRef newDataProvider = CGImageGetDataProvider(cgImage);
+
+size_t width = CGImageGetWidth(cgImage);
+size_t height = CGImageGetHeight(cgImage);
+CGColorSpaceRef space = CGImageGetColorSpace(cgImage);
+size_t bitsPerComponent = CGImageGetBitsPerComponent(cgImage);
+size_t bitsPerPixel = CGImageGetBitsPerPixel(cgImage);
+size_t bytesPerRow = CGImageGetBytesPerRow(cgImage);
+CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(cgImage);
+
+CGDataProviderRef newDataProvider = CGImageGetDataProvider(cgImage);
+
+CGImageRef newImage = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, space, bitmapInfo, newDataProvider, NULL, false, kCGRenderingIntentDefault);
+</code></pre>
+<p>&#x5F88;&#x53EF;&#x60DC;&#xFF0C;&#x6CA1;&#x6709;&#x627E;&#x51FA;&#x6709;&#x5173;<em>CGDataProviderRef</em>&#x7684;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x3002;&#x65E0;&#x6CD5;&#x5F97;&#x51FA;<em>CGDataProviderRef</em>&#x505A;&#x4E86;&#x4EC0;&#x4E48;&#x3002;</p>
+<p>&#x770B;&#x770B;&#x6709;&#x5173;<em>CGImageDestinationRef</em>&#x7684;&#x5185;&#x90E8;&#x51FD;&#x6570;&#x8C03;&#x7528;&#xFF0C;&#x4EE3;&#x7801;&#x548C;&#x5185;&#x90E8;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-objective-c">CFMutableDataRef buffer = CFDataCreateMutable(kCFAllocatorDefault, 0);      CGImageDestinationRef destination = CGImageDestinationCreateWithData(buffer, kUTTypePNG, 1, NULL);
+CGImageDestinationAddImage(destination, cgImage, nil);
+CGImageDestinationFinalize(destination);
+</code></pre>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/blog_CGImageDestinationRef%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8.png" alt="CGImageDestinationRef&#x51FD;&#x6570;&#x8C03;&#x7528;"></p>
+<p><em>CGImageDestinationRef</em>&#x5C06;&#x56FE;&#x7247;&#x6570;&#x636E;&#x5199;&#x5165;&#x76EE;&#x7684;&#x5730;&#xFF0C;&#x5E76;&#x4E14;&#x8D1F;&#x8D23;&#x505A;&#x56FE;&#x7247;&#x7F16;&#x7801;&#x6216;&#x8005;&#x8BF4;&#x56FE;&#x7247;&#x538B;&#x7F29;&#x3002;</p>
+<h2 id="&#x6D4B;&#x8BD5;&#x7ED3;&#x8BBA;"><a href="#&#x6D4B;&#x8BD5;&#x7ED3;&#x8BBA;" class="headerlink" title="&#x6D4B;&#x8BD5;&#x7ED3;&#x8BBA;"></a>&#x6D4B;&#x8BD5;&#x7ED3;&#x8BBA;</h2><p><em>CGImageSourceRef</em>&#x62BD;&#x8C61;&#x4E86;&#x5BF9;&#x8BFB;&#x56FE;&#x50CF;&#x6570;&#x636E;&#x7684;&#x901A;&#x9053;&#xFF0C;&#x8BFB;&#x53D6;&#x56FE;&#x50CF;&#x8981;&#x901A;&#x8FC7;&#x5B83;&#xFF0C;&#x5B83;&#x81EA;&#x5DF1;&#x672C;&#x8EAB;&#x4E0D;&#x8BFB;&#x53D6;&#x56FE;&#x50CF;&#x7684;&#x4EFB;&#x4F55;&#x6570;&#x636E;&#xFF0C;&#x5728;&#x4F60;&#x8C03;&#x7528;<em>CGImageSourceCopyPropertiesAtIndex</em>&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x624D;&#x53BB;&#x8BFB;&#x53D6;&#x56FE;&#x50CF;&#x5143;&#x6570;&#x636E;&#x3002;</p>
+<p><em>CGImageMetadataRef</em>&#x62BD;&#x8C61;&#x51FA;&#x56FE;&#x7247;&#x4E2D;EXIF&#x3001;IPTC&#x3001;XMP&#x683C;&#x5F0F;&#x7684;&#x5143;&#x6570;&#x636E;&#xFF0C;&#x901A;&#x8FC7;<em>CGImageSourceRef</em>&#x83B7;&#x53D6;&#x3002;</p>
+<p><em>CGImageRef</em>&#x62BD;&#x8C61;&#x4E86;&#x56FE;&#x50CF;&#x7684;&#x57FA;&#x672C;&#x6570;&#x636E;&#x548C;&#x5143;&#x6570;&#x636E;&#xFF0C;&#x521B;&#x5EFA;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x901A;&#x8FC7;<em>CGImageSourceRef</em>&#x53BB;&#x8BFB;&#x53D6;&#x56FE;&#x50CF;&#x7684;&#x57FA;&#x7840;&#x6570;&#x636E;&#x548C;&#x5143;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x6CA1;&#x6709;&#x8BFB;&#x53D6;&#x56FE;&#x50CF;&#x7684;&#x5176;&#x4ED6;&#x6570;&#x636E;&#xFF0C;&#x6CA1;&#x6709;&#x505A;&#x56FE;&#x7247;&#x89E3;&#x7801;&#x7684;&#x52A8;&#x4F5C;&#x3002;</p>
+<p><em>CGDataProviderRef</em>&#x6CA1;&#x6709;&#x5F97;&#x51FA;&#x6709;&#x7528;&#x4FE1;&#x606F;&#x3002;</p>
+<p><em>CGImageDestinationRef</em>&#x62BD;&#x8C61;&#x5199;&#x5165;&#x56FE;&#x50CF;&#x6570;&#x636E;&#x7684;&#x901A;&#x9053;&#xFF0C;&#x5199;&#x5165;&#x56FE;&#x50CF;&#x8981;&#x901A;&#x8FC7;&#x5B83;&#xFF0C;&#x5728;&#x5199;&#x5165;&#x56FE;&#x7247;&#x7684;&#x65F6;&#x5019;&#x8FD8;&#x8D1F;&#x8D23;&#x56FE;&#x7247;&#x7684;&#x7F16;&#x7801;&#x3002;</p>
+<h2 id="Image&#x89E3;&#x7801;"><a href="#Image&#x89E3;&#x7801;" class="headerlink" title="Image&#x89E3;&#x7801;"></a>Image&#x89E3;&#x7801;</h2><p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4ECE;<em>CFDataRef</em>&#x76F4;&#x5230;&#x521B;&#x5EFA;&#x51FA;<em>UIImage</em>&#xFF0C;&#x90FD;&#x6CA1;&#x6709;&#x8C03;&#x7528;&#x8FC7;&#x5BF9;&#x56FE;&#x50CF;&#x89E3;&#x7801;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x53EA;&#x8BFB;&#x53D6;&#x4E86;&#x4E00;&#x4E9B;&#x56FE;&#x50CF;&#x57FA;&#x7840;&#x6570;&#x636E;&#x548C;&#x5143;&#x6570;&#x636E;&#x3002;</p>
+<p>Image&#x89E3;&#x7801;&#x53D1;&#x751F;&#x5728;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#xFF1F;&#x5728;<em>ImageIO/CGImageSource.h</em>&#x6587;&#x4EF6;&#x4E2D;<em>kCGImageSourceShouldCache</em>&#x7684;&#x4E0A;&#x9762;&#x5176;&#x5B9E;&#x6709;&#x660E;&#x786E;&#x6CE8;&#x91CA;&#x3002;</p>
+<blockquote>
+<p>Specifies whether image decoding and caching should happen at image creation time.</p>
+<p>The value of this key must be a CFBooleanRef. The default value is kCFBooleanFalse (image decoding will happen at rendering time).</p>
+</blockquote>
+<p>&#x5982;&#x679C;&#x4E0D;&#x624B;&#x52A8;&#x8BBE;&#x7F6E;Image&#x53EA;&#x4F1A;&#x7B49;&#x5230;&#x5728;&#x5C4F;&#x5E55;&#x4E0A;&#x6E32;&#x67D3;&#x65F6;&#x518D;&#x89E3;&#x7801;&#x3002;&#x7ECF;&#x8FC7;&#x6D4B;&#x8BD5;&#xFF0C;&#x786E;&#x5B9E;&#x5982;&#x6B64;&#x3002;&#x8FD9;&#x4E2A;<em>kCGImageSourceShouldCacheImmediately</em>&#x8FD8;&#x4E0D;&#x5982;&#x8D77;&#x540D;&#x4E3A;<em>kCGImageSourceShouldDecodeImmediately</em>&#x3002;</p>
+<p>Image&#x89E3;&#x7801;&#x5230;&#x5E95;&#x5728;&#x54EA;&#x91CC;&#x505A;&#x7684;&#xFF1F;</p>
+<p>&#x5982;&#x679C;&#x5728;&#x753B;&#x5E03;&#x4E0A;&#x6E32;&#x67D3;&#x56FE;&#x7247;&#xFF0C;&#x56FE;&#x7247;&#x4E00;&#x5B9A;&#x662F;&#x4F1A;&#x88AB;&#x89E3;&#x7801;&#x7684;&#x3002;&#x4E0B;&#x5217;&#x4EE3;&#x7801;&#x518D;&#x8DD1;&#x6D4B;&#x8BD5;</p>
+<pre><code class="lang-objective-c">size_t width = CGImageGetWidth(cgImage);
+size_t height = CGImageGetHeight(cgImage);
+
+CGImageAlphaInfo alphaInfo = CGImageGetAlphaInfo(cgImage) &amp; kCGBitmapAlphaInfoMask;
+BOOL hasAlpha = NO;
+if (alphaInfo == kCGImageAlphaPremultipliedLast ||
+    alphaInfo == kCGImageAlphaPremultipliedFirst ||
+    alphaInfo == kCGImageAlphaLast ||
+    alphaInfo == kCGImageAlphaFirst) {
+    hasAlpha = YES;
+}
+
+CGBitmapInfo bitmapInfo = kCGBitmapByteOrder32Host;
+bitmapInfo |= hasAlpha ? kCGImageAlphaPremultipliedFirst : kCGImageAlphaNoneSkipFirst;
+CGContextRef context = CGBitmapContextCreate(NULL, width, height, 8, 0, CGColorSpaceCreateDeviceRGB(), bitmapInfo);
+CGContextDrawImage(context, CGRectMake(0, 0, width, height), cgImage); 
+CGImageRef newImage = CGBitmapContextCreateImage(context);
+</code></pre>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/blog_CGContextDrawImage%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8.png" alt="CGContextDrawImage&#x51FD;&#x6570;&#x8C03;&#x7528;"></p>
+<p>&#x6240;&#x6709;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x540D;&#x4E2D;&#x6CA1;&#x6709;&#x660E;&#x663E;decompress&#x6216;&#x8005;decode&#x5B57;&#x773C;&#x3002;&#x800C;&#x4E0A;&#x9762;&#x56DB;&#x4E2A;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x7684;&#x9891;&#x7387;&#x662F;&#x6700;&#x9AD8;&#x7684;&#x3002;&#x6839;&#x636E;<em>CGImageDestinationRef</em>&#x8C03;&#x7528;&#x7684;<em>png_compress_IDAT</em>&#xFF0C;&#x731C;&#x6D4B;<em>png_read_IDAT_data</em>&#x662F;&#x505A;&#x89E3;&#x7801;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x4EE5;&#x4E0A;&#x662F;&#x4EE5;png&#x56FE;&#x7247;&#x4F5C;&#x4E3A;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#xFF0C;&#x4E0B;&#x9762;&#x770B;&#x770B;jpeg&#x56FE;&#x7247;&#x7684;</p>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/blog_jpeg%20decode%20-1.png" alt="jpeg decode -1"></p>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/blog_jpeg%20decode%20-%202.png" alt="jpeg decode - 2"></p>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/blog_jpeg%20decode%20-3.png" alt="jpeg decode -3"></p>
+<p>&#x5F88;&#x660E;&#x663E;AppleJPEG&#x7684;decode&#x65B9;&#x6CD5;&#x662F;&#x505A;&#x89E3;&#x7801;&#x7684;&#x51FD;&#x6570;&#x3002;jpeg&#x4E0E;png&#x8C03;&#x7528;&#x4E86;&#x4E24;&#x4E2A;&#x540C;&#x6837;&#x51FD;&#x6570;&#xFF0C;&#x800C;&#x4E0D;&#x540C;&#x7684;&#x56FE;&#x7247;&#x8C03;&#x4E86;&#x4E0D;&#x540C;&#x7684;&#x89E3;&#x7801;&#x51FD;&#x6570;&#x3002;&#x5728;&#x753B;&#x5E03;&#x4E0A;&#x753B;&#x56FE;&#x7247;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;<em>ImageProviderCopyImageBlockSetCallback</em>&#x8BBE;&#x7F6E;<em>callback</em>&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528;<em>copyImageBlock</em>&#xFF0C;&#x518D;&#x8C03;&#x7528;&#x8BBE;&#x7F6E;&#x7684;<em>callback</em>&#xFF0C;&#x4F46;&#x662F;&#x89E3;&#x7801;&#x51FD;&#x6570;&#x662F;&#x7531;<em>copyImageBlock</em>&#x7684;&#x8C03;&#x7528;&#x7684;&#x8FD8;&#x662F;&#x7531;<em>callback</em>&#x8C03;&#x7528;&#x7684;&#x65E0;&#x6CD5;&#x9A8C;&#x8BC1;&#x3002;</p>
+<p>&#x90A3;<em>ImageProviderCopyImageBlockSetCallback</em>&#x4E0E;<em>CGDataProviderCopyData</em>&#x662F;&#x5426;&#x6709;&#x5173;&#x7CFB;&#xFF1F;&#x7ECF;&#x8FC7;&#x6D4B;&#x8BD5;&#xFF0C;<em>CGDataProviderCopyData</em>&#x5185;&#x90E8;&#x4E5F;&#x4F1A;&#x8C03;&#x7528;<em>ImageProviderCopyImageBlockSetCallback</em>&#x548C;<em>copyImageBlock</em>&#x3002;&#x800C;&#x4E14;<em>CGDataProviderCopyData</em>&#x5F97;&#x5230;&#x7684;<em>CFDataRef</em>&#x662F;&#x89E3;&#x7801;&#x8FC7;&#x7684;&#x50CF;&#x7D20;&#x6570;&#x7EC4;&#x3002;</p>
+<p>&#x7ED3;&#x8BBA;&#xFF1A;Image&#x89E3;&#x7801;&#x53D1;&#x751F;&#x5728;<em>CGDataProviderCopyData</em>&#x51FD;&#x6570;&#x5185;&#x90E8;&#x8C03;&#x7528;<em>ImageProviderCopyImageBlockSetCallback</em>&#x8BBE;&#x7F6E;&#x7684;<em>callback</em>&#x6216;&#x8005;<em>copyImageBlock</em>&#x51FD;&#x6570;&#xFF0C;&#x6839;&#x636E;&#x4E0D;&#x540C;&#x7684;&#x56FE;&#x7247;&#x683C;&#x5F0F;&#x8C03;&#x7528;&#x7684;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#x4E2D;&#x3002;</p>
+<h2 id="Image&#x7684;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;"><a href="#Image&#x7684;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;" class="headerlink" title="Image&#x7684;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;"></a>Image&#x7684;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;</h2><p><em>imageWithData</em>&#x4ECE;&#x5185;&#x90E8;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x6765;&#x770B;&#xFF0C;&#x901A;&#x8FC7;<em>CGImageSourceRef</em>&#x8BBF;&#x95EE;&#x56FE;&#x50CF;&#x6570;&#x636E;&#xFF0C;&#x521B;&#x5EFA;<em>CGImageRef</em>&#x3002;</p>
+<p><em>imageWithContentsOfFile</em>&#x5185;&#x90E8;&#x8C03;&#x7528;&#x5982;&#x4E0B;</p>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/blog_iOS%20initWithContentOfFile%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8.png" alt="iOS_initWithContentOfFile&#x51FD;&#x6570;&#x8C03;&#x7528;"></p>
+<p>&#x6587;&#x4EF6;&#x901A;&#x8FC7;mmap&#x5230;&#x5185;&#x5B58;&#x7136;&#x540E;&#x901A;&#x8FC7;<em>CGImageSourceRef</em>&#x8BBF;&#x95EE;&#x56FE;&#x50CF;&#x6570;&#x636E;&#xFF0C;&#x521B;&#x5EFA;<em>CGImageRef</em>&#x3002;</p>
+<p><em>imageNamed</em>&#x5148;&#x4ECE;Bundle&#x91CC;&#x627E;&#x5230;&#x8D44;&#x6E90;&#x8DEF;&#x5F84;&#xFF0C;&#x7136;&#x540E;&#x540C;&#x6837;&#x4E5F;&#x662F;&#x5C06;&#x6587;&#x4EF6;mmap&#x5230;&#x5185;&#x5B58;&#xFF0C;&#x518D;&#x901A;&#x8FC7;<em>CGImageSourceRef</em>&#x8BBF;&#x95EE;&#x56FE;&#x50CF;&#x6570;&#x636E;&#xFF0C;&#x521B;&#x5EFA;<em>CGImageRef</em>&#x3002;</p>
+<h2 id="Image&#x7684;&#x7F13;&#x5B58;"><a href="#Image&#x7684;&#x7F13;&#x5B58;" class="headerlink" title="Image&#x7684;&#x7F13;&#x5B58;"></a>Image&#x7684;&#x7F13;&#x5B58;</h2><p>&#x901A;&#x8FC7;&#x8C03;&#x7528;&#x4E0D;&#x540C;&#x7684;<em>UIImage</em>&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;&#x7136;&#x540E;&#x521B;&#x5EFA;<em>UIImageVIew</em>&#x5C55;&#x793A;&#x5230;&#x5C4F;&#x5E55;&#x4E0A;&#xFF0C;&#x6765;&#x770B;&#x770B;&#x4E0D;&#x540C;&#x65B9;&#x6CD5;&#x662F;&#x5426;&#x6709;&#x7F13;&#x5B58;&#x7684;&#x884C;&#x4E3A;&#x3002;</p>
+<p><em>imageNamed</em>&#x5728;&#x7B2C;&#x4E8C;&#x6B21;&#x5C55;&#x793A;&#x76F8;&#x540C;image&#x7684;&#x65F6;&#x5019;&#x6CA1;&#x6709;&#x8C03;&#x7528;imageIO&#x7684;&#x4EFB;&#x4F55;&#x65B9;&#x6CD5;&#x3002;</p>
+<p><em>imageWithData</em>&#x548C;<em>imageWithContentsOfFile</em>&#x5728;&#x7B2C;&#x4E8C;&#x6B21;&#x5728;&#x5C55;&#x793A;&#x76F8;&#x540C;image&#x7684;&#x65F6;&#x5019;&#x5747;&#x8C03;&#x7528;&#x4E86;imageIO&#x7684;&#x89E3;&#x7801;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x800C;imageWithData&#x548C;imageWithContentsOfFile&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;&#x521B;&#x5EFA;&#x7684;UIImage&#x53EA;&#x8981;&#x4E0D;&#x88AB;&#x91CA;&#x653E;&#xFF0C;&#x518D;&#x6B21;&#x6E32;&#x67D3;&#x4E0D;&#x4F1A;&#x8C03;&#x7528;imageIO&#x89E3;&#x7801;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x7ED3;&#x8BBA;&#x4E3A;<em>UIImage</em>&#x6709;&#x4E24;&#x79CD;&#x7F13;&#x5B58;&#xFF0C;&#x4E00;&#x79CD;&#x662F;<em>UIImage</em>&#x7C7B;&#x7684;&#x7F13;&#x5B58;&#xFF0C;&#x8FD9;&#x79CD;&#x7F13;&#x5B58;&#x4FDD;&#x8BC1;<em>imageNamed</em>&#x521D;&#x59CB;&#x5316;&#x7684;<em>UIImage</em>&#x53EA;&#x4F1A;&#x88AB;&#x89E3;&#x7801;&#x4E00;&#x6B21;&#x3002;&#x53E6;&#x4E00;&#x79CD;&#x662F;<em>UIImage</em>&#x5BF9;&#x8C61;&#x7684;&#x7F13;&#x5B58;&#xFF0C;&#x8FD9;&#x79CD;&#x7F13;&#x5B58;&#x4FDD;&#x8BC1;&#x53EA;&#x8981;<em>UIImage</em>&#x6CA1;&#x6709;&#x88AB;&#x91CA;&#x653E;&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x518D;&#x89E3;&#x7801;&#x3002;</p>
+<p><em>CGImageSourceCreateImageAtIndex</em>&#x65B9;&#x6CD5;&#x7684;<em>kCGImageSourceShouldCache</em>&#x9009;&#x9879;&#x6307;&#x7684;&#x662F;&#x7B2C;&#x4E8C;&#x79CD;&#x7F13;&#x5B58;&#xFF0C;&#x800C;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E3A;false&#xFF0C;&#x6211;&#x6D4B;&#x8BD5;&#x51FA;&#x6765;image&#x518D;&#x6B21;&#x6E32;&#x67D3;&#x7684;&#x65F6;&#x5019;&#x4ECD;&#x6CA1;&#x6709;&#x8FDB;&#x884C;&#x89E3;&#x7801;&#xFF0C;&#x8FD9;&#x6709;&#x4E9B;&#x5947;&#x602A;&#x3002;&#x5982;&#x679C;&#x6709;&#x540C;&#x5B66;&#x8BE6;&#x7EC6;&#x77E5;&#x9053;&#x600E;&#x4E48;&#x56DE;&#x4E8B;&#xFF0C;&#x8FD8;&#x8BF7;&#x8D50;&#x6559;&#x3002;</p>
+<h3 id="&#x6700;&#x540E;&#x9644;&#x4E0A;ImageIO&#x7684;&#x5168;&#x5BB6;&#x798F;"><a href="#&#x6700;&#x540E;&#x9644;&#x4E0A;ImageIO&#x7684;&#x5168;&#x5BB6;&#x798F;" class="headerlink" title="&#x6700;&#x540E;&#x9644;&#x4E0A;ImageIO&#x7684;&#x5168;&#x5BB6;&#x798F;"></a>&#x6700;&#x540E;&#x9644;&#x4E0A;ImageIO&#x7684;&#x5168;&#x5BB6;&#x798F;</h3><p> <img src="http://o79rgqboc.bkt.clouddn.com/blog_iOSimageIO%E5%85%A8%E5%AE%B6%E7%A6%8F.png" alt="iOSimageIO&#x5168;&#x5BB6;&#x798F;"></p>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            共享声明：本作品采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh">知识共享署名 4.0 国际许可协议</a> 转载时请注明作者和原文链接
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="http://blog.mrriddler.com/iOS中的imageIO与image解码/">http://blog.mrriddler.com/iOS中的imageIO与image解码/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 Gitalk -->
+<div id="gitalk-comment">
+    <!-- Gitalk 评论框 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+            clientID: '733efef7eec90bd2c27e',
+            clientSecret: 'd55768251fe00f869db35b201ba09118f3c68d3f',
+            repo: 'mrriddler.github.io',
+            owner: 'mrriddler',
+            admin: ['mrriddler'],
+            // facebook-like distraction free mode
+            distractionFreeMode: false
+        })
+   gitalk.render('gitalk-container')
+</script>
+</div>
+<style>
+    #gitalk-comment {
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/图片之旅/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/缓存之旅（二）/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="mrriddler's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        robbieless21@outlook.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">六月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/clang/">clang<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/iOS/">iOS<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/图片/">图片<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/存储体系/">存储体系<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构/">数据结构<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/算法/">算法<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机体系/">计算机体系<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/链接与装载/">链接与装载<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">18</span>
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+    <span id="footer-image">
+        <a href="https://wx.qq.com//" target="_blank" title="wechat_logo">
+            <img src="/img/qrcode.jpg" alt="wechat_logo"><!--
+     --></a>
+    </span>
+
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/robbie22" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/mrriddler" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+        <a href="https://www.linkedin.com/in/mrriddler" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-linkedin">
+                <span class="visuallyhidden">LinkedIn</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;谜语糖
+            
+                <br>
+                
+                    Abstract the whole universe.
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/lazyload.min.js", true)</script>
+
+
+
+    <script>lsloader.load("js_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/js.min.js", true)</script>
+
+
+
+    <script>lsloader.load("np_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/nprogress.js", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+   <!-- GitTalk -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/prettify.min.js", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 2016;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+    
+</html>

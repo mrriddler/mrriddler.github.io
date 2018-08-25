@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source"/>
+
+
+
+
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            算法火花 | 
+        
+        谜语糖
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="
+迸射的火花
+
+本篇主要涉及到学习算法时的方法论。">
+    <meta name="keywords" content=",算法">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/material.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/style.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/prettify.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/prettify/tranquil-heart.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #61C0DB !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #61C0DB !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #61C0DB !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/material-icons.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/jquery.min.js", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="谜语糖">
+    <meta name="msapplication-starturl" content="http://blog.mrriddler.com/算法火花/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="谜语糖">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://blog.mrriddler.com/算法火花/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="算法火花 | 谜语糖">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="
+迸射的火花
+
+本篇主要涉及到学习算法时的方法论。">
+    <meta property="og:article:tag" content="算法"> 
+
+    
+        <meta property="article:published_time" content="Mon Nov 14 2016 14:55:00 GMT+0800">
+        <meta property="article:modified_time" content="Thu Aug 23 2018 23:38:03 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://blog.mrriddler.com/算法火花/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://blog.mrriddler.com/算法火花/index.html",
+    "headline": "算法火花",
+    "datePublished": "Mon Nov 14 2016 14:55:00 GMT+0800",
+    "dateModified": "Thu Aug 23 2018 23:38:03 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "mrriddler",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "谜语糖"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "谜语糖",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",算法",
+    "description": "
+迸射的火花
+
+本篇主要涉及到学习算法时的方法论。",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#学习已有的经典算法"><span class="post-toc-number">1.</span> <span class="post-toc-text">学习已有的经典算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#算法设计"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">算法设计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#严谨的思维"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">严谨的思维</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#经典算法的运用"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">经典算法的运用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用"><span class="post-toc-number">2.</span> <span class="post-toc-text">引用</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://o79rgqboc.bkt.clouddn.com/the_algo.png)">
+    
+            <p class="article-headline-p">
+                算法火花
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>mrriddler</strong>
+        <span>11月 14, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/算法/">算法</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=算法火花&url=http://blog.mrriddler.com/算法火花/index.html&pic=http://blog.mrriddler.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=算法火花&url=http://blog.mrriddler.com/算法火花/index.html&via=mrriddler" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.mrriddler.com/算法火花/index.html&title=算法火花" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>&#x8FF8;&#x5C04;&#x7684;&#x706B;&#x82B1;</p>
+</blockquote>
+<p>&#x672C;&#x7BC7;&#x4E3B;&#x8981;&#x6D89;&#x53CA;&#x5230;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x65F6;&#x7684;&#x65B9;&#x6CD5;&#x8BBA;&#x3002;</p>
+<a id="more"></a>
+<p><br></p>
+<h2 id="&#x5B66;&#x4E60;&#x5DF2;&#x6709;&#x7684;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;"><a href="#&#x5B66;&#x4E60;&#x5DF2;&#x6709;&#x7684;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;" class="headerlink" title="&#x5B66;&#x4E60;&#x5DF2;&#x6709;&#x7684;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;"></a>&#x5B66;&#x4E60;&#x5DF2;&#x6709;&#x7684;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;</h2><p>&#x5728;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x90FD;&#x662F;&#x4EE5;&#x5B66;&#x4E60;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x3002;&#x6DF1;&#x5165;&#x7814;&#x7A76;&#x8FC7;&#x7B97;&#x6CD5;&#x7684;&#x540C;&#x5B66;&#x8DDF;&#x6211;&#x8BF4;&#xFF0C;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x8981;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x80CC;&#x540E;&#x7684;&#x601D;&#x60F3;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x8FD9;&#x8BDD;&#x8FD8;&#x662F;&#x50CF;&#x53E4;&#x5BFA;&#x91CC;&#x548C;&#x5C1A;&#x8BF4;&#x51FA;&#x6765;&#x7684;&#x8BDD;&#xFF0C;&#x597D;&#x50CF;&#x7B97;&#x6CD5;&#x9700;&#x8981;&#x201C;&#x609F;&#x201D;&#xFF0C;&#x5FC5;&#x987B;&#x4FEE;&#x70BC;&#x591A;&#x5E74;&#x624D;&#x80FD;&#x7406;&#x89E3;&#x3002;&#x8BDD;&#x542C;&#x4E0A;&#x53BB;&#x597D;&#x50CF;&#x6709;&#x9053;&#x7406;&#x7684;&#x6837;&#x5B50;&#xFF0C;&#x505A;&#x7684;&#x65F6;&#x5019;&#x4F9D;&#x7136;&#x505A;&#x4E0D;&#x597D;&#x3002;&#x6700;&#x540E;&#x843D;&#x5F97;&#xFF0C;&#x7ECF;&#x5178;&#x786E;&#x5B9E;&#x7B97;&#x6CD5;&#x8BB0;&#x4E0B;&#x6765;&#x4E86;&#x3002;&#x51FA;&#x73B0;&#x4E86;&#x548C;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x4E00;&#x6837;&#x7684;&#x95EE;&#x9898;&#x65F6;&#xFF0C;&#x6211;&#x76F4;&#x63A5;&#x5C06;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x5957;&#x4E0A;&#x5C31;&#x89E3;&#x51B3;&#x4E86;&#xFF0C;&#x81EA;&#x6211;&#x611F;&#x89C9;&#x7B97;&#x6CD5;&#x5F88;&#x5F3A;&#x3002;&#x51FA;&#x73B0;&#x4E86;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x7684;&#x53D8;&#x79CD;&#xFF0C;&#x50BB;&#x773C;&#x4E86;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5C31;&#x77E5;&#x9053;&#x81EA;&#x5DF1;&#x7B97;&#x6CD5;&#x80FD;&#x529B;&#x6839;&#x672C;&#x5C31;&#x4E0D;&#x884C;&#x3002;</p>
+<p>&#x8FD9;&#x662F;&#x91CD;&#x65B0;&#x601D;&#x8003;&#x81EA;&#x5DF1;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x7684;&#x8FC7;&#x7A0B;&#x548C;&#x65B9;&#x5F0F;&#x7684;&#x597D;&#x673A;&#x4F1A;&#x3002;&#x53EF;&#x4EE5;&#x95EE;&#x81EA;&#x5DF1;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x4ECE;&#x5DF2;&#x6709;&#x7684;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x4E2D;&#x80FD;&#x5B66;&#x5230;&#x4E9B;&#x4EC0;&#x4E48;&#xFF1F;</p>
+<ul>
+<li>&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;&#x3002;&#x5F53;&#x9047;&#x5230;&#x65B0;&#x7684;&#x95EE;&#x9898;&#x65F6;&#xFF0C;&#x8FD0;&#x7528;&#x6240;&#x5B66;&#xFF0C;&#x8BBE;&#x8BA1;&#x51FA;&#x4E00;&#x4E2A;&#x7B97;&#x6CD5;&#x3002;</li>
+<li>&#x4E25;&#x8C28;&#x7684;&#x601D;&#x7EF4;&#x3002;&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;&#x5176;&#x4E2D;&#x4E00;&#x6B65;&#x5C31;&#x662F;&#xFF0C;&#x6570;&#x5B66;&#x8BC1;&#x660E;&#x7B97;&#x6CD5;&#x7684;&#x6B63;&#x786E;&#x6027;&#x3002;&#x953B;&#x70BC;&#x51FA;&#x4E25;&#x8C28;&#x7684;&#x601D;&#x7EF4;&#xFF0C;&#x5BF9;&#x5176;&#x4ED6;&#x9886;&#x57DF;&#x4E5F;&#x4F1A;&#x5F88;&#x6709;&#x5E2E;&#x52A9;&#x3002;</li>
+<li>&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x7684;&#x8FD0;&#x7528;&#x3002;&#x9047;&#x5230;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x719F;&#x7EC3;&#x4F7F;&#x7528;&#x5DF2;&#x88AB;&#x8BC1;&#x660E;&#x8FC7;&#x6B63;&#x786E;&#x3001;&#x9AD8;&#x6548;&#x7684;&#x7B97;&#x6CD5;&#x3002;</li>
+</ul>
+<h3 id="&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;"><a href="#&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;" class="headerlink" title="&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;"></a>&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;</h3><p>Algorithm Design by JON KLEINBERG EVA TARDOS &#x4E00;&#x4E66;&#x4E2D;&#x7B2C;&#x4E00;&#x7AE0;&#x7B2C;&#x4E00;&#x8282;&#x5982;&#x662F;&#x8BF4;&#xFF1A;</p>
+<blockquote>
+<p>As an opening topic, we look at an algorithmic problem that nicely illustrates<br>many of the themes we will be emphasizing. It is motivated by some very<br>natural and practical concerns, and from these we formulate a clean and<br>simple statement of a problem. The algorithm to solve the problem is very<br>clean as well, and most of our work will be spent in proving that it is correct<br>and giving an acceptable bound on the amount of time it takes to terminate<br>with an answer.</p>
+</blockquote>
+<p>&#x4E66;&#x4E2D;&#x8FD9;&#x4E00;&#x8282;&#x4EE5;Stable Matching&#x4E3A;&#x4F8B;&#xFF0C;&#x8BF4;&#x660E;&#x4E86;&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x57FA;&#x672C;&#x4E0A;&#x6765;&#x8BF4;&#xFF0C;&#x5C31;&#x662F;&#x4ECE;&#x590D;&#x6742;&#x7684;&#x73B0;&#x5B9E;&#x60C5;&#x51B5;&#x4E2D;&#xFF0C;&#x7B80;&#x5316;&#x95EE;&#x9898;&#xFF0C;&#x8BBE;&#x8BA1;&#x51FA;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x7684;&#x7B97;&#x6CD5;&#xFF0C;&#x8BC1;&#x660E;&#x7B97;&#x6CD5;&#x7684;&#x6B63;&#x786E;&#x6027;&#xFF0C;&#x8BA1;&#x7B97;&#x7B97;&#x6CD5;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x3002;&#x800C;&#x6700;&#x91CD;&#x7684;&#x90E8;&#x5206;&#x662F;&#x8BC1;&#x660E;&#x6B63;&#x786E;&#x6027;&#x548C;&#x8BA1;&#x7B97;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x3002;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x53EF;&#x4EE5;&#x770B;&#x8FD9;&#x91CC;&#xFF1A;<a href="http://zhangxiaoyang.me/categories/intro-to-algorithms-tutorial/intro-to-algorithms-tutorial-1.html" target="_blank" rel="noopener">http://zhangxiaoyang.me/categories/intro-to-algorithms-tutorial/intro-to-algorithms-tutorial-1.html</a></p>
+<h3 id="&#x4E25;&#x8C28;&#x7684;&#x601D;&#x7EF4;"><a href="#&#x4E25;&#x8C28;&#x7684;&#x601D;&#x7EF4;" class="headerlink" title="&#x4E25;&#x8C28;&#x7684;&#x601D;&#x7EF4;"></a>&#x4E25;&#x8C28;&#x7684;&#x601D;&#x7EF4;</h3><p>&#x7F16;&#x7A0B;&#x4E4B;&#x7F8E;&#x7684;&#x63A8;&#x8350;&#x5E8F;&#x5982;&#x662F;&#x8BF4;&#xFF1A;</p>
+<blockquote>
+<p>&#x8981;&#x60F3;&#x628A;&#x7A0B;&#x5E8F;&#x5199;&#x597D;&#xFF0C;&#x9700;&#x8981;&#x5B66;&#x4E60;&#x597D;&#x4E00;&#x5B9A;&#x7684;&#x57FA;&#x7840;&#x77E5;&#x8BC6;&#xFF0C;&#x5305;&#x62EC;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x3001;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x548C;&#x7B97;&#x6CD5;&#x3002;&#x7A0B;&#x5E8F;&#x5199;&#x5F97;&#x597D;&#x7684;&#x4EBA;&#x901A;&#x5E38;&#x90FD;&#x6709;&#x7F1C;&#x5BC6;&#x7684;&#x601D;&#x7EF4;&#x80FD;&#x529B;&#x548C;&#x826F;&#x597D;&#x7684;&#x6570;&#x7406;&#x57FA;&#x7840;&#xFF0C;&#x800C;&#x4E14;&#x719F;&#x6089;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x7F16;&#x7A0B;&#x5DE5;&#x5177;&#x3002;</p>
+</blockquote>
+<p>&#x6211;&#x4EEC;&#x5DE5;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5F88;&#x5C11;&#x4F1A;&#x51FA;&#x73B0;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x7B97;&#x6CD5;&#xFF0C;&#x6216;&#x8005;&#x8BF4;&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x7B97;&#x6CD5;&#x3002;&#x90A3;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x5C31;&#x6CA1;&#x6709;&#x7528;&#x4E86;&#x5417;&#xFF1F;NONONO&#xFF01;&#x7B97;&#x6CD5;&#x953B;&#x70BC;&#x51FA;&#x7684;&#x4E25;&#x8C28;&#x7684;&#x601D;&#x7EF4;&#x5C31;&#x662F;&#x9AD8;&#x624B;&#x7684;&#x62A4;&#x8EAB;&#x6CD5;&#x5B9D;&#x3002;</p>
+<h3 id="&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x7684;&#x8FD0;&#x7528;"><a href="#&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x7684;&#x8FD0;&#x7528;" class="headerlink" title="&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x7684;&#x8FD0;&#x7528;"></a>&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x7684;&#x8FD0;&#x7528;</h3><p>&#x5BF9;&#x4E8E;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#xFF0C;&#x5C31;&#x5F88;&#x660E;&#x663E;&#x4E86;&#xFF0C;&#x5BF9;&#x6570;&#x636E;&#x7684;&#x6392;&#x5E8F;&#x662F;&#x5F88;&#x5E38;&#x89C1;&#x7684;&#x3002;</p>
+<p>&#x5176;&#x4ED6;&#x7684;&#x7ECF;&#x5178;&#x5E94;&#x7528;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;(Ctrl+F)&#x67E5;&#x627E;&#x7279;&#x5B9A;&#x6A21;&#x5F0F;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x4E0A;&#x662F;BoyerMoore&#x7B97;&#x6CD5;&#x3002;</p>
+<p>&#x518D;&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;&#x6253;&#x5F00;&#x624B;&#x673A;&#x5BFC;&#x822A;&#x7684;&#x5E94;&#x7528;&#x3002;&#x4ECE;&#x51FA;&#x53D1;&#x5730;&#x5740;&#xFF0C;&#x53BB;&#x5F80;&#x76EE;&#x7684;&#x5730;&#x5740;&#x3002;&#x8FD9;&#x5C31;&#x662F;&#x56FE;&#x8BBA;&#x4E2D;&#xFF0C;&#x6C42;&#x4E24;&#x5730;&#x6700;&#x8FD1;&#x8DDD;&#x79BB;&#x7684;&#x6700;&#x597D;&#x5E94;&#x7528;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x73B0;&#x5B9E;&#x60C5;&#x51B5;&#x590D;&#x6742;&#xFF0C;&#x80AF;&#x5B9A;&#x4E0D;&#x662F;&#x8DD1;&#x4E00;&#x904D;Dijkstra&#x5C31;&#x80FD;&#x89E3;&#x51B3;&#x7684;&#x3002;</p>
+<p>&#x518D;&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;&#x793E;&#x4EA4;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x63A8;&#x8350;&#x3002;&#x901A;&#x8FC7;&#x56FE;&#x8BBA;&#x7684;&#x5F3A;&#x8FDE;&#x901A;&#x5206;&#x91CF;&#xFF0C;&#x627E;&#x51FA;&#x4F60;&#x5C5E;&#x4E8E;&#x7684;&#x201C;&#x7FA4;&#x4F53;&#x201D;&#xFF0C;&#x7136;&#x540E;&#x63A8;&#x8350;&#x4F60;&#x6240;&#x5C5E;&#x201C;&#x7FA4;&#x4F53;&#x201D;&#x7684;&#x5171;&#x540C;&#x70B9;&#x3002;</p>
+<p>&#x5F53;&#x7136;&#xFF0C;&#x8FD8;&#x6709;&#x66F4;&#x591A;&#x7684;&#x7B97;&#x6CD5;&#x8FD0;&#x7528;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x751F;&#x6D3B;&#x4E2D;&#x3002;&#x503C;&#x5F97;&#x4E00;&#x63D0;&#x7684;&#x662F;&#xFF0C;&#x6211;&#x89C1;&#x8FC7;&#x6700;&#x6709;&#x610F;&#x601D;&#x7684;&#x7B97;&#x6CD5;&#x5C31;&#x662F;&#x6B7B;&#x9501;&#x7684;&#x9E35;&#x9E1F;&#x7B97;&#x6CD5;&#xFF0C;&#x50CF;&#x9E35;&#x9E1F;&#x4E00;&#x6837;&#x628A;&#x5934;&#x57CB;&#x5728;&#x6C99;&#x5B50;&#x91CC;&#xFF0C;&#x5047;&#x88C5;&#x95EE;&#x9898;&#x6CA1;&#x6709;&#x53D1;&#x751F;&#x3002;&#x751F;&#x6D3B;&#x4E2D;&#x6700;&#x5E38;&#x7528;&#x7684;&#x201C;&#x7B97;&#x6CD5;&#x201D;&#x3002;</p>
+<blockquote>
+<p>&#x8FD9;&#x51E0;&#x7BC7;&#x7B97;&#x6CD5;&#x6587;&#x7AE0;&#xFF0C;&#x9700;&#x8981;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x7B97;&#x6CD5;&#x57FA;&#x7840;&#xFF0C;&#x6587;&#x7AE0;&#x4E2D;&#x51E0;&#x4E4E;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;&#x3002;&#x5305;&#x62EC;&#x7B97;&#x6CD5;&#x5BFC;&#x8BBA;&#xFF0C;&#x867D;&#x7136;&#x5BF9;&#x4E8E;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x6765;&#x8BF4;&#xFF0C;&#x786E;&#x5B9E;&#x662F;&#x5BFC;&#x8BBA;&#xFF0C;&#x4F46;&#x662F;&#x770B;&#x4E4B;&#x524D;&#xFF0C;&#x6700;&#x597D;&#x8981;&#x770B;&#x8FC7;&#x522B;&#x7684;&#x7B97;&#x6CD5;&#x7684;&#x4E66;&#x7C4D;&#xFF0C;&#x624D;&#x80FD;&#x5BF9;&#x91CC;&#x9762;&#x7684;&#x8BB2;&#x89E3;&#x6709;&#x66F4;&#x6DF1;&#x7684;&#x7406;&#x89E3;&#x3002;</p>
+<p>&#x613F;&#x4F60;&#x5728;&#x6587;&#x4E2D;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x81EA;&#x5DF1;&#x957F;&#x4E45;&#x6240;&#x641C;&#x5BFB;&#x7684;&#x3002;</p>
+</blockquote>
+<h2 id="&#x5F15;&#x7528;"><a href="#&#x5F15;&#x7528;" class="headerlink" title="&#x5F15;&#x7528;"></a>&#x5F15;&#x7528;</h2><p>&#x6709;&#x5F88;&#x5927;&#x542F;&#x53D1;&#x7684;&#x7B97;&#x6CD5;&#x81EA;&#x5B66;&#x7B14;&#x8BB0; <a href="http://zhangxiaoyang.me/category.html" target="_blank" rel="noopener">http://zhangxiaoyang.me/category.html</a></p>
+<p>Princeton Theory of Algorithms Lecture <a href="https://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures.php" target="_blank" rel="noopener">https://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures.php</a></p>
+<p>MIT Introduction To Algorithms,Fall 2011 <a href="https://www.youtube.com/watch?v=HtSuA80QTyo&amp;list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb" target="_blank" rel="noopener">https://www.youtube.com/watch?v=HtSuA80QTyo&amp;list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb</a></p>
+<p>MIT Introduction To Algorithms,Fall 2005 <a href="http://open.163.com/special/opencourse/algorithms.html" target="_blank" rel="noopener">http://open.163.com/special/opencourse/algorithms.html</a></p>
+<p>MIT 6.046J Design and Analysis of Algorithms,Spring 2015 <a href="https://www.youtube.com/watch?v=2P-yW7LQr08&amp;list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp" target="_blank" rel="noopener">https://www.youtube.com/watch?v=2P-yW7LQr08&amp;list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp</a></p>
+<p>Harvard CSCIE119 <a href="http://www.fas.harvard.edu/~cscie119/lectures/" target="_blank" rel="noopener">http://www.fas.harvard.edu/~cscie119/lectures/</a></p>
+<p>&#x7B97;&#x6CD5;&#x4F8B;&#x9898;-1 <a href="http://www.acmerblog.com/data-structure-algorithm-6107.html" target="_blank" rel="noopener">http://www.acmerblog.com/data-structure-algorithm-6107.html</a></p>
+<p>&#x7B97;&#x6CD5;&#x4F8B;&#x9898;-2 <a href="http://www.geeksforgeeks.org/fundamentals-of-algorithms/#DynamicProgramming" target="_blank" rel="noopener">http://www.geeksforgeeks.org/fundamentals-of-algorithms/#DynamicProgramming</a></p>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            共享声明：本作品采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh">知识共享署名 4.0 国际许可协议</a> 转载时请注明作者和原文链接
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="http://blog.mrriddler.com/算法火花/">http://blog.mrriddler.com/算法火花/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 Gitalk -->
+<div id="gitalk-comment">
+    <!-- Gitalk 评论框 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+            clientID: '733efef7eec90bd2c27e',
+            clientSecret: 'd55768251fe00f869db35b201ba09118f3c68d3f',
+            repo: 'mrriddler.github.io',
+            owner: 'mrriddler',
+            admin: ['mrriddler'],
+            // facebook-like distraction free mode
+            distractionFreeMode: false
+        })
+   gitalk.render('gitalk-container')
+</script>
+</div>
+<style>
+    #gitalk-comment {
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/算法炽热/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/图片之旅/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="mrriddler's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        robbieless21@outlook.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">六月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/clang/">clang<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/iOS/">iOS<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/图片/">图片<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/存储体系/">存储体系<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构/">数据结构<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/算法/">算法<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机体系/">计算机体系<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/链接与装载/">链接与装载<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">18</span>
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+    <span id="footer-image">
+        <a href="https://wx.qq.com//" target="_blank" title="wechat_logo">
+            <img src="/img/qrcode.jpg" alt="wechat_logo"><!--
+     --></a>
+    </span>
+
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/robbie22" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/mrriddler" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+        <a href="https://www.linkedin.com/in/mrriddler" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-linkedin">
+                <span class="visuallyhidden">LinkedIn</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;谜语糖
+            
+                <br>
+                
+                    Abstract the whole universe.
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/lazyload.min.js", true)</script>
+
+
+
+    <script>lsloader.load("js_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/js.min.js", true)</script>
+
+
+
+    <script>lsloader.load("np_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/nprogress.js", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+   <!-- GitTalk -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/prettify.min.js", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 2016;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+    
+</html>

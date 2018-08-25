@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source"/>
+
+
+
+
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            算法灰烬 | 
+        
+        谜语糖
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="
+灰烬的结语
+
+本篇主要涉及到问题的复杂度性归类，R、EXP、P、NP、NPC、NPH">
+    <meta name="keywords" content=",算法">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/material.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/style.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/prettify.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/prettify/tranquil-heart.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #61C0DB !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #61C0DB !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #61C0DB !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/material-icons.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/jquery.min.js", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="谜语糖">
+    <meta name="msapplication-starturl" content="http://blog.mrriddler.com/算法灰烬/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="谜语糖">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://blog.mrriddler.com/算法灰烬/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="算法灰烬 | 谜语糖">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="
+灰烬的结语
+
+本篇主要涉及到问题的复杂度性归类，R、EXP、P、NP、NPC、NPH">
+    <meta property="og:article:tag" content="算法"> 
+
+    
+        <meta property="article:published_time" content="Mon Nov 14 2016 16:57:00 GMT+0800">
+        <meta property="article:modified_time" content="Thu Aug 23 2018 13:47:16 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://blog.mrriddler.com/算法灰烬/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://blog.mrriddler.com/算法灰烬/index.html",
+    "headline": "算法灰烬",
+    "datePublished": "Mon Nov 14 2016 16:57:00 GMT+0800",
+    "dateModified": "Thu Aug 23 2018 13:47:16 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "mrriddler",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "谜语糖"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "谜语糖",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",算法",
+    "description": "
+灰烬的结语
+
+本篇主要涉及到问题的复杂度性归类，R、EXP、P、NP、NPC、NPH",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#R-Recurrence"><span class="post-toc-number">1.</span> <span class="post-toc-text">R(Recurrence)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#EXP-Exponential"><span class="post-toc-number">2.</span> <span class="post-toc-text">EXP(Exponential)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#P-Polynomial"><span class="post-toc-number">3.</span> <span class="post-toc-text">P(Polynomial)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#NP-Nondeterministic-Polynomial"><span class="post-toc-number">4.</span> <span class="post-toc-text">NP(Nondeterministic-Polynomial)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#NPC-Nondeterministic-Polynomial-Complete"><span class="post-toc-number">5.</span> <span class="post-toc-text">NPC(Nondeterministic-Polynomial-Complete)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#NPH-Nondeterministic-Polynomial-Hard"><span class="post-toc-number">6.</span> <span class="post-toc-text">NPH(Nondeterministic-Polynomial-Hard)</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://o79rgqboc.bkt.clouddn.com/the_algo.png)">
+    
+            <p class="article-headline-p">
+                算法灰烬
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>mrriddler</strong>
+        <span>11月 14, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/算法/">算法</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=算法灰烬&url=http://blog.mrriddler.com/算法灰烬/index.html&pic=http://blog.mrriddler.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=算法灰烬&url=http://blog.mrriddler.com/算法灰烬/index.html&via=mrriddler" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.mrriddler.com/算法灰烬/index.html&title=算法灰烬" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>&#x7070;&#x70EC;&#x7684;&#x7ED3;&#x8BED;</p>
+</blockquote>
+<p>&#x672C;&#x7BC7;&#x4E3B;&#x8981;&#x6D89;&#x53CA;&#x5230;&#x95EE;&#x9898;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x6027;&#x5F52;&#x7C7B;&#xFF0C;R&#x3001;EXP&#x3001;P&#x3001;NP&#x3001;NPC&#x3001;NPH</p>
+<a id="more"></a>
+<p>&#x4E3A;&#x4E86;&#x66F4;&#x597D;&#x7684;&#x7814;&#x7A76;&#x95EE;&#x9898;&#xFF0C;&#x4EBA;&#x4EEC;&#x5C06;&#x95EE;&#x9898;&#x6839;&#x636E;&#x5176;&#x7B97;&#x6CD5;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x5212;&#x5206;&#x4E3A;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x578B;&#x3002;&#x6709;&#x8DA3;&#x7684;&#x662F;&#xFF0C;&#x7531;&#x4E8E;&#x4EBA;&#x4EEC;&#x73B0;&#x9636;&#x6BB5;&#x5BF9;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x8BA4;&#x8BC6;&#x7684;&#x8FD8;&#x4E0D;&#x591F;&#x6DF1;&#x5165;&#xFF0C;&#x5BFC;&#x81F4;&#x8FD9;&#x4E9B;&#x7C7B;&#x578B;&#x5E76;&#x4E0D;&#x662F;&#x975E;&#x9ED1;&#x65E2;&#x767D;&#xFF0C;&#x901A;&#x5E38;&#x662F;&#x5305;&#x542B;&#x5173;&#x7CFB;&#x3002;&#x5F88;&#x660E;&#x663E;&#xFF0C;&#x6700;&#x56F0;&#x96BE;&#x7684;&#x95EE;&#x9898;&#x662F;&#x7B97;&#x6CD5;&#x6839;&#x672C;&#x65E0;&#x6CD5;&#x89E3;&#x51B3;&#x7684;&#x95EE;&#x9898;&#x3002;&#x800C;&#x5728;&#x751F;&#x6D3B;&#x4E2D;&#xFF0C;&#x7B97;&#x6CD5;&#x80FD;&#x591F;&#x89E3;&#x51B3;&#x7684;&#x95EE;&#x9898;&#x4EC5;&#x4EC5;&#x662F;&#x5FAE;&#x4E0D;&#x8DB3;&#x9053;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;&#x8FD9;&#x786E;&#x5B9E;&#x4F1A;&#x4F7F;&#x559C;&#x6B22;&#x7B97;&#x6CD5;&#x7684;&#x4EBA;&#x5F88;&#x4F24;&#x5FC3;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x6700;&#x540E;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x6807;&#x9898;&#x53EB;&#x505A;&#x7B97;&#x6CD5;&#x7070;&#x70EC;&#x3002;</p>
+<h2 id="R-Recurrence"><a href="#R-Recurrence" class="headerlink" title="R(Recurrence)"></a>R(Recurrence)</h2><p>R&#x7C7B;&#x95EE;&#x9898;&#x6307;&#x7684;&#x5C31;&#x662F;&#x6709;&#x9650;&#x65F6;&#x95F4;&#x5185;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x53EF;&#x89E3;&#x51B3;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<h2 id="EXP-Exponential"><a href="#EXP-Exponential" class="headerlink" title="EXP(Exponential)"></a>EXP(Exponential)</h2><p>EXP&#x7C7B;&#x95EE;&#x9898;&#x6307;&#x7684;&#x662F;&#x80FD;&#x5728;&#x6307;&#x6570;&#x590D;&#x6742;&#x5EA6;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x3002;</p>
+<h2 id="P-Polynomial"><a href="#P-Polynomial" class="headerlink" title="P(Polynomial)"></a>P(Polynomial)</h2><p>P&#x7C7B;&#x95EE;&#x9898;&#x6307;&#x7684;&#x662F;&#x80FD;&#x5728;&#x591A;&#x9879;&#x5F0F;&#x590D;&#x6742;&#x5EA6;&#x89E3;&#x51B3;&#x7684;&#x95EE;&#x9898;&#x3002;&#x800C;&#x4E0D;&#x80FD;&#x5728;&#x591A;&#x9879;&#x5F0F;&#x590D;&#x6742;&#x5EA6;&#x89E3;&#x51B3;&#x7684;&#x95EE;&#x9898;&#x662F;NP&#x5417;&#xFF1F;&#x4E0D;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x627E;&#x5230;&#x5728;&#x591A;&#x9879;&#x5F0F;&#x590D;&#x6742;&#x5EA6;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x7684;&#x89E3;&#x5E76;&#x4E0D;&#x4EE3;&#x8868;&#x5C31;&#x6CA1;&#x6709;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x73B0;&#x5728;&#x4EBA;&#x4EEC;&#x5C40;&#x9650;&#x4E8E;&#x6B64;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x4EBA;&#x4EEC;&#x53C8;&#x5EFA;&#x7ACB;&#x4E86;&#x53E6;&#x4E00;&#x4E2A;&#x5206;&#x7C7B;NP&#xFF0C;&#x6765;&#x4EE3;&#x8868;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x3002;</p>
+<h2 id="NP-Nondeterministic-Polynomial"><a href="#NP-Nondeterministic-Polynomial" class="headerlink" title="NP(Nondeterministic-Polynomial)"></a>NP(Nondeterministic-Polynomial)</h2><p>NP&#x7C7B;&#x95EE;&#x9898;&#x6307;&#x7684;&#x662F;&#x975E;&#x786E;&#x5B9A;&#x7684;P&#x7C7B;&#x95EE;&#x9898;&#x3002;&#x90A3;&#x4E48;&#x6240;&#x6709;&#x5728;&#x591A;&#x9879;&#x5F0F;&#x590D;&#x6742;&#x5EA6;&#x627E;&#x4E0D;&#x5230;&#x89E3;&#x7684;&#x95EE;&#x9898;&#x90FD;&#x5C5E;&#x4E8E;NP&#x7C7B;&#x95EE;&#x9898;&#x5417;&#xFF1F;&#x4E5F;&#x4E0D;&#x662F;&#x8FD9;&#x6837;&#x7684;&#x3002;&#x5982;&#x679C;&#x6211;&#x80FD;&#x8BC1;&#x660E;&#x67D0;&#x4E2A;&#x95EE;&#x9898;&#x53EA;&#x80FD;&#x5728;&#x6307;&#x6570;&#x590D;&#x6742;&#x5EA6;&#x627E;&#x5230;&#x89E3;&#xFF0C;&#x90A3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x5C31;&#x4E0D;&#x5C5E;&#x4E8E;NP&#xFF0C;&#x5C5E;&#x4E8E;EXP&#x3002;NP&#x7C7B;&#x95EE;&#x9898;&#x5B9A;&#x4E49;&#xFF0C;&#x80FD;&#x5728;&#x591A;&#x9879;&#x5F0F;&#x590D;&#x6742;&#x5EA6;&#x9A8C;&#x8BC1;&#x4E00;&#x4E2A;&#x53EF;&#x80FD;&#x89E3;&#x3002;&#x6BD5;&#x7ADF;&#xFF0C;&#x80FD;&#x5728;&#x591A;&#x9879;&#x5F0F;&#x590D;&#x6742;&#x5EA6;&#x9A8C;&#x8BC1;&#x4E00;&#x4E2A;&#x53EF;&#x80FD;&#x89E3;&#xFF0C;&#x624D;&#x53EF;&#x80FD;&#x6709;&#x591A;&#x9879;&#x5F0F;&#x590D;&#x6742;&#x5EA6;&#x6C42;&#x51FA;&#x89E3;&#x3002;</p>
+<h2 id="NPC-Nondeterministic-Polynomial-Complete"><a href="#NPC-Nondeterministic-Polynomial-Complete" class="headerlink" title="NPC(Nondeterministic-Polynomial-Complete)"></a>NPC(Nondeterministic-Polynomial-Complete)</h2><p>&#x4E86;&#x89E3;&#x4E86;P&#x4E0E;NP&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;P&#x4E0E;NP&#x4E4B;&#x95F4;&#x5343;&#x4E1D;&#x4E07;&#x7F15;&#x7684;&#x8054;&#x7CFB;&#x3002;&#x6839;&#x636E;&#x5B9A;&#x4E49;&#x53EA;&#x8981;&#x95EE;&#x9898;&#x662F;P&#x7C7B;&#x95EE;&#x9898;&#xFF0C;&#x5C31;&#x662F;NP&#x7C7B;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;NP&#x7C7B;&#x95EE;&#x9898;&#x4E0E;P&#x7C7B;&#x95EE;&#x9898;&#x4EC0;&#x4E48;&#x5173;&#x7CFB;&#xFF0C;&#x8FD8;&#x6CA1;&#x6709;&#x4EBA;&#x80FD;&#x591F;&#x8BC1;&#x660E;&#x51FA;&#x6765;&#x3002;&#x4EBA;&#x4EEC;&#x504F;&#x5411;&#x4E8E;NP&#x7C7B;&#x95EE;&#x9898;&#x4E0D;&#x7B49;&#x4EF7;&#x4E8E;P&#x7C7B;&#x95EE;&#x9898;&#x3002;&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x7B49;&#x4EF7;&#x5C31;&#x5F15;&#x51FA;&#x4E86;NPC&#x7C7B;&#x95EE;&#x9898;&#x3002;&#x5728;NP&#x95EE;&#x9898;&#x4E2D;&#xFF0C;&#x6709;&#x4E00;&#x4E9B;&#x95EE;&#x9898;&#x957F;&#x4E45;&#x4EE5;&#x6765;&#x4EBA;&#x4EEC;&#x4E00;&#x76F4;&#x5C1D;&#x8BD5;&#xFF0C;&#x4F46;&#x90FD;&#x627E;&#x4E0D;&#x5230;&#x591A;&#x9879;&#x5F0F;&#x590D;&#x6742;&#x5EA6;&#x7684;&#x89E3;&#xFF0C;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x88AB;&#x5EFA;&#x7ACB;&#x4E3A;NPC&#x7C7B;&#x95EE;&#x9898;&#x3002;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;NPC&#x95EE;&#x9898;&#x662F;NP&#x95EE;&#x9898;&#x4E2D;&#x6700;&#x96BE;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x95EE;&#x9898;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8FD9;&#x4E9B;&#x5728;NP&#x7C7B;&#x95EE;&#x9898;&#x4E2D;&#x7684;NPC&#x7C7B;&#x95EE;&#x9898;&#x627E;&#x4E0D;&#x5230;&#x591A;&#x9879;&#x5F0F;&#x590D;&#x6742;&#x5EA6;&#x7684;&#x89E3;&#xFF0C;&#x8BA9;&#x4EBA;&#x4EEC;&#x66F4;&#x52A0;&#x76F8;&#x4FE1;&#xFF0C;NP&#x7C7B;&#x95EE;&#x9898;&#x4E0D;&#x7B49;&#x4EF7;&#x4E8E;P&#x7C7B;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#xFF0C;&#x5047;&#x5982;&#x6709;&#x4E00;&#x4E2A;NP&#x7C7B;&#x95EE;&#x9898;&#xFF0C;&#x600E;&#x4E48;&#x77E5;&#x9053;&#x5B83;&#x662F;&#x4E0D;&#x662F;NPC&#x7C7B;&#x95EE;&#x9898;&#xFF1F;&#x8FD9;&#x5C31;&#x7528;&#x5230;&#x4E86;&#x901A;&#x7528;&#x6280;&#x5DE7;-&#x5F52;&#x7EA6;(Reducibility)&#x3002;</p>
+<p>&#x5047;&#x5982;&#xFF0C;&#x6709;&#x4E24;&#x4E2A;&#x95EE;&#x9898;A&#x548C;B&#x3002;&#x5982;&#x679C;&#xFF0C;&#x80FD;&#x5728;&#x591A;&#x9879;&#x5F0F;&#x590D;&#x6742;&#x5EA6;&#x5C06;&#x95EE;&#x9898;A&#x7684;&#x8F93;&#x5165;&#x8F6C;&#x5316;&#x4E3A;&#x95EE;&#x9898;B&#x7684;&#x8F93;&#x5165;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x95EE;&#x9898;B&#x7684;&#x7B97;&#x6CD5;&#x6C42;&#x89E3;&#x51FA;&#x95EE;&#x9898;B&#x7684;&#x89E3;&#xFF0C;&#x518D;&#x5728;&#x591A;&#x9879;&#x5F0F;&#x590D;&#x6742;&#x5EA6;&#x5C06;&#x95EE;&#x9898;B&#x7684;&#x89E3;&#x8F6C;&#x5316;&#x4E3A;&#x95EE;&#x9898;A&#x7684;&#x89E3;&#xFF0C;&#x5F97;&#x5230;&#x95EE;&#x9898;A&#x7684;&#x89E3;&#x3002;&#x5C31;&#x8BA4;&#x4E3A;&#x95EE;&#x9898;A&#x53EF;&#x4EE5;&#x5F52;&#x7EA6;&#x4E3A;&#x95EE;&#x9898;B&#x3002;</p>
+<p>&#x56DE;&#x5230;&#x95EE;&#x9898;&#xFF0C;&#x5047;&#x5982;&#x6240;&#x6709;&#x7684;NP&#x7C7B;&#x95EE;&#x9898;&#x90FD;&#x53EF;&#x4EE5;&#x5F52;&#x7EA6;&#x6210;&#x8FD9;&#x4E2A;NP&#x7C7B;&#x95EE;&#x9898;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;NP&#x7C7B;&#x95EE;&#x9898;&#x5C31;&#x662F;NPC&#x7C7B;&#x95EE;&#x9898;&#x3002;&#x8FD9;&#x4E5F;&#x662F;NPC&#x95EE;&#x9898;&#x7684;&#x5B9A;&#x4E49;&#x3002;&#x4EBA;&#x4EEC;&#x5DF2;&#x7ECF;&#x53D1;&#x73B0;&#x4E86;&#x5F88;&#x591A;NPC&#x95EE;&#x9898;&#xFF0C;&#x5E76;&#x4E14;&#x8FD8;&#x5728;&#x4E0D;&#x65AD;&#x589E;&#x591A;&#x3002;</p>
+<h2 id="NPH-Nondeterministic-Polynomial-Hard"><a href="#NPH-Nondeterministic-Polynomial-Hard" class="headerlink" title="NPH(Nondeterministic-Polynomial-Hard)"></a>NPH(Nondeterministic-Polynomial-Hard)</h2><p>&#x6839;&#x636E;NPC&#x7C7B;&#x95EE;&#x9898;&#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x5982;&#x679C;&#x95EE;&#x9898;&#x5C5E;&#x4E8E;NP&#x7C7B;&#x95EE;&#x9898;&#xFF0C;&#x5E76;&#x4E14;&#x6240;&#x6709;NP&#x7C7B;&#x95EE;&#x9898;&#x90FD;&#x53EF;&#x4EE5;&#x5F52;&#x7EA6;&#x6210;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x5C31;&#x662F;NPC&#x7C7B;&#x95EE;&#x9898;&#x3002;NPH&#x7C7B;&#x95EE;&#x9898;&#x4E0E;NPC&#x7C7B;&#x95EE;&#x9898;&#x5DEE;&#x4E0D;&#x591A;&#xFF0C;&#x95EE;&#x9898;&#x53EF;&#x4EE5;&#x4E0D;&#x5C5E;&#x4E8E;NP&#x7C7B;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;&#x6240;&#x6709;NP&#x7C7B;&#x95EE;&#x9898;&#x8FD8;&#x90FD;&#x53EF;&#x4EE5;&#x5F52;&#x7EA6;&#x6210;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x5C31;&#x662F;NPH&#x7C7B;&#x95EE;&#x9898;&#x3002;NPH&#x7C7B;&#x95EE;&#x9898;&#x53EF;&#x80FD;&#x4F1A;&#x6BD4;NPC&#x7C7B;&#x95EE;&#x9898;&#x8FD8;&#x8981;&#x96BE;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x4E3A;&#x6240;&#x63D0;&#x5230;&#x7684;&#x7B97;&#x6CD5;&#x7C7B;&#x578B;&#x5168;&#x5BB6;&#x798F;&#x3002;</p>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/blog_&#x590D;&#x6742;&#x5EA6;&#x7C7B;&#x578B;.JPG" alt="blog_&#x590D;&#x6742;&#x5EA6;&#x7C7B;&#x578B;"></p>
+<p>&#x6700;&#x540E;&#x518D;&#x732E;&#x4E0A;&#x4E00;&#x5F20;&#xFF0C;&#x7B97;&#x6CD5;&#x4E0E;&#x4EBA;&#x7C7B;&#x3002;</p>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/blog_&#x4EBA;&#x7C7B;&#x7684;&#x6E3A;&#x5C0F;.JPG" alt="blog_&#x4EBA;&#x7C7B;&#x7684;&#x6E3A;&#x5C0F;"></p>
+<blockquote>
+<p>&#x5728;&#x8FD9;&#x51E0;&#x7BC7;&#x5173;&#x4E8E;&#x7B97;&#x6CD5;&#x6587;&#x7AE0;&#x7684;&#x6700;&#x540E;&#xFF0C;&#x9664;&#x4E86;&#x60CA;&#x53F9;&#x4E0E;&#x7B97;&#x6CD5;&#x7684;&#x5DE7;&#x5999;&#xFF0C;&#x6211;&#x60F3;&#xFF0C;&#x7559;&#x4E0B;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x5C24;&#x4E3A;&#x5408;&#x9002;&#x3002;</p>
+<p>&#x7B97;&#x6CD5;&#x662F;&#x4EBA;&#x4EEC;&#x53D1;&#x660E;&#x7684;&#x8FD8;&#x662F;&#x53D1;&#x73B0;&#x7684;&#xFF1F;&#x4EA6;&#x6216;&#x662F;&#x7B2C;&#x4E09;&#x79CD;&#x4EBA;&#x7C7B;&#x8FD8;&#x4E0D;&#x53EF;&#x77E5;&#x3001;&#x65E0;&#x6CD5;&#x89E3;&#x91CA;&#x7684;&#x7B2C;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#xFF1F;</p>
+</blockquote>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            共享声明：本作品采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh">知识共享署名 4.0 国际许可协议</a> 转载时请注明作者和原文链接
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="http://blog.mrriddler.com/算法灰烬/">http://blog.mrriddler.com/算法灰烬/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 Gitalk -->
+<div id="gitalk-comment">
+    <!-- Gitalk 评论框 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+            clientID: '733efef7eec90bd2c27e',
+            clientSecret: 'd55768251fe00f869db35b201ba09118f3c68d3f',
+            repo: 'mrriddler.github.io',
+            owner: 'mrriddler',
+            admin: ['mrriddler'],
+            // facebook-like distraction free mode
+            distractionFreeMode: false
+        })
+   gitalk.render('gitalk-container')
+</script>
+</div>
+<style>
+    #gitalk-comment {
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/数据结构/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/算法余晖/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="mrriddler's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        robbieless21@outlook.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">六月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/clang/">clang<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/iOS/">iOS<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/图片/">图片<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/存储体系/">存储体系<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构/">数据结构<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/算法/">算法<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机体系/">计算机体系<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/链接与装载/">链接与装载<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">18</span>
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+    <span id="footer-image">
+        <a href="https://wx.qq.com//" target="_blank" title="wechat_logo">
+            <img src="/img/qrcode.jpg" alt="wechat_logo"><!--
+     --></a>
+    </span>
+
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/robbie22" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/mrriddler" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+        <a href="https://www.linkedin.com/in/mrriddler" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-linkedin">
+                <span class="visuallyhidden">LinkedIn</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;谜语糖
+            
+                <br>
+                
+                    Abstract the whole universe.
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/lazyload.min.js", true)</script>
+
+
+
+    <script>lsloader.load("js_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/js.min.js", true)</script>
+
+
+
+    <script>lsloader.load("np_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/nprogress.js", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+   <!-- GitTalk -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/prettify.min.js", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 2016;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+    
+</html>

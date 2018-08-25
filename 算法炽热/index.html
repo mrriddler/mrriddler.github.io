@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source"/>
+
+
+
+
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            算法炽热 | 
+        
+        谜语糖
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="
+炽热的爱
+
+本篇主要涉及到，算法分析、渐近记法、摊还分析、概率算法分析。">
+    <meta name="keywords" content=",算法">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/material.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/style.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/prettify.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/prettify/tranquil-heart.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #61C0DB !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #61C0DB !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #61C0DB !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/material-icons.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/jquery.min.js", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="谜语糖">
+    <meta name="msapplication-starturl" content="http://blog.mrriddler.com/算法炽热/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="谜语糖">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://blog.mrriddler.com/算法炽热/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="算法炽热 | 谜语糖">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="
+炽热的爱
+
+本篇主要涉及到，算法分析、渐近记法、摊还分析、概率算法分析。">
+    <meta property="og:article:tag" content="算法"> 
+
+    
+        <meta property="article:published_time" content="Mon Nov 14 2016 14:56:00 GMT+0800">
+        <meta property="article:modified_time" content="Thu Aug 23 2018 13:46:56 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://blog.mrriddler.com/算法炽热/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://blog.mrriddler.com/算法炽热/index.html",
+    "headline": "算法炽热",
+    "datePublished": "Mon Nov 14 2016 14:56:00 GMT+0800",
+    "dateModified": "Thu Aug 23 2018 13:46:56 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "mrriddler",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "谜语糖"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "谜语糖",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",算法",
+    "description": "
+炽热的爱
+
+本篇主要涉及到，算法分析、渐近记法、摊还分析、概率算法分析。",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法分析"><span class="post-toc-number">1.</span> <span class="post-toc-text">算法分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#渐进记法"><span class="post-toc-number">2.</span> <span class="post-toc-text">渐进记法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#迭代算法分析"><span class="post-toc-number">3.</span> <span class="post-toc-text">迭代算法分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#递归算法分析"><span class="post-toc-number">4.</span> <span class="post-toc-text">递归算法分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概率分析"><span class="post-toc-number">5.</span> <span class="post-toc-text">概率分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#摊还分析"><span class="post-toc-number">6.</span> <span class="post-toc-text">摊还分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用"><span class="post-toc-number">7.</span> <span class="post-toc-text">引用</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://o79rgqboc.bkt.clouddn.com/the_algo.png)">
+    
+            <p class="article-headline-p">
+                算法炽热
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>mrriddler</strong>
+        <span>11月 14, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/算法/">算法</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=算法炽热&url=http://blog.mrriddler.com/算法炽热/index.html&pic=http://blog.mrriddler.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=算法炽热&url=http://blog.mrriddler.com/算法炽热/index.html&via=mrriddler" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.mrriddler.com/算法炽热/index.html&title=算法炽热" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>&#x70BD;&#x70ED;&#x7684;&#x7231;</p>
+</blockquote>
+<p>&#x672C;&#x7BC7;&#x4E3B;&#x8981;&#x6D89;&#x53CA;&#x5230;&#xFF0C;&#x7B97;&#x6CD5;&#x5206;&#x6790;&#x3001;&#x6E10;&#x8FD1;&#x8BB0;&#x6CD5;&#x3001;&#x644A;&#x8FD8;&#x5206;&#x6790;&#x3001;&#x6982;&#x7387;&#x7B97;&#x6CD5;&#x5206;&#x6790;&#x3002;</p>
+<a id="more"></a>
+<p><br></p>
+<h2 id="&#x7B97;&#x6CD5;&#x5206;&#x6790;"><a href="#&#x7B97;&#x6CD5;&#x5206;&#x6790;" class="headerlink" title="&#x7B97;&#x6CD5;&#x5206;&#x6790;"></a>&#x7B97;&#x6CD5;&#x5206;&#x6790;</h2><p>&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8FDB;&#x884C;&#x7B97;&#x6CD5;&#x7684;&#x5206;&#x6790;&#xFF1F;</p>
+<p>&#x8FDB;&#x884C;&#x7B97;&#x6CD5;&#x5206;&#x6790;&#x624D;&#x53EF;&#x4EE5;&#x8861;&#x91CF;&#x7B97;&#x6CD5;&#x7684;&#x597D;&#x574F;&#x3002;&#x800C;&#x7B97;&#x6CD5;&#x7684;&#x597D;&#x574F;&#x53C8;&#x51B3;&#x5B9A;&#x7A0B;&#x5E8F;&#x7684;&#x6027;&#x80FD;&#x554A;&#x3002;</p>
+<p>&#x90A3;&#x4E3A;&#x4EC0;&#x4E48;&#x5173;&#x6CE8;&#x6027;&#x80FD;&#xFF1F;</p>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x602A;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x5199;&#x7A0B;&#x5E8F;&#x5F53;&#x7136;&#x8981;&#x5173;&#x6CE8;&#x6027;&#x80FD;&#x5566;&#x3002;&#x7B97;&#x6CD5;&#x5BFC;&#x8BBA;&#x5F00;&#x7BC7;&#xFF0C;&#x5BF9;&#x4E8E;&#x7A0B;&#x5E8F;&#x6027;&#x80FD;&#x6709;&#x4E2A;&#x8BA9;&#x4EBA;&#x60CA;&#x547C;&#x53EB;&#x7EDD;&#x7684;&#x89E3;&#x91CA;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x9ED8;&#x9ED8;&#x8BB0;&#x5728;&#x5FC3;&#x4E2D;&#xFF0C;&#x6216;&#x8005;&#x7761;&#x4E00;&#x89C9;&#x5FD8;&#x8BB0;&#x3002;&#x7B2C;&#x4E00;&#x70B9;&#xFF0C;&#x6027;&#x80FD;&#x662F;&#x7A0B;&#x5E8F;&#x7684;&#x8D27;&#x5E01;&#x3002;&#x4E3A;&#x4EC0;&#x4E48;&#x7528;Java&#x7F16;&#x7A0B;&#x800C;&#x4E0D;&#x7528;C&#x7F16;&#x7A0B;&#xFF0C;&#x5C3D;&#x7BA1;&#xFF0C;Java&#x6BD4;C&#x6EE1;&#x4E0A;3&#x500D;&#x6216;&#x8005;&#x66F4;&#x591A;&#x3002;&#x56E0;&#x4E3A;Java&#x63D0;&#x4F9B;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x7F16;&#x7A0B;&#x65B9;&#x5F0F;&#x3002;&#x800C;&#x6027;&#x80FD;&#x5728;&#x8FD9;&#x4E2A;&#x9009;&#x62E9;&#x4E2D;&#x5145;&#x5F53;&#x4E86;&#x8D27;&#x5E01;&#x7684;&#x89D2;&#x8272;&#x3002;&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;&#x6211;&#x6709;10&#x4E2A;&#x6027;&#x80FD;&#x3002;&#x6211;&#x53EF;&#x4EE5;&#x7528;&#x5176;&#x4E2D;3&#x4E2A;&#x6027;&#x80FD;&#x5151;&#x6362;Java&#x8BED;&#x8A00;&#xFF0C;3&#x4E2A;&#x6027;&#x80FD;&#x5151;&#x6362;&#x7528;&#x6237;&#x53CB;&#x597D;&#x6027;&#xFF0C;3&#x4E2A;&#x6027;&#x80FD;&#x5151;&#x6362;&#x6A21;&#x5757;&#x5316;&#x3002;&#x800C;&#x5982;&#x679C;&#xFF0C;&#x6CA1;&#x6709;&#x6027;&#x80FD;&#xFF0C;&#x90A3;&#x5565;&#x4E5F;&#x5151;&#x6362;&#x4E0D;&#x4E86;&#x3002;&#x6027;&#x80FD;&#x5BF9;&#x4E8E;&#x7A0B;&#x5E8F;&#xFF0C;&#x5C31;&#x50CF;&#x662F;&#x94B1;&#x5BF9;&#x4E8E;&#x751F;&#x6D3B;&#x3002;&#x7B2C;&#x4E8C;&#x70B9;&#xFF0C;&#x56E0;&#x5782;&#x6B7B;&#x542C;(interesting)&#xFF0C;&#x8FD9;&#x548C;&#x4E3A;&#x4EC0;&#x4E48;&#x4EBA;&#x4EEC;&#x8FFD;&#x6C42;&#x66F4;&#x5FEB;&#x7684;&#x8DD1;&#x8F66;&#x4E00;&#x81F4;&#x3002;</p>
+<p>&#x7B97;&#x6CD5;&#x7684;&#x5FEB;&#x6162;&#x9664;&#x4E86;&#x53D6;&#x51B3;&#x4E8E;&#x7B97;&#x6CD5;&#x81EA;&#x8EAB;&#xFF0C;&#x8FD8;&#x53D6;&#x51B3;&#x4E8E;input&#x548C;&#x673A;&#x5668;&#x7684;&#x5FEB;&#x6162;&#x3002;&#x5BF9;&#x4E8E;&#x4E0D;&#x540C;&#x7684;input&#x53EF;&#x4EE5;&#x5BF9;&#x7B97;&#x6CD5;&#x8FDB;&#x884C;&#x5206;&#x7C7B;&#x578B;&#x5206;&#x6790;&#xFF0C;&#x7B97;&#x6CD5;&#x5206;&#x6790;&#x7684;&#x7C7B;&#x578B;&#x53EF;&#x5206;&#x4E3A;&#xFF1A;</p>
+<ul>
+<li>Worst Case:&#x6700;&#x5DEE;&#x60C5;&#x51B5;&#x5206;&#x6790;&#xFF0C;&#x53EF;&#x4EE5;&#x5F88;&#x597D;&#x7684;&#x8861;&#x91CF;&#x7B97;&#x6CD5;&#x3002;</li>
+<li>Average-Case:&#x5E73;&#x5747;&#x60C5;&#x51B5;&#x5206;&#x6790;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x52A0;&#x6743;&#x5E73;&#x5747;&#x3002;&#x5C06;&#x51FA;&#x73B0;&#x7684;&#x6982;&#x7387;&#x4F5C;&#x4E3A;&#x6743;&#x91CD;&#xFF0C;&#x53C2;&#x4E0E;&#x5230;&#x8BA1;&#x7B97;&#x4E2D;&#x3002;</li>
+<li>Best-Case:&#x6700;&#x597D;&#x60C5;&#x51B5;&#x5206;&#x6790;&#xFF0C;&#x5047;&#x8C61;&#xFF01;&#x6CA1;&#x6CD5;&#x53BB;&#x8861;&#x91CF;&#x7B97;&#x6CD5;&#x3002;</li>
+<li>Probabilistic:&#x6982;&#x7387;&#x5206;&#x6790;&#xFF0C;&#x6C42;&#x968F;&#x673A;&#x7B97;&#x6CD5;&#x7684;&#x671F;&#x671B;&#x3002;</li>
+<li>Amortized:&#x644A;&#x8FD8;&#x5206;&#x6790;&#xFF0C;&#x5C06;&#x4EE3;&#x4EF7;&#x8F83;&#x9AD8;&#x64CD;&#x4F5C;&#x7684;&#x4EE3;&#x4EF7;&#x5E73;&#x644A;&#x5230;&#x6BCF;&#x4E2A;&#x64CD;&#x4F5C;&#x4E0A;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6C42;&#x5E73;&#x5747;&#x4EE3;&#x4EF7;&#x3002;</li>
+<li>&#x66F4;&#x591A;&#x7684;&#x5206;&#x6790;&#xFF0C;&#x6BD4;&#x5982;&#x7ADE;&#x4E89;&#x5206;&#x6790;&#x7B49;&#x7B49;&#x3002;</li>
+</ul>
+<h2 id="&#x6E10;&#x8FDB;&#x8BB0;&#x6CD5;"><a href="#&#x6E10;&#x8FDB;&#x8BB0;&#x6CD5;" class="headerlink" title="&#x6E10;&#x8FDB;&#x8BB0;&#x6CD5;"></a>&#x6E10;&#x8FDB;&#x8BB0;&#x6CD5;</h2><p>&#x5728;&#x8FDB;&#x884C;&#x7B97;&#x6CD5;&#x5206;&#x6790;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4EBA;&#x4EEC;&#x60F3;&#x51FA;&#x4E00;&#x79CD;&#x6E10;&#x8FDB;&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x8FDB;&#x884C;&#x6BD4;&#x5BF9;&#x3002;&#x8FD9;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x4E0D;&#x6BD4;&#x5BF9;&#x7B97;&#x6CD5;&#x7279;&#x5B9A;input&#x4E0B;&#x7684;&#x5FEB;&#x6162;&#x3002;&#x6BD4;&#x8F83;&#x5F53;input&#x8D8B;&#x8FD1;&#x4E0E;&#x65E0;&#x7A77;&#x5927;&#x7684;&#x65F6;&#x5019;&#x4E0B;&#x7684;&#x5FEB;&#x6162;&#x3002;&#x6216;&#x8005;&#x8BF4;&#x6CE8;&#x91CD;&#x7B97;&#x6CD5;&#x589E;&#x957F;(growth)&#x7684;&#x901F;&#x7387;&#x3002;</p>
+<p>&#x5728;&#x8FDB;&#x884C;&#x6E10;&#x8FDB;&#x8BA1;&#x6CD5;&#x65F6;&#xFF0C;&#x398;&#x3001;&#x3A9;&#x3001;O&#x8FD9;&#x4E09;&#x4E2A;&#x7B26;&#x53F7;&#x7ECF;&#x5E38;&#x51FA;&#x73B0;&#xFF0C;&#x53EF;&#x4EE5;&#x4ECE;&#x754C;&#x9650;&#x7684;&#x89D2;&#x5EA6;&#x53BB;&#x7406;&#x89E3;&#x8FD9;&#x4E09;&#x4E2A;&#x7B26;&#x53F7;&#x3002;&#x4E5F;&#x53EF;&#x4EE5;&#x4ECE;&#x6781;&#x9650;&#x7684;&#x89D2;&#x5EA6;&#x53BB;&#x7406;&#x89E3;&#x8FD9;&#x4E09;&#x4E2A;&#x7B26;&#x53F7;&#x3002;</p>
+<p>O&#x7B26;&#x53F7;&#x8868;&#x793A;&#x5BF9;&#x4E8E;</p>
+<script type="math/tex; mode=display">
+f(n)=\mathrm {O} (g(n))</script><p>&#x5B58;&#x5728;&#x6B63;&#x5B9E;&#x6570;c&#x548C;N&#xFF0C;&#x4F7F;&#x5F97;&#x5BF9;&#x4E8E;n&gt;N&#xFF0C;&#x6709;</p>
+<script type="math/tex; mode=display">
+\frac{|g(n)|}{|f(n)|} \ge c</script><p>&#x5373;g(x)&#x4E3A;f(x)&#x7684;&#x4E0A;&#x754C;&#x3002;</p>
+<p>&#x3A9;&#x7B26;&#x53F7;&#x8868;&#x793A;&#x5BF9;&#x4E8E;</p>
+<script type="math/tex; mode=display">
+f(n)=\mathrm {Ω} (g(n))</script><p>&#x5B58;&#x5728;&#x6B63;&#x5B9E;&#x6570;c&#x548C;N&#xFF0C;&#x4F7F;&#x5F97;&#x5BF9;&#x4E8E;n&gt;N&#xFF0C;&#x6709;</p>
+<script type="math/tex; mode=display">
+\frac{|f(n)|}{|g(n)|} \ge c</script><p>&#x5373;g(x)&#x4E3A;f(x)&#x7684;&#x4E0B;&#x754C;&#x3002;</p>
+<p>&#x800C;&#x398;&#x4EE3;&#x8868;g(x)&#x4E3A;f(x)&#x7684;&#x4E0A;&#x754C;&#x4E0E;&#x4E0B;&#x754C;&#x4E2D;&#x95F4;&#x8FD9;&#x4E2A;&#x533A;&#x95F4;&#x3002;</p>
+<p>&#x5E73;&#x65F6;&#xFF0C;&#x5728;&#x8BA1;&#x7B97;&#x590D;&#x6742;&#x5EA6;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x51ED;&#x7ECF;&#x9A8C;&#xFF0C;&#x76F4;&#x63A5;&#x5C06;&#x539F;&#x51FD;&#x6570;&#x4E2D;&#x7684;&#x5E38;&#x6570;&#x548C;&#x4F4E;&#x9636;&#x53D8;&#x91CF;&#x76F4;&#x63A5;&#x5FFD;&#x7565;&#x3002;</p>
+<p>&#x6BD4;&#x5982;</p>
+<script type="math/tex; mode=display">
+T(n) = {4n^3} + {3n^2} + 4096</script><p>&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5F97;&#x5230;</p>
+<script type="math/tex; mode=display">
+Θ(n) = {n^3}</script><p>&#x5982;&#x679C;&#x4ECE;&#x754C;&#x9650;&#x89D2;&#x5EA6;&#x53BB;&#x89E3;&#x91CA;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x5FFD;&#x7565;&#x5E38;&#x6570;&#x548C;&#x4F4E;&#x9636;&#x53D8;&#x91CF;&#xFF0C;&#x4F1A;&#x4E0D;&#x4E25;&#x8C28;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x89E3;&#x91CA;&#x4E3A;&#x8BA1;&#x7B97;&#x4E2D;&#x8FD9;&#x4E9B;&#x5E38;&#x6570;&#x548C;&#x4F4E;&#x9636;&#x5BF9;&#x4E8E;&#x9AD8;&#x9636;&#x5F71;&#x54CD;&#x5F88;&#x5C0F;&#x3002;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4ECE;&#x6781;&#x9650;&#x89D2;&#x5EA6;&#x6765;&#x66F4;&#x52A0;&#x4E25;&#x8C28;&#x7684;&#x89E3;&#x91CA;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x398;&#x7684;&#x6781;&#x9650;&#x89D2;&#x5EA6;&#xFF1A;</p>
+<p>&#x7ED9;&#x5B9A;&#x4E24;&#x4E2A;&#x6B63;&#x503C;&#x51FD;&#x6570;&#x503C;f(x)&#x3001;g(x)&#xFF0C;&#x5E76;&#x4F7F;</p>
+<script type="math/tex; mode=display">
+f(n)=\mathrm {Θ} (g(n))</script><p>&#x6210;&#x7ACB;&#x7684;&#x6761;&#x4EF6;&#x4E3A;&#xFF0C;&#x5B58;&#x5728;&#x6B63;&#x5B9E;&#x6570;c1&#x548C;c2&#x548C;N&#xFF0C;&#x4F7F;&#x5F97;&#x5BF9;&#x4E8E;&#x6240;&#x6709;n &gt; N&#xFF0C;&#x6709;</p>
+<script type="math/tex; mode=display">
+c_1 \le \frac{|g(n)|}{|f(n)|} \le c_2</script><p>&#x7531;&#x4E0A;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x5B58;&#x5728;&#x6B63;&#x5B9E;&#x6570;c&#x548C;N&#xFF0C;&#x4F7F;&#x5F97;&#x5BF9;&#x4E8E;&#x6240;&#x6709;n &gt; N&#xFF0C;&#x6709;</p>
+<script type="math/tex; mode=display">
+\frac{|g(n)|}{|f(n)|} = |c|</script><p>&#x5BF9;&#x4E8E;n&#x89C6;&#x4F5C;&#x6781;&#x9650;&#x53EF;&#x5F97;</p>
+<script type="math/tex; mode=display">
+\lim_{x \to \infty}\frac{|g(n)|}{|f(n)|} = |c|</script><p>&#x5219;f(x)&#x4E3A;g(x)&#x7684;&#x540C;&#x9636;&#x65E0;&#x7A77;&#x5927;&#x3002;&#x7ED3;&#x8BBA;&#x4E3A;&#x398;&#x8868;&#x793A;&#x4E3A;&#xFF0C;g(x)&#x4E3A;f(x)&#x7684;&#x540C;&#x9636;&#x65E0;&#x7A77;&#x5927;&#x51FD;&#x6570;&#x3002;&#x540C;&#x7406;&#xFF0C;O&#x8868;&#x793A;&#x4E3A;g(x)&#x4E3A;f(x)&#x7684;&#x540C;&#x9636;&#x6216;&#x9AD8;&#x9636;&#x65E0;&#x7A77;&#x5927;&#x51FD;&#x6570;&#x3002;&#x3A9;&#x8868;&#x793A;&#x4E3A;g(x)&#x4E3A;f(x)&#x7684;&#x540C;&#x9636;&#x6216;&#x4F4E;&#x9636;&#x65E0;&#x7A77;&#x5927;&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x5FFD;&#x7565;&#x5E38;&#x6570;&#x548C;&#x4F4E;&#x9636;&#x53D8;&#x91CF;&#x5C31;&#x5F88;&#x660E;&#x663E;&#x4E86;&#x3002;f(x)&#x5728;n&#x65E0;&#x7A77;&#x65F6;&#x7684;&#x5927;&#x5C0F;&#x7531;&#x51FD;&#x6570;&#x4E2D;&#x7684;&#x9AD8;&#x9636;&#x65E0;&#x7A77;&#x5927;&#x51FD;&#x6570;&#x51B3;&#x5B9A;&#xFF0C;&#x800C;&#x5E38;&#x6570;&#x548C;&#x4F4E;&#x9636;&#x53D8;&#x91CF;&#x662F;f(x)&#x7684;&#x4F4E;&#x9636;&#x65E0;&#x7A77;&#x5927;&#xFF0C;&#x53EF;&#x4EE5;&#x88AB;&#x5FFD;&#x7565;&#x3002;</p>
+<p>&#x7A0B;&#x5E8F;&#x5728;&#x8FD0;&#x884C;&#x4E0A;&#xFF0C;&#x53EA;&#x5206;&#x8FED;&#x4EE3;&#x548C;&#x9012;&#x5F52;&#x3002;&#x8981;&#x533A;&#x5206;&#x9012;&#x5F52;&#x548C;&#x5206;&#x6CBB;&#xFF0C;&#x9012;&#x5F52;&#x662F;&#x7A0B;&#x5E8F;&#x7269;&#x7406;&#x4E0A;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x800C;&#x5206;&#x6CBB;&#x662F;&#x79CD;&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x4E0B;&#x9762;&#xFF0C;&#x901A;&#x8FC7;&#x8FED;&#x4EE3;&#x548C;&#x9012;&#x5F52;&#x7B97;&#x6CD5;&#x5206;&#x6790;&#x6765;&#x5F00;&#x542F;&#x7B97;&#x6CD5;&#x5206;&#x6790;&#x7684;&#x5927;&#x95E8;&#x3002;</p>
+<h2 id="&#x8FED;&#x4EE3;&#x7B97;&#x6CD5;&#x5206;&#x6790;"><a href="#&#x8FED;&#x4EE3;&#x7B97;&#x6CD5;&#x5206;&#x6790;" class="headerlink" title="&#x8FED;&#x4EE3;&#x7B97;&#x6CD5;&#x5206;&#x6790;"></a>&#x8FED;&#x4EE3;&#x7B97;&#x6CD5;&#x5206;&#x6790;</h2><p>&#x63D2;&#x5165;&#x6392;&#x5E8F;&#x662F;&#x7ECF;&#x5178;&#x7684;&#x8FED;&#x4EE3;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#xFF0C;&#x4E0B;&#x9762;&#x4EE5;&#x63D2;&#x5165;&#x6392;&#x5E8F;&#x4E3A;&#x4F8B;&#xFF0C;&#x8FDB;&#x884C;&#x8FED;&#x4EE3;&#x7B97;&#x6CD5;&#x5206;&#x6790;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4F2A;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-c">Insertion-Sort arr[n]
+for i from 2 to n
+    temp &lt;- arr[i]
+    for j from i-1 to 1 And arr[j] &gt; temp
+       arr[i+1] &lt;- arr[i]
+       arr[i] &lt;- temp
+    end
+ end
+</code></pre>
+<p>&#x63D2;&#x5165;&#x6392;&#x5E8F;&#x7684;&#x5FAA;&#x73AF;&#x5B9E;&#x9645;&#x4E0A;&#x662F;</p>
+<pre><code class="lang-c">for (int i = 2; i &lt;= n; ++i)
+  for (int j = i - 1; j &gt;= 1; --j)
+</code></pre>
+<p>&#x8FD9;&#x76F8;&#x5F53;&#x4E8E;&#x8FDB;&#x884C;&#x4E86;n-1&#x6B21;&#x7684;&#x5BF9;&#x6BD4;&#xFF0C;&#x6BCF;&#x6B21;&#x5BF9;&#x6BD4;&#x53C8;&#x8FDB;&#x884C;&#x4E86;i-1&#x6B21;&#x7684;&#x4EA4;&#x6362;&#xFF0C;&#x5C06;&#x5176;&#x7D2F;&#x52A0;&#x8D77;&#x6765;&#x5C31;&#x5F97;&#x5230;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x3002;</p>
+<script type="math/tex; mode=display">
+T(n) = \sum_{i=2}^{n}i-1=\frac{(1+n-1)(n-1)}{2}=\frac{n^2-n}{2} =Θ(n^2)</script><p>&#x5982;&#x679C;&#x6709;c&#x4E3A;&#x5E38;&#x6570;&#xFF0C;&#x5FAA;&#x73AF;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-c">for (int i = 1; i &lt;= n; i *= c)
+</code></pre>
+<script type="math/tex; mode=display">
+令T(i)表示关于执行的次数i的函数，T(i)=c^i，令T(i)=n，则T(n)=Θ(\log_{c}{n})</script><p>&#x5982;&#x679C;&#x6709;c&#x548C;k&#x4E3A;&#x5E38;&#x6570;&#xFF0C;pow&#x4E3A;&#x6C42;i&#x7684;c&#x6B21;&#x65B9;&#xFF0C;&#x5FAA;&#x73AF;&#x4F53;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-c">for (int i = k; i &lt;= n; i = pow(i,c))
+</code></pre>
+<script type="math/tex; mode=display">
+令T(i)表示关于执行的次数i的函数，T(i)=k^{c^i}，令T(i)=n，则T(n)=Θ(\log_{k}{\log_{c}{n}})</script><h2 id="&#x9012;&#x5F52;&#x7B97;&#x6CD5;&#x5206;&#x6790;"><a href="#&#x9012;&#x5F52;&#x7B97;&#x6CD5;&#x5206;&#x6790;" class="headerlink" title="&#x9012;&#x5F52;&#x7B97;&#x6CD5;&#x5206;&#x6790;"></a>&#x9012;&#x5F52;&#x7B97;&#x6CD5;&#x5206;&#x6790;</h2><p>&#x9012;&#x5F52;&#x7B97;&#x6CD5;&#x6709;&#x4E09;&#x79CD;&#x5206;&#x6790;&#x65B9;&#x6CD5;&#x3002;</p>
+<ul>
+<li>&#x9012;&#x5F52;&#x6811;</li>
+</ul>
+<p>&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x6700;&#x76F4;&#x89C2;&#xFF0C;&#x4F46;&#x4E0D;&#x662F;&#x5F88;&#x4E25;&#x8C28;&#x3002;</p>
+<p>&#x5047;&#x8BBE;&#x67D0;&#x9012;&#x5F52;&#x516C;&#x5F0F;&#x4E3A;</p>
+<script type="math/tex; mode=display">
+T(n)=2T(\frac{n}{2})+n</script><p>&#x90A3;&#x4E48;&#x753B;&#x51FA;&#x5927;&#x81F4;&#x7684;&#x7684;&#x9012;&#x5F52;&#x6811;&#xFF0C;&#x8BA9;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x4EE3;&#x8868;&#xFF0C;&#x8FD9;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x590D;&#x6742;&#x5EA6;</p>
+<pre><code class="lang-c">           n        ----------n
+          / \
+        n/2 n/2      ---------n
+      / \    / \
+    n/4 n/4 n/4 n/4   --------n
+   .................  
+  &#x398;(1) .......... &#x398;(1)  ------n
+</code></pre>
+<p>&#x73B0;&#x5728;&#x53EA;&#x8981;&#x5C06;&#x6240;&#x6709;&#x8282;&#x70B9;&#x76F8;&#x52A0;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x8BA1;&#x7B97;&#x51FA;&#x603B;&#x590D;&#x6742;&#x5EA6;&#x4E86;&#x3002;&#x9012;&#x5F52;&#x6811;&#x7684;&#x6BCF;&#x4E00;&#x5C42;&#x76F8;&#x52A0;&#x90FD;&#x4E3A;n&#x3002;&#x800C;&#x9012;&#x5F52;&#x6811;&#x7684;&#x9AD8;&#x5EA6;&#x4E0E;&#x5E95;&#x90E8;&#x8282;&#x70B9;&#x7684;&#x503C;&#x6709;&#x5982;&#x4E0B;&#x5173;&#x7CFB;:</p>
+<script type="math/tex; mode=display">
+1 = \frac{n}{2^{h-1}}，则h=\log_{2}n+1</script><p>&#x90A3;&#x4E48;&#x6700;&#x540E;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x4E3A;&#x6BCF;&#x5C42;&#x8282;&#x70B9;&#x7684;&#x503C;&#x4E58;&#x4EE5;&#x6811;&#x7684;&#x9AD8;</p>
+<script type="math/tex; mode=display">
+O(n\log_{2}n)</script><p>&#x518D;&#x770B;&#x4E00;&#x4E2A;&#x590D;&#x6742;&#x70B9;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x5047;&#x8BBE;&#x67D0;&#x9012;&#x5F52;&#x516C;&#x5F0F;&#x4E3A;&#xFF1A;</p>
+<script type="math/tex; mode=display">
+T(n)=T(\frac{n}{2})+T(\frac{n}{4})+n^2</script><p>&#x753B;&#x51FA;&#x9012;&#x5F52;&#x6811;&#xFF1A;</p>
+<pre><code class="lang-c">               n^2                 ----------n^2
+          /         \
+       (n/2)^2    (n/4)^2           ---------5n^2/16
+      /     \      /     \
+ (n/4)^2 (n/8)^2 (n/8)^2 (n/16)^2    --------25^2/256
+..................................   
+&#x398;(1) ........................... &#x398;(1)  ------5^kn^2/16^k
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x9012;&#x5F52;&#x6811;&#x7684;&#x6BCF;&#x4E00;&#x5C42;&#x76F8;&#x52A0;&#x8D77;&#x6765;&#x662F;&#x4E00;&#x4E2A;&#x7B49;&#x6BD4;&#x6570;&#x5217;&#xFF0C;&#x5219;&#x5C06;&#x6240;&#x6709;&#x8282;&#x70B9;&#x76F8;&#x52A0;&#x4E3A;&#xFF1A;</p>
+<script type="math/tex; mode=display">
+(1+\frac{5}{16}+\frac{25}{256}+....+\frac{5^k}{16^k})n^2</script><p>&#x7531;&#x7B49;&#x6BD4;&#x6570;&#x5217;&#x7684;&#x6027;&#x8D28;</p>
+<script type="math/tex; mode=display">
+1+\frac{5}{16}+\frac{25}{256}+....+\frac{5^k}{16^k}< 2</script><p>&#x5F97;&#x51FA;&#x590D;&#x6742;&#x5EA6;&#x4E3A;</p>
+<script type="math/tex; mode=display">
+O(n^2)</script><ul>
+<li>&#x7ED3;&#x6784;&#x5F52;&#x7EB3;&#x6CD5;</li>
+</ul>
+<p>&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x662F;&#x6570;&#x5B66;&#x5F52;&#x7EB3;&#x6CD5;&#x5728;&#x8BA1;&#x7B97;&#x673A;&#x9886;&#x57DF;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x79F0;&#x4F5C;&#x7ED3;&#x6784;&#x5F52;&#x7EB3;&#x6CD5;&#x3002;&#x7ED3;&#x6784;&#x5F52;&#x7EB3;&#x6CD5;&#x505A;&#x7684;&#x5C31;&#x662F;&#x5148;&#x63D0;&#x51FA;&#x4E00;&#x4E2A;&#x731C;&#x60F3;&#xFF0C;&#x5148;&#x770B;&#x6700;&#x57FA;&#x672C;&#x7684;&#x7ED3;&#x6784;&#x662F;&#x5426;&#x7B26;&#x5408;&#x731C;&#x60F3;&#x3002;&#x7136;&#x540E;&#x5047;&#x8BBE;&#x95EE;&#x9898;&#x67D0;&#x7ED3;&#x6784;&#x7B26;&#x5408;&#x8FD9;&#x4E2A;&#x731C;&#x60F3;&#xFF0C;&#x6700;&#x540E;&#x770B;&#x5D4C;&#x5957;&#x7B26;&#x5408;&#x8FD9;&#x4E2A;&#x731C;&#x60F3;&#x7684;&#x7ED3;&#x6784;&#x662F;&#x5426;&#x4E5F;&#x7B26;&#x5408;&#x731C;&#x60F3;&#xFF0C;&#x5982;&#x679C;&#x57FA;&#x672C;&#x673A;&#x6784;&#x7B26;&#x5408;&#xFF0C;&#x5D4C;&#x5957;&#x7ED3;&#x6784;&#x4E5F;&#x7B26;&#x5408;&#xFF0C;&#x8BC1;&#x660E;&#x731C;&#x60F3;&#x662F;&#x6B63;&#x786E;&#x7684;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x6709;&#x4E2A;&#x86CB;&#x75BC;&#x7684;&#x5730;&#x65B9;&#x5C31;&#x662F;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x731C;&#x5BF9;&#x7B54;&#x6848;&#xFF0C;&#x518D;&#x8BC1;&#x660E;&#x4ED6;&#x3002;</p>
+<script type="math/tex; mode=display">
+某递归公式为T(n)=4T(\frac{n}{2})+n，且T(1)=O(1)</script><p>&#x7B2C;&#x4E00;&#x6B65;&#x5148;&#x505A;&#x731C;&#x60F3;&#xFF0C;&#x5F80;&#x5F80;&#x7B2C;&#x4E00;&#x6B65;&#x662F;&#x6700;&#x56F0;&#x96BE;&#x7684;&#xFF0C;&#x731C;&#x60F3;</p>
+<script type="math/tex; mode=display">
+T(n)=O(n^2)，且T(n)\le c_1n^2-n \\对于n=1，T(1)=c_1-1，符合T(1)=O(1) \\假设T(\frac{n}{2})成立，则T(n)=4(c_1\frac{n^2}{4}-\frac{n}{2})+n\\T(n) =c_1n^2-n \\T(n)\leq c_1n</script><p>&#x731C;&#x60F3;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x6570;&#x5B66;&#x6280;&#x5DE7;&#xFF0C;&#x60F3;&#x529E;&#x6CD5;&#x6D88;&#x9664;&#x9012;&#x5F52;&#x516C;&#x5F0F;&#x4E2D;&#x7684;n&#xFF0C;&#x53BB;&#x5F97;&#x51FA;&#x6700;&#x540E;&#x7684;&#x8BC1;&#x660E;&#x7ED3;&#x679C;&#xFF0C;&#x5982;&#x679C;&#x731C;</p>
+<script type="math/tex; mode=display">
+T(n)\le c_1n^2</script><p>&#x4F1A;&#x65E0;&#x6CD5;&#x5F97;&#x51FA;&#x6B63;&#x786E;&#x7684;&#x8BC1;&#x660E;&#x3002;</p>
+<p>&#x7528;&#x7ED3;&#x6784;&#x5F52;&#x7EB3;&#x6CD5;&#x8BC1;&#x660E;&#x9012;&#x5F52;&#x6811;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<script type="math/tex; mode=display">
+T(n) = 2T(\frac{n}{2})+n ，且T(1)=O(1) \\猜想:T(n) = O(n\log_{2}n)，且T(n)\le c_1n\log_{2}n+n \\对于n=1时，T(1)=1，符合T(1)=O(1) \\假设对于T(\frac{n}{2})成立，则T(n)证明如下：\\T(n)=2(c_1\frac{n}{2}\log_{2}\frac{n}{2} + \frac{n}{2})+n \\T(n) = 2(c_1\frac{n}{2}\log_{2}{n}-c_1\frac{n}{2}+\frac{n}{2})+n \\T(n)=c_1n\log_{2}n-c_1n+2n \\T(n)=c_1n\log_{2}n+(2-c_1)n \\存在c_1>1时，T(n)\le c_1nlog_{2}{n}+n</script><p>&#x540C;&#x6837;&#xFF0C;&#x731C;&#x7684;&#x65F6;&#x5019;&#x8981;&#x8FD0;&#x7528;&#x4E9B;&#x6570;&#x5B66;&#x6280;&#x5DE7;&#xFF0C;&#x5982;&#x679C;&#x731C;</p>
+<script type="math/tex; mode=display">
+T(n)\le\log_{2}n</script><p>&#x5F97;&#x51FA;T(1)&lt;=0&#xFF0C;&#x5C31;&#x65E0;&#x6CD5;&#x5F97;&#x51FA;&#x6B63;&#x786E;&#x7684;&#x8BC1;&#x660E;&#x4E86;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x6211;&#x4EEC;&#x521A;&#x8BC1;&#x660E;&#x4E86;&#x4E00;&#x904D;&#x5FEB;&#x6392;&#x548C;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x3002;</p>
+<ul>
+<li>&#x4E3B;&#x5B9A;&#x7406;</li>
+</ul>
+<p>&#x4E3B;&#x5B9A;&#x7406;&#x4F7F;&#x7528;&#x6709;&#x4E00;&#x5B9A;&#x8303;&#x56F4;&#xFF0C;&#x53EA;&#x80FD;&#x5BF9;&#x5F62;&#x5982;&#x4EE5;&#x4E0B;&#x9012;&#x5F52;&#x516C;&#x5F0F;&#xFF1A;</p>
+<script type="math/tex; mode=display">
+T(n)=aT(\frac{n}{b})+f(n)</script><p> &#x4E3B;&#x5B9A;&#x7406;&#x662F;&#x4ECE;&#x9012;&#x5F52;&#x6811;&#x65B9;&#x6CD5;&#x4E2D;&#x603B;&#x7ED3;&#x51FA;&#x6765;&#x7684;&#x7ECF;&#x9A8C;&#x516C;&#x5F0F;&#xFF0C;&#x4E0B;&#x56FE;&#x4E3A;&#x4E0A;&#x9762;&#x9012;&#x5F52;&#x516C;&#x5F0F;&#x7684;&#x901A;&#x9879;&#x9012;&#x5F52;&#x6811;&#x3002;</p>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/blog_&#x4E3B;&#x5B9A;&#x7406;&#x8BC1;&#x660E;&#x9012;&#x5F52;&#x6811;.jpg" alt="&#x4E3B;&#x5B9A;&#x7406;&#x8BC1;&#x660E;&#x9012;&#x5F52;&#x6811;"></p>
+<script type="math/tex; mode=display">
+树高为\log_{b}n，叶子节点的个数为a^{\log_{b}n}，即n^{\log_{b}a}，叶子节点层的复杂度为Θ(n^{\log_{b}a})</script><p>&#x4ECE;&#x56FE;&#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x4ECE;f(n)&#x4F38;&#x5C55;&#x5230;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x5C42;&#xFF0C;&#x6BCF;&#x5C42;&#x8282;&#x70B9;&#x7684;&#x89C4;&#x6A21;&#x4E3A;&#x4E0A;&#x5C42;&#x8282;&#x70B9;&#x4E58;&#x4EE5;a&#x9664;&#x4EE5;b&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x5E38;&#x6570;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;f(n)&#x5230;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x5C42;&#x8981;&#x4E0D;&#x7136;&#x9012;&#x589E;&#xFF0C;&#x8981;&#x4E0D;&#x7136;&#x9012;&#x51CF;&#xFF0C;&#x8981;&#x4E0D;&#x7136;&#x6574;&#x4E2A;&#x9012;&#x5F52;&#x6811;&#x4E0D;&#x540C;&#x5C42;&#x6570;&#x51E0;&#x4E4E;&#x76F8;&#x7B49;&#x3002;</p>
+<p>&#x4E3B;&#x5B9A;&#x7406;&#x5C31;&#x662F;&#x6BD4;&#x8F83;f(n)&#x4E0E;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x5728;&#x5C06;&#x6240;&#x6709;&#x8282;&#x70B9;&#x7D2F;&#x52A0;&#x6C42;&#x548C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x627E;&#x51FA;&#x8C01;&#x662F;&#x9AD8;&#x9636;&#x65E0;&#x7A77;&#x5927;&#x51FD;&#x6570;&#xFF0C;&#x6700;&#x540E;&#x6574;&#x4F53;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x5C31;&#x7531;&#x9AD8;&#x9636;&#x65E0;&#x7A77;&#x5927;&#x51FD;&#x6570;&#x51B3;&#x5B9A;:</p>
+<p>&#x5F53;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x590D;&#x6742;&#x5EA6;&#x8F83;&#x5927;&#x65F6;&#xFF0C;T(n)&#x7684;&#x590D;&#x6742;&#x5EA6;&#x5C31;&#x662F;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x3002;</p>
+<script type="math/tex; mode=display">
+T(n)=O(n^{\log_{b}a})</script><p>&#x5F53;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x548C;f(n)&#x590D;&#x6742;&#x5EA6;&#x51E0;&#x4E4E;&#x76F8;&#x7B49;&#x65F6;&#xFF0C;T(n)&#x7684;&#x590D;&#x6742;&#x5EA6;&#x5C31;&#x662F;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x590D;&#x6742;&#x5EA6;&#x4E58;&#x4E0A;&#x6811;&#x9AD8;&#xFF0C;&#x5E76;&#x4E14;&#x5FFD;&#x7565;b&#x5E38;&#x6570;&#x7684;&#x5927;&#x5C0F;&#x3002;</p>
+<script type="math/tex; mode=display">
+T(n)=Θ(n^{\log_{b}a}\log_{2}n)</script><p>&#x5F53;f(n)&#x590D;&#x6742;&#x5EA6;&#x8F83;&#x5927;&#x65F6;&#xFF0C;T(n)&#x7684;&#x590D;&#x6742;&#x5EA6;&#x5C31;&#x662F;f(n)&#x7684;&#x590D;&#x6742;&#x5EA6;&#x3002;</p>
+<script type="math/tex; mode=display">
+T(n)=Θ(f(n))</script><p>&#x4E3B;&#x5B9A;&#x7406;&#x5728;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x4E0D;&#x9002;&#x7528;&#xFF0C;&#x5C31;&#x662F;&#x53F6;&#x5B50;&#x5C42;&#x8282;&#x70B9;&#x590D;&#x6742;&#x5EA6;&#x4E0E;f(n)&#x590D;&#x6742;&#x5EA6;&#x76F8;&#x5DEE;&#x591A;&#x9879;&#x5F0F;&#x7EA7;&#x522B;&#x7684;&#x65F6;&#x5019;&#x3002;&#x6BD4;&#x5982;&#x4E0B;&#x9762;&#x4E24;&#x79CD;&#x60C5;&#x51B5;</p>
+<script type="math/tex; mode=display">
+O(叶子层)=n,O(f(n))=n\log_{2}n或O(叶子层)=n,O(f(n))=\frac{n}{\log_{2}n}</script><ul>
+<li>&#x603B;&#x7ED3;</li>
+</ul>
+<p>&#x5728;&#x5E73;&#x65F6;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#xFF0C;&#x78B0;&#x5230;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x4E0D;&#x4F1A;&#x592A;&#x590D;&#x6742;&#x3002;&#x5927;&#x90E8;&#x5206;&#x662F;&#x4E3B;&#x5B9A;&#x7406;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x7684;&#x3002;&#x6BD4;&#x5982;&#xFF1A;</p>
+<script type="math/tex; mode=display">
+T(n)=2T(\frac{n}{4})+n^2 \\ n^{\log_{b}{a}}=O(\sqrt{n}) \\ f(n)=Θ(n^2) \\ 根据主定理，T(n)=Θ(n^2)</script><p>&#x4E3B;&#x5B9A;&#x7406;&#x4E0D;&#x80FD;&#x89E3;&#x51B3;&#xFF0C;&#x5C31;&#x8981;&#x731C;&#x51FA;&#x7B54;&#x6848;&#xFF0C;&#x7136;&#x540E;&#x7528;&#x7ED3;&#x6784;&#x5F52;&#x7EB3;&#x6CD5;&#x8BC1;&#x660E;&#xFF0C;&#x6709;&#x4E9B;&#x95EE;&#x9898;&#x6BD4;&#x8F83;&#x597D;&#x731C;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;</p>
+<script type="math/tex; mode=display">
+T_1(n)=T_1(\frac{n}{2})+T_1(\frac{n}{4})+T_1(\frac{n}{8})+n \\ 我们熟悉递归T_2，T_2(n)=2T_2(\frac{n}{2})+n \\ T_2和T_1比，2 \cdot\frac{n}{2} > \frac{n}{2}+\frac{n}{4}+\frac{n}{8}</script><p>T2&#x6BCF;&#x5C42;&#x9012;&#x589E;&#x7684;&#x66F4;&#x591A;&#xFF0C;&#x90A3;&#x4E48;&#x53F6;&#x5B50;&#x5C42;&#x8282;&#x70B9;&#x590D;&#x6742;&#x5EA6;&#x80AF;&#x5B9A;&#x8981;&#x9AD8;&#x3002;&#x5DF2;&#x77E5;T2&#x7684;&#x53F6;&#x5B50;&#x5C42;&#x8282;&#x70B9;&#x548C;f(n)&#x51E0;&#x4E4E;&#x76F8;&#x7B49;&#xFF0C;&#x90A3;&#x4E48;T1&#x53F6;&#x5B50;&#x5C42;&#x8282;&#x70B9;&#x590D;&#x6742;&#x5EA6;&#x5E94;&#x8BE5;&#x6BD4;f(n)&#x5C0F;&#x3002;&#x5219;&#x53EF;&#x731C;&#x6240;&#x6C42;&#x5F0F;&#x590D;&#x6742;&#x5EA6;&#x4E3A;&#x398;(n)&#x3002;&#x518D;&#x901A;&#x8FC7;&#x7ED3;&#x6784;&#x5F52;&#x7EB3;&#x6CD5;&#x53EF;&#x4EE5;&#x5F88;&#x5BB9;&#x6613;&#x8BC1;&#x660E;&#x3002;</p>
+<p>&#x8FD8;&#x6709;&#x5F62;&#x5982;&#xFF1A;</p>
+<script type="math/tex; mode=display">
+T(n)=T(n-1)+\frac{1}{n}</script><p>&#x5BF9;&#x4E8E;&#x8FD9;&#x79CD;T(n)&#x9012;&#x5F52;&#x4E2D;&#x5305;&#x542B;T(n-1)&#x7684;&#xFF0C;&#x9012;&#x5F52;&#x7684;&#x516C;&#x5F0F;&#x53EF;&#x5316;&#x4E3A;</p>
+<script type="math/tex; mode=display">
+T(n)=\sum_{i=1}^{n}f(i)</script><p>&#x672C;&#x4F8B;&#x4E3A;&#x8C03;&#x548C;&#x7EA7;&#x6570;</p>
+<script type="math/tex; mode=display">
+T(n)=\sum_{i=1}^{n}\frac{1}{i}=\log_{2}{n}+c = Θ(\log_{2}{n})</script><p>&#x518D;&#x8FDB;&#x884C;&#x7ED3;&#x6784;&#x5F52;&#x7EB3;&#x6CD5;&#x8BC1;&#x660E;&#x4E5F;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x3002;</p>
+<p>&#x590D;&#x6742;&#x7684;&#xFF0C;&#x4E0D;&#x597D;&#x731C;&#x7684;&#xFF0C;&#x5C31;&#x7528;&#x9012;&#x5F52;&#x6811;&#x89E3;:</p>
+<script type="math/tex; mode=display">
+T(n)=\sum_{i=0}^{递归树高 }\cdot c\cdot每层的节点数\cdot此层节点的复杂度</script><p>&#x6BD4;&#x5982;:</p>
+<script type="math/tex; mode=display">
+T(n)=4T(\frac{n}{2}+2)+n \\ T(n)=\sum_{i=0}^{\log_{2}{n}}\cdot c\cdot4^i\cdot(\frac{n}{2^i}+2) \\ T(n)=\sum_{i=0}^{\log_{2}{n}}\cdot c\cdot (n\cdot2^i+2\cdot4^i) \\ T(n)=c\cdot n\sum_{i=0}^{\log_{2}{n}}2^i+2\cdot c\sum_{i=0}^{\log_{2}{n}}4^i \\ T(n)=c\cdot n(\frac{2^{\log_{2}{n}+1}-1}{2-1})+2\cdot c(\frac{4^{\log_{2}{n}+1}-1}{4-1}) \\ T(n)=c\cdot n(2n-1)+\frac{2\cdot c\cdot(4n^2-1)}{3} \\ T(n)=2cn^2-cn+\frac{8}{3}\cdot c\cdot n^2-\frac{2}{3}c \\ T(n)=O(n^2)</script><p>&#x8FD8;&#x6709;&#xFF1A;</p>
+<script type="math/tex; mode=display">
+T(n)=4T(\frac{n}{2})+n^2\log_{2}{n} \\ n^{\log_{b}{a}}=O(n^2)，f(n)=O(n^2\log_{2}{n})\\ n^{\log_{b}{a}}和f(n)相差多项式级别，所以主定理不适用，那就使用递归树方法 \\ T(n)=\sum_{i=0}^{\log_{2}{n}}\cdot c\cdot4^i\cdot\frac{n}{2^i}^2\cdot\log_{2}{\frac{n}{2^i}} \\ T(n)=\sum_{i=0}^{\log_{2}{n}}\cdot c\cdot n^2\cdot(\log_{2}{n}-i) \\ T(n)=\sum_{i=0}^{\log_{2}{n}}\cdot c\cdot n^2\cdot\log_{2}{n}-\sum_{i=0}^{\log_{2}{n}}\cdot c\cdot n^2\cdot i \\ T(n)=c\cdot n^2\cdot\log_{2}{n}\cdot\log_{2}{n}-c\cdot n^2\cdot\frac{(1+\log_{2}{n})\log_{2}{n}}{2}  \\ T(n)=c\cdot n^2\cdot\log_{2}{n}\cdot\log_{2}{n}-c\cdot n^2\cdot\log_{2}{n} \\ T(n)=O(n^2\log_{2}{n}\log_{2}{n})</script><p>&#x6700;&#x96BE;&#x7684;&#x4E00;&#x79CD;&#xFF0C;&#x5C31;&#x662F;&#x7528;&#x53D8;&#x91CF;&#x8C03;&#x6362;&#x65B9;&#x6CD5;&#xFF0C;&#x5C06;&#x539F;&#x5173;&#x7CFB;&#x5F0F;&#x8F6C;&#x6362;&#x6210;&#x6211;&#x4EEC;&#x719F;&#x6089;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x5047;&#x5982;&#x67D0;&#x9012;&#x5F52;&#x516C;&#x5F0F;&#x4E3A;&#xFF1A;</p>
+<script type="math/tex; mode=display">
+T(n)=2T(\sqrt{n})+\log_{2}{n} \\ 令m=\log_{2}{n}，则T(2^m)=2T(2^{\frac{m}{2}})+m \\ 令S(m)为关于m的函数，则S(m)=2S(\frac{m}{2})+m \\ 然后用主定理得出S(m)=O(m\log_{2}{m}) \\ 再将m置换回n，T(n)=O(\log_{2}{n}\log_{2}{\log_{2}{n}})</script><p>&#x8FD8;&#x6709;&#xFF1A;</p>
+<script type="math/tex; mode=display">
+T(n)=\sqrt{n}T(\sqrt{n})+n \\ \frac{T(n)}{n}=\frac{T(\sqrt{n})}{\sqrt{n}}+1 \\ 令S(n)=\frac{T(n)}{n}，则S(n)=S(\sqrt{n})+1 \\ 令n=2^{2^m}，则S(2^{2^m})=S(2^{2^{m-1}})+1 \\ 令S(m)为关于m的函数，则S(m)=S(m-1)+1 \\ S(m)=O(m)，则S(n)=O(\log_{2}{\log_{2}{n}}) \\ T(n)=O(n\log_{2}{\log_{2}{n}})</script><h2 id="&#x6982;&#x7387;&#x5206;&#x6790;"><a href="#&#x6982;&#x7387;&#x5206;&#x6790;" class="headerlink" title="&#x6982;&#x7387;&#x5206;&#x6790;"></a>&#x6982;&#x7387;&#x5206;&#x6790;</h2><p>&#x6982;&#x7387;&#x5206;&#x6790;&#x4F1A;&#x4F7F;&#x7528;&#x5E94;&#x7528;&#x6982;&#x7387;&#x7684;&#x6982;&#x5FF5;&#x53BB;&#x5206;&#x6790;&#x7B97;&#x6CD5;&#xFF0C;&#x57FA;&#x672C;&#x53EA;&#x51FA;&#x73B0;&#x5728;&#x5BF9;&#x968F;&#x673A;&#x7B97;&#x6CD5;&#x7684;&#x5206;&#x6790;&#x3002;&#x800C;&#x4F7F;&#x7528;&#x4E86;&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x5668;&#x53BB;&#x5F71;&#x54CD;&#x7B97;&#x6CD5;&#x7684;&#x884C;&#x4E3A;&#xFF0C;&#x5C31;&#x88AB;&#x8BA4;&#x4F5C;&#x968F;&#x673A;&#x7B97;&#x6CD5;&#x3002;&#x968F;&#x673A;&#x7B97;&#x6CD5;&#x5206;&#x4E3A;&#x4E24;&#x79CD;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x5C06;&#x8F93;&#x5165;&#x7684;&#x6A21;&#x5F0F;&#x6D88;&#x9664;&#xFF0C;&#x968F;&#x673A;&#x5316;&#x8F93;&#x5165;&#xFF0C;&#x6BD4;&#x5982;&#x5FEB;&#x6392;&#x968F;&#x673A;&#x5212;&#x5206;pivot&#x3002;&#x53E6;&#x4E00;&#x79CD;&#x662F;&#x7B97;&#x6CD5;&#x672C;&#x8EAB;&#x505A;&#x9009;&#x62E9;&#x65F6;&#x968F;&#x673A;&#x5316;&#xFF0C;&#x6BD4;&#x5982;&#x8DF3;&#x8868;&#x968F;&#x673A;&#x9009;&#x62E9;&#x589E;&#x957F;&#x5C42;&#x6570;&#x3002;</p>
+<p>&#x7B97;&#x5BFC;&#x4EE5;&#x5FEB;&#x6392;&#x4E3A;&#x4F8B;&#x8FDB;&#x884C;&#x6982;&#x7387;&#x5206;&#x6790;&#xFF0C;&#x8FD9;&#x91CC;&#x4E0D;&#x662F;&#x5B8C;&#x6574;&#x7684;&#x8BC1;&#x660E;&#x8FC7;&#x7A0B;&#xFF0C;&#x4E3B;&#x8981;&#x5173;&#x6CE8;&#x4E00;&#x4E0B;&#x4E0E;&#x6982;&#x7387;&#x5206;&#x6790;&#x6709;&#x5173;&#x7684;&#x5173;&#x952E;&#x90E8;&#x5206;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x8F93;&#x5165;&#x662F;&#x5DF2;&#x6392;&#x597D;&#x5E8F;&#x6570;&#x7EC4;&#x548C;&#x9006;&#x5E8F;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x6B64;&#x65F6;&#x4E3A;&#x5FEB;&#x6392;&#x7684;&#x6700;&#x574F;&#x60C5;&#x51B5;&#xFF0C;&#x9012;&#x5F52;&#x516C;&#x5F0F;&#x53D8;&#x4E3A;</p>
+<script type="math/tex; mode=display">
+T(n)=T(n-1)+Θ(n)，T(n)=Θ(n^2)</script><p>&#x5982;&#x679C;&#x8F93;&#x5165;&#x4F7F;&#x6BCF;&#x6B21;&#x5212;&#x5206;&#x70B9;&#x90FD;&#x5728;&#x6570;&#x7EC4;&#x7684;&#x4E2D;&#x95F4;&#xFF0C;&#x6B64;&#x65F6;&#x4E3A;&#x5FEB;&#x6392;&#x7684;&#x6700;&#x597D;&#x60C5;&#x51B5;&#xFF0C;&#x9012;&#x5F52;&#x516C;&#x5F0F;&#x4E3A;</p>
+<script type="math/tex; mode=display">
+T(n)=2T(\frac{n}{2})+Θ(n)，T(n)=Θ(n\log_{2}{n})</script><p>&#x90A3;&#x8FD9;&#x4E48;&#x591A;&#x7684;&#x8F93;&#x5165;&#x60C5;&#x51B5;&#xFF0C;&#x5982;&#x4F55;&#x6C42;&#x51FA;&#x5FEB;&#x6392;&#x7684;&#x5E73;&#x5747;&#x60C5;&#x51B5;&#x590D;&#x6742;&#x5EA6;&#x5462;&#xFF1F;&#x5C06;&#x8F93;&#x5165;&#x968F;&#x673A;&#x5316;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x8F93;&#x5165;&#x4E3A;&#x5747;&#x5300;&#x5206;&#x5E03;&#xFF0C;&#x6C42;&#x51FA;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x8F93;&#x5165;&#x7684;&#x6982;&#x7387;&#x4E58;&#x4EE5;&#x5176;&#x590D;&#x6742;&#x5EA6;&#x7684;&#x603B;&#x548C;&#xFF0C;&#x5C31;&#x662F;&#x671F;&#x671B;&#x503C;&#xFF0C;&#x5C31;&#x6C42;&#x51FA;&#x4E86;&#x5FEB;&#x6392;&#x7684;&#x5E73;&#x5747;&#x60C5;&#x51B5;&#x590D;&#x6742;&#x5EA6;&#x3002;</p>
+<script type="math/tex; mode=display">
+设X_k为k点被选择为pivot的事件，则k被选中的次数X_k=\begin{equation}  
+\left\{  
+             \begin{array}{lr}  
+             1 & 如果k被选为pivot \\  
+             0 & 如果k未被选为pivot \\  
+             \end{array}  
+\right.  
+\end{equation} \\ 期望E(X_k)=0\cdot Pr(k被未选中的概率)+1\cdot Pr(k被选中的概率) =\frac{1}{n} \\ pviot可被选择的范围为[0,n-1]，当选择pviot点为k时\\递归公式可转化为T(n)=T(k)+T(n-k-1)+Θ(n) \\ 则T(n)的期望值为所有可能的期望值总和\\即E(T(n))=\sum_{k=0}^{n-1}E[X_k(T(k)+T(n-k-1)+Θ(n))] \\ 而根据两个互相独立的随机变量的乘积的期望等于这两个随机变量期望的乘积\\E(T(n))可以转化为，E(T(n))=\sum_{k=0}^{n-1}E(X_k)\cdot E(T(k)+T(n-k-1)+Θ(n)) \\ 又因为E(X_k)=\frac{1}{n}，T(k)与T(n-k-1)在k从0到n-1的累加中是互相逆序且结果相同 \\ E(T(n))可以转化为，E(T(n))=\frac{2}{n}\sum_{k=0}^{n-1}E(T(k)+Θ(n)) \\ 然后用数学归纳法证明出，E(T(n))\leq n\log_{2}{n}\\就可以得出快排的平均情况复杂度为O(n\log_{2}{n})</script><p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5BF9;&#x968F;&#x673A;&#x7B97;&#x6CD5;&#x7684;&#x6982;&#x7387;&#x5206;&#x6790;&#x5C31;&#x662F;&#x5728;&#x6C42;&#x968F;&#x673A;&#x7B97;&#x6CD5;&#x7684;&#x671F;&#x671B;&#x3002;</p>
+<h2 id="&#x644A;&#x8FD8;&#x5206;&#x6790;"><a href="#&#x644A;&#x8FD8;&#x5206;&#x6790;" class="headerlink" title="&#x644A;&#x8FD8;&#x5206;&#x6790;"></a>&#x644A;&#x8FD8;&#x5206;&#x6790;</h2><p>&#x6709;&#x4E9B;&#x7B97;&#x6CD5;&#x548C;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x540C;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x6216;&#x8005;&#x6B65;&#x9AA4;&#xFF0C;&#x4F1A;&#x6839;&#x636E;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x6539;&#x53D8;&#x590D;&#x6742;&#x5EA6;&#xFF0C;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x8981;&#x60F3;&#x66F4;&#x52A0;&#x4E25;&#x8C28;&#x7684;&#x5206;&#x6790;&#x7B97;&#x6CD5;&#x5C31;&#x4E0D;&#x80FD;&#x6309;&#x4E00;&#x79CD;&#x590D;&#x6742;&#x5EA6;&#x6765;&#x7B80;&#x5355;&#x5206;&#x6790;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x51E1;&#x662F;&#x9700;&#x8981;&#x6269;&#x5BB9;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x5176;&#x63D2;&#x5165;&#x64CD;&#x4F5C;&#x5C31;&#x8981;&#x5305;&#x542B;&#x6269;&#x5BB9;&#x7684;&#x590D;&#x6742;&#x5EA6;&#xFF0C;&#x54C8;&#x5E0C;&#x8868;&#x63D2;&#x5165;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x662F;&#x398;(1)&#xFF0C;&#x6269;&#x5BB9;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x662F;&#x398;(n)&#xFF0C;&#x8FDB;&#x884C;&#x5206;&#x6790;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x80FD;&#x5FFD;&#x7565;&#x6269;&#x5BB9;&#xFF0C;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x644A;&#x8FD8;&#x5206;&#x6790;&#x3002;&#x644A;&#x8FD8;&#x5206;&#x6790;&#x5C31;&#x662F;&#x5C06;&#x4EE3;&#x4EF7;&#x8F83;&#x9AD8;&#x64CD;&#x4F5C;&#x7684;&#x4EE3;&#x4EF7;&#x5E73;&#x644A;&#x5230;&#x6BCF;&#x4E2A;&#x64CD;&#x4F5C;&#x4E0A;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6C42;&#x5E73;&#x5747;&#x4EE3;&#x4EF7;&#x3002;&#x644A;&#x8FD8;&#x5206;&#x6790;&#x6709;&#x4E09;&#x79CD;&#x5206;&#x6790;&#x65B9;&#x6CD5;&#xFF0C;&#x805A;&#x96C6;&#x6CD5;&#x3001;&#x8BB0;&#x8D26;&#x6CD5;&#x3001;&#x52BF;&#x80FD;&#x6CD5;&#x3002;&#x4E0B;&#x9762;&#x5C31;&#x662F;&#x7528;&#x8FD9;&#x4E09;&#x79CD;&#x65B9;&#x6CD5;&#x5206;&#x6790;&#x54C8;&#x5E0C;&#x8868;&#x7684;&#x63D2;&#x5165;&#x590D;&#x6742;&#x5EA6;&#xFF0C;&#x5047;&#x8BBE;&#x54C8;&#x5E0C;&#x8868;&#x4EE5;2&#x7684;&#x5E42;&#x6570;&#x8FDB;&#x884C;&#x6269;&#x5BB9;&#x3002;</p>
+<ul>
+<li>&#x805A;&#x96C6;&#x6CD5;</li>
+</ul>
+<p>&#x805A;&#x96C6;&#x6CD5;&#x5C31;&#x662F;&#x5C06;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x7684;&#x5B9E;&#x9645;&#x590D;&#x6742;&#x5EA6;&#x52A0;&#x8D77;&#x6765;&#xFF0C;&#x7136;&#x540E;&#x9664;&#x6CD5;&#x6C42;&#x5E73;&#x5747;&#x3002;</p>
+<script type="math/tex; mode=display">
+设C_i为第i个插入的代价，则C_i=\begin{equation}  
+\left\{  
+             \begin{array}{lr}  
+             i & 如果i-1为2的幂数 \\  
+             1& 如果i-1不为2的幂数\\  
+             \end{array}  
+\right.  
+\end{equation} \\ 则C_{insert-total}(n)=\sum_{i=1}^{n}C_i=n+\sum_{j=0}^{\log_{2}{n-1}}2^j\leq 3n=Θ(n) \\ C_{insert-average}=\frac{C_{insert-total}}{n}=Θ(1)</script><p>&#x7ED3;&#x8BBA;&#x4E3A;&#xFF0C;&#x5E73;&#x644A;&#x6269;&#x5BB9;&#x7684;&#x4EE3;&#x4EF7;&#x7ED9;&#x6BCF;&#x4E2A;&#x63D2;&#x5165;&#x540E;&#xFF0C;&#x5E73;&#x5747;&#x7684;&#x63D2;&#x5165;&#x4EE3;&#x4EF7;&#x4E3A;&#x398;(1)&#x3002;</p>
+<ul>
+<li>&#x8BB0;&#x8D26;&#x6CD5;</li>
+</ul>
+<p>&#x8BB0;&#x8D26;&#x6CD5;&#x5C31;&#x662F;&#x7ED9;&#x6BCF;&#x4E2A;&#x64CD;&#x4F5C;&#x4E00;&#x4E2A;&#x644A;&#x8FD8;&#x4EE3;&#x4EF7;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x62EC;&#x9884;&#x652F;&#x7684;&#x6269;&#x5BB9;&#x4EE3;&#x4EF7;&#xFF0C;&#x6BCF;&#x4E2A;&#x64CD;&#x4F5C;&#x5C06;&#x9884;&#x652F;&#x7684;&#x4EE3;&#x4EF7;&#x5148;&#x5B58;&#x50A8;&#x8D77;&#x6765;&#xFF0C;&#x7B49;&#x5230;&#x6269;&#x5BB9;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x518D;&#x53D6;&#x51FA;&#x9884;&#x652F;&#x7684;&#x6269;&#x5BB9;&#x4EE3;&#x4EF7;&#x82B1;&#x8D39;&#x3002;</p>
+<p>&#x7ED9;&#x6BCF;&#x4E2A;&#x63D2;&#x5165;&#x64CD;&#x4F5C;3&#x5355;&#x4F4D;&#x7684;&#x644A;&#x8FD8;&#x4EE3;&#x4EF7;&#xFF0C;&#x6BCF;&#x4E2A;&#x63D2;&#x5165;&#x64CD;&#x4F5C;&#x4F1A;&#x82B1;&#x8D39;&#x4E00;&#x4E2A;&#x5355;&#x4F4D;&#x4EE3;&#x4EF7;&#x6765;&#x8FDB;&#x884C;&#x63D2;&#x5165;&#xFF0C;&#x5B58;&#x50A8;&#x4E24;&#x4E2A;&#x5355;&#x4F4D;&#x4EE3;&#x4EF7;&#x3002;&#x5F53;&#x6269;&#x5BB9;&#x53D1;&#x751F;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x4ECE;&#x5B58;&#x50A8;&#x7684;&#x4EE3;&#x4EF7;&#x6263;&#x9664;&#xFF0C;&#x5982;&#x679C;&#x5B58;&#x50A8;&#x4E0D;&#x591F;&#x6263;&#x7684;&#xFF0C;&#x5C31;&#x8868;&#x660E;&#x7ED9;&#x6BCF;&#x4E2A;&#x63D2;&#x5165;&#x64CD;&#x4F5C;&#x7684;&#x644A;&#x8FD8;&#x4EE3;&#x4EF7;&#x5C11;&#x4E86;&#xFF0C;&#x6CA1;&#x6CD5;&#x7EE7;&#x7EED;&#x5206;&#x6790;&#x4E86;&#x3002;&#x6240;&#x4EE5;&#x8981;&#x6C42;&#xFF1A;</p>
+<script type="math/tex; mode=display">
+设\mathop{C_i}\limits_{}^{\verb!^!}为第i个插入的摊还代价，\sum_{i=1}^{n}C_i\leq\sum_{i=1}^{n}\mathop{C_i}\limits_{}^{\verb!^!}，对于所有的n</script><p>&#x5047;&#x5982;&#x8868;&#x4E2D;&#x7684;&#x5BB9;&#x91CF;&#x4E3A;m&#xFF0C;&#x6709;m/2&#x4E2A;&#x5143;&#x7D20;&#x3002;&#x5982;&#x679C;&#x6211;&#x7ED9;&#x6BCF;&#x4E2A;&#x64CD;&#x4F5C;3&#x5355;&#x4F4D;&#x7684;&#x644A;&#x8FD8;&#x4EE3;&#x4EF7;&#xFF0C;&#x7B49;&#x5230;&#x8868;&#x4E2D;m&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x9700;&#x8981;&#x6269;&#x5BB9;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5DF2;&#x7ECF;&#x5B58;&#x50A8;&#x4E86;2&#x4E58;&#x4EE5;m/2&#x4E2A;&#x4EE3;&#x4EF7;&#x3002;&#x4E5F;&#x5C31;&#x8BF4;&#x6BCF;&#x5230;&#x9700;&#x8981;&#x6269;&#x5BB9;&#x65F6;&#xFF0C;&#x6269;&#x5BB9;&#x4F1A;&#x6B63;&#x597D;&#x5C06;&#x5B58;&#x50A8;&#x7684;&#x4EE3;&#x4EF7;&#x5168;&#x90E8;&#x7528;&#x5149;&#xFF0C;&#x7136;&#x540E;&#x5269;&#x4E0B;&#x6B64;&#x6B65;&#x65B0;&#x7ED9;&#x7684;2&#x5355;&#x4F4D;&#x4EE3;&#x4EF7;&#xFF0C;&#x8868;&#x7684;&#x63D2;&#x5165;&#x5C31;&#x4F1A;&#x4E00;&#x76F4;&#x8FD9;&#x6837;&#x5FAA;&#x73AF;&#x4E0B;&#x53BB;&#x3002;&#x90A3;&#x4E48;&#xFF0C;&#x6211;&#x5C31;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x6BCF;&#x6B21;&#x63D2;&#x5165;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x5C31;&#x4E3A;&#x398;(3)&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x398;(1)&#x3002;</p>
+<ul>
+<li>&#x52BF;&#x80FD;&#x6CD5;</li>
+</ul>
+<p>&#x5728;&#x8BB0;&#x8D26;&#x6CD5;&#x4E2D;&#xFF0C;&#x5148;&#x5047;&#x5B9A;&#x4E86;&#x644A;&#x8FD8;&#x4EE3;&#x4EF7;&#xFF0C;&#x7136;&#x540E;&#x5206;&#x6790;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x5B58;&#x50A8;&#x7684;&#x4EE3;&#x4EF7;&#x3002;&#x800C;&#x52BF;&#x80FD;&#x6CD5;&#x6B63;&#x597D;&#x76F8;&#x53CD;&#xFF0C;&#x5148;&#x5047;&#x5B9A;&#x5B58;&#x50A8;&#x7684;&#x4EE3;&#x4EF7;&#xFF0C;&#x7136;&#x540E;&#x8BA1;&#x7B97;&#x644A;&#x8FD8;&#x4EE3;&#x4EF7;&#x3002;</p>
+<p>&#x5C06;&#x5B58;&#x50A8;&#x7684;&#x4EE3;&#x4EF7;&#x7528;&#x52BF;&#x80FD;&#x6765;&#x8868;&#x793A;(&#x771F;&#x662F;&#x4E0D;&#x77E5;&#x9053;&#x8FD9;&#x5E2E;&#x4EBA;&#x662F;&#x600E;&#x4E48;&#x60F3;&#x5230;&#x7684;&#x3002;&#x3002;)&#xFF0C;&#x5E76;&#x8BA9;&#x6BCF;&#x4E00;&#x6B65;&#x63D2;&#x5165;&#x64CD;&#x4F5C;&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x6620;&#x5C04;&#x6210;&#x65B0;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;&#x7528;<script type="math/tex">\phi</script>&#x51FD;&#x6570;&#x8868;&#x793A;&#x52BF;&#x80FD;&#x51FD;&#x6570;&#xFF0C;<script type="math/tex">D</script>&#x8868;&#x793A;&#x65B0;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;&#x6BCF;&#x6B21;&#x63D2;&#x5165;&#x64CD;&#x4F5C;&#xFF0C;&#x4F1A;&#x8BA9;&#x6570;&#x636E;&#x7ED3;&#x6784;<script type="math/tex">D_{i-1}->D_i</script>&#x3002;&#x5BF9;&#x4E8E;<script type="math/tex">\phi</script>&#x51FD;&#x6570;&#xFF0C;&#x6709;<script type="math/tex">\mathop{C_i}\limits_{}^{\verb!^!}=c_i+\phi(D_i)-\phi(D_{i-1})</script>&#xFF0C;&#x5373;&#x5E73;&#x644A;&#x4EE3;&#x4EF7;=&#x5B9E;&#x9645;&#x4EE3;&#x4EF7;+&#x52BF;&#x80FD;&#x53D8;&#x5316;&#x3002;</p>
+<script type="math/tex; mode=display">
+总摊还代价为，\sum_{i=1}^{n}\mathop{C_i}\limits_{}^{\verb!^!}=\sum_{i=1}^{n}(C_i+\phi(D_i)-\phi(D_{i-1}))=\sum_{i=1}^{n}C_i+\phi(D_n)-\phi(D_0)\geq \sum_{i=1}^{n}C_i \\ 假设每一步存储的代价，\phi(D_i)=2^i-2^{\log_{2}{i}} \\ \mathop{C_i}\limits_{}^{\verb!^!}=c_i+\phi(D_i)-\phi(D_{i-1}） \\ =\begin{equation}  
+\left\{  
+             \begin{array}{lr}  
+             i & i-1是2的幂数\\  
+             1 & i-1不是2的幂数\\  
+             \end{array}  
+\right.  
+\end{equation} +(2^i-2^{\log_{2}{i}})-(2^{i-1}-2^{\log_{2}{i-1}}) \\</script><script type="math/tex; mode=display">
+=\begin{equation}  
+\left\{  
+             \begin{array}{lr}  
+             i & i-1是2的幂数\\  
+             1 & i-1不是2的幂数\\  
+             \end{array}  
+\right.  
+\end{equation} +2-2^{\log_{2}{i}}+2^{\log_{2}{i-1}}</script><script type="math/tex; mode=display">
+=\begin{equation}  
+\left\{  
+             \begin{array}{lr}  
+             3 & i-1是2的幂数\\  
+             3 & i-1不是2的幂数\\  
+             \end{array}  
+\right.  
+\end{equation} \\ 即\mathop{C_i}\limits_{}^{\verb!^!}=3，则插入的复杂度为Θ(1)</script><p><br></p>
+<blockquote>
+<p>&#x5F53;&#x5B66;&#x4F1A;&#x5982;&#x4F55;&#x8861;&#x91CF;&#x7B97;&#x6CD5;&#x597D;&#x574F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x8BE5;&#x627E;&#x70B9;&#x7B97;&#x6CD5;&#x6765;&#x8861;&#x91CF;&#x4E86;&#x3002;</p>
+</blockquote>
+<p><br></p>
+<h2 id="&#x5F15;&#x7528;"><a href="#&#x5F15;&#x7528;" class="headerlink" title="&#x5F15;&#x7528;"></a>&#x5F15;&#x7528;</h2><p>&#x7B97;&#x5BFC;&#x7684;&#x7B2C;&#x56DB;&#x7AE0;&#x4E60;&#x9898; <a href="http://atekihcan.github.io/CLRS/" target="_blank" rel="noopener">http://atekihcan.github.io/CLRS/</a></p>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            共享声明：本作品采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh">知识共享署名 4.0 国际许可协议</a> 转载时请注明作者和原文链接
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="http://blog.mrriddler.com/算法炽热/">http://blog.mrriddler.com/算法炽热/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 Gitalk -->
+<div id="gitalk-comment">
+    <!-- Gitalk 评论框 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+            clientID: '733efef7eec90bd2c27e',
+            clientSecret: 'd55768251fe00f869db35b201ba09118f3c68d3f',
+            repo: 'mrriddler.github.io',
+            owner: 'mrriddler',
+            admin: ['mrriddler'],
+            // facebook-like distraction free mode
+            distractionFreeMode: false
+        })
+   gitalk.render('gitalk-container')
+</script>
+</div>
+<style>
+    #gitalk-comment {
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/算法升腾/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/算法火花/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="mrriddler's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        robbieless21@outlook.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">六月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/clang/">clang<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/iOS/">iOS<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/图片/">图片<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/存储体系/">存储体系<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构/">数据结构<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/算法/">算法<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机体系/">计算机体系<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/链接与装载/">链接与装载<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">18</span>
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+    <span id="footer-image">
+        <a href="https://wx.qq.com//" target="_blank" title="wechat_logo">
+            <img src="/img/qrcode.jpg" alt="wechat_logo"><!--
+     --></a>
+    </span>
+
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/robbie22" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/mrriddler" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+        <a href="https://www.linkedin.com/in/mrriddler" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-linkedin">
+                <span class="visuallyhidden">LinkedIn</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;谜语糖
+            
+                <br>
+                
+                    Abstract the whole universe.
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/lazyload.min.js", true)</script>
+
+
+
+    <script>lsloader.load("js_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/js.min.js", true)</script>
+
+
+
+    <script>lsloader.load("np_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/nprogress.js", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+   <!-- GitTalk -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/prettify.min.js", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+    <script src="https//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 2016;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+    
+</html>
