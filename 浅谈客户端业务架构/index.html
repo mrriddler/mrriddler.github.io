@@ -48,7 +48,7 @@
     
     <title>
         
-            Clang Plugin--Sherlock | 
+            浅谈客户端业务架构 | 
         
         谜语糖
     </title>
@@ -58,8 +58,8 @@
     <link rel="icon" href="/img/favicon.png">
 
     <meta name="format-detection" content="telephone=no"/>
-    <meta name="description" itemprop="description" content="本篇文章就介绍一下如何做一个Clang Plugin和我提供的面向Objective-C的开源方案Sherlock。对于Swift已有开源方案SwiftLint。">
-    <meta name="keywords" content=",clang">
+    <meta name="description" itemprop="description" content="这一篇文章中，笔者带着自己有限的经验，会从一些经典架构出发，结合客户端业务复杂度特点，针对一些常见问题，提出一些建议和看法。文中有很多个人观点，鉴于笔者才疏学浅，难免有失偏颇，望各位看官指点一二。架构这个话题很广，又没有明确定义，本文就不以体系的角度，仅以业务开发上的架构为题探讨。">
+    <meta name="keywords" content=",架构">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -225,7 +225,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="谜语糖">
-    <meta name="msapplication-starturl" content="http://blog.mrriddler.com/Clang插件-Sherlock/">
+    <meta name="msapplication-starturl" content="http://blog.mrriddler.com/浅谈客户端业务架构/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="谜语糖">
@@ -240,16 +240,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://blog.mrriddler.com/Clang插件-Sherlock/">
+    <meta property="og:url" content="http://blog.mrriddler.com/浅谈客户端业务架构/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Clang Plugin--Sherlock | 谜语糖">
+    <meta property="og:title" content="浅谈客户端业务架构 | 谜语糖">
     <meta property="og:image" content="/img/favicon.png">
-    <meta property="og:description" content="本篇文章就介绍一下如何做一个Clang Plugin和我提供的面向Objective-C的开源方案Sherlock。对于Swift已有开源方案SwiftLint。">
-    <meta property="og:article:tag" content="clang"> 
+    <meta property="og:description" content="这一篇文章中，笔者带着自己有限的经验，会从一些经典架构出发，结合客户端业务复杂度特点，针对一些常见问题，提出一些建议和看法。文中有很多个人观点，鉴于笔者才疏学浅，难免有失偏颇，望各位看官指点一二。架构这个话题很广，又没有明确定义，本文就不以体系的角度，仅以业务开发上的架构为题探讨。">
+    <meta property="og:article:tag" content="架构"> 
 
     
-        <meta property="article:published_time" content="Fri Feb 24 2017 17:58:00 GMT+0800">
-        <meta property="article:modified_time" content="Thu Aug 23 2018 14:07:13 GMT+0800">
+        <meta property="article:published_time" content="Sun Sep 09 2018 17:57:00 GMT+0800">
+        <meta property="article:modified_time" content="Sun Sep 09 2018 19:03:09 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -257,7 +257,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://blog.mrriddler.com/Clang插件-Sherlock/index.html" />
+        <link rel="canonical" href="http://blog.mrriddler.com/浅谈客户端业务架构/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -269,10 +269,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://blog.mrriddler.com/Clang插件-Sherlock/index.html",
-    "headline": "Clang Plugin--Sherlock",
-    "datePublished": "Fri Feb 24 2017 17:58:00 GMT+0800",
-    "dateModified": "Thu Aug 23 2018 14:07:13 GMT+0800",
+    "mainEntityOfPage": "http://blog.mrriddler.com/浅谈客户端业务架构/index.html",
+    "headline": "浅谈客户端业务架构",
+    "datePublished": "Sun Sep 09 2018 17:57:00 GMT+0800",
+    "dateModified": "Sun Sep 09 2018 19:03:09 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "mrriddler",
@@ -290,8 +290,8 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": ",clang",
-    "description": "本篇文章就介绍一下如何做一个Clang Plugin和我提供的面向Objective-C的开源方案Sherlock。对于Swift已有开源方案SwiftLint。",
+    "keywords": ",架构",
+    "description": "这一篇文章中，笔者带着自己有限的经验，会从一些经典架构出发，结合客户端业务复杂度特点，针对一些常见问题，提出一些建议和看法。文中有很多个人观点，鉴于笔者才疏学浅，难免有失偏颇，望各位看官指点一二。架构这个话题很广，又没有明确定义，本文就不以体系的角度，仅以业务开发上的架构为题探讨。",
 }
 </script>
 
@@ -356,7 +356,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Clang-Plugin"><span class="post-toc-number">1.</span> <span class="post-toc-text">Clang Plugin</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Sherlock"><span class="post-toc-number">2.</span> <span class="post-toc-text">Sherlock</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#buildIn-base-rule"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">buildIn base rule</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Configure"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Configure</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CustomRule"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">CustomRule</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#编写Clang-Plugin的“拦路虎”"><span class="post-toc-number">3.</span> <span class="post-toc-text">编写Clang Plugin的“拦路虎”</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#推荐文章"><span class="post-toc-number">4.</span> <span class="post-toc-text">推荐文章</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#经典架构"><span class="post-toc-number">1.</span> <span class="post-toc-text">经典架构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MVC"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">MVC</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MVP"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">MVP</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MVVM"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">MVVM</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#VIPER"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">VIPER</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#客户端复杂度"><span class="post-toc-number">2.</span> <span class="post-toc-text">客户端复杂度</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据流向"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">数据流向</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多场景数据一致性"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">多场景数据一致性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单元化"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">单元化</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#RIBs"><span class="post-toc-number">3.</span> <span class="post-toc-text">RIBs</span></a></li></ol>
     </ul>
     
 
@@ -376,10 +376,10 @@
     <!-- Paradox Post Header -->
     
         <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://o79rgqboc.bkt.clouddn.com/clang.png)">
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://o79rgqboc.bkt.clouddn.com/mvc.png)">
     
             <p class="article-headline-p">
-                Clang Plugin--Sherlock
+                浅谈客户端业务架构
             </p>
         </div>
 
@@ -398,7 +398,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>mrriddler</strong>
-        <span>2月 24, 2017</span>
+        <span>9月 09, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -422,7 +422,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/clang/">clang</a>
+        <a class="post_tag-link" href="/tags/架构/">架构</a>
     </ul>
     
 
@@ -439,7 +439,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Clang Plugin--Sherlock&url=http://blog.mrriddler.com/Clang插件-Sherlock/index.html&pic=http://blog.mrriddler.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=浅谈客户端业务架构&url=http://blog.mrriddler.com/浅谈客户端业务架构/index.html&pic=http://blog.mrriddler.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -448,7 +448,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Clang Plugin--Sherlock&url=http://blog.mrriddler.com/Clang插件-Sherlock/index.html&via=mrriddler" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=浅谈客户端业务架构&url=http://blog.mrriddler.com/浅谈客户端业务架构/index.html&via=mrriddler" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -463,7 +463,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.mrriddler.com/Clang插件-Sherlock/index.html&title=Clang Plugin--Sherlock" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.mrriddler.com/浅谈客户端业务架构/index.html&title=浅谈客户端业务架构" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -485,155 +485,70 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>&#x672C;&#x7BC7;&#x6587;&#x7AE0;&#x5C31;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#x5982;&#x4F55;&#x505A;&#x4E00;&#x4E2A;Clang Plugin&#x548C;&#x6211;&#x63D0;&#x4F9B;&#x7684;&#x9762;&#x5411;Objective-C&#x7684;&#x5F00;&#x6E90;&#x65B9;&#x6848;<strong>Sherlock</strong>&#x3002;&#x5BF9;&#x4E8E;Swift&#x5DF2;&#x6709;&#x5F00;&#x6E90;&#x65B9;&#x6848;<a href="https://github.com/realm/SwiftLint" target="_blank" rel="noopener">SwiftLint</a>&#x3002;</p>
+        <p>&#x8FD9;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x4E2D;&#xFF0C;&#x7B14;&#x8005;&#x5E26;&#x7740;&#x81EA;&#x5DF1;&#x6709;&#x9650;&#x7684;&#x7ECF;&#x9A8C;&#xFF0C;&#x4F1A;&#x4ECE;&#x4E00;&#x4E9B;&#x7ECF;&#x5178;&#x67B6;&#x6784;&#x51FA;&#x53D1;&#xFF0C;&#x7ED3;&#x5408;&#x5BA2;&#x6237;&#x7AEF;&#x4E1A;&#x52A1;&#x590D;&#x6742;&#x5EA6;&#x7279;&#x70B9;&#xFF0C;&#x9488;&#x5BF9;&#x4E00;&#x4E9B;&#x5E38;&#x89C1;&#x95EE;&#x9898;&#xFF0C;&#x63D0;&#x51FA;&#x4E00;&#x4E9B;&#x5EFA;&#x8BAE;&#x548C;&#x770B;&#x6CD5;&#x3002;&#x6587;&#x4E2D;&#x6709;&#x5F88;&#x591A;&#x4E2A;&#x4EBA;&#x89C2;&#x70B9;&#xFF0C;&#x9274;&#x4E8E;&#x7B14;&#x8005;&#x624D;&#x758F;&#x5B66;&#x6D45;&#xFF0C;&#x96BE;&#x514D;&#x6709;&#x5931;&#x504F;&#x9887;&#xFF0C;&#x671B;&#x5404;&#x4F4D;&#x770B;&#x5B98;&#x6307;&#x70B9;&#x4E00;&#x4E8C;&#x3002;&#x67B6;&#x6784;&#x8FD9;&#x4E2A;&#x8BDD;&#x9898;&#x5F88;&#x5E7F;&#xFF0C;&#x53C8;&#x6CA1;&#x6709;&#x660E;&#x786E;&#x5B9A;&#x4E49;&#xFF0C;&#x672C;&#x6587;&#x5C31;&#x4E0D;&#x4EE5;&#x4F53;&#x7CFB;&#x7684;&#x89D2;&#x5EA6;&#xFF0C;&#x4EC5;&#x4EE5;&#x4E1A;&#x52A1;&#x5F00;&#x53D1;&#x4E0A;&#x7684;&#x67B6;&#x6784;&#x4E3A;&#x9898;&#x63A2;&#x8BA8;&#x3002;</p>
 <a id="more"></a>
-<p>&#x6700;&#x8FD1;&#x9879;&#x76EE;&#x6B63;&#x5728;&#x5B8C;&#x5584;&#x4E00;&#x5957;&#x4EE3;&#x7801;&#x89C4;&#x8303;&#xFF0C;&#x76F8;&#x6BD4;&#x4E8E;&#x7528;&#x7BA1;&#x7406;&#x4EBA;&#x7684;&#x65B9;&#x5F0F;&#x53BB;&#x89C4;&#x5B9A;&#x5FC5;&#x987B;&#x8981;&#x600E;&#x4E48;&#x505A;&#xFF0C;&#x4E0D;&#x5982;&#x76F4;&#x63A5;&#x7528;&#x5DE5;&#x7A0B;&#x5316;&#x7684;&#x601D;&#x60F3;&#xFF0C;&#x8BA9;&#x7F16;&#x8BD1;&#x5668;&#x5E2E;&#x6211;&#x4EEC;&#x68C0;&#x67E5;&#xFF0C;<a href="http://tech.meituan.com/clean-code.html" target="_blank" rel="noopener">&#x66F4;&#x591A;&#x5173;&#x4E8E;CleanCode&#x7684;&#x5185;&#x5BB9;</a>&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4ECE;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x6216;&#x9759;&#x6001;&#x5206;&#x6790;(&#x8BED;&#x4E49;&#x5206;&#x6790;)&#x5165;&#x624B;&#xFF0C;&#x68C0;&#x67E5;&#x4EE3;&#x7801;&#x3002;&#x5BF9;&#x4E8E;&#x4EE3;&#x7801;&#x89C4;&#x8303;&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x547D;&#x540D;&#x3001;&#x7ED3;&#x6784;&#x3001;&#x5199;&#x6CD5;&#x4E0A;&#x7684;&#x89C4;&#x5B9A;&#xFF0C;&#x901A;&#x8FC7;&#x68C0;&#x67E5;&#x8BED;&#x6CD5;&#x7ED3;&#x6784;&#x5C31;&#x80FD;&#x641E;&#x5B9A;&#xFF0C;&#x4E0D;&#x7528;&#x7ED3;&#x5408;&#x8BED;&#x5883;&#x3002;&#x5E76;&#x4E14;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x76F8;&#x6BD4;&#x4E8E;&#x9759;&#x6001;&#x5206;&#x6790;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x66F4;&#x65E9;&#x7684;&#x9636;&#x6BB5;&#x66B4;&#x9732;&#x51FA;&#x95EE;&#x9898;&#x3002;</p>
-<p>&#x5BF9;&#x4E8E;&#x9759;&#x6001;&#x5206;&#x6790;&#x7684;&#x8BDD;&#xFF0C;&#x5DF2;&#x6709;<a href="https://github.com/oclint/oclint" target="_blank" rel="noopener">OCLint</a>&#x5F00;&#x6E90;&#x65B9;&#x6848;&#x3002;&#x5BF9;&#x4E8E;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x7684;&#x8BDD;&#xFF0C;&#x901A;&#x8FC7;Clang Plugin&#x5C31;&#x53EF;&#x4EE5;&#x505A;&#x5230;&#xFF0C;Clang Plugin&#x5C31;&#x662F;&#x4E00;&#x4E2A;Clang&#x7684;&#x7F16;&#x8BD1;&#x5668;&#x524D;&#x7AEF;&#x63D2;&#x4EF6;&#xFF0C;&#x4F7F;&#x7528;Clang&#x63D0;&#x4F9B;&#x7684;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x73AF;&#x5883;&#x3002;&#x4E0D;&#x5F97;&#x4E0D;&#x8BF4;&#xFF0C;&#x7740;&#x5B9E;&#x4F69;&#x670D;&#x6EF4;&#x6EF4;&#xFF0C;&#x65E9;&#x5728;&#x8FD9;&#x65B9;&#x9762;&#x505A;&#x8FC7;&#x63A2;&#x7D22;&#xFF0C;&#x76F8;&#x5173;<a href="https://kangwang1988.github.io/tech/2016/10/31/write-your-first-clang-plugin.html" target="_blank" rel="noopener">&#x6587;&#x7AE0;</a>&#x3002;</p>
-<p>&#x867D;&#x8BF4;&#xFF0C;&#x4EE3;&#x7801;&#x89C4;&#x8303;&#x8FD9;&#x4E2A;&#x4E1C;&#x897F;&#x4E0D;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x4E00;&#x4E2A;&#x4E07;&#x91D1;&#x6CB9;&#x5F00;&#x6E90;&#x65B9;&#x6848;&#xFF0C;&#x7136;&#x540E;&#x56E2;&#x961F;&#x76F4;&#x63A5;&#x4E0A;&#x624B;&#x4F7F;&#x7528;&#xFF0C;&#x6BCF;&#x4E2A;&#x56E2;&#x961F;&#x90FD;&#x8981;&#x6839;&#x636E;&#x81EA;&#x8EAB;&#x60C5;&#x51B5;&#xFF0C;&#x91CF;&#x8EAB;&#x5B9A;&#x505A;&#x56E2;&#x961F;&#x5185;&#x7684;&#x89C4;&#x8303;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x6211;&#x8FD9;&#x91CC;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x6709;&#x9AD8;&#x62D3;&#x5C55;&#x6027;&#x7684;&#x4EE3;&#x7801;&#x89C4;&#x8303;&#x68C0;&#x67E5;&#x57FA;&#x7840;&#x5DE5;&#x5177;&#xFF0C;&#x4F9B;&#x4EFB;&#x4F55;&#x56E2;&#x961F;&#x5728;&#x5176;&#x4E0A;&#x9762;&#x8F7B;&#x677E;&#x505A;&#x5B9A;&#x5236;&#x3001;&#x62D3;&#x5C55;&#x3002;</p>
-<h2 id="Clang-Plugin"><a href="#Clang-Plugin" class="headerlink" title="Clang Plugin"></a>Clang Plugin</h2><p>&#x5728;&#x5236;&#x4F5C;&#x81EA;&#x5DF1;&#x7684;Clang Plugin&#x6216;&#x4F7F;&#x7528;Sherlock&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x8981;&#x627E;&#x4E00;&#x4E2A;&#x6837;&#x4F8B;&#x5DE5;&#x7A0B;&#xFF0C;&#x8BA9;Clang Plugin&#x6574;&#x5408;&#x5230;Xcode&#x4E2D;&#xFF0C;&#x628A;&#x6574;&#x4E2A;&#x6574;&#x5408;&#x8FC7;&#x7A0B;&#x6D41;&#x7545;&#x7684;&#x8DD1;&#x901A;&#x3002;&#x8FD9;&#x6709;&#x547D;&#x4EE4;&#x884C;&#x548C;&#x751F;&#x6210;Xcode&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x539F;&#x7406;&#x90FD;&#x4E00;&#x6837;&#x3002;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8BD5;&#x8BD5;&#x547D;&#x4EE4;&#x884C;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5C31;&#x53C2;&#x8003;&#x6EF4;&#x6EF4;&#x7684;&#x90A3;&#x7BC7;&#x6587;&#x7AE0;&#x3002;&#x6211;&#x4F7F;&#x7528;&#x7684;&#x662F;Xcode&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x66F4;&#x52A0;&#x4FBF;&#x4E8E;&#x8C03;&#x8BD5;&#x4EE3;&#x7801;&#x3002;&#x6574;&#x4E2A;&#x63D2;&#x5165;&#x8FC7;&#x7A0B;&#x90FD;&#x662F;&#x53C2;&#x7167;&#x8FD9;&#x7BC7;<a href="http://railsware.com/blog/2014/02/28/creation-and-using-clang-plugin-with-xcode/" target="_blank" rel="noopener">&#x6587;&#x7AE0;</a>&#xFF0C;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x5199;&#x7684;&#x65F6;&#x95F4;&#x5728;2014&#x5E74;&#xFF0C;clang&#x5F53;&#x65F6;&#x7684;&#x7248;&#x672C;&#x8FD8;&#x662F;3.3&#xFF0C;&#x6211;&#x5199;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x7684;&#x65F6;&#x5019;&#x5DF2;&#x7ECF;&#x662F;2017&#x5E74;&#xFF0C;clang&#x7684;&#x7248;&#x672C;&#x4E3A;3.9&#x3002;&#x6587;&#x7AE0;&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x6B65;&#x9AA4;&#x9700;&#x8981;&#x5C0F;&#x6539;&#x4E00;&#x4E0B;&#x3002;</p>
-<p>&#x6574;&#x4F53;&#x7684;&#x6D41;&#x7A0B;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF0C;&#x5148;&#x5C06;LLVM&#x548C;Clang&#x6E90;&#x7801;&#x5148;clone&#x4E0B;&#x6765;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;cmake&#x5DE5;&#x5177;&#x7F16;&#x8BD1;&#x4E00;&#x904D;&#xFF0C;&#x786E;&#x4FDD;&#x6CA1;&#x95EE;&#x9898;&#x3002;&#x518D;&#x5C06;&#x4F60;&#x5199;&#x7684;&#x63D2;&#x4EF6;&#xFF0C;&#x901A;&#x8FC7;cmake&#x5DE5;&#x5177;&#x7F16;&#x8BD1;&#x4E00;&#x904D;&#xFF0C;&#x751F;&#x6210;dylib&#x3002;&#x4F60;&#x5199;&#x7684;&#x63D2;&#x4EF6;&#x7531;&#x4E8E;&#x9700;&#x8981;&#x5F15;&#x7528;Clang&#x63D0;&#x4F9B;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x5728;&#x751F;&#x6210;dylib&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x4E0E;Clang&#x548C;LLVM&#x7684;&#x4E00;&#x4E9B;lib&#x94FE;&#x63A5;&#xFF0C;&#x6240;&#x4EE5;&#x8981;clone&#x4E0B;&#x6765;&#x6E90;&#x7801;&#x3002;&#x5F97;&#x5230;dylib&#x540E;&#xFF0C;&#x5728;Xcode&#x7684;Plugin&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#xFF0C;&#x52A0;&#x5165;HackedClang.xcplugin&#x548C;HackedBuildSystem.xcspec&#x3002;&#x6700;&#x540E;&#xFF0C;&#x5728;&#x4F60;&#x9700;&#x8981;&#x52A0;&#x5165;Plugin&#x7684;&#x5DE5;&#x7A0B;&#x4E2D;&#x52A0;&#x5165;dylib&#xFF0C;&#x914D;&#x7F6E;&#x4E00;&#x4E0B;&#x5C31;&#x884C;&#x4E86;&#x3002;&#x4E0B;&#x9762;&#x76F4;&#x63A5;&#x8FDB;&#x5165;&#x547D;&#x4EE4;&#x884C;&#x5F00;&#x59CB;&#xFF1A;</p>
-<pre><code class="lang-shell">cd /&#x653E;llvm&#x548C;clang&#x6E90;&#x7801;&#x7684;&#x6839;&#x8DEF;&#x5F84;
-sudo mkdir llvm
-sudo chown `&#x4F60;&#x7684;&#x7528;&#x6237;&#x540D;` llvm
-cd llvm
-export LLVM_HOME=`pwd`
-
-git clone -b release_39 https://github.com/llvm-mirror/llvm.git llvm
-git clone -b release_39 https://github.com/llvm-mirror/clang.git llvm/tools/clang
-git clone -b release_39 https://github.com/llvm-mirror/clang-tools-extra.git llvm/tools/clang/tools/extra
-git clone -b release_39 https://github.com/llvm-mirror/compiler-rt.git llvm/projects/compiler-rt
-
-mkdir llvm_build
-cd llvm_build
-cmake ../llvm -DCMAKE_BUILD_TYPE:STRING=Release
-make -j`sysctl -n hw.logicalcpu`
-</code></pre>
-<p>&#x63A5;&#x7740;&#x4E0B;&#x8F7D;&#x6587;&#x7AE0;&#x4E2D;&#x7684;<a href="https://github.com/AlexDenisov/ToyClangPlugin" target="_blank" rel="noopener">&#x6837;&#x4F8B;&#x5DE5;&#x7A0B;</a>&#x3002;&#x4EE5;&#x4E0B;&#x51E0;&#x70B9;&#x8981;&#x6CE8;&#x610F;&#xFF1A;</p>
-<blockquote>
-<p>&#x6CE8;&#x610F;clone&#x7684;&#x7248;&#x672C;&#xFF0C;release_39&#x662F;&#x5199;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x65F6;&#x7684;&#x6700;&#x65B0;&#x7248;&#x672C;3.9&#x3002;</p>
-<p>&#x7531;&#x4E8E;LLVM&#x548C;Clang&#x7684;&#x7248;&#x672C;&#x53D8;&#x52A8;&#xFF0C;&#x4EE5;&#x524D;&#x7684;&#x4E00;&#x4E9B;lib&#x4E0D;&#x9700;&#x8981;&#x518D;&#x94FE;&#x63A5;&#xFF0C;&#x518D;&#x52A0;&#x4E0A;&#x65B0;&#x7248;&#x672C;&#x57FA;&#x4E8E;c++11&#xFF0C;&#x9700;&#x8981;&#x5BF9;CMakeList&#x505A;&#x4EE5;&#x4E0B;&#x4FEE;&#x6539;&#xFF1A;</p>
+<h2 id="&#x7ECF;&#x5178;&#x67B6;&#x6784;"><a href="#&#x7ECF;&#x5178;&#x67B6;&#x6784;" class="headerlink" title="&#x7ECF;&#x5178;&#x67B6;&#x6784;"></a>&#x7ECF;&#x5178;&#x67B6;&#x6784;</h2><h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><p>MVC&#x5386;&#x53F2;&#x60A0;&#x4E45;&#xFF0C;SmallTalk&#x65F6;&#x4EE3;&#x5C31;&#x5DF2;&#x7ECF;&#x6709;&#x6982;&#x5FF5;&#x5E76;&#x88AB;&#x5B9E;&#x73B0;&#x51FA;&#x6765;&#x3002;&#x4E0D;&#x540C;&#x573A;&#x666F;&#x6216;&#x8005;&#x8BF4;&#x4E0D;&#x540C;&#x7684;&#x5E94;&#x7528;&#x5BF9;&#x4E8E;MVC&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x6709;&#x5F88;&#x591A;&#x533A;&#x522B;&#xFF0C;&#x8FD9;&#x4E9B;&#x533A;&#x522B;&#x5728;&#x4E8E;&#x804C;&#x8D23;&#x7684;&#x5212;&#x5206;&#xFF0C;&#x5C42;&#x4E0E;&#x5C42;&#x4E4B;&#x95F4;&#x7684;&#x901A;&#x4FE1;&#x6D41;&#x65B9;&#x5411;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x4EE5;&#x804C;&#x8D23;&#x7684;&#x5212;&#x5206;&#x6216;&#x8005;&#x4EE5;&#x67D0;&#x79CD;&#x7279;&#x5B9A;&#x7684;&#x901A;&#x4FE1;&#x6D41;&#x65B9;&#x5411;&#x53BB;&#x5B9A;&#x4E49;MVC&#x662F;&#x6709;&#x95EE;&#x9898;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x4E5F;&#x6CA1;&#x6CD5;&#x5B9A;&#x4E49;&#xFF0C;&#x6BD5;&#x7ADF;&#x804C;&#x8D23;&#x662F;&#x89C2;&#x70B9;&#xFF0C;&#x5982;&#x4F55;&#x5212;&#x5206;&#x56E0;&#x4EBA;&#x800C;&#x5F02;&#x3002;MVC&#x5386;&#x53F2;&#x53EF;&#x53C2;&#x8003;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;(<a href="https://draveness.me/mvx)&#x3002;" target="_blank" rel="noopener">https://draveness.me/mvx)&#x3002;</a></p>
+<p>MVC&#x7684;&#x4E3B;&#x65E8;&#x5728;&#x4E8E;&#xFF0C;&#x5C06;&#x5C55;&#x793A;&#x5C42;&#x548C;&#x6A21;&#x578B;&#x5C42;&#x5206;&#x5C42;&#xFF0C;&#x5C55;&#x793A;&#x5C42;&#x89E6;&#x53D1;&#x6A21;&#x578B;&#x5C42;&#x6539;&#x53D8;&#xFF0C;&#x800C;&#x6A21;&#x578B;&#x5C42;&#x6539;&#x53D8;&#xFF0C;&#x65E0;&#x8BBA;&#x4E3B;&#x52A8;&#x901A;&#x77E5;&#x5C55;&#x793A;&#x5C42;&#x8FD8;&#x662F;&#x88AB;&#x52A8;&#x540C;&#x6B65;&#x7ED9;&#x5C55;&#x793A;&#x5C42;&#xFF0C;&#x7ED3;&#x679C;&#x4E3A;&#x5C55;&#x793A;&#x5C42;&#x57FA;&#x4E8E;&#x6A21;&#x578B;&#x5C42;&#x505A;&#x6539;&#x53D8;&#xFF0C;&#x800C;&#x5C55;&#x793A;&#x5C42;&#x53C8;&#x53EF;&#x5206;&#x4E3A;&#x89C6;&#x56FE;&#x5C42;&#x548C;&#x4EA4;&#x4E92;&#x63A7;&#x5236;&#x5C42;&#x3002;MVC&#x867D;&#x7136;&#x6CA1;&#x6709;&#x7279;&#x5B9A;&#x7684;&#x901A;&#x4FE1;&#x6D41;&#x65B9;&#x5411;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x5B9E;&#x73B0;&#x53EF;&#x4EE5;&#x4E0D;&#x4E00;&#x81F4;&#xFF0C;&#x4F46;&#x662F;&#x6BCF;&#x79CD;&#x5B9E;&#x73B0;&#x8981;&#x6709;&#x81EA;&#x5DF1;&#x56FA;&#x5B9A;&#x7684;&#x901A;&#x4FE1;&#x6D41;&#x3002;</p>
+<p>MVC&#x5176;&#x5B9E;&#x5DF2;&#x7ECF;&#x4E0D;&#x5355;&#x5355;&#x662F;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x7684;&#x67B6;&#x6784;&#xFF0C;&#x800C;&#x662F;&#x4E00;&#x79CD;&#x67B6;&#x6784;&#x6307;&#x5BFC;&#x601D;&#x8DEF;&#xFF0C;MVC&#x7684;<strong>&#x5206;&#x5C42;&#x548C;&#x5206;&#x5C42;&#x540E;&#x7684;&#x56FA;&#x5B9A;&#x7684;&#x901A;&#x4FE1;&#x6D41;&#xFF0C;&#x5C31;&#x662F;&#x67B6;&#x6784;&#x672C;&#x8EAB;&#x7684;&#x542B;&#x4E49;</strong>&#x3002;</p>
+<h3 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h3><p>&#x4ED4;&#x7EC6;&#x7AEF;&#x8BE6;MVP&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;MVP&#x5B8C;&#x5168;&#x7B26;&#x5408;MVC&#x7684;&#x3002;MVP&#x53EF;&#x4EE5;&#x770B;&#x505A;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x89C4;&#x5B9A;&#x597D;&#x804C;&#x8D23;&#x548C;&#x901A;&#x4FE1;&#x6D41;&#x7684;MVC&#x84DD;&#x56FE;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;MVP&#x662F;MVC&#x7684;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002;</p>
+<h3 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h3><p>MVVM&#x76F8;&#x8F83;&#x4E8E;MVC&#x548C;MVP&#xFF0C;&#x5F88;&#x660E;&#x663E;&#xFF0C;&#x591A;&#x62BD;&#x8C61;&#x4E00;&#x5C42;&#x5C55;&#x73B0;&#x6A21;&#x578B;&#x5C42;ViewModel&#x3002;&#x540C;&#x6837;&#x5730;&#xFF0C;&#x804C;&#x8D23;&#x548C;&#x901A;&#x4FE1;&#x6D41;&#x5E76;&#x4E0D;&#x662F;MVVM&#x7684;&#x4E3B;&#x65E8;&#xFF0C;&#x4E0D;&#x8FC7;&#xFF0C;&#x56E0;&#x4E3A;MVVM&#x5206;&#x5C42;&#x548C;&#x901A;&#x4FE1;&#x6D41;&#x5F88;&#x660E;&#x786E;&#xFF0C;&#x4E0D;&#x4F1A;&#x4EA7;&#x751F;&#x6B67;&#x4E49;&#xFF0C;&#x5BFC;&#x81F4;&#x4E1A;&#x754C;&#x4F7F;&#x7528;&#x7684;MVVM&#xFF0C;&#x5176;&#x804C;&#x8D23;&#x548C;&#x901A;&#x4FE1;&#x6D41;&#x57FA;&#x672C;&#x4E00;&#x81F4;&#x3002;</p>
+<h3 id="VIPER"><a href="#VIPER" class="headerlink" title="VIPER"></a>VIPER</h3><p>VIPER&#x76F8;&#x6BD4;&#x4E8E;&#x524D;&#x51E0;&#x4E2A;&#x67B6;&#x6784;&#xFF0C;&#x81EA;&#x7136;&#x591A;&#x4E86;&#x51E0;&#x4E2A;&#x62BD;&#x8C61;&#x5C42;&#xFF0C;&#x4E5F;&#x89C4;&#x5B9A;&#x597D;&#x4E86;&#x804C;&#x8D23;&#x548C;&#x901A;&#x4FE1;&#x6D41;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x8FD9;&#x90FD;&#x4E0D;&#x662F;&#x91CD;&#x70B9;&#xFF0C;&#x5176;&#x4E2D;&#x6700;&#x95EA;&#x5149;&#x7684;&#x5C31;&#x662F;Router&#x3002;Router&#x4E0D;&#x4EC5;&#x53EA;&#x8D1F;&#x8D23;&#x9875;&#x9762;&#x8DF3;&#x8F6C;&#x8FD9;&#x6837;&#x7684;&#x804C;&#x8D23;&#xFF0C;Router&#x672C;&#x8D28;&#x53EF;&#x4EE5;&#x505A;&#x5230;&#x4E0D;&#x540C;&#x6A21;&#x5757;&#x7684;&#x901A;&#x4FE1;&#x3002;&#x8FD9;&#x5C31;&#x4EE3;&#x8868;&#xFF0C;VIPER&#x4ECE;&#x6839;&#x672C;&#x4E0A;&#x9002;&#x5408;&#x89E3;&#x51B3;&#x4E1A;&#x52A1;&#x5355;&#x5143;&#x5316;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x6216;&#x8005;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x6CA1;&#x6709;&#x5230;&#x4E1A;&#x52A1;&#x5355;&#x5143;&#x5316;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x65F6;&#x5019;&#xFF0C;VIPER&#x663E;&#x4E0D;&#x51FA;&#x81EA;&#x5DF1;&#x7684;&#x957F;&#x5904;&#x3002;</p>
+<p>Router&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x597D;&#x7684;&#x67B6;&#x6784;&#x601D;&#x8DEF;&#xFF0C;&#x4ECE;VIPER&#x62D3;&#x5C55;&#x51FA;&#x6765;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;View&#x6487;&#x5F00;&#x6765;&#xFF0C;&#x5355;&#x4EE5;IPER&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x4E1A;&#x52A1;&#x5355;&#x4F4D;&#x3002;&#x800C;&#x8FD9;&#x70B9;&#xFF0C;&#x975E;&#x5E38;&#x6709;&#x610F;&#x601D;&#xFF0C;&#x4EE5;&#x8FD9;&#x70B9;&#x4F5C;&#x4E3A;&#x57FA;&#x7840;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x505A;&#x51FA;&#x9886;&#x57DF;&#x9A71;&#x52A8;&#x8BBE;&#x8BA1;&#xFF0C;&#x5C06;&#x590D;&#x6742;&#x7684;&#x4E1A;&#x52A1;&#x4EE5;IPER&#x7EC4;&#x7EC7;&#x597D;&#xFF0C;&#x5F62;&#x6210;&#x9886;&#x57DF;&#x3002;&#x4F46;&#x5BA2;&#x6237;&#x7AEF;&#x4E1A;&#x52A1;&#x590D;&#x6742;&#x5EA6;&#x8FDC;&#x6BD4;&#x4E0D;&#x4E0A;&#x670D;&#x52A1;&#x7AEF;&#xFF0C;&#x8FD9;&#x4E00;&#x70B9;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x662F;&#x5426;&#x503C;&#x5F97;&#x3001;&#x80FD;&#x89E3;&#x51B3;&#x4E00;&#x4E9B;&#x5B9E;&#x9645;&#x95EE;&#x9898;&#x4ECD;&#x9700;&#x9A8C;&#x8BC1;&#x3002;</p>
+<h2 id="&#x5BA2;&#x6237;&#x7AEF;&#x590D;&#x6742;&#x5EA6;"><a href="#&#x5BA2;&#x6237;&#x7AEF;&#x590D;&#x6742;&#x5EA6;" class="headerlink" title="&#x5BA2;&#x6237;&#x7AEF;&#x590D;&#x6742;&#x5EA6;"></a>&#x5BA2;&#x6237;&#x7AEF;&#x590D;&#x6742;&#x5EA6;</h2><p>&#x6B64;&#x7AE0;&#x8282;&#x4EE5;&#x4E0D;&#x540C;&#x4E8E;&#x4EE5;&#x4E0A;&#x7AE0;&#x8282;&#x7684;&#x89D2;&#x5EA6;&#xFF0C;&#x4ECE;&#x5BA2;&#x6237;&#x7AEF;&#x4E1A;&#x52A1;&#x590D;&#x6742;&#x5EA6;&#x7684;&#x89D2;&#x5EA6;&#x6765;&#x770B;&#x5BA2;&#x6237;&#x7AEF;&#x3002;</p>
+<p>&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x524D;&#x7AEF;&#xFF0C;&#x8BF4;&#x5230;&#x5E95;&#x90FD;&#x662F;GUI&#x7CFB;&#x7EDF;&#x3002;&#x800C;GUI&#x7CFB;&#x7EDF;&#x7684;&#x6838;&#x5FC3;&#xFF1A;<strong>&#x5E94;&#x7528;&#x72B6;&#x6001;&#x5982;&#x4F55;&#x6D41;&#x52A8;&#x7684;</strong>&#x3002;&#x8FD9;&#x4E2A;&#x6838;&#x5FC3;&#x662F;&#x524D;&#x7AEF;&#x3001;&#x5BA2;&#x6237;&#x7AEF;&#x90FD;&#x76F8;&#x901A;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x80FD;&#x628A;&#x8FD9;&#x4E2A;&#x6838;&#x5FC3;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x964D;&#x4E0B;&#x6765;&#xFF0C;&#x6574;&#x4E2A;App&#x7684;&#x68D8;&#x624B;&#x95EE;&#x9898;&#x80FD;&#x51CF;&#x5C11;&#x5927;&#x534A;&#x3002;</p>
+<p>&#x4ECE;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x5EF6;&#x4F38;&#x51FA;&#x5BA2;&#x6237;&#x7AEF;&#x4E1A;&#x52A1;&#x7ECF;&#x5E38;&#x9762;&#x5BF9;&#x7684;&#x4E09;&#x5927;&#x95EE;&#x9898;&#xFF1A;</p>
 <ul>
-<li>&#x6CE8;&#x610F;&#x66FF;&#x6362;&#x4F60;&#x8BBE;&#x7F6E;&#x7684;&#x6839;&#x76EE;&#x5F55;&#xFF0C;&#x786E;&#x4FDD;CMakeList&#x4E2D;&#x7684;&#x56DB;&#x4E2A;include&#x90FD;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x3002;</li>
-<li>set (LLVM_LIBS&#xFF09;&#x5220;&#x6389;LLVMJIT&#x3001;LLVMipa</li>
-<li>set (USER_LIBS&#xFF09;&#x52A0;&#x5165;z(&#x538B;&#x7F29;lib)</li>
-<li>&#x52A0;&#x5165;set(CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LANGUAGE_STANDARD &#x201C;c++11&#x201D;)</li>
-<li>&#x52A0;&#x5165;set(CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LIBRARY &#x201C;libc++&#x201D;)</li>
+<li>&#x6570;&#x636E;&#x6D41;&#x5411;</li>
+<li>&#x591A;&#x573A;&#x666F;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;</li>
+<li>&#x5355;&#x5143;&#x5316;</li>
 </ul>
-</blockquote>
-<p>&#x7136;&#x540E;&#x7528;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x751F;&#x6210;Xcode&#xFF1A;</p>
-<pre><code class="lang-shell">mkdir build
-cd build
-cmake -G Xcode ..
-open ToyClangPlugin.xcodeproj
-</code></pre>
-<p>&#x7136;&#x540E;build&#xFF0C;&#x6210;&#x529F;&#x540E;&#x53EF;&#x4EE5;&#x5728;lib/Debug/&#x76EE;&#x5F55;&#x4E0B;&#x627E;&#x5230;dylib&#x3002;</p>
-<p>&#x7136;&#x540E;&#x4E0B;&#x8F7D;<a href="https://github.com/AlexDenisov/ToyClangPlugin/releases/download/0.0.1/XcodeHacking.zip" target="_blank" rel="noopener">HackXcodeing</a>&#xFF0C;&#x5E76;&#x4E14;&#x6CE8;&#x610F;&#x4EE5;&#x4E0B;&#x4E24;&#x70B9;&#xFF1A;</p>
-<blockquote>
-<p>&#x5C06;HackXcodeing&#x4E2D;&#x7684;ExecPath&#x4E2D;&#x7684;&#x6839;&#x8DEF;&#x5F84;&#x66F4;&#x6539;&#x4E3A;&#x4F60;&#x7684;&#x6839;&#x8DEF;&#x5F84;&#x3002;</p>
-<p>&#x5C06;HackedClang.xcspec&#x6587;&#x4EF6;&#x4E2D;&#x7684;NO  = ( &#x201C;-Wno-receiver-is-weak&#x201D; );  &#x66F4;&#x6539;&#x4E3A;NO  = ();</p>
-</blockquote>
-<p>HackXcodeing&#x6E90;&#x6587;&#x4EF6;&#x4F5C;&#x8005;&#x7F72;&#x540D;&#x662F;Apple&#xFF0C;&#x4F46;&#x662F;&#x7F51;&#x4E0A;&#x67E5;&#x4E0D;&#x5230;&#x539F;&#x51FA;&#x5904;&#xFF0C;Apple&#x5B98;&#x65B9;&#x5E94;&#x8BE5;&#x6CA1;&#x6709;&#x6446;&#x660E;&#x652F;&#x6301;&#x8FD9;&#x4E2A;&#x4E1C;&#x897F;&#xFF0C;&#x4F46;&#x8FD9;&#x548C;&#x7EBF;&#x4E0A;App&#x6CA1;&#x5173;&#x7CFB;&#xFF0C;&#x53EF;&#x4EE5;&#x653E;&#x5FC3;&#x7528;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x4EE5;&#x540E;Xcode&#x5347;&#x7EA7;&#x53EF;&#x80FD;&#x4F1A;ban&#x6389;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x3002;&#x4E0B;&#x4E00;&#x6B65;&#xFF0C;&#x52A0;&#x5165;&#x5230;Xcode&#x7684;&#x63D2;&#x4EF6;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x3002;</p>
-<pre><code class="lang-shell">sudo mv HackedClang.xcplugin `xcode-select -print-path`/../PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library/Xcode/Plug-ins
-
-sudo mv HackedBuildSystem.xcspec `xcode-select -print-path`/Platforms/iPhoneSimulator.platform/Developer/Library/Xcode/Specifications
-</code></pre>
-<blockquote>
-<p>&#x6CE8;&#x610F;&#xFF0C;&#x539F;&#x6587;&#x4E2D;&#x6709;&#x4E00;&#x6B65;&#x662F;&#x5173;&#x6389;language Modules&#xFF0C;&#x4E0D;&#x8981;&#x505A;&#x8FD9;&#x4E00;&#x6B65;&#x3002;</p>
-</blockquote>
-<p>&#x63A5;&#x7740;&#xFF0C;&#x5728;Compiler for C/C++/Objective-C&#x4E2D;&#x9009;&#x62E9;Clang LLVM Trunk&#xFF1A;</p>
-<p><img src="http://o79rgqboc.bkt.clouddn.com/xcode_clangplugin_compiler.png" alt="xcode_clangplugin_compiler"></p>
-<p>&#x6700;&#x540E;&#xFF0C;&#x5728;OTHER_CFLAGS&#x4E2D;&#x52A0;&#x5165;dylib&#x7684;&#x8DEF;&#x5F84;&#xFF1A;</p>
-<pre><code class="lang-shell">-Xclang 
--load 
--Xclang 
-/&#x653E;llvm&#x548C;clang&#x6E90;&#x7801;&#x7684;&#x6839;&#x8DEF;&#x5F84;/llvm/toy_clang_plugin/build/lib/Debug/ToyClangPlugin.dylib 
--Xclang 
--add-plugin 
--Xclang 
-ToyClangPlugin
-</code></pre>
-<p><img src="http://o79rgqboc.bkt.clouddn.com/xcode_clangplugin_flags.png" alt="xcode_clangplugin_flags"></p>
-<p>run&#x4E00;&#x4E0B;&#x4F60;&#x7684;&#x9879;&#x76EE;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x63D2;&#x4EF6;&#x6210;&#x529F;&#x63D2;&#x5165;&#x4E86;&#x3002;</p>
-<h2 id="Sherlock"><a href="#Sherlock" class="headerlink" title="Sherlock"></a>Sherlock</h2><blockquote>
-<p>Yep, This is &#x201C;the detective&#x201D;, the one with a magnifying glass.</p>
-</blockquote>
-<p>Sherlock&#x662F;&#x4E00;&#x4E2A;&#x6709;&#x9AD8;&#x62D3;&#x5C55;&#x6027;&#x7684;&#x4EE3;&#x7801;&#x89C4;&#x8303;&#x68C0;&#x67E5;&#x57FA;&#x7840;&#x5DE5;&#x5177;&#xFF0C;&#x60A8;&#x7684;&#x56E2;&#x961F;&#x53EF;&#x4EE5;&#x5728;Sherlock&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x8F7B;&#x677E;&#x505A;&#x5B9A;&#x5236;&#x3001;&#x62D3;&#x5C55;&#x3002;Sherlock&#x662F;&#x4E00;&#x4E2A;C++&#x5199;&#x7684;Clang Plugin&#xFF0C;&#x9762;&#x5411;&#x68C0;&#x67E5;Objective-C&#x4EE3;&#x7801;&#x3002;&#x6CE8;&#x610F;&#xFF0C;&#x4F7F;&#x7528;Sherlock&#x524D;&#x5FC5;&#x987B;&#x8981;&#x5148;&#x5C06;Clang Plugin&#x6574;&#x5408;&#x5230;Xcode&#x4E2D;&#x3002;</p>
-<h3 id="buildIn-base-rule"><a href="#buildIn-base-rule" class="headerlink" title="buildIn base rule"></a>buildIn base rule</h3><p>&#x9996;&#x5148;&#x770B;&#x770B;Sherlock&#x63D0;&#x4F9B;&#x7684;&#x57FA;&#x672C;&#x89C4;&#x5219;&#xFF0C;&#x9996;&#x5148;&#x662F;&#x7ED9;Warning&#x7684;:</p>
+<p>&#x8FD9;&#x4E09;&#x70B9;&#x6211;&#x4EEC;&#x6765;&#x9010;&#x4E2A;&#x51FB;&#x7834;&#x3002;</p>
+<h3 id="&#x6570;&#x636E;&#x6D41;&#x5411;"><a href="#&#x6570;&#x636E;&#x6D41;&#x5411;" class="headerlink" title="&#x6570;&#x636E;&#x6D41;&#x5411;"></a>&#x6570;&#x636E;&#x6D41;&#x5411;</h3><p>&#x6570;&#x636E;&#x6D41;&#x5411;&#x8FD9;&#x70B9;&#x662F;&#x4ECE;&#x524D;&#x7AEF;&#x5B66;&#x4E60;&#x8FC7;&#x6765;&#x7684;&#xFF0C;Facebook&#x4E5F;&#x63D0;&#x51FA;&#x4E86;&#x89E3;&#x51B3;&#x529E;&#x6CD5;Flux&#x6765;&#x786E;&#x4FDD;&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;&#xFF0C;&#x6613;&#x4E8E;&#x4EBA;&#x8111;&#x7406;&#x89E3;&#xFF0C;&#x4E5F;&#x8BA9;&#x6570;&#x636E;&#x6D41;&#x66F4;&#x53EF;&#x9884;&#x6D4B;&#x3002;</p>
 <ul>
-<li>interface<em>illegal_character&#xFF1A;&#x9879;&#x76EE;&#x6587;&#x4EF6;&#x547D;&#x540D;&#x4E2D;&#x6709;&#x201D;</em>&#x201C;&#x3002;</li>
-<li>project_prefix&#xFF1A;&#x9879;&#x76EE;&#x4E2D;&#x95F4;&#x63A5;&#x6216;&#x76F4;&#x63A5;&#x7EE7;&#x627F;&#x81EA;UIVIewController&#x7684;controller&#x547D;&#x540D;&#x6CA1;&#x6709;&#x4EE5;XX&#x5F00;&#x5934;&#x3002;</li>
-<li>property_atomic&#xFF1A;&#x5C5E;&#x6027;&#x58F0;&#x660E;&#x4E3A;atomic&#x3002;</li>
-<li>property_unsafe&#xFF1A;&#x5C5E;&#x6027;&#x58F0;&#x660E;&#x4E3A;unsafe_unretained&#x3002;</li>
-<li>property_copy&#xFF1A;NSArray&#x3001;NSNumber&#x3001;NSString&#x3001;block&#x7C7B;&#x578B;&#x5C5E;&#x6027;&#x58F0;&#x660E;&#x4E0D;&#x4E3A;copy&#x3002;</li>
-<li>weak_protocol&#xFF1A;protocol&#x7C7B;&#x578B;&#x7684;&#x5C5E;&#x6027;&#x58F0;&#x660E;&#x4E0D;&#x4E3A;weak&#x3002;</li>
-<li>category<em>method_naming&#xFF1A;&#x7ED9;&#x7CFB;&#x7EDF;&#x7C7B;&#x6DFB;&#x52A0;&#x7684;Category&#x65B9;&#x6CD5;&#x547D;&#x540D;&#x6CA1;&#x6709;&#x4EE5;XX</em>&#x5F00;&#x5934;&#x3002;</li>
-<li>initializer_design&#xFF1A;&#x7C7B;&#x6CA1;&#x6709;&#x7528;Designated Initializer&#x8BBE;&#x8BA1;init&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;&#x3002;</li>
+<li>view&#xFF1A;&#x7C7B;&#x4F3C;&#x4E8E;controller-views&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x53D8;&#x52A8;&#x9694;&#x79BB;&#x51FA;&#x53BB;&#x3002;view&#x53EA;&#x80FD;&#x5F15;&#x8D77;&#x6570;&#x636E;&#x53D8;&#x52A8;&#x548C;&#x7B49;&#x5F85;&#x6570;&#x636E;&#x53D8;&#x52A8;&#x7684;&#x901A;&#x77E5;&#x3002;view&#x8FD9;&#x4E00;&#x90E8;&#x5206;&#x66F4;&#x9002;&#x5408;&#x7528;React(Immutable&#x5316;&#x7684;&#x89C6;&#x56FE;)&#x3002;</li>
+<li>store&#xFF1A;&#x660E;&#x786E;&#x62BD;&#x8C61;&#x6570;&#x636E;&#x72B6;&#x6001;&#x53D8;&#x52A8;&#x90E8;&#x4EF6;&#xFF0C;&#x53EA;&#x6709;store&#x4E2D;&#x7684;&#x6570;&#x636E;&#x662F;&#x53EF;&#x53D8;&#x7684;&#xFF0C;&#x5176;&#x4ED6;&#x90E8;&#x4EF6;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x90FD;&#x662F;&#x4E0D;&#x53EF;&#x53D8;&#x7684;&#xFF0C;&#x72B6;&#x6001;&#x53D8;&#x52A8;&#x9650;&#x5236;&#x5728;&#x5C40;&#x90E8;&#x3002;</li>
+<li>dispatcher&#xFF1A;&#x660E;&#x786E;&#x62BD;&#x8C61;&#x8C03;&#x5EA6;&#x8005;&#x90E8;&#x4EF6;&#xFF0C;&#x5728;&#x8C03;&#x5EA6;&#x8005;&#x91CC;&#x5904;&#x7406;&#x6709;&#x8054;&#x5E26;&#x6548;&#x5E94;&#x6216;&#x8005;&#x65E2;&#x5B9A;&#x987A;&#x5E8F;&#x7684;&#x6570;&#x636E;&#x53D8;&#x52A8;&#x3002;</li>
+<li>action&#xFF1A;&#x7531;&#x4E8E;&#x5176;&#x4ED6;&#x90E8;&#x4EF6;&#x4E0D;&#x80FD;&#x66F4;&#x6539;&#x6570;&#x636E;&#xFF0C;&#x82E5;&#x60F3;&#x66F4;&#x6539;&#x6570;&#x636E;&#x5FC5;&#x987B;&#x63D0;&#x51FA;&#x7533;&#x8BF7;&#xFF0C;&#x62BD;&#x8C61;&#x66F4;&#x6539;&#x6570;&#x636E;&#x5355;&#x4F4D;&#xFF0C;&#x4EA4;&#x7ED9;dispatcher&#x5904;&#x7406;&#x3002;</li>
 </ul>
-<p>&#x7136;&#x540E;&#x662F;&#x76F4;&#x63A5;&#x7ED9;Error&#x7684;&#xFF1A;</p>
+<p>&#x76F8;&#x5BF9;&#x4E8E;Flux&#xFF0C;&#x8FD8;&#x6709;&#x5176;&#x53D8;&#x79CD;Redux&#xFF0C;Redux&#x66F4;&#x50CF;&#x662F;&#x58F0;&#x660E;&#x5F0F;&#x7684;Flux&#xFF0C;&#x6574;&#x4F53;&#x67B6;&#x6784;&#x901A;&#x8FC7;&#x6DFB;&#x52A0;reducer&#xFF0C;&#x53BB;&#x6389;dispatcher&#xFF0C;&#x66F4;&#x503E;&#x5411;&#x4E8E;&#x58F0;&#x660E;&#x800C;&#x4E0D;&#x662F;&#x547D;&#x4EE4;&#x5F0F;&#x3002;</p>
+<p>&#x5BA2;&#x6237;&#x7AEF;&#x4F7F;&#x7528;&#x7684;&#x8BED;&#x8A00;&#x4E0D;&#x50CF;JavaScript&#xFF0C;&#x62BD;&#x8C61;action&#x7684;&#x4EE3;&#x4EF7;&#x6709;&#x70B9;&#x5927;&#xFF0C;&#x5B8C;&#x5168;&#x7167;&#x642C;&#x786C;&#x5957;&#x53EA;&#x4F1A;&#x6C34;&#x571F;&#x4E0D;&#x670D;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x53EA;&#x8981;&#x6293;&#x4F4F;&#x5173;&#x952E;&#xFF0C;&#x6570;&#x636E;&#x6D41;&#x80FD;&#x5355;&#x5411;&#x4E0B;&#x6765;&#xFF0C;&#x4E5F;&#x5C31;&#x8FBE;&#x5230;&#x4E86;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x7684;&#x76EE;&#x7684;&#x4E86;&#xFF0C;&#x5177;&#x4F53;&#x6848;&#x4F8B;&#x79FB;&#x6B65;(<a href="http://wereadteam.github.io/2017/09/30/reflow/)&#x3002;" target="_blank" rel="noopener">http://wereadteam.github.io/2017/09/30/reflow/)&#x3002;</a></p>
+<h3 id="&#x591A;&#x573A;&#x666F;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;"><a href="#&#x591A;&#x573A;&#x666F;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;" class="headerlink" title="&#x591A;&#x573A;&#x666F;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;"></a>&#x591A;&#x573A;&#x666F;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;</h3><p>&#x8FD9;&#x4E2A;&#x6307;&#x7684;&#x662F;&#x7B49;&#x540C;&#x6570;&#x636E;&#x5728;&#x4E0D;&#x540C;&#x573A;&#x666F;&#x4E0B;&#x7684;&#x540C;&#x6B65;&#x95EE;&#x9898;&#x3002;&#x6BD4;&#x5982;&#x8BF4;&#x4E2A;&#x7ECF;&#x5178;&#x95EE;&#x9898;&#xFF0C;&#x8D2D;&#x7269;&#x8F66;&#x5217;&#x8868;&#x9875;&#x548C;&#x5546;&#x54C1;&#x8BE6;&#x60C5;&#x9875;&#x80FD;&#x5BF9;&#x540C;&#x4E00;&#x5546;&#x54C1;&#x8FDB;&#x884C;&#x4E00;&#x7CFB;&#x5217;&#x64CD;&#x4F5C;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x9875;&#x9762;&#x5982;&#x4F55;&#x6570;&#x636E;&#x540C;&#x6B65;&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x540C;&#x4E00;&#x5546;&#x54C1;&#x5C31;&#x662F;&#x7B49;&#x540C;&#x6570;&#x636E;&#x3002;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x6BD4;&#x8F83;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x4E00;&#x822C;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x4E1A;&#x52A1;&#x6A21;&#x5757;&#x4E0B;&#xFF0C;&#x4E5F;&#x6709;&#x53EF;&#x80FD;&#x4F1A;&#x8DE8;&#x591A;&#x4E2A;&#x4E1A;&#x52A1;&#x6A21;&#x5757;&#x3002;</p>
+<p>&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x7684;&#x672C;&#x8D28;&#x5C31;&#x662F;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x8BA2;&#x9605;&#x901A;&#x77E5;&#x7CFB;&#x7EDF;&#xFF0C;&#x5C06;&#x80FD;&#x6539;&#x53D8;&#x7684;&#x5B9E;&#x4F8B;&#x770B;&#x505A;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x5206;&#x5E03;&#x70B9;&#xFF0C;&#x5206;&#x5E03;&#x70B9;&#x4E0E;&#x5206;&#x5E03;&#x70B9;&#x4E4B;&#x95F4;&#x9700;&#x8981;&#x540C;&#x6B65;&#x3002;</p>
+<p>&#x6700;&#x5E38;&#x89C1;&#x7684;&#x601D;&#x8DEF;&#x5C31;&#x662F;&#xFF0C;&#x5728;&#x4E1A;&#x52A1;&#x5C42;&#x6784;&#x9020;&#x4E00;&#x4E2A;&#x8BA2;&#x9605;&#x901A;&#x77E5;&#x7CFB;&#x7EDF;&#xFF0C;&#x4E1A;&#x52A1;&#x4F7F;&#x7528;&#x6570;&#x636E;&#x8981;&#x8BA2;&#x9605;&#x901A;&#x77E5;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x6539;&#x53D8;&#x6570;&#x636E;&#x7684;&#x884C;&#x4E3A;&#xFF0C;&#x8981;&#x63A8;&#x9001;&#x51FA;&#x53BB;&#x3002;&#x8FD9;&#x4E2A;&#x601D;&#x8DEF;&#x7684;&#x8BA2;&#x9605;&#x901A;&#x77E5;&#x7CFB;&#x7EDF;&#x662F;&#x6570;&#x636E;&#x9A71;&#x52A8;&#x7684;push&#x7CFB;&#x7EDF;&#x3002;</p>
+<p>&#x800C;&#x4ECE;&#x8FD9;&#x4E2A;&#x601D;&#x8DEF;&#x51FA;&#x53D1;&#xFF0C;&#x8FD8;&#x6709;&#x4E24;&#x6761;&#x5EF6;&#x4F38;&#x9009;&#x62E9;&#xFF1A;</p>
 <ul>
-<li>mutable_property_copy&#xFF1A;&#x53EF;&#x53D8;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5C5E;&#x6027;&#x58F0;&#x660E;&#x4E3A;copy&#x3002;(copy&#x4F1A;&#x5236;&#x4F5C;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x53D8;&#x6570;&#x636E;&#x6DF1;&#x590D;&#x5236;)</li>
-<li>weak_proxy&#xFF1A;&#x8C03;&#x7528;NSTimer&#x6216;CADisplayLink&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x5C06;self&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#x3002;(&#x5BB9;&#x6613;&#x5F15;&#x8D77;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#xFF0C;&#x63A8;&#x8350;&#x4F7F;&#x7528;WeakProxy)</li>
-<li>super_call&#xFF1A;&#x8C03;&#x7528;[super respondsToSelector:]&#x6216;[super conformsToProtocol:]&#x3002;(&#x8FD9;&#x6837;&#x8C03;&#x7528;&#xFF0C;&#x7B49;&#x4EF7;&#x4E8E;&#x68C0;&#x67E5;&#x81EA;&#x5DF1;&#x662F;&#x5426;&#x5B9E;&#x73B0;&#xFF0C;&#x6CA1;&#x610F;&#x4E49;)</li>
-<li>observe_pairing&#xFF1A;&#x5728;&#x4E00;&#x4E2A;&#x7F16;&#x8BD1;&#x5355;&#x4F4D;&#x4E2D;&#xFF0C;&#x6DFB;&#x52A0;NSNotificationCenter&#x6216;KVO&#x7684;&#x89C2;&#x5BDF;&#x8005;&#x548C;&#x79FB;&#x9664;&#x89C2;&#x5BDF;&#x8005;&#x7684;&#x64CD;&#x4F5C;&#x6570;&#x91CF;&#x4E0D;&#x914D;&#x5BF9;&#x3002;(&#x5FD8;&#x8BB0;&#x79FB;&#x9664;&#x89C2;&#x5BDF;&#x8005;)</li>
+<li>&#x5C06;&#x8BA2;&#x9605;&#x901A;&#x77E5;&#x7CFB;&#x7EDF;&#x4E0B;&#x6C89;&#x5230;&#x4E0B;&#x5C42;&#x3002;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;Realm&#x662F;&#x505A;&#x7684;&#x6BD4;&#x8F83;&#x597D;(Realm&#x5728;&#x6BCF;&#x6B21;runloop&#x8FED;&#x4EE3;&#x7684;&#x95F4;&#x9699;&#x4E2D;&#x53BB;&#x540C;&#x6B65;&#x7B49;&#x540C;&#x6570;&#x636E;&#xFF0C;&#x5F62;&#x6210;realtime&#x4F53;&#x9A8C;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;Object-Level&#x7684;&#x901A;&#x77E5;&#x5F62;&#x5F0F;)&#xFF0C;Realm&#x5C06;&#x8BA2;&#x9605;&#x901A;&#x77E5;&#x7CFB;&#x7EDF;&#x4E0B;&#x6C89;&#x5230;Data Access&#x5C42;&#x3002;&#x8BA2;&#x9605;&#x901A;&#x77E5;&#x7CFB;&#x7EDF;&#x4E0D;&#x4EC5;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4E0B;&#x6C89;&#x5230;Data Access&#x5C42;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5355;&#x72EC;&#x4F5C;&#x4E3A;&#x4E00;&#x5C42;&#x3002;</li>
+<li>Immutable Model Layer&#x3002;&#x603B;&#x7684;&#x6765;&#x8BF4;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x8FD8;&#x662F;&#x6709;&#x529E;&#x6CD5;&#x7ED5;&#x8FC7;&#x8BA2;&#x9605;&#x901A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#xFF0C;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x4E0D;&#x53EF;&#x53D8;&#x80FD;&#x5E2E;&#x52A9;&#x5F00;&#x53D1;&#x8005;&#x8BA4;&#x77E5;&#x5230;&#x5F00;&#x53D1;&#x6A21;&#x5F0F;&#x3002;&#x5177;&#x4F53;&#x6848;&#x4F8B;&#x79FB;&#x6B65;(<a href="https://code.facebook.com/posts/1154141864616569/building-and-managing-ios-model-objects-with-remodel/)&#x3001;&#x5177;&#x4F53;&#x6848;&#x4F8B;&#x79FB;&#x6B65;(https://medium.com/@Pinterest_Engineering/immutable-models-and-data-consistency-in-our-ios-app-d10e248bfef8)&#x3001;&#x5177;&#x4F53;&#x6848;&#x4F8B;&#x79FB;&#x6B65;(https://engineering.linkedin.com/blog/2016/04/keeping-immutable-models-consistent)&#x3002;" target="_blank" rel="noopener">https://code.facebook.com/posts/1154141864616569/building-and-managing-ios-model-objects-with-remodel/)&#x3001;&#x5177;&#x4F53;&#x6848;&#x4F8B;&#x79FB;&#x6B65;(https://medium.com/@Pinterest_Engineering/immutable-models-and-data-consistency-in-our-ios-app-d10e248bfef8)&#x3001;&#x5177;&#x4F53;&#x6848;&#x4F8B;&#x79FB;&#x6B65;(https://engineering.linkedin.com/blog/2016/04/keeping-immutable-models-consistent)&#x3002;</a></li>
 </ul>
-<h3 id="Configure"><a href="#Configure" class="headerlink" title="Configure"></a>Configure</h3><p>&#x4F7F;&#x7528;Sherlock&#x524D;&#x4F60;&#x9700;&#x8981;&#x5728;SherlockConfigure.hpp&#x6587;&#x4EF6;&#x4E2D;&#x4FEE;&#x6539;ProjectAbsoluteRootPath&#x4E3A;&#x9879;&#x76EE;&#x7684;&#x6839;&#x8DEF;&#x5F84;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x811A;&#x672C;&#x7684;&#x8DEF;&#x5F84;&#x7ED9;RuleAbsolutePath&#x5B57;&#x6BB5;&#xFF0C;&#x5728;&#x811A;&#x672C;&#x4E2D;&#x8FDB;&#x884C;Configure&#x3002;&#x73B0;&#x5728;&#x652F;&#x6301;&#x7684;Configure&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x9879;&#xFF1A;</p>
+<p>&#x8FD9;&#x4E2A;&#x601D;&#x8DEF;&#x6709;&#x4E24;&#x4E2A;&#x660E;&#x663E;&#x7684;&#x95EE;&#x9898;&#x3002;&#x5176;&#x4E00;&#xFF0C;&#x6570;&#x636E;&#x66F4;&#x65B0;&#x7684;&#x7C92;&#x5EA6;&#x3002;&#x6570;&#x636E;&#x548C;&#x89C6;&#x56FE;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x5E94;&#x7684;&#x6811;&#x72B6;&#x7ED3;&#x6784;&#xFF0C;&#x6570;&#x636E;&#x66F4;&#x65B0;&#x540E;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x89C6;&#x56FE;&#x8981;&#x91CD;&#x7ED8;&#x3002;&#x800C;&#x8FD9;&#x4E2A;&#x6709;&#x4E24;&#x4E2A;&#x7B56;&#x7565;&#xFF0C;&#x8981;&#x4E48;&#x6574;&#x9897;&#x6811;&#x66F4;&#x65B0;&#x4E00;&#x904D;&#xFF0C;&#x8981;&#x4E48;&#x5177;&#x4F53;&#x5230;&#x5B50;&#x6811;&#x66F4;&#x65B0;&#x3002;</p>
 <ul>
-<li>disabled_rules&#xFF1A;&#x5C06;&#x89C4;&#x5219;&#x540D;&#x79F0;&#x4EE5;&#x201D;-&#x201C;&#x5F00;&#x5934;&#xFF0C;&#x7D27;&#x8DDF;&#x7A7A;&#x683C;&#xFF0C;&#x5982;- initializer_design&#xFF0C;&#x53EF;&#x4EE5;&#x5173;&#x6389;&#x76F8;&#x5E94;&#x7684;&#x89C4;&#x5219;&#x3002;</li>
-<li>force_cast&#xFF1A;&#x53EF;&#x4EE5;&#x952E;&#x5165;Error&#x6216;Warning&#xFF0C;&#x5F3A;&#x5236;&#x6240;&#x6709;rule&#x62A5;&#x544A;&#x9519;&#x8BEF;&#x6216;&#x662F;&#x8B66;&#x544A;&#x3002;</li>
-<li>project_prefix&#xFF1A;&#x952E;&#x5165;&#x6BD4;&#x5982;Sherlock&#xFF0C;&#x63D0;&#x4F9B;&#x9879;&#x76EE;&#x7684;&#x524D;&#x7F00;&#x540D;&#x3002;</li>
-<li>blacklist_path&#xFF1A;&#x952E;&#x5165;&#x6BD4;&#x5982;- Pods&#xFF0C;&#x5FFD;&#x7565;&#x6240;&#x6709;&#x9879;&#x76EE;&#x4E2D;Pods&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x3002;</li>
-<li>blacklist_prefix&#xFF1A;&#x952E;&#x5165;&#x6BD4;&#x5982;- AF&#xFF0C;&#x5FFD;&#x7565;&#x6240;&#x6709;Interface&#x3001;Extension&#x3001;implementation&#x3001;Category&#x4EE5;AF&#x4F5C;&#x4E3A;&#x524D;&#x7F00;&#x7684;&#x4EE3;&#x7801;&#x3002;</li>
+<li>&#x6574;&#x9897;&#x6811;&#x66F4;&#x65B0;&#xFF1A;&#x6027;&#x80FD;&#x8F83;&#x5DEE;&#xFF0C;&#x8865;&#x6551;&#x63AA;&#x65BD;&#x5C31;&#x662F;&#x5C06;&#x6570;&#x636E;&#x505A;&#x597D;diff&#xFF0C;&#x5C3D;&#x91CF;&#x51CF;&#x5C11;&#x6570;&#x636E;&#x5F15;&#x8D77;&#x7684;&#x91CD;&#x7ED8;&#x3002;</li>
+<li>&#x5B50;&#x6811;&#x66F4;&#x65B0;&#xFF1A;&#x5C06;&#x6570;&#x636E;&#x548C;&#x89C6;&#x56FE;&#x5B50;&#x6811;&#x5339;&#x914D;&#x5927;&#x91CF;&#x7684;&#x5DE5;&#x4F5C;&#x91CF;&#xFF0C;&#x7C92;&#x5EA6;&#x8D8A;&#x5C0F;&#x5DE5;&#x4F5C;&#x91CF;&#x8D8A;&#x5927;&#x3002;</li>
 </ul>
-<p>&#x6CE8;&#x610F;&#xFF0C;&#x6240;&#x6709;&#x4EE5;- &#x5F00;&#x5934;&#x4EE3;&#x8868;&#x7684;&#x591A;&#x4E2A;&#x9009;&#x9879;&#x5FC5;&#x987B;&#x4EE5;&#x53E6;&#x8D77;&#x4E00;&#x884C;~end&#x7ED3;&#x675F;&#x3002;&#x6837;&#x4F8B;Configure&#x6587;&#x4EF6;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-shell">disabled_rules:
-  - interface_illegal_character
-  - project_prefix
-  - property_atomic
-  - property_unsafe 
-  - property_copy
-  - weak_protocol
-  - category_method_naming
-  - initializer_design
-  - mutable_property_copy
-  - weak_proxy
-  - super_call
-  - observe_pairing
-  ~end
-
-force_report: Warning
-
-project_prefix: Sherlock
-
-blacklist_path:
-  - Pods
-  - ThirdPart
-  ~end
-
-blacklist_prefix:
-  - AF
-  - SD
-  - FM
-  - YY
-  ~end
-</code></pre>
-<p>&#x8FD8;&#x6709;&#x4E00;&#x70B9;&#x9700;&#x6CE8;&#x610F;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x5FFD;&#x7565;&#x6240;&#x6709;Pod&#x4E0B;&#x7684;&#x7B2C;&#x4E09;&#x65B9;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#xFF0C;&#x53EA;&#x5728;blacklist_path&#x4E2D;&#x52A0;&#x5165;- Pods&#x662F;&#x884C;&#x4E0D;&#x901A;&#x7684;&#x3002;&#x9884;&#x5904;&#x7406;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x5C06;&#x5F15;&#x5165;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x5408;&#x5E76;&#xFF0C;&#x4EFB;&#x610F;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x5F15;&#x5165;&#x7B2C;&#x4E09;&#x65B9;&#xFF0C;&#x90FD;&#x4F1A;&#x5BFC;&#x81F4;&#x7B2C;&#x4E09;&#x65B9;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x88AB;&#x68C0;&#x67E5;&#x3002;&#x5982;&#x679C;&#x60F3;&#x8981;&#x5B8C;&#x5168;&#x5FFD;&#x7565;&#x7B2C;&#x4E09;&#x65B9;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x8981;&#x5728;blacklist_prefix&#x52A0;&#x5165;&#x524D;&#x7F00;&#x3002;</p>
-<h3 id="CustomRule"><a href="#CustomRule" class="headerlink" title="CustomRule"></a>CustomRule</h3><p>Sherlock&#x63D0;&#x4F9B;&#x4E86;&#x826F;&#x597D;&#x7684;&#x62D3;&#x5C55;&#x6027;&#xFF0C;&#x4F46;&#x662F;&#x4F60;&#x8FD8;&#x662F;&#x9700;&#x8981;&#x4E00;&#x4E2A;clang&#x7684;AST&#x77E5;&#x8BC6;&#x624D;&#x80FD;&#x7F16;&#x5199;&#x68C0;&#x67E5;&#x89C4;&#x5219;&#x4EE3;&#x7801;&#x3002;&#x6DFB;&#x52A0;&#x4E00;&#x6761;&#x65B0;&#x89C4;&#x5219;&#x6709;&#x5982;&#x4E0B;&#x51E0;&#x6B65;&#xFF1A;</p>
+<p>&#x5176;&#x4E8C;&#xFF0C;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x95EE;&#x9898;&#x3002;&#x591A;&#x573A;&#x666F;&#x4E0B;&#x53EF;&#x80FD;&#x4ECE;&#x4E0D;&#x540C;&#x7684;&#x7EBF;&#x7A0B;&#x8BBF;&#x95EE;&#x6570;&#x636E;&#xFF0C;&#x5176;&#x4E2D;&#x591A;&#x7EBF;&#x7A0B;&#x8BFB;&#x5199;&#x5C31;&#x4F1A;&#x9020;&#x6210;&#x591A;&#x6B21;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x4E0D;&#x4E00;&#x81F4;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x8FD9;&#x4E5F;&#x5C31;&#x5F15;&#x8D77;&#x4E86;&#x7EBF;&#x7A0B;&#x4E0D;&#x5B89;&#x5168;&#x3002;&#x800C;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x6BD4;&#x8F83;&#x597D;&#x7684;&#x601D;&#x8DEF;&#x4FBF;&#x662F;&#x80FD;&#x591F;&#x5BF9;&#x6570;&#x636E;&#x6E90;&#x652F;&#x6301;&#x8BFB;&#x8BFB;&#x5E76;&#x53D1;&#xFF0C;&#x800C;&#x8BFB;&#x5199;&#x3001;&#x5199;&#x5199;&#x4E32;&#x884C;&#x7684;&#x65B9;&#x6848;&#x3002;</p>
+<p>&#x54CD;&#x5E94;&#x5F0F;&#x7F16;&#x7A0B;&#x4E5F;&#x662F;&#x89E3;&#x51B3;&#x591A;&#x573A;&#x666F;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x4E00;&#x4E2A;&#x65B9;&#x6848;&#xFF0C;&#x4E0D;&#x8FC7;&#x4E0D;&#x540C;&#x4E8E;&#x4E0A;&#x6587;&#xFF0C;&#x4E0A;&#x6587;&#x5C1D;&#x8BD5;&#x4ECE;&#x67B6;&#x6784;&#x89D2;&#x5EA6;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x54CD;&#x5E94;&#x5F0F;&#x7F16;&#x7A0B;&#x5C1D;&#x8BD5;&#x4ECE;&#x8303;&#x5F0F;&#x7684;&#x89D2;&#x5EA6;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;</p>
+<h3 id="&#x5355;&#x5143;&#x5316;"><a href="#&#x5355;&#x5143;&#x5316;" class="headerlink" title="&#x5355;&#x5143;&#x5316;"></a>&#x5355;&#x5143;&#x5316;</h3><p>&#x6B64;&#x7AE0;&#x8282;&#x5173;&#x6CE8;&#x7684;&#x662F;&#x590D;&#x6742;&#x9875;&#x9762;&#x4E1A;&#x52A1;&#x7684;&#x5355;&#x5143;&#x5316;&#xFF0C;&#x4E0E;&#x7EC4;&#x4EF6;&#x5316;&#x4E0D;&#x540C;&#x3002;&#x5F53;&#x9875;&#x9762;&#x4E1A;&#x52A1;&#x8D8A;&#x6765;&#x8D8A;&#x590D;&#x6742;&#xFF0C;&#x65E0;&#x8BBA;&#x4ECE;&#x54EA;&#x79CD;M**&#x67B6;&#x6784;&#x6298;&#x817E;&#x90FD;&#x529B;&#x4E0D;&#x4ECE;&#x5FC3;&#xFF0C;&#x9875;&#x9762;&#x627F;&#x8F7D;&#x592A;&#x591A;&#x7684;&#x4E1A;&#x52A1;&#xFF0C;&#x603B;&#x6709;&#x4E00;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x591A;&#x5230;&#x65E0;&#x6CD5;&#x7EF4;&#x62A4;&#x3002;</p>
+<p>&#x89E3;&#x51B3;&#x8FD9;&#x79CD;&#x95EE;&#x9898;&#x7684;&#x601D;&#x8DEF;&#x5C31;&#x662F;&#x5C06;&#x9875;&#x9762;&#x5212;&#x5206;&#x4E3A;&#x591A;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x4F5C;&#x4E3A;&#x5355;&#x5143;&#xFF0C;&#x5355;&#x5143;&#x4E0E;&#x5355;&#x5143;&#x4E4B;&#x95F4;&#x4E0D;&#x76F4;&#x63A5;&#x901A;&#x4FE1;&#xFF0C;&#x5355;&#x5143;&#x4E0E;&#x5355;&#x5143;&#x4E4B;&#x95F4;&#x611F;&#x77E5;&#x5EA6;&#x5230;&#x6700;&#x5C0F;&#x3002;</p>
+<p>&#x4ECE;&#x67B6;&#x6784;&#x4E0A;&#x6765;&#x8BB2;&#xFF0C;&#x8FD9;&#x79CD;&#x5212;&#x5206;&#x4F7F;&#x5F97;&#x6574;&#x4E2A;&#x9875;&#x9762;&#x4E1A;&#x52A1;&#x5212;&#x5206;&#x51FA;&#x591A;&#x4E2A;&#x4E1A;&#x52A1;&#x5355;&#x5143;&#xFF0C;&#x4EE3;&#x7801;&#x4E5F;&#x5C31;&#x968F;&#x7740;&#x4E1A;&#x52A1;&#x5355;&#x5143;&#x7684;&#x5212;&#x5206;&#x62BD;&#x79BB;&#x4E86;&#x3002;&#x8FD9;&#x79CD;&#x89E3;&#x51B3;&#x601D;&#x8DEF;&#x4E5F;&#x4E0D;&#x5149;&#x89E3;&#x51B3;&#x4E86;&#x8FD9;&#x7C7B;&#x95EE;&#x9898;&#xFF0C;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x52A8;&#x6001;&#x754C;&#x9762;&#x7684;&#x80FD;&#x529B;&#x548C;&#x76F8;&#x4F3C;&#x4E1A;&#x52A1;&#x7684;&#x590D;&#x7528;&#x80FD;&#x529B;&#x3002;<a href="http://pingguohe.net/2017/12/07/Tangram-2.html" target="_blank" rel="noopener">&#x5177;&#x4F53;&#x6848;&#x4F8B;&#x79FB;&#x6B65;</a>&#x3002;</p>
+<p>&#x8FD9;&#x4E2A;&#x601D;&#x8DEF;&#x4E5F;&#x6709;&#x5F88;&#x591A;&#x7684;&#x70B9;&#x53EF;&#x4EE5;&#x6DF1;&#x5165;&#x6316;&#x6398;&#xFF0C;&#x6027;&#x80FD;&#x3001;&#x540E;&#x53F0;&#x4EE5;&#x53CA;&#x6574;&#x5957;&#x5F00;&#x53D1;&#x6D41;&#x7A0B;&#x3002;</p>
+<h2 id="RIBs"><a href="#RIBs" class="headerlink" title="RIBs"></a>RIBs</h2><p>RIBs&#x662F;uber&#x4EE3;&#x8A00;&#x7684;&#x79FB;&#x52A8;&#x7AEF;&#x67B6;&#x6784;&#x6846;&#x67B6;&#xFF0C;&#x8BE6;&#x60C5;&#x79FB;&#x6B65;(<a href="https://github.com/uber/RIBs/wiki)&#x3002;RIBs&#x7684;&#x6392;&#x573A;&#x8DB3;&#x591F;&#x5360;&#x4E00;&#x4E2A;&#x7AE0;&#x8282;&#xFF0C;&#x91CC;&#x9762;&#x6709;&#x5F88;&#x591A;&#x601D;&#x8DEF;&#x548C;&#x5DE5;&#x7A0B;&#x7EC6;&#x8282;&#x503C;&#x5F97;&#x5B66;&#x4E60;&#xFF0C;RIBs&#x7684;&#x5B9A;&#x4F4D;&#x76F8;&#x8F83;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;React&#x76F8;&#x8F83;&#x4E8E;&#x524D;&#x7AEF;&#x3002;" target="_blank" rel="noopener">https://github.com/uber/RIBs/wiki)&#x3002;RIBs&#x7684;&#x6392;&#x573A;&#x8DB3;&#x591F;&#x5360;&#x4E00;&#x4E2A;&#x7AE0;&#x8282;&#xFF0C;&#x91CC;&#x9762;&#x6709;&#x5F88;&#x591A;&#x601D;&#x8DEF;&#x548C;&#x5DE5;&#x7A0B;&#x7EC6;&#x8282;&#x503C;&#x5F97;&#x5B66;&#x4E60;&#xFF0C;RIBs&#x7684;&#x5B9A;&#x4F4D;&#x76F8;&#x8F83;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;React&#x76F8;&#x8F83;&#x4E8E;&#x524D;&#x7AEF;&#x3002;</a></p>
+<p>&#x6838;&#x5FC3;&#x601D;&#x8DEF;&#x5982;&#x4E0B;&#xFF1A;</p>
 <ul>
-<li>&#x4E3A;&#x65B0;&#x7684;&#x89C4;&#x5219;&#x53D6;&#x4E00;&#x4E2A;&#x540D;&#x5B57;&#xFF0C;&#x4E0E;&#x539F;&#x6709;&#x89C4;&#x5219;&#x4E0D;&#x80FD;&#x91CD;&#x540D;&#xFF0C;&#x540D;&#x5B57;&#x5C06;&#x4F5C;&#x4E3A;&#x89C4;&#x5219;&#x7684;&#x8BC6;&#x522B;&#x3002;&#x7136;&#x540E;&#x52A0;&#x5165;&#x5230;SherlockConfigure.hpp&#x6587;&#x4EF6;&#x4E2D;&#x7684;buildInBaseRules&#x7ED3;&#x6784;&#x91CC;&#x3002;</li>
-<li>&#x5728;Sherlock.cpp&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x65B9;&#x6CD5;&#x7F16;&#x5199;&#x68C0;&#x67E5;&#x89C4;&#x5219;&#x4EE3;&#x7801;&#xFF0C;&#x5728;&#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x5730;&#x65B9;&#x8C03;&#x7528;isBuildInBaseRuleEnable&#x65B9;&#x6CD5;&#x67E5;&#x770B;&#x662F;&#x5426;&#x88AB;&#x5173;&#x95ED;&#x3002;</li>
+<li>&#x5F7B;&#x5E95;&#x7EC4;&#x4EF6;&#x5316;&#xFF0C;&#x5E76;&#x5C06;&#x903B;&#x8F91;&#x4E1A;&#x52A1;&#x548C;&#x754C;&#x9762;&#x4E1A;&#x52A1;&#x5212;&#x5206;&#x4E3A;&#x7B49;&#x540C;&#x7EC4;&#x4EF6;&#x3002;&#x4E0D;&#x540C;&#x4E8E;&#x56FD;&#x5185;&#x7684;&#x6A21;&#x5757;&#x5316;&#x65B9;&#x6848;&#xFF0C;&#x53EA;&#x5C06;&#x4E1A;&#x52A1;&#x7C97;&#x7C92;&#x5EA6;&#x5212;&#x5206;&#xFF0C;RIBs&#x5C06;&#x65E0;&#x8BBA;&#x662F;&#x903B;&#x8F91;&#x4E1A;&#x52A1;&#x6216;&#x754C;&#x9762;&#x4E1A;&#x52A1;&#x7EC4;&#x4EF6;&#x5212;&#x5206;&#x5230;&#x7EC6;&#x7C92;&#x5EA6;&#x5C42;&#x6B21;&#x3002;</li>
+<li>&#x89C4;&#x8303;&#x7EC4;&#x4EF6;&#x67B6;&#x6784;&#x4E3A;VIPER&#x6539;&#x8FDB;&#x7248;VIPRBCD&#x3002;&#x7EDF;&#x4E00;&#x540E;&#x7684;&#x7EC4;&#x4EF6;&#x90FD;&#x662F;VIPRBCD&#x67B6;&#x6784;&#xFF0C;&#x5176;&#x4E2D;Router&#x662F;&#x7EC4;&#x4EF6;&#x4E92;&#x76F8;&#x89E3;&#x8026;&#x7684;&#x6838;&#x5FC3;&#xFF0C;Builder&#x3001;Component&#x3001;Dependency&#x662F;&#x7EC4;&#x4EF6;&#x4E92;&#x76F8;&#x5B9A;&#x4E49;&#x4F9D;&#x8D56;&#x7684;&#x6838;&#x5FC3;&#x3002;&#x5355;&#x4E2A;&#x7EC4;&#x4EF6;&#x5185;&#xFF0C;&#x6570;&#x636E;&#x6D41;&#x5355;&#x5411;&#xFF0C;Interactor&#x5145;&#x5F53;Store&#x3002;</li>
+<li>&#x4E1A;&#x52A1;&#x573A;&#x666F;&#x7684;&#x6D41;&#x52A8;&#x4EE5;&#x7EC4;&#x4EF6;&#x6811;&#x6A21;&#x578B;&#x5316;&#xFF0C;&#x5207;&#x6362;&#x4E1A;&#x52A1;&#x573A;&#x666F;&#xFF0C;&#x5F62;&#x5F0F;&#x5316;&#x4E3A;&#x6811;&#x72B6;&#x7ED3;&#x6784;&#x6DFB;&#x52A0;&#x5B50;&#x6811;&#x6216;&#x79FB;&#x9664;&#x5B50;&#x6811;&#x3002;</li>
+<li>&#x7528;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x7684;&#x65B9;&#x5F0F;&#x7BA1;&#x7406;&#x4F9D;&#x8D56;&#xFF0C;&#x52A8;&#x6001;&#x4F9D;&#x8D56;&#x901A;&#x8FC7;&#x54CD;&#x5E94;&#x5F0F;&#x7F16;&#x7A0B;&#x4E2D;&#x7684;&#x6D41;&#x7BA1;&#x7406;&#x3002;</li>
 </ul>
-<p>&#x5982;&#x679C;&#x6709;&#x66F4;&#x591A;&#x7684;&#x81EA;&#x5B9A;&#x4E49;Configure&#xFF0C;&#x4ECE;SherlockParser.hpp&#x4E2D;&#x7684;tupleRuleMap&#x6216;setRuleMap&#x5C31;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x89E3;&#x6790;&#x51FA;&#x6765;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
-<h2 id="&#x7F16;&#x5199;Clang-Plugin&#x7684;&#x201C;&#x62E6;&#x8DEF;&#x864E;&#x201D;"><a href="#&#x7F16;&#x5199;Clang-Plugin&#x7684;&#x201C;&#x62E6;&#x8DEF;&#x864E;&#x201D;" class="headerlink" title="&#x7F16;&#x5199;Clang Plugin&#x7684;&#x201C;&#x62E6;&#x8DEF;&#x864E;&#x201D;"></a>&#x7F16;&#x5199;Clang Plugin&#x7684;&#x201C;&#x62E6;&#x8DEF;&#x864E;&#x201D;</h2><p>&#x5F53;&#x7136;&#xFF0C;&#x5728;&#x5199;Sherlock&#x7684;&#x65F6;&#x5019;&#x4E5F;&#x9047;&#x5230;&#x4E86;&#x201C;&#x62E6;&#x8DEF;&#x864E;&#x201D;&#xFF0C;&#x8FD9;&#x91CC;&#x548C;&#x5927;&#x5BB6;&#x5206;&#x4EAB;&#x4E00;&#x4E0B;&#x3002;</p>
+<p>RIBs&#x5F7B;&#x5E95;&#x7EC4;&#x4EF6;&#x5316;&#x540E;&#xFF0C;&#x518D;&#x5C06;&#x7EC4;&#x4EF6;&#x89C4;&#x8303;&#x4E3A;VIPRBCD&#xFF0C;RIBs&#x5C06;&#x62BD;&#x8C61;&#x7C92;&#x5EA6;&#x964D;&#x5230;&#x5C3D;&#x53EF;&#x80FD;&#x7684;&#x5C0F;&#x3002;&#x7EC4;&#x4EF6;&#x6811;&#x5F62;&#x5F0F;&#x5316;&#x72B6;&#x6001;&#x6D41;&#x52A8;&#xFF0C;RIBS&#x5F88;&#x81EA;&#x7136;&#x7684;&#x5904;&#x7406;&#x7EC4;&#x4EF6;&#x7684;&#x88C5;&#x5378;&#x3002;&#x8FD9;&#x90FD;&#x6E90;&#x4E8E;uber&#x7684;&#x5DE5;&#x7A0B;&#x7279;&#x70B9;&#xFF1A;</p>
 <ul>
-<li>Clang Plugin&#x5FC5;&#x987B;&#x7528;C++&#x5199;&#x3002;</li>
-<li>&#x5FC5;&#x987B;&#x719F;&#x6089;Clang&#x5F00;&#x653E;&#x7684;API&#xFF0C;Clang&#x6709;&#x6587;&#x6863;&#xFF0C;&#x4F46;&#x662F;&#x89E3;&#x91CA;&#x8BED;&#x8A00;&#x6BD4;&#x8F83;&#x7B80;&#x77ED;&#xFF0C;&#x5149;&#x770B;&#x6587;&#x6863;&#x5F97;&#x5230;&#x7684;&#x4FE1;&#x606F;&#x6709;&#x9650;&#x3002;</li>
-<li>&#x65E0;&#x6CD5;&#x5FEB;&#x901F;&#x6253;&#x5370;&#x51FA;&#x6240;&#x9700;&#x7684;Debug&#x4FE1;&#x606F;&#x3002;</li>
-<li>&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x80FD;&#x529B;&#x6709;&#x9650;&#xFF0C;&#x6CA1;&#x6709;&#x7A0B;&#x5E8F;&#x4E0A;&#x4E0B;&#x6587;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4E0D;&#x80FD;&#x8DE8;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x5171;&#x4EAB;&#x6570;&#x636E;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6CA1;&#x6709;&#x8DE8;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x7684;&#x5168;&#x5C40;&#x6570;&#x636E;&#x3002;</li>
+<li>&#x5FEB;&#x901F;&#x8FED;&#x4EE3;&#xFF0C;&#x5728;&#x539F;&#x529F;&#x80FD;&#x4EE3;&#x7801;&#x57FA;&#x7840;&#x4E0A;&#x5FEB;&#x901F;&#x3001;&#x591A;&#x6B21;&#x4FEE;&#x6539;&#x3002;</li>
+<li>&#x6CE8;&#x91CD;&#x6D4B;&#x8BD5;&#x3002;</li>
+<li>&#x4EE3;&#x7801;&#x5206;&#x4E3A;core&#x548C;optional&#xFF0C;core&#x4EE3;&#x8868;&#x4E3B;&#x6D41;&#x7A0B;&#x529F;&#x80FD;&#xFF0C;optional&#x4EE3;&#x8868;&#x5B9E;&#x9A8C;&#x6027;&#x529F;&#x80FD;&#x3002;core&#x4F4E;&#x5BB9;&#x9519;&#xFF0C;optional&#x53EF;&#x968F;&#x65F6;&#x4E0A;&#x548C;&#x4E0B;&#x3002;</li>
+<li>&#x8DE8;&#x5E73;&#x53F0;&#x5F00;&#x53D1;&#x548C;&#x6DF7;&#x5408;code review&#x3002;</li>
 </ul>
-<p>&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x524D;&#x4E09;&#x70B9;&#x90FD;&#x80FD;&#x6162;&#x6162;&#x514B;&#x670D;&#x3002;C++&#x53EA;&#x8981;&#x4F1A;&#x4E00;&#x4E9B;&#x57FA;&#x672C;&#x8BED;&#x6CD5;&#x5C31;&#x80FD;&#x5FEB;&#x901F;&#x4E0A;&#x624B;&#xFF0C;&#x5E76;&#x4E0D;&#x590D;&#x6742;&#x3002;&#x5149;&#x770B;Clang&#x5F00;&#x53D1;&#x7684;&#x6587;&#x6863;&#x786E;&#x5B9E;&#x4E0D;&#x9760;&#x8C31;&#xFF0C;&#x66F4;&#x53EF;&#x9760;&#x7684;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x7528;clang -fmodules -fsyntax-only -Xclang -ast-dump&#x547D;&#x4EE4;dump&#x51FA;AST&#x7136;&#x540E;&#x89C2;&#x5BDF;AST&#xFF0C;&#x518D;&#x53BB;&#x6E90;&#x7801;&#x770B;&#x770B;&#x76F8;&#x5E94;&#x7C7B;&#x505A;&#x4E86;&#x4EC0;&#x4E48;&#xFF0C;&#x5F88;&#x5FEB;&#x4E5F;&#x80FD;&#x719F;&#x6089;Clang&#x5F00;&#x653E;&#x7684;API&#x3002;&#x5173;&#x4E8E;&#x65E0;&#x6CD5;&#x5FEB;&#x901F;&#x6253;&#x5370;&#x51FA;&#x6240;&#x9700;&#x7684;Debug&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x91CC;&#x63D0;&#x4E00;&#x4E2A;&#x5EFA;&#x8BAE;&#x5C31;&#x662F;&#x60F3;&#x529E;&#x6CD5;&#x628A;Debug&#x4FE1;&#x606F;&#x5F53;&#x505A;Warning&#x6253;&#x51FA;&#x6765;&#x3002;</p>
-<p>&#x5BF9;&#x4E8E;&#x6700;&#x540E;&#x4E00;&#x70B9;&#xFF0C;Clang Plugin&#x672C;&#x6765;&#x5C31;&#x662F;&#x5728;&#x505A;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x9636;&#x6BB5;&#xFF0C;&#x4E0D;&#x80FD;&#x63D0;&#x4F9B;&#x8BED;&#x4E49;&#x5206;&#x6790;&#x7684;&#x80FD;&#x529B;&#x3002;&#x5982;&#x679C;&#x6709;&#x66F4;&#x590D;&#x6742;&#x7684;&#x9700;&#x6C42;&#x505A;&#x4E0D;&#x4E86;&#xFF0C;&#x8BF7;&#x5148;&#x8003;&#x8651;&#x4E00;&#x4E0B;&#x662F;&#x4E0D;&#x662F;&#x56E0;&#x4E3A;&#x60F3;&#x5728;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x9636;&#x6BB5;&#x505A;&#x9759;&#x6001;&#x5206;&#x6790;&#x7684;&#x5DE5;&#x4F5C;&#x4E86;&#x3002;</p>
-<h2 id="&#x63A8;&#x8350;&#x6587;&#x7AE0;"><a href="#&#x63A8;&#x8350;&#x6587;&#x7AE0;" class="headerlink" title="&#x63A8;&#x8350;&#x6587;&#x7AE0;"></a>&#x63A8;&#x8350;&#x6587;&#x7AE0;</h2><p>&#x5B98;&#x65B9;&#x6587;&#x6863; <a href="https://clang.llvm.org/docs/RAVFrontendAction.html" target="_blank" rel="noopener">https://clang.llvm.org/docs/RAVFrontendAction.html</a></p>
-<p>AST <a href="https://jonasdevlieghere.com/understanding-the-clang-ast/" target="_blank" rel="noopener">https://jonasdevlieghere.com/understanding-the-clang-ast/</a></p>
+<p>&#x5F7B;&#x5E95;&#x7EC4;&#x4EF6;&#x5316;&#x548C;&#x89C4;&#x8303;VIPRBCD&#xFF0C;&#x4F7F;&#x7EC4;&#x4EF6;&#x66F4;&#x52A0;&#x72EC;&#x7ACB;&#xFF0C;&#x5728;&#x5FEB;&#x901F;&#x8FED;&#x4EE3;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x63D0;&#x9AD8;&#x7EC4;&#x4EF6;&#x62D3;&#x5C55;&#x6027;&#x548C;&#x63D0;&#x9AD8;&#x7CFB;&#x7EDF;&#x7684;&#x7A33;&#x5B9A;&#x6027;&#x3002;&#x5E76;&#x4E14;&#x4FBF;&#x4E8E;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x3002;&#x7EC4;&#x4EF6;&#x6811;&#x5F62;&#x5F0F;&#x5316;&#x72B6;&#x6001;&#x6D41;&#x52A8;&#xFF0C;&#x4F7F;&#x88C5;&#x5378;&#x5B9E;&#x9A8C;&#x6027;&#x529F;&#x80FD;&#x975E;&#x5E38;&#x65B9;&#x4FBF;&#x3002;</p>
+<p>&#x5E26;&#x6765;&#x7684;&#x7F3A;&#x70B9;&#x5C31;&#x662F;&#x80F6;&#x6C34;&#x4EE3;&#x7801;&#x66F4;&#x591A;&#xFF0C;&#x5B66;&#x4E60;&#x6210;&#x672C;&#x52A0;&#x5927;&#xFF0C;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#x95E8;&#x69DB;&#x63D0;&#x9AD8;&#x3002;&#x867D;&#x7136;RIBs&#x63D0;&#x4F9B;&#x4E86;&#x5168;&#x5957;&#x5DE5;&#x5177;&#x652F;&#x6301;&#x5F00;&#x53D1;&#xFF0C;&#x4F46;&#x8FD8;&#x662F;&#x5F88;&#x7E41;&#x7410;&#x3002;uber&#x539F;&#x6587;&#x79FB;&#x6B65;(<a href="https://eng.uber.com/new-rider-app/)&#x3002;" target="_blank" rel="noopener">https://eng.uber.com/new-rider-app/)&#x3002;</a></p>
+<p>RIBs&#x7684;&#x8BBE;&#x8BA1;&#x6765;&#x81EA;&#x4E8E;uber&#x7684;&#x5DE5;&#x7A0B;&#x7279;&#x70B9;&#xFF0C;&#x67B6;&#x6784;&#x5E08;&#x5728;<strong>&#x7EC4;&#x4EF6;&#x7684;&#x62BD;&#x8C61;&#x7C92;&#x5EA6;&#x4E0A;&#x653E;&#x7EC6;&#x5E76;&#x6CE8;&#x91CD;&#x6D4B;&#x8BD5;&#x6765;&#x63D0;&#x5347;&#x6574;&#x4F53;&#x7CFB;&#x7EDF;&#x7684;&#x7A33;&#x5B9A;&#x6027;</strong>&#x3002;</p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -642,7 +557,7 @@ blacklist_prefix:
                             共享声明：本作品采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh">知识共享署名 4.0 国际许可协议</a> 转载时请注明作者和原文链接
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="http://blog.mrriddler.com/Clang插件-Sherlock/">http://blog.mrriddler.com/Clang插件-Sherlock/</a>
+                        <strong>本文链接：</strong><a href="http://blog.mrriddler.com/浅谈客户端业务架构/">http://blog.mrriddler.com/浅谈客户端业务架构/</a>
                     </p>
                 </blockquote>
         
@@ -693,21 +608,13 @@ blacklist_prefix:
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/LSM-Tree与RocksDB/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/数据结构/" id="post_nav-older" class="next-content">
+        <a href="/dyld_startup/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
