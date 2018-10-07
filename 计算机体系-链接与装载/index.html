@@ -249,7 +249,7 @@
 
     
         <meta property="article:published_time" content="Fri Aug 24 2018 17:57:00 GMT+0800">
-        <meta property="article:modified_time" content="Fri Aug 24 2018 09:48:05 GMT+0800">
+        <meta property="article:modified_time" content="Sun Oct 07 2018 09:42:13 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -272,7 +272,7 @@
     "mainEntityOfPage": "http://blog.mrriddler.com/计算机体系-链接与装载/index.html",
     "headline": "计算机体系-链接与装载",
     "datePublished": "Fri Aug 24 2018 17:57:00 GMT+0800",
-    "dateModified": "Fri Aug 24 2018 09:48:05 GMT+0800",
+    "dateModified": "Sun Oct 07 2018 09:42:13 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "mrriddler",
@@ -583,7 +583,7 @@
  |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|
  |__DATA              |  ------        |.data         |
  |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|          |        |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;
- |other segment...    |        ------&gt; |.got          |
+ |other segment...    |       ------&gt;  |.got          |
  &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;                |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;
                                        |.bss          |
 </code></pre>
@@ -625,20 +625,20 @@ d
 </code></pre>
 <p>Mach-O&#x683C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code class="lang-c">  &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;
- |header              |              |.text                  |
- |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|       -----&gt; |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|
- |load commands       |      |       |.const                 |
- |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|      |       |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|       |.data         |
- |__TEXT              |  ----                                        |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|
- |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|                                              |.bss          |
- |__DATA              |  ------------------------------------------&gt; |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|
- |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|                                              |.nl_symbol_ptr|
- |__LINKEDIT          |  ----                                        |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;  &#x2014;&#x2014;|
- |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|         |       |.strtab                |       |.la_symbol_ptr|
- |other segments...   |      |       |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|         |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|
- &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;       -----&gt; |.symtab                |       |.got          |
-                                     |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|     
-                                       |.indirect_symbol_table |
+ |header              |            |.text                  |
+ |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|      ----&gt; |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|
+ |load commands       |     |      |.const                 |
+ |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|     |      |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|    |.data         |
+ |__TEXT              | ----                                    |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|
+ |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|                                         |.bss          |
+ |__DATA              | --------------------------------------&gt; |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|
+ |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|                                         |.nl_symbol_ptr|
+ |__LINKEDIT          | ----                                    |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;  &#x2014;&#x2014;|
+ |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|       |      |.strtab                |    |.la_symbol_ptr|
+ |other segments...   |     |      |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|    |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|
+ &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;      ----&gt; |.symtab                |    |.got          |
+                                   |&#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014; &#x2014;&#x2014;|     
+                                     |.indirect_symbol_table |
 </code></pre>
 <p>&#x5176;&#x4E2D;&#xFF0C;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#x7684;&#x662F;non lazy symbol pointer&#x548C;lazy symbol pointer&#x3002;__DATA&#x4E2D;&#x5F15;&#x7528;&#x7B26;&#x53F7;&#xFF0C;&#x4EE5;&#x76F4;&#x63A5;&#x6307;&#x5411;&#x7B26;&#x53F7;&#x5B9E;&#x9645;&#x5730;&#x5740;(&#x800C;&#x4E0D;&#x662F;&#x7B26;&#x53F7;&#x8868;&#x5730;&#x5740;)&#x7684;&#x6307;&#x9488;&#x5F62;&#x5F0F;&#x5B58;&#x50A8;&#xFF0C;&#x6709;non lazy symbol pointer&#x548C;lazy symbol pointer&#x4E24;&#x79CD;&#xFF0C;&#x533A;&#x522B;&#x5C31;&#x662F;&#x662F;&#x5426;&#x662F;&#x4F7F;&#x7528;&#x4E86;plt(&#x5EF6;&#x8FDF;&#x7ED1;&#x5B9A;)&#x6280;&#x672F;&#xFF0C;&#x800C;&#x8FD9;&#x4E9B;&#x7B26;&#x53F7;&#x5982;&#x679C;&#x60F3;&#x8981;&#x83B7;&#x5F97;&#x66F4;&#x591A;&#x7B26;&#x53F7;&#x57FA;&#x672C;&#x4FE1;&#x606F;&#x8981;&#x901A;&#x8FC7;&#x95F4;&#x63A5;&#x8DF3;&#x8F6C;&#x8868;&#xFF0C;&#x6240;&#x4EE5;&#x5F97;&#x540D;indirection symbol pointer&#x3002;nl_symbol_ptr&#x4E3A;non lazy symbol pointer&#xFF0C;la_symbol_ptr&#x4E3A;lazy symbol pointer&#x3002;</p>
 <p>&#x66F4;&#x52A0;&#x8BE6;&#x7EC6;&#x7684;&#x683C;&#x5F0F;&#xFF0C;&#x63A8;&#x8350;&#x8FD9;&#x7BC7;<a href="http://turingh.github.io/2016/03/07/mach-o%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E5%88%86%E6%9E%90/" target="_blank" rel="noopener">&#x6587;&#x7AE0;</a>&#x3002;</p>
@@ -805,7 +805,7 @@ d
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">六月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/10/">十月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">六月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -823,7 +823,7 @@ d
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/clang/">clang<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/iOS/">iOS<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/图片/">图片<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/存储体系/">存储体系<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构/">数据结构<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/架构/">架构<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/算法/">算法<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机体系/">计算机体系<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/链接与装载/">链接与装载<span class="sidebar_archives-count">3</span></a>
+                <a class="sidebar_archives-link" href="/categories/clang/">clang<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/iOS/">iOS<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/图片/">图片<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/存储体系/">存储体系<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构/">数据结构<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/架构/">架构<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/算法/">算法<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/网络/">网络<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机体系/">计算机体系<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/链接与装载/">链接与装载<span class="sidebar_archives-count">3</span></a>
             </ul>
         </li>
         
@@ -837,7 +837,7 @@ d
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">19</span>
+                <span class="sidebar-badge">21</span>
             </a>
         </li>
         

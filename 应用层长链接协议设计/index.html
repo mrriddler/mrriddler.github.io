@@ -48,7 +48,7 @@
     
     <title>
         
-            算法火花 | 
+            应用层长链接协议设计 | 
         
         谜语糖
     </title>
@@ -58,11 +58,8 @@
     <link rel="icon" href="/img/favicon.png">
 
     <meta name="format-detection" content="telephone=no"/>
-    <meta name="description" itemprop="description" content="
-迸射的火花
-
-本篇主要涉及到学习算法时的方法论。">
-    <meta name="keywords" content=",算法">
+    <meta name="description" itemprop="description" content="本文的内容如题，在客户端场景下，自定义一款“通用”的应用层长链接。而对于协议要想要做到极致，一定要着眼业务，用户的网络状况、应用的使用模式等等都是要考虑的因素。自然也就不存在“通用”协议，本文目的在于分解协议，阐述其中可被抽象出来的部分。鉴于笔者场景和阅历的有限，如果有偏颇之处，还望指出。">
+    <meta name="keywords" content=",网络">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -228,7 +225,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="谜语糖">
-    <meta name="msapplication-starturl" content="http://blog.mrriddler.com/算法火花/">
+    <meta name="msapplication-starturl" content="http://blog.mrriddler.com/应用层长链接协议设计/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="谜语糖">
@@ -243,19 +240,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://blog.mrriddler.com/算法火花/">
+    <meta property="og:url" content="http://blog.mrriddler.com/应用层长链接协议设计/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="算法火花 | 谜语糖">
+    <meta property="og:title" content="应用层长链接协议设计 | 谜语糖">
     <meta property="og:image" content="/img/favicon.png">
-    <meta property="og:description" content="
-迸射的火花
-
-本篇主要涉及到学习算法时的方法论。">
-    <meta property="og:article:tag" content="算法"> 
+    <meta property="og:description" content="本文的内容如题，在客户端场景下，自定义一款“通用”的应用层长链接。而对于协议要想要做到极致，一定要着眼业务，用户的网络状况、应用的使用模式等等都是要考虑的因素。自然也就不存在“通用”协议，本文目的在于分解协议，阐述其中可被抽象出来的部分。鉴于笔者场景和阅历的有限，如果有偏颇之处，还望指出。">
+    <meta property="og:article:tag" content="网络"> 
 
     
-        <meta property="article:published_time" content="Mon Nov 14 2016 14:55:00 GMT+0800">
-        <meta property="article:modified_time" content="Thu Aug 23 2018 23:38:03 GMT+0800">
+        <meta property="article:published_time" content="Mon Oct 08 2018 18:57:00 GMT+0800">
+        <meta property="article:modified_time" content="Sun Oct 07 2018 09:23:31 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -263,7 +257,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://blog.mrriddler.com/算法火花/index.html" />
+        <link rel="canonical" href="http://blog.mrriddler.com/应用层长链接协议设计/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -275,10 +269,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://blog.mrriddler.com/算法火花/index.html",
-    "headline": "算法火花",
-    "datePublished": "Mon Nov 14 2016 14:55:00 GMT+0800",
-    "dateModified": "Thu Aug 23 2018 23:38:03 GMT+0800",
+    "mainEntityOfPage": "http://blog.mrriddler.com/应用层长链接协议设计/index.html",
+    "headline": "应用层长链接协议设计",
+    "datePublished": "Mon Oct 08 2018 18:57:00 GMT+0800",
+    "dateModified": "Sun Oct 07 2018 09:23:31 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "mrriddler",
@@ -296,11 +290,8 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": ",算法",
-    "description": "
-迸射的火花
-
-本篇主要涉及到学习算法时的方法论。",
+    "keywords": ",网络",
+    "description": "本文的内容如题，在客户端场景下，自定义一款“通用”的应用层长链接。而对于协议要想要做到极致，一定要着眼业务，用户的网络状况、应用的使用模式等等都是要考虑的因素。自然也就不存在“通用”协议，本文目的在于分解协议，阐述其中可被抽象出来的部分。鉴于笔者场景和阅历的有限，如果有偏颇之处，还望指出。",
 }
 </script>
 
@@ -365,7 +356,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#学习已有的经典算法"><span class="post-toc-number">1.</span> <span class="post-toc-text">学习已有的经典算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#算法设计"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">算法设计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#严谨的思维"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">严谨的思维</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#经典算法的运用"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">经典算法的运用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用"><span class="post-toc-number">2.</span> <span class="post-toc-text">引用</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#协议分层"><span class="post-toc-number">1.</span> <span class="post-toc-text">协议分层</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#双工通信"><span class="post-toc-number">2.</span> <span class="post-toc-text">双工通信</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Head设计"><span class="post-toc-number">3.</span> <span class="post-toc-text">Head设计</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#编解码"><span class="post-toc-number">4.</span> <span class="post-toc-text">编解码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#连接优化"><span class="post-toc-number">5.</span> <span class="post-toc-text">连接优化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#竞速建连"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">竞速建连</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#智能心跳"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">智能心跳</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#socket调优"><span class="post-toc-number">6.</span> <span class="post-toc-text">socket调优</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安全优化"><span class="post-toc-number">7.</span> <span class="post-toc-text">安全优化</span></a></li></ol>
     </ul>
     
 
@@ -385,10 +376,10 @@
     <!-- Paradox Post Header -->
     
         <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://o79rgqboc.bkt.clouddn.com/the_algo.png)">
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://o79rgqboc.bkt.clouddn.com/protocol.png)">
     
             <p class="article-headline-p">
-                算法火花
+                应用层长链接协议设计
             </p>
         </div>
 
@@ -407,7 +398,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>mrriddler</strong>
-        <span>11月 14, 2016</span>
+        <span>10月 08, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -431,7 +422,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/算法/">算法</a>
+        <a class="post_tag-link" href="/tags/网络/">网络</a>
     </ul>
     
 
@@ -448,7 +439,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=算法火花&url=http://blog.mrriddler.com/算法火花/index.html&pic=http://blog.mrriddler.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=应用层长链接协议设计&url=http://blog.mrriddler.com/应用层长链接协议设计/index.html&pic=http://blog.mrriddler.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -457,7 +448,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=算法火花&url=http://blog.mrriddler.com/算法火花/index.html&via=mrriddler" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=应用层长链接协议设计&url=http://blog.mrriddler.com/应用层长链接协议设计/index.html&via=mrriddler" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -472,7 +463,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.mrriddler.com/算法火花/index.html&title=算法火花" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.mrriddler.com/应用层长链接协议设计/index.html&title=应用层长链接协议设计" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -494,46 +485,76 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <blockquote>
-<p>&#x8FF8;&#x5C04;&#x7684;&#x706B;&#x82B1;</p>
-</blockquote>
-<p>&#x672C;&#x7BC7;&#x4E3B;&#x8981;&#x6D89;&#x53CA;&#x5230;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x65F6;&#x7684;&#x65B9;&#x6CD5;&#x8BBA;&#x3002;</p>
+        <p>&#x672C;&#x6587;&#x7684;&#x5185;&#x5BB9;&#x5982;&#x9898;&#xFF0C;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x573A;&#x666F;&#x4E0B;&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x6B3E;&#x201C;&#x901A;&#x7528;&#x201D;&#x7684;&#x5E94;&#x7528;&#x5C42;&#x957F;&#x94FE;&#x63A5;&#x3002;&#x800C;&#x5BF9;&#x4E8E;&#x534F;&#x8BAE;&#x8981;&#x60F3;&#x8981;&#x505A;&#x5230;&#x6781;&#x81F4;&#xFF0C;&#x4E00;&#x5B9A;&#x8981;&#x7740;&#x773C;&#x4E1A;&#x52A1;&#xFF0C;&#x7528;&#x6237;&#x7684;&#x7F51;&#x7EDC;&#x72B6;&#x51B5;&#x3001;&#x5E94;&#x7528;&#x7684;&#x4F7F;&#x7528;&#x6A21;&#x5F0F;&#x7B49;&#x7B49;&#x90FD;&#x662F;&#x8981;&#x8003;&#x8651;&#x7684;&#x56E0;&#x7D20;&#x3002;&#x81EA;&#x7136;&#x4E5F;&#x5C31;&#x4E0D;&#x5B58;&#x5728;&#x201C;&#x901A;&#x7528;&#x201D;&#x534F;&#x8BAE;&#xFF0C;&#x672C;&#x6587;&#x76EE;&#x7684;&#x5728;&#x4E8E;&#x5206;&#x89E3;&#x534F;&#x8BAE;&#xFF0C;&#x9610;&#x8FF0;&#x5176;&#x4E2D;&#x53EF;&#x88AB;&#x62BD;&#x8C61;&#x51FA;&#x6765;&#x7684;&#x90E8;&#x5206;&#x3002;&#x9274;&#x4E8E;&#x7B14;&#x8005;&#x573A;&#x666F;&#x548C;&#x9605;&#x5386;&#x7684;&#x6709;&#x9650;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x504F;&#x9887;&#x4E4B;&#x5904;&#xFF0C;&#x8FD8;&#x671B;&#x6307;&#x51FA;&#x3002;</p>
 <a id="more"></a>
-<p><br></p>
-<h2 id="&#x5B66;&#x4E60;&#x5DF2;&#x6709;&#x7684;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;"><a href="#&#x5B66;&#x4E60;&#x5DF2;&#x6709;&#x7684;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;" class="headerlink" title="&#x5B66;&#x4E60;&#x5DF2;&#x6709;&#x7684;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;"></a>&#x5B66;&#x4E60;&#x5DF2;&#x6709;&#x7684;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;</h2><p>&#x5728;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x90FD;&#x662F;&#x4EE5;&#x5B66;&#x4E60;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x3002;&#x6DF1;&#x5165;&#x7814;&#x7A76;&#x8FC7;&#x7B97;&#x6CD5;&#x7684;&#x540C;&#x5B66;&#x8DDF;&#x6211;&#x8BF4;&#xFF0C;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x8981;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x80CC;&#x540E;&#x7684;&#x601D;&#x60F3;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x8FD9;&#x8BDD;&#x8FD8;&#x662F;&#x50CF;&#x53E4;&#x5BFA;&#x91CC;&#x548C;&#x5C1A;&#x8BF4;&#x51FA;&#x6765;&#x7684;&#x8BDD;&#xFF0C;&#x597D;&#x50CF;&#x7B97;&#x6CD5;&#x9700;&#x8981;&#x201C;&#x609F;&#x201D;&#xFF0C;&#x5FC5;&#x987B;&#x4FEE;&#x70BC;&#x591A;&#x5E74;&#x624D;&#x80FD;&#x7406;&#x89E3;&#x3002;&#x8BDD;&#x542C;&#x4E0A;&#x53BB;&#x597D;&#x50CF;&#x6709;&#x9053;&#x7406;&#x7684;&#x6837;&#x5B50;&#xFF0C;&#x505A;&#x7684;&#x65F6;&#x5019;&#x4F9D;&#x7136;&#x505A;&#x4E0D;&#x597D;&#x3002;&#x6700;&#x540E;&#x843D;&#x5F97;&#xFF0C;&#x7ECF;&#x5178;&#x786E;&#x5B9E;&#x7B97;&#x6CD5;&#x8BB0;&#x4E0B;&#x6765;&#x4E86;&#x3002;&#x51FA;&#x73B0;&#x4E86;&#x548C;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x4E00;&#x6837;&#x7684;&#x95EE;&#x9898;&#x65F6;&#xFF0C;&#x6211;&#x76F4;&#x63A5;&#x5C06;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x5957;&#x4E0A;&#x5C31;&#x89E3;&#x51B3;&#x4E86;&#xFF0C;&#x81EA;&#x6211;&#x611F;&#x89C9;&#x7B97;&#x6CD5;&#x5F88;&#x5F3A;&#x3002;&#x51FA;&#x73B0;&#x4E86;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x7684;&#x53D8;&#x79CD;&#xFF0C;&#x50BB;&#x773C;&#x4E86;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5C31;&#x77E5;&#x9053;&#x81EA;&#x5DF1;&#x7B97;&#x6CD5;&#x80FD;&#x529B;&#x6839;&#x672C;&#x5C31;&#x4E0D;&#x884C;&#x3002;</p>
-<p>&#x8FD9;&#x662F;&#x91CD;&#x65B0;&#x601D;&#x8003;&#x81EA;&#x5DF1;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x7684;&#x8FC7;&#x7A0B;&#x548C;&#x65B9;&#x5F0F;&#x7684;&#x597D;&#x673A;&#x4F1A;&#x3002;&#x53EF;&#x4EE5;&#x95EE;&#x81EA;&#x5DF1;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x4ECE;&#x5DF2;&#x6709;&#x7684;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x4E2D;&#x80FD;&#x5B66;&#x5230;&#x4E9B;&#x4EC0;&#x4E48;&#xFF1F;</p>
+<p>&#x5BF9;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF;&#x8FD9;&#x6837;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x7F51;&#x7EDC;&#x5C42;&#x81F3;&#x5173;&#x91CD;&#x8981;&#x3002;&#x4E00;&#x822C;&#x7684;&#x6570;&#x636E;&#x8BF7;&#x6C42;&#xFF0C;HTTP&#x4F5C;&#x4E3A;&#x77ED;&#x534F;&#x8BAE;&#x80FD;hold&#x4F4F;&#x573A;&#x3002;&#x4F46;&#x5F53;&#x9047;&#x5230;IM&#x3001;&#x6570;&#x636E;&#x589E;&#x91CF;&#x66F4;&#x65B0;&#x8FD9;&#x6837;&#x5B9E;&#x65F6;&#x6027;&#x8F83;&#x5F3A;&#x7684;&#x8981;&#x6C42;&#xFF0C;HTTP&#x534F;&#x8BAE;&#x7531;&#x4E8E;&#x5E76;&#x4E0D;&#x662F;&#x5E94;&#x5BF9;&#x8FD9;&#x79CD;&#x573A;&#x666F;&#x800C;&#x8BBE;&#x8BA1;&#x7684;&#xFF0C;&#x5C31;&#x4F1A;&#x529B;&#x4E0D;&#x4ECE;&#x5FC3;&#x3002;&#x800C;&#x5BF9;&#x4E8E;&#x4E00;&#x4E9B;&#x8981;&#x5BF9;&#x7F51;&#x7EDC;&#x8FDB;&#x884C;&#x6DF1;&#x5C42;&#x4F18;&#x5316;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x662F;&#x7ED5;&#x4E0D;&#x8FC7;HTTP&#x7684;&#xFF0C;&#x6700;&#x7EC8;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x4FBF;&#x662F;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x6B3E;&#x957F;&#x8FDE;&#x63A5;&#x534F;&#x8BAE;&#x3002;</p>
+<p>&#x5728;&#x8BBE;&#x8BA1;&#x5E94;&#x7528;&#x5C42;&#x534F;&#x8BAE;&#x4E4B;&#x524D;&#xFF0C;&#x6700;&#x597D;&#x662F;&#x5B66;&#x4E60;&#x8FC7;TCP/IP&#x534F;&#x8BAE;&#x6808;&#xFF0C;&#x8BBE;&#x8BA1;&#x534F;&#x8BAE;&#x4F1A;&#x78B0;&#x5230;&#x7684;&#x5F88;&#x591A;&#x95EE;&#x9898;&#x5728;TCP/IP&#x534F;&#x8BAE;&#x6808;&#x4E2D;&#x5DF2;&#x7ECF;&#x88AB;&#x4F18;&#x96C5;&#x7684;&#x89E3;&#x51B3;&#x4E86;&#x3002;</p>
+<h2 id="&#x534F;&#x8BAE;&#x5206;&#x5C42;"><a href="#&#x534F;&#x8BAE;&#x5206;&#x5C42;" class="headerlink" title="&#x534F;&#x8BAE;&#x5206;&#x5C42;"></a>&#x534F;&#x8BAE;&#x5206;&#x5C42;</h2><p>&#x672C;&#x7BC7;&#x8BB2;&#x8FF0;&#x8BBE;&#x8BA1;&#x4E00;&#x6B3E;&#x53EF;&#x9760;&#x534F;&#x8BAE;&#xFF0C;&#x800C;&#x505A;&#x5230;&#x53EF;&#x9760;&#x5C31;&#x4F9D;&#x8D56;TCP&#x3002;TCP&#x5386;&#x7ECF;&#x4E86;&#x591A;&#x5C11;&#x5E74;&#x7684;&#x8003;&#x9A8C;&#xFF0C;&#x91CC;&#x9762;&#x5F88;&#x591A;&#x7684;&#x8FB9;&#x89D2;&#x90FD;&#x662F;&#x957F;&#x65F6;&#x95F4;&#x5DE5;&#x7A0B;&#x5B9E;&#x8DF5;&#x51FA;&#x6765;&#x7684;&#xFF0C;&#x4E0D;&#x662F;&#x77ED;&#x671F;&#x53EF;&#x4EE5;&#x4EE3;&#x66FF;&#x7684;&#x3002;</p>
+<p>&#x5BA2;&#x6237;&#x7AEF;&#x5E94;&#x7528;&#x534F;&#x8BAE;&#x6709;&#x4E0D;&#x540C;&#x573A;&#x666F;&#xFF0C;&#x8BF7;&#x6C42;&#x3001;IM&#x3001;&#x589E;&#x91CF;&#x66F4;&#x65B0;&#x7B49;&#x3002;&#x9488;&#x5BF9;&#x4E0D;&#x540C;&#x573A;&#x666F;&#xFF0C;&#x62BD;&#x8C61;&#x5176;&#x4F20;&#x8F93;&#x8FC7;&#x7A0B;&#xFF0C;&#x5C06;&#x7F16;&#x89E3;&#x7801;&#x4EA4;&#x7ED9;&#x5177;&#x4F53;&#x573A;&#x666F;&#x3002;&#x4E3A;&#x4E86;&#x5E94;&#x5BF9;&#x4E0D;&#x540C;&#x573A;&#x666F;&#xFF0C;&#x5728;&#x8BBE;&#x8BA1;&#x4E0A;&#x6709;&#x4E2A;&#x5173;&#x952E;&#x70B9;&#xFF0C;<strong>&#x6A21;&#x62DF;TCP/IP&#x534F;&#x8BAE;&#x6808;&#x5BF9;&#x534F;&#x8BAE;&#x5206;&#x5C42;</strong>&#x3002;TCP/IP&#x534F;&#x8BAE;&#x5206;&#x5C42;&#x4F7F;&#x6570;&#x636E;&#x7ECF;&#x8FC7;&#x6BCF;&#x5C42;&#x90FD;&#x4F1A;&#x5728;&#x6570;&#x636E;&#x52A0;&#x4E0A;&#x672C;&#x5C42;&#x534F;&#x8BAE;&#x7684;head&#x6216;footer&#xFF0C;&#x5230;&#x76EE;&#x7684;&#x5730;&#x518D;&#x5728;&#x76F8;&#x5E94;&#x5C42;&#x5C06;&#x9996;&#x90E8;&#x4F9D;&#x6B21;&#x5265;&#x79BB;&#x3002;&#x672C;&#x7BC7;&#x8BBE;&#x8BA1;&#x7684;&#x534F;&#x8BAE;&#x7C7B;&#x4F3C;&#xFF0C;payload&#x4E2D;&#x5305;&#x542B;&#x4E0A;&#x5C42;&#x534F;&#x8BAE;&#x7684;head&#x548C;payload&#x3002;&#x5176;&#x6574;&#x4F53;&#x7ED3;&#x6784;&#xFF1A;</p>
+<pre><code class="lang-c">0     1   &#x53D8;&#x957F;       &#x53D8;&#x957F;    
++-----+--------+-----------+----------+-----------------+---------------------
+|magic|head len|payload len|   head   |   payload head  |   payload payload  |  
++-----+--------+-----------+----------+-----------------+---------------------
+</code></pre>
 <ul>
-<li>&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;&#x3002;&#x5F53;&#x9047;&#x5230;&#x65B0;&#x7684;&#x95EE;&#x9898;&#x65F6;&#xFF0C;&#x8FD0;&#x7528;&#x6240;&#x5B66;&#xFF0C;&#x8BBE;&#x8BA1;&#x51FA;&#x4E00;&#x4E2A;&#x7B97;&#x6CD5;&#x3002;</li>
-<li>&#x4E25;&#x8C28;&#x7684;&#x601D;&#x7EF4;&#x3002;&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;&#x5176;&#x4E2D;&#x4E00;&#x6B65;&#x5C31;&#x662F;&#xFF0C;&#x6570;&#x5B66;&#x8BC1;&#x660E;&#x7B97;&#x6CD5;&#x7684;&#x6B63;&#x786E;&#x6027;&#x3002;&#x953B;&#x70BC;&#x51FA;&#x4E25;&#x8C28;&#x7684;&#x601D;&#x7EF4;&#xFF0C;&#x5BF9;&#x5176;&#x4ED6;&#x9886;&#x57DF;&#x4E5F;&#x4F1A;&#x5F88;&#x6709;&#x5E2E;&#x52A9;&#x3002;</li>
-<li>&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x7684;&#x8FD0;&#x7528;&#x3002;&#x9047;&#x5230;&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x719F;&#x7EC3;&#x4F7F;&#x7528;&#x5DF2;&#x88AB;&#x8BC1;&#x660E;&#x8FC7;&#x6B63;&#x786E;&#x3001;&#x9AD8;&#x6548;&#x7684;&#x7B97;&#x6CD5;&#x3002;</li>
+<li>magic&#xFF1A;&#x6807;&#x8BC6;&#x534F;&#x8BAE;</li>
+<li>head len&#xFF1A;head&#x957F;&#x5EA6;</li>
+<li>payload len&#xFF1A;payload&#x957F;&#x5EA6;</li>
+<li>head&#xFF1A;&#x5934;&#x90E8;</li>
+<li>payload head&#xFF1A;&#x4E0A;&#x5C42;&#x534F;&#x8BAE;head</li>
+<li>payload payload&#xFF1A;&#x4E0A;&#x5C42;&#x534F;&#x8BAE;payload</li>
 </ul>
-<h3 id="&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;"><a href="#&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;" class="headerlink" title="&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;"></a>&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;</h3><p>Algorithm Design by JON KLEINBERG EVA TARDOS &#x4E00;&#x4E66;&#x4E2D;&#x7B2C;&#x4E00;&#x7AE0;&#x7B2C;&#x4E00;&#x8282;&#x5982;&#x662F;&#x8BF4;&#xFF1A;</p>
-<blockquote>
-<p>As an opening topic, we look at an algorithmic problem that nicely illustrates<br>many of the themes we will be emphasizing. It is motivated by some very<br>natural and practical concerns, and from these we formulate a clean and<br>simple statement of a problem. The algorithm to solve the problem is very<br>clean as well, and most of our work will be spent in proving that it is correct<br>and giving an acceptable bound on the amount of time it takes to terminate<br>with an answer.</p>
-</blockquote>
-<p>&#x4E66;&#x4E2D;&#x8FD9;&#x4E00;&#x8282;&#x4EE5;Stable Matching&#x4E3A;&#x4F8B;&#xFF0C;&#x8BF4;&#x660E;&#x4E86;&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x57FA;&#x672C;&#x4E0A;&#x6765;&#x8BF4;&#xFF0C;&#x5C31;&#x662F;&#x4ECE;&#x590D;&#x6742;&#x7684;&#x73B0;&#x5B9E;&#x60C5;&#x51B5;&#x4E2D;&#xFF0C;&#x7B80;&#x5316;&#x95EE;&#x9898;&#xFF0C;&#x8BBE;&#x8BA1;&#x51FA;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x7684;&#x7B97;&#x6CD5;&#xFF0C;&#x8BC1;&#x660E;&#x7B97;&#x6CD5;&#x7684;&#x6B63;&#x786E;&#x6027;&#xFF0C;&#x8BA1;&#x7B97;&#x7B97;&#x6CD5;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x3002;&#x800C;&#x6700;&#x91CD;&#x7684;&#x90E8;&#x5206;&#x662F;&#x8BC1;&#x660E;&#x6B63;&#x786E;&#x6027;&#x548C;&#x8BA1;&#x7B97;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x3002;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x53EF;&#x4EE5;&#x770B;&#x8FD9;&#x91CC;&#xFF1A;<a href="http://zhangxiaoyang.me/categories/intro-to-algorithms-tutorial/intro-to-algorithms-tutorial-1.html" target="_blank" rel="noopener">http://zhangxiaoyang.me/categories/intro-to-algorithms-tutorial/intro-to-algorithms-tutorial-1.html</a></p>
-<h3 id="&#x4E25;&#x8C28;&#x7684;&#x601D;&#x7EF4;"><a href="#&#x4E25;&#x8C28;&#x7684;&#x601D;&#x7EF4;" class="headerlink" title="&#x4E25;&#x8C28;&#x7684;&#x601D;&#x7EF4;"></a>&#x4E25;&#x8C28;&#x7684;&#x601D;&#x7EF4;</h3><p>&#x7F16;&#x7A0B;&#x4E4B;&#x7F8E;&#x7684;&#x63A8;&#x8350;&#x5E8F;&#x5982;&#x662F;&#x8BF4;&#xFF1A;</p>
-<blockquote>
-<p>&#x8981;&#x60F3;&#x628A;&#x7A0B;&#x5E8F;&#x5199;&#x597D;&#xFF0C;&#x9700;&#x8981;&#x5B66;&#x4E60;&#x597D;&#x4E00;&#x5B9A;&#x7684;&#x57FA;&#x7840;&#x77E5;&#x8BC6;&#xFF0C;&#x5305;&#x62EC;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x3001;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x548C;&#x7B97;&#x6CD5;&#x3002;&#x7A0B;&#x5E8F;&#x5199;&#x5F97;&#x597D;&#x7684;&#x4EBA;&#x901A;&#x5E38;&#x90FD;&#x6709;&#x7F1C;&#x5BC6;&#x7684;&#x601D;&#x7EF4;&#x80FD;&#x529B;&#x548C;&#x826F;&#x597D;&#x7684;&#x6570;&#x7406;&#x57FA;&#x7840;&#xFF0C;&#x800C;&#x4E14;&#x719F;&#x6089;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x7F16;&#x7A0B;&#x5DE5;&#x5177;&#x3002;</p>
-</blockquote>
-<p>&#x6211;&#x4EEC;&#x5DE5;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5F88;&#x5C11;&#x4F1A;&#x51FA;&#x73B0;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x7B97;&#x6CD5;&#xFF0C;&#x6216;&#x8005;&#x8BF4;&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x7B97;&#x6CD5;&#x3002;&#x90A3;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x5C31;&#x6CA1;&#x6709;&#x7528;&#x4E86;&#x5417;&#xFF1F;NONONO&#xFF01;&#x7B97;&#x6CD5;&#x953B;&#x70BC;&#x51FA;&#x7684;&#x4E25;&#x8C28;&#x7684;&#x601D;&#x7EF4;&#x5C31;&#x662F;&#x9AD8;&#x624B;&#x7684;&#x62A4;&#x8EAB;&#x6CD5;&#x5B9D;&#x3002;</p>
-<h3 id="&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x7684;&#x8FD0;&#x7528;"><a href="#&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x7684;&#x8FD0;&#x7528;" class="headerlink" title="&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x7684;&#x8FD0;&#x7528;"></a>&#x7ECF;&#x5178;&#x7B97;&#x6CD5;&#x7684;&#x8FD0;&#x7528;</h3><p>&#x5BF9;&#x4E8E;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#xFF0C;&#x5C31;&#x5F88;&#x660E;&#x663E;&#x4E86;&#xFF0C;&#x5BF9;&#x6570;&#x636E;&#x7684;&#x6392;&#x5E8F;&#x662F;&#x5F88;&#x5E38;&#x89C1;&#x7684;&#x3002;</p>
-<p>&#x5176;&#x4ED6;&#x7684;&#x7ECF;&#x5178;&#x5E94;&#x7528;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;(Ctrl+F)&#x67E5;&#x627E;&#x7279;&#x5B9A;&#x6A21;&#x5F0F;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x4E0A;&#x662F;BoyerMoore&#x7B97;&#x6CD5;&#x3002;</p>
-<p>&#x518D;&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;&#x6253;&#x5F00;&#x624B;&#x673A;&#x5BFC;&#x822A;&#x7684;&#x5E94;&#x7528;&#x3002;&#x4ECE;&#x51FA;&#x53D1;&#x5730;&#x5740;&#xFF0C;&#x53BB;&#x5F80;&#x76EE;&#x7684;&#x5730;&#x5740;&#x3002;&#x8FD9;&#x5C31;&#x662F;&#x56FE;&#x8BBA;&#x4E2D;&#xFF0C;&#x6C42;&#x4E24;&#x5730;&#x6700;&#x8FD1;&#x8DDD;&#x79BB;&#x7684;&#x6700;&#x597D;&#x5E94;&#x7528;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x73B0;&#x5B9E;&#x60C5;&#x51B5;&#x590D;&#x6742;&#xFF0C;&#x80AF;&#x5B9A;&#x4E0D;&#x662F;&#x8DD1;&#x4E00;&#x904D;Dijkstra&#x5C31;&#x80FD;&#x89E3;&#x51B3;&#x7684;&#x3002;</p>
-<p>&#x518D;&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;&#x793E;&#x4EA4;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x63A8;&#x8350;&#x3002;&#x901A;&#x8FC7;&#x56FE;&#x8BBA;&#x7684;&#x5F3A;&#x8FDE;&#x901A;&#x5206;&#x91CF;&#xFF0C;&#x627E;&#x51FA;&#x4F60;&#x5C5E;&#x4E8E;&#x7684;&#x201C;&#x7FA4;&#x4F53;&#x201D;&#xFF0C;&#x7136;&#x540E;&#x63A8;&#x8350;&#x4F60;&#x6240;&#x5C5E;&#x201C;&#x7FA4;&#x4F53;&#x201D;&#x7684;&#x5171;&#x540C;&#x70B9;&#x3002;</p>
-<p>&#x5F53;&#x7136;&#xFF0C;&#x8FD8;&#x6709;&#x66F4;&#x591A;&#x7684;&#x7B97;&#x6CD5;&#x8FD0;&#x7528;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x751F;&#x6D3B;&#x4E2D;&#x3002;&#x503C;&#x5F97;&#x4E00;&#x63D0;&#x7684;&#x662F;&#xFF0C;&#x6211;&#x89C1;&#x8FC7;&#x6700;&#x6709;&#x610F;&#x601D;&#x7684;&#x7B97;&#x6CD5;&#x5C31;&#x662F;&#x6B7B;&#x9501;&#x7684;&#x9E35;&#x9E1F;&#x7B97;&#x6CD5;&#xFF0C;&#x50CF;&#x9E35;&#x9E1F;&#x4E00;&#x6837;&#x628A;&#x5934;&#x57CB;&#x5728;&#x6C99;&#x5B50;&#x91CC;&#xFF0C;&#x5047;&#x88C5;&#x95EE;&#x9898;&#x6CA1;&#x6709;&#x53D1;&#x751F;&#x3002;&#x751F;&#x6D3B;&#x4E2D;&#x6700;&#x5E38;&#x7528;&#x7684;&#x201C;&#x7B97;&#x6CD5;&#x201D;&#x3002;</p>
-<blockquote>
-<p>&#x8FD9;&#x51E0;&#x7BC7;&#x7B97;&#x6CD5;&#x6587;&#x7AE0;&#xFF0C;&#x9700;&#x8981;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x7B97;&#x6CD5;&#x57FA;&#x7840;&#xFF0C;&#x6587;&#x7AE0;&#x4E2D;&#x51E0;&#x4E4E;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;&#x3002;&#x5305;&#x62EC;&#x7B97;&#x6CD5;&#x5BFC;&#x8BBA;&#xFF0C;&#x867D;&#x7136;&#x5BF9;&#x4E8E;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x6765;&#x8BF4;&#xFF0C;&#x786E;&#x5B9E;&#x662F;&#x5BFC;&#x8BBA;&#xFF0C;&#x4F46;&#x662F;&#x770B;&#x4E4B;&#x524D;&#xFF0C;&#x6700;&#x597D;&#x8981;&#x770B;&#x8FC7;&#x522B;&#x7684;&#x7B97;&#x6CD5;&#x7684;&#x4E66;&#x7C4D;&#xFF0C;&#x624D;&#x80FD;&#x5BF9;&#x91CC;&#x9762;&#x7684;&#x8BB2;&#x89E3;&#x6709;&#x66F4;&#x6DF1;&#x7684;&#x7406;&#x89E3;&#x3002;</p>
-<p>&#x613F;&#x4F60;&#x5728;&#x6587;&#x4E2D;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x81EA;&#x5DF1;&#x957F;&#x4E45;&#x6240;&#x641C;&#x5BFB;&#x7684;&#x3002;</p>
-</blockquote>
-<h2 id="&#x5F15;&#x7528;"><a href="#&#x5F15;&#x7528;" class="headerlink" title="&#x5F15;&#x7528;"></a>&#x5F15;&#x7528;</h2><p>&#x6709;&#x5F88;&#x5927;&#x542F;&#x53D1;&#x7684;&#x7B97;&#x6CD5;&#x81EA;&#x5B66;&#x7B14;&#x8BB0; <a href="http://zhangxiaoyang.me/category.html" target="_blank" rel="noopener">http://zhangxiaoyang.me/category.html</a></p>
-<p>Princeton Theory of Algorithms Lecture <a href="https://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures.php" target="_blank" rel="noopener">https://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures.php</a></p>
-<p>MIT Introduction To Algorithms,Fall 2011 <a href="https://www.youtube.com/watch?v=HtSuA80QTyo&amp;list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb" target="_blank" rel="noopener">https://www.youtube.com/watch?v=HtSuA80QTyo&amp;list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb</a></p>
-<p>MIT Introduction To Algorithms,Fall 2005 <a href="http://open.163.com/special/opencourse/algorithms.html" target="_blank" rel="noopener">http://open.163.com/special/opencourse/algorithms.html</a></p>
-<p>MIT 6.046J Design and Analysis of Algorithms,Spring 2015 <a href="https://www.youtube.com/watch?v=2P-yW7LQr08&amp;list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp" target="_blank" rel="noopener">https://www.youtube.com/watch?v=2P-yW7LQr08&amp;list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp</a></p>
-<p>Harvard CSCIE119 <a href="http://www.fas.harvard.edu/~cscie119/lectures/" target="_blank" rel="noopener">http://www.fas.harvard.edu/~cscie119/lectures/</a></p>
-<p>&#x7B97;&#x6CD5;&#x4F8B;&#x9898;-1 <a href="http://www.acmerblog.com/data-structure-algorithm-6107.html" target="_blank" rel="noopener">http://www.acmerblog.com/data-structure-algorithm-6107.html</a></p>
-<p>&#x7B97;&#x6CD5;&#x4F8B;&#x9898;-2 <a href="http://www.geeksforgeeks.org/fundamentals-of-algorithms/#DynamicProgramming" target="_blank" rel="noopener">http://www.geeksforgeeks.org/fundamentals-of-algorithms/#DynamicProgramming</a></p>
+<h2 id="&#x53CC;&#x5DE5;&#x901A;&#x4FE1;"><a href="#&#x53CC;&#x5DE5;&#x901A;&#x4FE1;" class="headerlink" title="&#x53CC;&#x5DE5;&#x901A;&#x4FE1;"></a>&#x53CC;&#x5DE5;&#x901A;&#x4FE1;</h2><p>&#x4E0D;&#x540C;&#x4E8E;&#x77ED;&#x8FDE;&#x63A5;&#x7684;&#x5355;&#x5411;&#x201C;&#x4E00;&#x95EE;&#x4E00;&#x7B54;&#x201D;&#xFF0C;&#x957F;&#x8FDE;&#x63A5;&#x9700;&#x8981;&#x5E94;&#x5BF9;&#x4EFB;&#x4E00;&#x7AEF;&#x7684;&#x4E3B;&#x52A8;&#x4F20;&#x8F93;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x4F7F;&#x5F97;&#x8981;&#x8BBE;&#x8BA1;&#x7684;&#x534F;&#x8BAE;&#x662F;&#x4E00;&#x4E2A;&#x53CC;&#x5DE5;&#x901A;&#x4FE1;&#x534F;&#x8BAE;&#x3002;&#x8FD9;&#x4E00;&#x70B9;&#x5728;head&#x4E2D;&#x4F53;&#x73B0;&#x51FA;&#x6765;&#x3002;</p>
+<h2 id="Head&#x8BBE;&#x8BA1;"><a href="#Head&#x8BBE;&#x8BA1;" class="headerlink" title="Head&#x8BBE;&#x8BA1;"></a>Head&#x8BBE;&#x8BA1;</h2><p>head&#x662F;&#x534F;&#x8BAE;&#x4E2D;&#x7684;&#x5173;&#x952E;&#x73AF;&#x8282;&#xFF0C;head&#x7684;&#x8BBE;&#x8BA1;&#x7275;&#x4E00;&#x53D1;&#x800C;&#x52A8;&#x5168;&#x8EAB;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x5347;&#x7EA7;&#x8FD8;&#x8981;&#x6CE8;&#x610F;&#x524D;&#x5411;&#x517C;&#x5BB9;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x7248;&#x672C;&#x517C;&#x5BB9;&#xFF0C;head&#x9700;&#x8981;version(&#x7248;&#x672C;)&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x534F;&#x8BAE;&#x5206;&#x5C42;&#xFF0C;head&#x9700;&#x8981;load(&#x4E0A;&#x5C42;&#x627F;&#x8F7D;&#x7684;&#x534F;&#x8BAE;&#x6807;&#x8BC6;)&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x53CC;&#x5DE5;&#x901A;&#x4FE1;&#xFF0C;head&#x9700;&#x8981;direction(&#x6D41;&#x5411;)&#x3001;request&#x2013;response(&#x8BF7;&#x6C42;&#x6216;&#x54CD;&#x5E94;)&#x3002;&#x5BF9;&#x4E8E;&#x53CC;&#x7AEF;&#xFF0C;&#x6D41;&#x5411;&#x548C;&#x8BF7;&#x6C42;&#x6216;&#x54CD;&#x5E94;&#x53EF;&#x4EE5;&#x7531;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x63A8;&#x65AD;&#x51FA;&#x6765;&#xFF0C;&#x4F46;&#x662F;&#x901A;&#x4FE1;&#x7684;&#x4E2D;&#x95F4;&#x8282;&#x70B9;&#x5C31;&#x505A;&#x4E0D;&#x5230;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x5206;&#x6210;&#x4E24;&#x4E2A;&#x5B57;&#x6BB5;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x533A;&#x5206;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#xFF0C;head&#x9700;&#x8981;type&#x3002;&#x6BD4;&#x8BF4;&#x4E3A;&#x4E86;&#x533A;&#x5206;&#x4FDD;&#x6D3B;&#x7684;&#x5FC3;&#x8DF3;&#x6D88;&#x606F;&#x4E0D;&#x7528;&#x627F;&#x8F7D;&#x6570;&#x636E;&#xFF0C;&#x666E;&#x901A;&#x7684;&#x6570;&#x636E;&#x6D88;&#x606F;&#x627F;&#x8F7D;&#x5E94;&#x7528;&#x6570;&#x636E;&#x3002;type&#x5B57;&#x6BB5;&#x53EF;&#x4EE5;&#x6709;&#x8F83;&#x597D;&#x7684;&#x62D3;&#x5C55;&#x6027;&#x533A;&#x5206;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x6D88;&#x606F;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x538B;&#x7F29;payload&#xFF0C;head&#x9700;&#x8981;compress(&#x6807;&#x8BC6;payload&#x538B;&#x7F29;&#x7B97;&#x6CD5;)&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x5206;&#x5F00;payload&#x4E2D;&#x7684;head&#x548C;payload&#xFF0C;head&#x9700;&#x8981;load_head_len(&#x6807;&#x8BC6;payload&#x4E2D;head&#x7684;&#x957F;&#x5EA6;)&#x3002;</p>
+<p>&#x6700;&#x540E;&#x518D;&#x52A0;&#x4E0A;&#x62D3;&#x5C55;&#x5B57;&#x6BB5;extension&#x3002;head&#x7ED3;&#x6784;&#x4E3A;&#xFF1A;</p>
+<pre><code class="lang-c">+-----------------------------+----------------------------------+
+|         version             |               type               |
++-----------------------------+----------------------------------+
+|  direction/request-respone  |             compress             |
++-----------------------------+----------------------------------+
+|           load              |           load_head_len          |
++-----------------------------+----------------------------------+
+|                         extension                              |
++-----------------------------+----------------------------------+
+</code></pre>
+<p>direction&#x548C;request-respone&#x5728;&#x7ED3;&#x6784;&#x4E2D;&#x53EF;&#x4EE5;&#x5408;&#x5E76;&#x4E3A;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x9879;&#xFF0C;&#x901A;&#x8FC7;&#x4F4D;&#x8FD0;&#x7B97;&#x5F97;&#x51FA;&#x3002;</p>
+<h2 id="&#x7F16;&#x89E3;&#x7801;"><a href="#&#x7F16;&#x89E3;&#x7801;" class="headerlink" title="&#x7F16;&#x89E3;&#x7801;"></a>&#x7F16;&#x89E3;&#x7801;</h2><p>magic&#x5B57;&#x6BB5;&#x662F;&#x5B9A;&#x957F;&#x5B57;&#x6BB5;&#x8FD9;&#x4E2A;&#x597D;&#x5904;&#x7406;&#x3002;</p>
+<p>head len&#x548C;payload len&#x662F;&#x53D8;&#x957F;&#x5B57;&#x6BB5;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;UTF-8&#x53D8;&#x957F;&#x7F16;&#x7801;&#x3002;UTF-8&#x53D8;&#x957F;&#x7F16;&#x7801;&#x5C06;&#x5B57;&#x8282;&#x5206;&#x4E3A;&#x4E24;&#x90E8;&#x5206;&#xFF0C;&#x524D;&#x4E24;&#x4F4D;&#x6216;&#x8005;&#x51E0;&#x4F4D;&#x8868;&#x793A;&#x4E0B;&#x4E00;&#x5B57;&#x8282;&#x662F;&#x5426;&#x5728;&#x5305;&#x542B;&#x5728;&#x5185;&#xFF0C;1&#x5C31;&#x8868;&#x793A;&#x5728;&#xFF0C;0&#x5219;&#x53CD;&#x4E4B;&#xFF0C;&#x8FD9;&#x4E24;&#x90E8;&#x5206;&#x7528;0&#x4F5C;&#x4E3A;&#x5206;&#x9694;&#x3002;&#x5171;&#x6709;&#x591A;&#x5C11;&#x5B57;&#x8282;&#xFF0C;&#x7B2C;&#x4E00;&#x5B57;&#x8282;&#x5C31;&#x4ECE;&#x5934;&#x5F00;&#x59CB;&#x6709;&#x591A;&#x5C11;&#x4E2A;1&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x5219;&#x4E3A;0xxxxxxx&#x3002;&#x6709;&#x4E24;&#x4E2A;&#x5B57;&#x8282;110xxxxx 10xxxxxx&#xFF0C;&#x4F9D;&#x6B21;&#x7C7B;&#x63A8;&#x3002;</p>
+<p>head&#x662F;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x7684;&#x590D;&#x5408;&#x7ED3;&#x6784;&#xFF0C;ProtocolBuffer&#x3001;Thrift&#x662F;&#x4E0D;&#x9519;&#x7684;&#x9009;&#x62E9;&#x3002;&#x800C;&#x5176;extension&#x7684;&#x5B57;&#x6BB5;&#x4E2D;&#xFF0C;&#x672C;&#x8D28;&#x5C31;&#x662F;key-value&#x5F62;&#x5F0F;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x5438;&#x6536;HTTP2.0&#x7684;&#x4F18;&#x70B9;&#xFF0C;&#x8003;&#x8651;&#x4F7F;&#x7528;hpack&#x6765;&#x538B;&#x7F29;&#x3002;</p>
+<p>payload&#x662F;&#x4F20;&#x8F93;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x8D27;&#x7269;&#xFF0C;&#x5230;&#x7AD9;&#x540E;&#x5C31;&#x4EA4;&#x7ED9;&#x5177;&#x4F53;&#x573A;&#x666F;&#xFF0C;&#x5176;&#x7F16;&#x89E3;&#x7801;&#x7531;&#x4E0A;&#x5C42;&#x534F;&#x8BAE;&#x51B3;&#x5B9A;&#x3002;&#x800C;&#x5728;&#x6B64;&#x5C42;&#xFF0C;&#x9488;&#x5BF9;&#x4F20;&#x8F93;&#x8FC7;&#x7A0B;&#xFF0C;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x4E00;&#x6B21;&#x538B;&#x7F29;&#xFF0C;&#x538B;&#x7F29;&#x65B9;&#x5F0F;&#x8BB0;&#x5F55;&#x5728;head&#x4E2D;&#x3002;&#x5982;&#x679C;&#x4E0A;&#x5C42;&#x534F;&#x8BAE;&#x4F7F;&#x7528;&#x7684;&#x662F;ProtocolBuffer&#xFF0C;&#x5219;&#x538B;&#x7F29;&#x914D;&#x4E0A;gzip&#x6709;&#x4E0D;&#x9519;&#x7684;&#x6536;&#x76CA;&#x3002;</p>
+<p>&#x6709;&#x4E86;&#x6574;&#x4F53;&#x7ED3;&#x6784;&#x548C;&#x7F16;&#x89E3;&#x7801;&#xFF0C;&#x534F;&#x8BAE;&#x5DF2;&#x7ECF;&#x6709;&#x4E86;&#x9AA8;&#x67B6;&#x3002;&#x5176;&#x4E94;&#x810F;&#x516D;&#x8151;&#xFF0C;&#x5728;&#x4F18;&#x5316;&#x4E0A;&#x3002;</p>
+<h2 id="&#x8FDE;&#x63A5;&#x4F18;&#x5316;"><a href="#&#x8FDE;&#x63A5;&#x4F18;&#x5316;" class="headerlink" title="&#x8FDE;&#x63A5;&#x4F18;&#x5316;"></a>&#x8FDE;&#x63A5;&#x4F18;&#x5316;</h2><p>&#x4ECE;&#x8FDE;&#x63A5;&#x8FD9;&#x4E2A;&#x5C42;&#x6B21;&#x6765;&#x8BB2;&#xFF0C;&#x91CD;&#x4E2D;&#x4E4B;&#x91CD;&#x5C31;&#x662F;&#x5728;&#x8F83;&#x5DEE;&#x7684;&#x7F51;&#x7EDC;&#x73AF;&#x5883;&#x4E0B;&#x3001;&#x7F51;&#x7EDC;&#x6296;&#x52A8;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x9488;&#x5BF9;&#x8FDE;&#x63A5;&#x4F18;&#x5316;&#x3002;</p>
+<h3 id="&#x7ADE;&#x901F;&#x5EFA;&#x8FDE;"><a href="#&#x7ADE;&#x901F;&#x5EFA;&#x8FDE;" class="headerlink" title="&#x7ADE;&#x901F;&#x5EFA;&#x8FDE;"></a>&#x7ADE;&#x901F;&#x5EFA;&#x8FDE;</h3><p>&#x9488;&#x5BF9;&#x5EFA;&#x8FDE;&#xFF0C;&#x5728;&#x8F83;&#x5DEE;&#x7F51;&#x7EDC;&#x72B6;&#x51B5;&#x4E0B;&#xFF0C;&#x63D0;&#x5347;&#x5EFA;&#x8FDE;&#x7684;&#x6548;&#x7387;&#x3002;</p>
+<p>&#x6700;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6848;&#xFF0C;&#x4E32;&#x884C;&#x5EFA;&#x8FDE;&#xFF0C;&#x7B49;&#x5230;&#x8FDE;&#x63A5;&#x6210;&#x529F;&#x548C;&#x5931;&#x8D25;&#x4EE5;&#x540E;&#x518D;&#x53D1;&#x8D77;&#x5176;&#x4ED6;&#x5EFA;&#x8FDE;&#x3002;&#x7136;&#x800C;&#x8FD9;&#x79CD;&#x65B9;&#x6848;&#x6548;&#x7387;&#x4E0D;&#x9AD8;&#x3002;&#x76F8;&#x6BD4;&#x4E4B;&#x4E0B;&#xFF0C;&#x5C31;&#x6709;&#x5E76;&#x884C;&#x5EFA;&#x8FDE;&#xFF0C;&#x4E00;&#x8D77;&#x53D1;&#x8D77;&#x591A;&#x6761;&#x5EFA;&#x8FDE;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x6848;&#x5BF9;&#x670D;&#x52A1;&#x5668;&#x8D1F;&#x8F7D;&#x4F1A;&#x9020;&#x6210;&#x5F88;&#x5927;&#x538B;&#x529B;&#x3002;&#x7EFC;&#x5408;&#x6765;&#x770B;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x7ADE;&#x901F;&#x5EFA;&#x8FDE;&#x7684;&#x601D;&#x8DEF;&#x3002;</p>
+<p>&#x7ADE;&#x901F;&#x5EFA;&#x8FDE;&#x5728;&#x5C3D;&#x91CF;&#x77ED;&#x7684;&#x65F6;&#x95F4;&#x5185;&#x3001;&#x4E0D;&#x7ED9;&#x670D;&#x52A1;&#x5668;&#x589E;&#x52A0;&#x8D1F;&#x8F7D;&#x538B;&#x529B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x63D0;&#x5347;&#x5EFA;&#x8FDE;&#x7684;&#x6548;&#x7387;&#x3002;&#x6BCF;&#x8FC7;&#x95F4;&#x9694;&#x53D1;&#x8D77;&#x4E00;&#x4E2A;&#x5EFA;&#x8FDE;&#xFF0C;&#x76F4;&#x5230;&#x4E00;&#x6761;&#x5EFA;&#x8FDE;&#x6210;&#x529F;&#x3002;&#x4E0D;&#x7B49;&#x5F85;&#x67D0;&#x6761;&#x5EFA;&#x8FDE;&#x7ED3;&#x679C;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x4E00;&#x4E0B;&#x53D1;&#x8D77;&#x591A;&#x6761;&#x5EFA;&#x8FDE;&#x3002;&#x591A;&#x4E2A;&#x95F4;&#x9694;&#x540E;&#x4F1A;&#x6709;&#x591A;&#x4E2A;&#x5EFA;&#x8FDE;&#xFF0C;&#x76F4;&#x5230;&#x5176;&#x4E2D;&#x4EFB;&#x4E00;&#x5EFA;&#x8FDE;&#x6210;&#x529F;&#xFF0C;&#x5219;&#x4E3A;&#x80DC;&#x8005;&#xFF0C;&#x65AD;&#x6389;&#x5176;&#x4ED6;&#x5EFA;&#x8FDE;&#x5C1D;&#x8BD5;&#x3002;&#x8FD8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E0D;&#x65AD;&#x5207;&#x6362;&#x8FDC;&#x7AEF;IP&#x5730;&#x5740;&#x6765;&#x51CF;&#x5C11;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x8D1F;&#x8F7D;&#x3002;</p>
+<h3 id="&#x667A;&#x80FD;&#x5FC3;&#x8DF3;"><a href="#&#x667A;&#x80FD;&#x5FC3;&#x8DF3;" class="headerlink" title="&#x667A;&#x80FD;&#x5FC3;&#x8DF3;"></a>&#x667A;&#x80FD;&#x5FC3;&#x8DF3;</h3><p>&#x5FC3;&#x8DF3;&#x662F;&#x957F;&#x8FDE;&#x63A5;&#x5FC5;&#x5907;&#x7684;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#xFF0C;&#x5728;&#x670D;&#x52A1;&#x7AEF;&#x3001;&#x7F51;&#x7EDC;&#x73AF;&#x5883;&#x4E0B;&#x4FDD;&#x8BC1;&#x957F;&#x8FDE;&#x63A5;&#x7684;&#x6D3B;&#x6027;&#x3002;&#x800C;&#x667A;&#x80FD;&#x5FC3;&#x8DF3;&#x7684;&#x96BE;&#x70B9;&#x5728;&#x4E8E;&#x5982;&#x4F55;&#x5C3D;&#x91CF;&#x5C11;&#x6D88;&#x8017;&#x94FE;&#x8DEF;&#x6D41;&#x91CF;&#x3001;&#x8BBE;&#x5907;&#x7535;&#x91CF;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x7EF4;&#x6301;&#x8FDE;&#x63A5;&#x7684;&#x6D3B;&#x6027;&#x3002;&#x5FC3;&#x8DF3;&#x5305;&#x7684;&#x8BBE;&#x8BA1;&#x4E00;&#x822C;&#x662F;&#x7A7A;&#x5305;&#xFF0C;&#x6CA1;&#x6709;&#x4F18;&#x5316;&#x7684;&#x7A7A;&#x95F4;&#xFF0C;&#x90A3;&#x4E48;&#x4F18;&#x5316;&#x5C31;&#x90FD;&#x53CD;&#x6620;&#x5728;&#x5FC3;&#x8DF3;&#x7684;&#x95F4;&#x9694;&#x4E0A;&#x3002;</p>
+<p>&#x800C;&#x9488;&#x5BF9;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF;&#x573A;&#x666F;&#xFF0C;&#x8981;&#x533A;&#x5206;&#x524D;&#x53F0;&#x548C;&#x540E;&#x53F0;&#xFF0C;&#x524D;&#x53F0;&#x76F8;&#x6BD4;&#x4E8E;&#x540E;&#x53F0;&#x80AF;&#x5B9A;&#x9700;&#x8981;&#x66F4;&#x77ED;&#x7684;&#x95F4;&#x9694;&#x3002;</p>
+<p>&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6848;&#x5C31;&#x662F;&#x9488;&#x5BF9;&#x524D;&#x53F0;&#x548C;&#x540E;&#x53F0;&#x7684;&#x4E0D;&#x540C;&#x7F51;&#x7EDC;&#x72B6;&#x6001;&#x4F7F;&#x7528;&#x9759;&#x6001;&#x7684;&#x7EDF;&#x8BA1;&#x503C;&#x3002;&#x800C;&#x76F8;&#x6BD4;&#x4E8E;&#x6B64;&#xFF0C;&#x5C31;&#x662F;&#x8981;&#x52A8;&#x6001;&#x81EA;&#x9002;&#x5E94;&#x8C03;&#x6574;&#x51FA;&#x5408;&#x9002;&#x7684;&#x503C;&#x3002;</p>
+<p><a href="https://mp.weixin.qq.com/s/ghnmC8709DvnhieQhkLJpA" target="_blank" rel="noopener">mars&#x4E2D;&#x7684;&#x667A;&#x80FD;&#x5FC3;&#x8DF3;&#x6A21;&#x5757;</a>&#x63D0;&#x51FA;&#x4EE5;&#x4E0B;&#x51E0;&#x70B9;&#xFF1A;</p>
+<ul>
+<li>&#x5EF6;&#x8FDF;&#x63A2;&#x6D4B;&#xFF1A;&#x6D88;&#x9664;&#x77ED;&#x6682;&#x73AF;&#x5883;&#x6296;&#x52A8;&#x5BF9;&#x8FDE;&#x63A5;&#x7684;&#x5F71;&#x54CD;&#x3002;&#x5728;&#x8FDB;&#x884C;&#x4E86;&#x4E09;&#x6B21;&#x6210;&#x529F;&#x7684;&#x77ED;&#x5FC3;&#x8DF3;&#x540E;&#xFF0C;&#x65E0;&#x9700;&#x8FDE;&#x7EED;&#x4E09;&#x6B21;&#xFF0C;&#x518D;&#x5F00;&#x59CB;&#x52A8;&#x6001;&#x81EA;&#x9002;&#x5E94;&#x3002;</li>
+<li>&#x95F4;&#x9694;&#x81EA;&#x9002;&#x5E94;&#xFF1A;&#x9010;&#x6E10;&#x589E;&#x5927;&#x95F4;&#x9694;&#xFF0C;&#x627E;&#x5230;&#x7A33;&#x5B9A;&#x7684;&#x6700;&#x5927;&#x95F4;&#x9694;&#x3002;&#x5728;&#x5408;&#x7406;&#x7684;&#x533A;&#x95F4;&#x5185;&#xFF0C;&#x8FDE;&#x7EED;&#x5FC3;&#x8DF3;&#x6210;&#x529F;&#x4E09;&#x6B21;&#x540E;&#x589E;&#x5927;&#x95F4;&#x9694;&#xFF0C;&#x8FDE;&#x7EED;&#x5FC3;&#x8DF3;&#x5931;&#x8D25;&#x4E09;&#x6B21;&#x56DE;&#x9000;&#x95F4;&#x9694;&#x3002;&#x56DE;&#x9000;&#x8981;&#x770B;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x5F97;&#x5230;&#x7A33;&#x5B9A;&#x6700;&#x5927;&#x95F4;&#x9694;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x7A33;&#x5B9A;&#x9636;&#x6BB5;&#x5219;&#x56DE;&#x9000;&#x5230;&#x5E95;&#xFF0C;&#x5426;&#x5219;&#x53EA;&#x56DE;&#x9000;&#x4E0A;&#x4E00;&#x9636;&#x6BB5;&#x3002;</li>
+<li>&#x907F;&#x8BA9;&#x4E34;&#x754C;&#x503C;&#xFF1A;&#x5F97;&#x5230;&#x7A33;&#x5B9A;&#x6700;&#x5927;&#x95F4;&#x9694;&#x540E;&#xFF0C;&#x4F7F;&#x7528;&#x6BD4;&#x7A33;&#x5B9A;&#x6700;&#x5927;&#x95F4;&#x9694;&#x5C0F;&#x4E00;&#x70B9;&#x7684;&#x95F4;&#x9694;&#x3002;</li>
+</ul>
+<p>&#x7136;&#x800C;&#x8FD9;&#x4E24;&#x79CD;&#x65B9;&#x6848;&#x90A3;&#x79CD;&#x5408;&#x9002;&#xFF0C;&#x8981;&#x770B;&#x5E94;&#x7528;&#x7684;&#x7528;&#x6237;&#x4F7F;&#x7528;&#x65F6;&#x957F;&#x548C;&#x4F7F;&#x7528;&#x4E60;&#x60EF;&#x3002;&#x76F8;&#x5BF9;&#x4E8E;&#x6765;&#x8BF4;&#xFF0C;&#x7528;&#x6237;&#x4F7F;&#x7528;&#x65F6;&#x957F;&#x8F83;&#x957F;&#x7684;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x52A8;&#x6001;&#x81EA;&#x9002;&#x5E94;&#x8C03;&#x6574;&#x5408;&#x9002;&#x7684;&#x503C;&#xFF0C;&#x7528;&#x6237;&#x4F7F;&#x7528;&#x65F6;&#x957F;&#x8F83;&#x77ED;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x9759;&#x6001;&#x7EDF;&#x8BA1;&#x503C;&#x3002;</p>
+<h2 id="socket&#x8C03;&#x4F18;"><a href="#socket&#x8C03;&#x4F18;" class="headerlink" title="socket&#x8C03;&#x4F18;"></a>socket&#x8C03;&#x4F18;</h2><p>&#x4ECE;socket&#x7F16;&#x7A0B;&#x8FD9;&#x4E2A;&#x5C42;&#x6B21;&#x6765;&#x8BB2;&#xFF0C;&#x80FD;&#x505A;&#x7684;&#x5C31;&#x662F;&#x5BF9;socekt&#x63A5;&#x53E3;&#x8C03;&#x6574;&#x53C2;&#x6570;&#x3002;</p>
+<ul>
+<li>&#x7981;&#x7528;Nagle&#x7B97;&#x6CD5;&#xFF1A;Nagle&#x5C31;&#x662F;&#x5BF9;&#x4E8E;&#x5C0F;&#x5185;&#x5BB9;&#x7684;&#x505C;&#x7B49;&#x534F;&#x8BAE;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x5C0F;&#x5185;&#x5BB9;&#x7684;&#x8BDD;&#xFF0C;&#x8981;&#x67E5;&#x770B;&#x662F;&#x5426;&#x6240;&#x6709;&#x5DF2;&#x53D1;&#x9001;&#x7684;&#x5C0F;&#x5185;&#x5BB9;&#x90FD;&#x5DF2;&#x88AB;&#x786E;&#x8BA4;&#xFF0C;&#x90FD;&#x88AB;&#x786E;&#x8BA4;&#x624D;&#x80FD;&#x53D1;&#x9001;&#x3002; Nagle&#x8BA4;&#x4E3A;&#x5C0F;&#x5185;&#x5BB9;&#x5C31;&#x662F;&#x5C0F;&#x4E8E;1&#x5355;&#x4F4D;(mss)&#x7684;&#x91CF;&#x3002;&#x800C;Nagle&#x7B97;&#x6CD5;&#x9488;&#x5BF9;IM&#x548C;&#x589E;&#x91CF;&#x6570;&#x636E;&#x66F4;&#x65B0;&#x7684;&#x534F;&#x8BAE;&#x975E;&#x5E38;&#x4E0D;&#x53CB;&#x597D;&#xFF0C;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x573A;&#x666F;&#x4E0B;&#xFF0C;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x8BBE;&#x7F6E;TCP_NODELAY&#x7981;&#x7528;&#x3002;</li>
+<li>&#x91CD;&#x7528;&#x5730;&#x5740;&#xFF1A;socket&#x5BF9;&#x4E8E;&#x6E90;IP&#x5730;&#x5740;&#x3001;port&#x662F;&#x552F;&#x4E00;&#x5BF9;&#x5E94;&#x7684;&#x3002;&#x5982;&#x679C;TCP&#x8FDE;&#x63A5;&#x5728;&#x6700;&#x540E;&#x7684;TIME_WAIT&#x9636;&#x6BB5;&#xFF0C;&#x6325;&#x624B;&#x8FDF;&#x8FDF;&#x6CA1;&#x6709;&#x6536;&#x5230;&#x6700;&#x7EC8;&#x7684;&#x786E;&#x8BA4;&#xFF0C;socket&#x957F;&#x65F6;&#x95F4;&#x5360;&#x7528;&#x6E90;IP&#x5730;&#x5740;&#x3001;port&#xFF0C;&#x5176;&#x4ED6;socket&#x65E0;&#x6CD5;&#x91CD;&#x7528;&#x6E90;IP&#x5730;&#x5740;&#x3001;port&#x9020;&#x6210;&#x8D44;&#x6E90;&#x7684;&#x6D6A;&#x8D39;&#x3002;&#x9488;&#x5BF9;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x5728;&#x7ED9;socket bind&#x672C;&#x5730;&#x5730;&#x5740;&#x4E4B;&#x524D;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;SO_REUSEADDR&#xFF0C;&#x4F7F;socket&#x5728;TCP&#x8FDE;&#x63A5;&#x6700;&#x540E;&#x7684;TIME_WAIT&#x9636;&#x6BB5;&#xFF0C;&#x53EF;&#x88AB;&#x91CD;&#x7528;&#x5730;&#x5740;&#x3002;</li>
+</ul>
+<h2 id="&#x5B89;&#x5168;&#x4F18;&#x5316;"><a href="#&#x5B89;&#x5168;&#x4F18;&#x5316;" class="headerlink" title="&#x5B89;&#x5168;&#x4F18;&#x5316;"></a>&#x5B89;&#x5168;&#x4F18;&#x5316;</h2><p>&#x9488;&#x5BF9;&#x5B89;&#x5168;&#x8FD9;&#x4E00;&#x5C42;&#x6B21;&#xFF0C;HTTPS&#x5728;HTTP&#x4E0A;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5B89;&#x5168;&#x5C42;&#xFF0C;&#x800C;&#x81EA;&#x5B9A;&#x4E49;&#x957F;&#x94FE;&#x63A5;&#x534F;&#x8BAE;&#x4E5F;&#x662F;&#x5982;&#x6B64;&#x3002;&#x5728;&#x5E94;&#x7528;&#x5C42;&#x534F;&#x8BAE;&#x4E0A;&#x518D;&#x52A0;&#x4E00;&#x5C42;&#x79C1;&#x6709;&#x5B89;&#x5168;&#x534F;&#x8BAE;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x534F;&#x8BAE;&#x4E00;&#x822C;&#x662F;&#x57FA;&#x4E8E;TLS1.3&#x7406;&#x8BBA;&#x57FA;&#x7840;&#x8BBE;&#x8BA1;&#x3002;</p>
+<p>&#x5728;&#x73B0;&#x4EE3;&#x5B89;&#x5168;&#x534F;&#x8BAE;&#x52A0;&#x5BC6;&#x6A21;&#x578B;&#x4E0B;&#xFF0C;&#x5DF2;&#x7ECF;&#x5F62;&#x6210;&#x52A0;&#x5BC6;&#x901A;&#x9053;&#x540E;&#x80FD;&#x505A;&#x7684;&#x5C31;&#x4E0D;&#x591A;&#x4E86;&#xFF0C;&#x63E1;&#x624B;&#x548C;&#x8BA4;&#x8BC1;&#x662F;&#x4F18;&#x5316;&#x7684;&#x5165;&#x624B;&#x70B9;&#x3002;&#x76F8;&#x5173;&#x5185;&#x5BB9;&#x5F3A;&#x70C8;&#x63A8;&#x8350;<a href="https://github.com/WeMobileDev/article/blob/master/%E5%9F%BA%E4%BA%8ETLS1.3%E7%9A%84%E5%BE%AE%E4%BF%A1%E5%AE%89%E5%85%A8%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AEmmtls%E4%BB%8B%E7%BB%8D.md" target="_blank" rel="noopener">&#x5FAE;&#x4FE1;&#x56E2;&#x961F;&#x7684;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;</a>&#x3002;</p>
+<ul>
+<li>&#x53C2;&#x8003;TLS1.3&#x8349;&#x6848;&#x5B9E;&#x73B0;0rrt&#xFF0C;&#x5B89;&#x5168;&#x534F;&#x8BAE;handshake&#x662F;&#x5B89;&#x5168;&#x6027;&#x80FD;&#x7684;&#x5173;&#x952E;&#x70B9;&#x3002;</li>
+<li>&#x5185;&#x7F6E;Server Root&#x8BC1;&#x4E66;(SSL Pinning)&#xFF0C;&#x8282;&#x7701;&#x8BC1;&#x4E66;&#x94FE;&#x8BA4;&#x8BC1;&#x8D44;&#x6E90;&#x6D88;&#x8017;&#xFF0C;&#x4E5F;&#x66F4;&#x52A0;&#x5B89;&#x5168;&#x3002;&#x66F4;&#x8FDB;&#x4E00;&#x6B65;&#x7684;&#x505A;&#x6CD5;&#xFF0C;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x672C;&#x8EAB;&#x5C31;&#x505A;&#x4E00;&#x6B21;&#x975E;&#x5BF9;&#x79F0;&#x5BC6;&#x94A5;&#x7684;&#x7B7E;&#x540D;&#x3001;&#x9A8C;&#x8BC1;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x76F4;&#x63A5;&#x5C06;&#x516C;&#x94A5;&#x5185;&#x7F6E;&#xFF0C;&#x8BA4;&#x8BC1;&#x65F6;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x3002;</li>
+</ul>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -542,7 +563,7 @@
                             共享声明：本作品采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh">知识共享署名 4.0 国际许可协议</a> 转载时请注明作者和原文链接
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="http://blog.mrriddler.com/算法火花/">http://blog.mrriddler.com/算法火花/</a>
+                        <strong>本文链接：</strong><a href="http://blog.mrriddler.com/应用层长链接协议设计/">http://blog.mrriddler.com/应用层长链接协议设计/</a>
                     </p>
                 </blockquote>
         
@@ -593,21 +614,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/算法炽热/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/图片之旅/" id="post_nav-older" class="next-content">
+        <a href="/TCPIP协议族基础/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source"/>
+
+
+
+
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            TCPIP协议族基础 | 
+        
+        谜语糖
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="TCP/IP是互联网的基础协议族，它包括大大小小几十个协议。本篇文章主要涉及到就是HTTP、TCP、IP、TLS协议。TCP/IP代表的是现代网络通信模型，即协议分层或协议栈，书本上的网络模型一般是七层或者五层，完全可以对其简化，认知为四层。">
+    <meta name="keywords" content=",网络">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/material.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/style.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/prettify.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/prettify/tranquil-heart.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #61C0DB !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #61C0DB !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #61C0DB !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/material-icons.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/jquery.min.js", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="谜语糖">
+    <meta name="msapplication-starturl" content="http://blog.mrriddler.com/TCPIP协议族基础/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="谜语糖">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://blog.mrriddler.com/TCPIP协议族基础/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="TCPIP协议族基础 | 谜语糖">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="TCP/IP是互联网的基础协议族，它包括大大小小几十个协议。本篇文章主要涉及到就是HTTP、TCP、IP、TLS协议。TCP/IP代表的是现代网络通信模型，即协议分层或协议栈，书本上的网络模型一般是七层或者五层，完全可以对其简化，认知为四层。">
+    <meta property="og:article:tag" content="网络"> 
+
+    
+        <meta property="article:published_time" content="Mon Oct 08 2018 17:58:00 GMT+0800">
+        <meta property="article:modified_time" content="Sun Oct 07 2018 09:35:21 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://blog.mrriddler.com/TCPIP协议族基础/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://blog.mrriddler.com/TCPIP协议族基础/index.html",
+    "headline": "TCPIP协议族基础",
+    "datePublished": "Mon Oct 08 2018 17:58:00 GMT+0800",
+    "dateModified": "Sun Oct 07 2018 09:35:21 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "mrriddler",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "谜语糖"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "谜语糖",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",网络",
+    "description": "TCP/IP是互联网的基础协议族，它包括大大小小几十个协议。本篇文章主要涉及到就是HTTP、TCP、IP、TLS协议。TCP/IP代表的是现代网络通信模型，即协议分层或协议栈，书本上的网络模型一般是七层或者五层，完全可以对其简化，认知为四层。",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HTTP"><span class="post-toc-number">1.</span> <span class="post-toc-text">HTTP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多路复用-Multiplexing"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">多路复用(Multiplexing)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#hpack"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">hpack</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#编解码"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">编解码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#key-value都在码表中"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">key-value都在码表中</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#key在、value不在"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">key在、value不在</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#key不在、value不在"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">key不在、value不在</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TCP"><span class="post-toc-number">2.</span> <span class="post-toc-text">TCP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#可靠协议"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">可靠协议</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TCP-Header"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">TCP Header</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三次握手"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">三次握手</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#四次挥手"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">四次挥手</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#半关闭"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">半关闭</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TCP的确认方式"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">TCP的确认方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#流量控制"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">流量控制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#拥塞控制-Congestion-Control"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">拥塞控制(Congestion-Control)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#糊涂窗口综合症-Silly-Window-Syndrome-与Nagle算法"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">糊涂窗口综合症(Silly-Window-Syndrome)与Nagle算法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总结"><span class="post-toc-number">2.10.</span> <span class="post-toc-text">总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#IP"><span class="post-toc-number">3.</span> <span class="post-toc-text">IP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#IP协议寻路"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">IP协议寻路</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据分片-IP-Fragmentation"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">数据分片(IP-Fragmentation)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#IP-Header"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">IP Header</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TLS"><span class="post-toc-number">4.</span> <span class="post-toc-text">TLS</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#加密模型"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">加密模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#静态RSA和动态Diffie-Hellman"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">静态RSA和动态Diffie-Hellman</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TLS1-2-full-handshake"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">TLS1.2 full handshake</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TLS1-2-会话恢复-session-resumption"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">TLS1.2 会话恢复(session resumption)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TLS1-3-full-handshake"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">TLS1.3 full handshake</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TLS1-3-PSK-pre-share-key"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">TLS1.3 PSK(pre share key)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TLS1-3-0-rtt-draft"><span class="post-toc-number">4.7.</span> <span class="post-toc-text">TLS1.3 0-rtt draft</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TLS1-3-0-rtt-draft-动态变种"><span class="post-toc-number">4.8.</span> <span class="post-toc-text">TLS1.3 0-rtt draft 动态变种</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用"><span class="post-toc-number">5.</span> <span class="post-toc-text">引用</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://o79rgqboc.bkt.clouddn.com/tcp_ip.png)">
+    
+            <p class="article-headline-p">
+                TCPIP协议族基础
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>mrriddler</strong>
+        <span>10月 08, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/网络/">网络</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=TCPIP协议族基础&url=http://blog.mrriddler.com/TCPIP协议族基础/index.html&pic=http://blog.mrriddler.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=TCPIP协议族基础&url=http://blog.mrriddler.com/TCPIP协议族基础/index.html&via=mrriddler" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.mrriddler.com/TCPIP协议族基础/index.html&title=TCPIP协议族基础" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>TCP/IP&#x662F;&#x4E92;&#x8054;&#x7F51;&#x7684;&#x57FA;&#x7840;&#x534F;&#x8BAE;&#x65CF;&#xFF0C;&#x5B83;&#x5305;&#x62EC;&#x5927;&#x5927;&#x5C0F;&#x5C0F;&#x51E0;&#x5341;&#x4E2A;&#x534F;&#x8BAE;&#x3002;&#x672C;&#x7BC7;&#x6587;&#x7AE0;&#x4E3B;&#x8981;&#x6D89;&#x53CA;&#x5230;&#x5C31;&#x662F;HTTP&#x3001;TCP&#x3001;IP&#x3001;TLS&#x534F;&#x8BAE;&#x3002;TCP/IP&#x4EE3;&#x8868;&#x7684;&#x662F;&#x73B0;&#x4EE3;&#x7F51;&#x7EDC;&#x901A;&#x4FE1;&#x6A21;&#x578B;&#xFF0C;&#x5373;<strong>&#x534F;&#x8BAE;&#x5206;&#x5C42;</strong>&#x6216;<strong>&#x534F;&#x8BAE;&#x6808;</strong>&#xFF0C;&#x4E66;&#x672C;&#x4E0A;&#x7684;&#x7F51;&#x7EDC;&#x6A21;&#x578B;&#x4E00;&#x822C;&#x662F;&#x4E03;&#x5C42;&#x6216;&#x8005;&#x4E94;&#x5C42;&#xFF0C;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x5BF9;&#x5176;&#x7B80;&#x5316;&#xFF0C;&#x8BA4;&#x77E5;&#x4E3A;&#x56DB;&#x5C42;&#x3002;</p>
+<a id="more"></a>
+<pre><code class="lang-c">    Application layer           -&gt;HTTP
+-------------------------- 
+     Transport layer            -&gt;TCP
+--------------------------
+     Internet layer             -&gt;IP
+--------------------------
+      Link layer                -&gt;Ethernet
+</code></pre>
+<p>&#x5E94;&#x7528;&#x5C42;&#x3001;&#x4F20;&#x8F93;&#x5C42;&#x3001;&#x7F51;&#x9645;&#x5C42;&#x3001;&#x8FDE;&#x63A5;&#x5C42;&#xFF0C;&#x5F88;&#x76F4;&#x767D;&#x7684;&#x5206;&#x5C42;&#x62BD;&#x8C61;&#xFF0C;&#x5C42;&#x4E0E;&#x5C42;&#x4E92;&#x76F8;&#x9694;&#x79BB;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x6362;&#x4E2A;&#x89D2;&#x5EA6;&#x6765;&#x6574;&#x4F53;&#x7406;&#x89E3;&#x4E00;&#x4E0B;&#x8FD9;&#x56DB;&#x5C42;&#x3002;&#x7F51;&#x7EDC;&#x6240;&#x505A;&#x7684;&#x5C31;&#x662F;&#x4F20;&#x8F93;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x56DB;&#x5C42;&#x5C31;&#x662F;&#x6570;&#x636E;&#x5728;&#x4E0D;&#x540C;&#x9636;&#x6BB5;&#x7684;&#x4E0D;&#x540C;&#x5F62;&#x5F0F;&#x3002;&#x5E94;&#x7528;&#x5C42;&#x662F;&#x6570;&#x636E;&#x7684;&#x6700;&#x7EC8;&#x5F62;&#x5F0F;&#xFF0C;&#x4F20;&#x8F93;&#x5C42;&#x662F;&#x6570;&#x636E;&#x7684;&#x5B57;&#x8282;(&#x6587;&#x672C;)&#x5F62;&#x5F0F;&#xFF0C;&#x7F51;&#x9645;&#x5C42;&#x662F;&#x6570;&#x636E;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x5F62;&#x5F0F;&#xFF0C;&#x8FDE;&#x63A5;&#x5C42;&#x662F;&#x6570;&#x636E;&#x7684;&#x4FE1;&#x53F7;&#x5F62;&#x5F0F;(&#x8FD9;&#x4E3B;&#x8981;&#x6307;&#x7684;&#x662F;&#x8FDE;&#x63A5;&#x5C42;&#x7684;&#x6700;&#x5E95;&#x5C42;&#x90E8;&#x5206;&#xFF0C;&#x7535;&#x7F06;&#x4F20;&#x8F93;&#x7684;&#x5C31;&#x662F;&#x7535;&#x4FE1;&#x53F7;)&#x3002;</p>
+<p>&#x6570;&#x636E;&#x5728;&#x53D1;&#x9001;&#x901A;&#x8FC7;&#x8FD9;&#x56DB;&#x5C42;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6BCF;&#x7ECF;&#x8FC7;&#x4E00;&#x5C42;&#x4F1A;&#x5C06;&#x6570;&#x636E;&#x4F5C;&#x4E3A;payload&#xFF0C;&#x5E76;&#x52A0;&#x4E0A;&#x8FD9;&#x4E00;&#x5C42;&#x7684;&#x63A7;&#x5236;&#x4FE1;&#x606F;&#x4F5C;&#x4E3A;header&#x6216;footer&#x3002;&#x800C;&#x5230;&#x8FBE;&#x76EE;&#x7684;&#x5730;&#x540E;&#xFF0C;&#x518D;&#x8FD9;&#x901A;&#x8FC7;&#x56DB;&#x5C42;&#x65F6;&#xFF0C;&#x6BCF;&#x5C42;&#x4F1A;&#x5C06;&#x76F8;&#x5E94;&#x7684;header&#x6216;footer&#x5265;&#x79BB;&#xFF0C;&#x6700;&#x540E;&#x7ED9;&#x63A5;&#x6536;&#x65B9;&#x4E00;&#x4E2A;&#x4E0E;&#x53D1;&#x9001;&#x65B9;&#x53D1;&#x9001;&#x7684;&#x4E00;&#x6A21;&#x4E00;&#x6837;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p>HTTP&#x662F;&#x6700;&#x88AB;&#x4EBA;&#x719F;&#x77E5;&#x7684;&#x534F;&#x8BAE;&#xFF0C;&#x4E66;&#x672C;&#x5DF2;&#x7ECF;&#x628A;HTTP&#x8BB2;&#x7684;&#x5F88;&#x900F;&#x5F7B;&#x4E86;&#x3002;&#x4E66;&#x672C;&#x4E0A;&#x6CA1;&#x6709;&#x63D0;&#x5230;&#x7684;&#x662F;HTTP&#x534F;&#x8BAE;&#x5185;&#x90E8;&#x662F;&#x4E00;&#x4E2A;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;&#x89E3;&#x6790;&#x5668;&#x3002;HTTP&#x534F;&#x8BAE;&#x4EE5;&#x5206;&#x9694;&#x6807;&#x8BC6;(CRLF)&#x5C06;&#x6570;&#x636E;&#x89E3;&#x6790;&#x6210;&#x8BF7;&#x6C42;&#x884C;/&#x54CD;&#x5E94;&#x884C;&#x3001;header&#x3001;body&#x6784;&#x6210;&#x7684;&#x62A5;&#x6587;&#x3002;&#x800C;&#x5176;&#x8BF7;&#x6C42;&#x884C;/&#x54CD;&#x5E94;&#x884C;&#x3001;header&#x4E2D;&#x7684;key-value field&#x4F9D;&#x7167;&#x534F;&#x8BAE;&#x6807;&#x51C6;&#x8FDB;&#x884C;&#x5B57;&#x7B26;&#x4E32;&#x5339;&#x914D;&#xFF0C;&#x5176;body&#x627F;&#x8F7D;&#x7684;&#x6570;&#x636E;&#x5F62;&#x5F0F;&#x7531;&#x4F7F;&#x7528;&#x8005;&#x6765;&#x51B3;&#x5B9A;&#x3002;</p>
+<h3 id="&#x591A;&#x8DEF;&#x590D;&#x7528;-Multiplexing"><a href="#&#x591A;&#x8DEF;&#x590D;&#x7528;-Multiplexing" class="headerlink" title="&#x591A;&#x8DEF;&#x590D;&#x7528;(Multiplexing)"></a>&#x591A;&#x8DEF;&#x590D;&#x7528;(Multiplexing)</h3><p>&#x591A;&#x8DEF;&#x590D;&#x7528;&#x662F;HTTP2.0&#x5F15;&#x5165;&#x7684;&#x4F18;&#x5316;&#xFF0C;&#x591A;&#x8DEF;&#x590D;&#x7528;&#x4E0D;&#x5149;&#x6307;&#x591A;&#x4E2A;&#x8BF7;&#x6C42;&#x3001;&#x54CD;&#x5E94;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x6761;&#x94FE;&#x63A5;&#xFF0C;&#x8FD9;&#x662F;HTTP keep-alive&#x7684;&#x652F;&#x6301;&#xFF0C;&#x800C;&#x662F;&#x53EF;&#x4EE5;&#x505A;&#x5230;&#x591A;&#x4E2A;&#x8BF7;&#x6C42;&#x3001;&#x54CD;&#x5E94;&#x5728;&#x540C;&#x4E00;&#x65F6;&#x95F4;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x6761;&#x94FE;&#x63A5;&#x3002;</p>
+<p>&#x8FD9;&#x4EE3;&#x8868;HTTP&#x4F20;&#x8F93;&#x8981;&#x5206;&#x5E27;(frame)&#xFF0C;&#x4EFB;&#x4F55;&#x4F20;&#x8F93;&#x4F53;&#x4F1A;&#x88AB;&#x5207;&#x5206;&#x6210;&#x591A;&#x5E27;&#xFF0C;&#x800C;&#x6BCF;&#x5E27;&#x4E0A;&#x6807;&#x8BC6;&#x6240;&#x5C5E;&#x7684;&#x4F20;&#x8F93;&#x4F53;&#xFF0C;&#x63A5;&#x6536;&#x65B9;&#x6536;&#x5230;&#x540E;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x7EC4;&#x88C5;&#x3002;&#x4F20;&#x8F93;&#x4F53;&#x88AB;&#x5207;&#x5206;&#x540E;&#xFF0C;&#x5176;&#x4E00;&#x95EE;&#x4E00;&#x7B54;&#x7EC4;&#x6210;&#x4E00;&#x4E2A;&#x6574;&#x4F53;&#xFF0C;&#x5B66;&#x540D;&#x53EB;&#x505A;&#x6D41;(stream)&#x3002;</p>
+<h3 id="hpack"><a href="#hpack" class="headerlink" title="hpack"></a>hpack</h3><p>hpack&#x662F;HTTP2.0&#x5F15;&#x5165;&#x7684;&#x4E00;&#x4E2A;&#x9488;&#x5BF9;&#x534F;&#x8BAE;head key-value&#x5F62;&#x5F0F;&#x7684;&#x538B;&#x7F29;&#x7B97;&#x6CD5;&#xFF0C;&#x88AB;&#x53D1;&#x660E;&#x51FA;&#x6765;&#x7528;&#x4E8E;HTTP2.0&#x7684;head compress&#x3002;&#x7406;&#x8BBA;&#x57FA;&#x7840;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x534F;&#x8BAE;head&#x4E2D;&#x8FD9;&#x79CD;key-value&#x5F62;&#x5F0F;&#x7684;&#x5B57;&#x6BB5;&#x90FD;&#x662F;&#x7EA6;&#x5B9A;&#x51FA;&#x6765;&#x7684;&#xFF0C;&#x90A3;&#x5C31;&#x5C06;&#x5E38;&#x7528;&#x7684;key-value&#x5236;&#x4F5C;&#x4E2A;&#x7801;&#x8868;&#xFF0C;&#x901A;&#x4FE1;&#x53CC;&#x65B9;&#x53EA;&#x4F20;&#x8F93;&#x5E8F;&#x53F7;&#x5C31;&#x597D;&#x4E86;&#x3002;HTTP2.0&#x5C31;&#x89C4;&#x5B9A;&#x4E86;<a href="https://http2.github.io/http2-spec/compression.html#static.table.definition" target="_blank" rel="noopener">&#x7801;&#x8868;</a>&#xFF0C;&#x9664;&#x4E86;&#x5E38;&#x7528;&#x7684;key-value&#xFF0C;&#x5BF9;&#x5F88;&#x591A;&#x65E0;&#x6CD5;&#x603B;&#x7ED3;&#x51FA;&#x5E38;&#x7528;value&#x7684;field&#x53EA;&#x80FD;&#x5305;&#x542B;&#x5176;key&#xFF0C;&#x5E76;&#x5BF9;&#x5176;value&#x91C7;&#x7528;&#x9759;&#x6001;huffman&#x7F16;&#x7801;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x662F;hpack&#x7684;&#x5173;&#x952E;&#x70B9;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x8868;&#x662F;&#x901A;&#x4FE1;&#x4E0A;&#x4E0B;&#x6587;&#x65E0;&#x5173;&#x7684;&#xFF0C;&#x4EFB;&#x610F;&#x901A;&#x4FE1;&#x90FD;&#x7528;&#x540C;&#x4E00;&#x5F20;&#x8868;&#xFF0C;&#x53EB;&#x505A;&#x9759;&#x6001;&#x8868;(static table)&#x3002;&#x800C;&#x9664;&#x4E86;&#x9759;&#x6001;&#x8868;&#xFF0C;&#x8FD8;&#x6709;&#x9488;&#x5BF9;&#x901A;&#x4FE1;&#x4E0A;&#x4E0B;&#x6587;&#x7684;&#x52A8;&#x6001;&#x8868;(dynamic table)&#x3002;&#x5B9E;&#x73B0;&#x4E0A;&#x6765;&#x8BF4;&#xFF0C;&#x4E0A;&#x4E0B;&#x6587;&#x6709;&#x5173;&#x6307;&#x7684;&#x5C31;&#x662F;&#x540C;&#x4E00;&#x4E2A;TCP&#x8FDE;&#x63A5;&#x3002;</p>
+<p>&#x52A8;&#x6001;&#x8868;&#x4E0E;&#x9759;&#x6001;&#x8868;&#x5236;&#x5F0F;&#x4E00;&#x81F4;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x4E0D;&#x5B58;&#x5728;&#x7801;&#x8868;&#x7684;key-value&#x51FA;&#x73B0;&#x4E86;&#x5C31;&#x5411;&#x52A8;&#x6001;&#x8868;&#x63D2;&#x5165;&#x3002;&#x52A8;&#x6001;&#x8868;&#x6709;&#x7A7A;&#x95F4;&#x9650;&#x5236;&#xFF0C;&#x5C31;&#x50CF;&#x961F;&#x5217;&#x4E00;&#x6837;&#xFF0C;&#x4ECE;&#x5934;&#x90E8;&#x63D2;&#x5165;&#x3001;&#x5C3E;&#x90E8;&#x541E;&#x51FA;&#x3002;</p>
+<h4 id="&#x7F16;&#x89E3;&#x7801;"><a href="#&#x7F16;&#x89E3;&#x7801;" class="headerlink" title="&#x7F16;&#x89E3;&#x7801;"></a>&#x7F16;&#x89E3;&#x7801;</h4><p>&#x5177;&#x4F53;&#x5728;&#x7F16;&#x89E3;&#x7801;&#x65F6;&#xFF0C;&#x662F;&#x5426;&#x5141;&#x8BB8;&#x7528;&#x7801;&#x8868;&#x3001;key-value&#x54EA;&#x4E2A;&#x5728;&#x7801;&#x8868;&#x4E2D;&#xFF0C;&#x603B;&#x7684;&#x6765;&#x770B;case&#x6BD4;&#x8F83;&#x591A;&#x3002;&#x800C;&#x7B2C;&#x4E00;&#x5B57;&#x8282;&#x5C31;&#x662F;&#x8BBE;&#x8BA1;&#x6765;&#x533A;&#x522B;&#x4E0D;&#x540C;case&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x4E3E;&#x51E0;&#x4E2A;case&#x4EE5;&#x52A0;&#x6DF1;&#x7406;&#x89E3;&#x3002;</p>
+<h4 id="key-value&#x90FD;&#x5728;&#x7801;&#x8868;&#x4E2D;"><a href="#key-value&#x90FD;&#x5728;&#x7801;&#x8868;&#x4E2D;" class="headerlink" title="key-value&#x90FD;&#x5728;&#x7801;&#x8868;&#x4E2D;"></a>key-value&#x90FD;&#x5728;&#x7801;&#x8868;&#x4E2D;</h4><pre><code class="lang-c">  0   1   2   3   4   5   6   7
++---+---+---+---+---+---+---+---+
+| 1 |        Index (7+)         |
++---+---------------------------+
+</code></pre>
+<h4 id="key&#x5728;&#x3001;value&#x4E0D;&#x5728;"><a href="#key&#x5728;&#x3001;value&#x4E0D;&#x5728;" class="headerlink" title="key&#x5728;&#x3001;value&#x4E0D;&#x5728;"></a>key&#x5728;&#x3001;value&#x4E0D;&#x5728;</h4><pre><code class="lang-c">0   1   2   3   4   5   6   7
++---+---+---+---+---+---+---+---+
+| 0 | 1 |      Index (6+)       |
++---+---+-----------------------+
+| H |     Value Length (7+)     |
++---+---------------------------+
+| Value String (Length octets)  |
++-------------------------------+
+</code></pre>
+<h4 id="key&#x4E0D;&#x5728;&#x3001;value&#x4E0D;&#x5728;"><a href="#key&#x4E0D;&#x5728;&#x3001;value&#x4E0D;&#x5728;" class="headerlink" title="key&#x4E0D;&#x5728;&#x3001;value&#x4E0D;&#x5728;"></a>key&#x4E0D;&#x5728;&#x3001;value&#x4E0D;&#x5728;</h4><pre><code class="lang-c">0   1   2   3   4   5   6   7
++---+---+---+---+---+---+---+---+
+| 0 | 1 |           0           |
++---+---+-----------------------+
+| H |     Name Length (7+)      |
++---+---------------------------+
+|  Name String (Length octets)  |
++---+---------------------------+
+| H |     Value Length (7+)     |
++---+---------------------------+
+| Value String (Length octets)  |
++-------------------------------+
+</code></pre>
+<h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><p>TCP&#x662F;&#x4E2A;&#x53EF;&#x9760;&#x4F20;&#x8F93;&#x534F;&#x8BAE;&#xFF0C;&#x5728;&#x5982;&#x6B64;&#x52A8;&#x8361;(&#x4E0D;&#x5B89;)&#x7684;&#x7F51;&#x7EDC;&#x73AF;&#x5883;&#x91CC;&#xFF0C;&#x60F3;&#x8981;&#x786E;&#x4FDD;&#x8FD9;&#x4E00;&#x70B9;&#x53EF;&#x4E0D;&#x5BB9;&#x6613;&#xFF0C;TCP&#x72EC;&#x6709;&#x5F88;&#x591A;&#x673A;&#x5236;&#x6765;&#x505A;&#x5230;&#x8FD9;&#x4E00;&#x70B9;&#x3002;TCP&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x5B9E;&#x8DF5;&#x6027;&#x5F88;&#x5F3A;&#x7684;&#x534F;&#x8BAE;&#xFF0C;TCP&#x4E2D;&#x5F88;&#x591A;&#x4E3A;&#x4EC0;&#x4E48;&#x8FD9;&#x4E48;&#x505A;&#xFF0C;&#x90FD;&#x662F;&#x5E94;&#x7528;&#x4E8E;&#x7F51;&#x7EDC;&#x4E2D;&#x5B9E;&#x8DF5;&#x51FA;&#x771F;&#x77E5;&#x5F97;&#x51FA;&#x7684;&#x201C;&#x771F;&#x7406;&#x201D;&#x3002;</p>
+<p>TCP&#x8FD8;&#x662F;&#x4E00;&#x4E2A;&#x9762;&#x5411;&#x8FDE;&#x63A5;&#x7684;&#x534F;&#x8BAE;&#xFF0C;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x662F;&#x901A;&#x8FC7;&#x5927;&#x540D;&#x9F0E;&#x9F0E;&#x7684;&#x4E09;&#x6B21;&#x63E1;&#x624B;&#xFF0C;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&#x901A;&#x8FC7;&#x56DB;&#x6B21;&#x6325;&#x624B;&#x3002;&#x8FD9;&#x4E2A;&#x8FDE;&#x63A5;&#x4E0D;&#x662F;&#x5EFA;&#x7ACB;&#x7269;&#x7406;&#x4E0A;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x800C;&#x662F;&#x903B;&#x8F91;&#x4E0A;&#x5EFA;&#x7ACB;&#x4E86;&#x8FDE;&#x63A5;&#x3002;&#x8FDE;&#x63A5;&#x4E5F;&#x5C31;&#x6307;&#x7684;&#x662F;&#xFF0C;&#x53D1;&#x9001;&#x65B9;&#x548C;&#x63A5;&#x6536;&#x65B9;&#x90FD;&#x8981;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E9B;&#x72B6;&#x6001;&#x4F1A;&#x88AB;&#x7528;&#x6765;&#x8DDF;&#x8E2A;(track)&#x53D1;&#x9001;&#x8FC7;&#x7A0B;&#xFF0C;&#x4E5F;&#x5C31;&#x8BF4;TCP&#x662F;&#x4E2A;&#x6709;&#x72B6;&#x6001;&#x7684;&#x534F;&#x8BAE;&#x3002;</p>
+<p>TCP&#x63D0;&#x4F9B;&#x7AEF;&#x5230;&#x7AEF;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x5B83;&#x4F1A;&#x5177;&#x4F53;&#x5230;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;port&#x3002;&#x4E0D;&#x540C;&#x4E8E;IP&#x63D0;&#x4F9B;&#x70B9;&#x5230;&#x70B9;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x5982;&#x679C;&#x5C06;&#x53D1;&#x9001;&#x6570;&#x636E;&#x6BD4;&#x4F5C;&#x9001;&#x5FEB;&#x9012;&#x7684;&#x8BDD;&#xFF0C;IP&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#x5C31;&#x662F;&#xFF0C;&#x5FEB;&#x9012;&#x5458;&#x51C6;&#x786E;&#x7684;&#x9001;&#x5230;&#x4F60;&#x5BB6;&#xFF0C;TCP&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#x5C31;&#x662F;&#xFF0C;&#x4E0D;&#x4EC5;&#x9001;&#x5230;&#x4F60;&#x5BB6;&#xFF0C;&#x8FD8;&#x5C06;&#x5FEB;&#x9012;&#x51C6;&#x786E;&#x7684;&#x4EA4;&#x5230;&#x63A5;&#x6536;&#x4EBA;&#x7684;&#x624B;&#x4E0A;&#x3002;</p>
+<h3 id="&#x53EF;&#x9760;&#x534F;&#x8BAE;"><a href="#&#x53EF;&#x9760;&#x534F;&#x8BAE;" class="headerlink" title="&#x53EF;&#x9760;&#x534F;&#x8BAE;"></a>&#x53EF;&#x9760;&#x534F;&#x8BAE;</h3><p>&#x53EF;&#x9760;&#x4F20;&#x8F93;&#x534F;&#x8BAE;&#x8981;&#x6C42;&#xFF0C;&#x53CC;&#x65B9;&#x7684;&#x62A5;&#x6587;&#x6BB5;(segment)&#x5FC5;&#x987B;&#x90FD;&#x80FD;&#x65E0;&#x635F;&#x7684;&#x5230;&#x8FBE;&#xFF0C;&#x5E76;&#x4E14;&#x53D1;&#x9001;&#x65B9;&#x548C;&#x63A5;&#x6536;&#x65B9;&#x6700;&#x540E;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x987A;&#x5E8F;&#x9700;&#x8981;&#x4E00;&#x81F4;&#x3002;&#x8FD9;&#x4EE3;&#x8868;&#xFF0C;&#x9996;&#x5148;&#x62A5;&#x6587;&#x6BB5;&#x8981;&#x6709;<strong>&#x5E8F;&#x53F7;</strong>&#xFF0C;&#x5176;&#x6B21;&#x62A5;&#x6587;&#x6BB5;&#x8981;&#x53EF;&#x4EE5;<strong>&#x68C0;&#x6D4B;</strong>&#x51FA;&#x662F;&#x5426;&#x65E0;&#x635F;&#xFF0C;&#x63A5;&#x7740;&#x4E3A;&#x4E86;&#x8BA9;&#x5BF9;&#x65B9;&#x77E5;&#x6653;&#x62A5;&#x6587;&#x6BB5;&#x610F;&#x5883;&#x53EF;&#x9760;&#x5230;&#x8FBE;&#x9700;&#x8981;&#x2014;<strong>&#x786E;&#x8BA4;</strong>&#xFF0C;&#x800C;&#x5982;&#x679C;&#x8BA4;&#x4E3A;&#x5BF9;&#x65B9;&#x6CA1;&#x6709;&#x63A5;&#x6536;&#x5230;&#x62A5;&#x6587;&#x6BB5;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x8865;&#x6551;&#x63AA;&#x65BD;&#x2014;<strong>&#x91CD;&#x4F20;</strong>&#xFF0C;&#x800C;&#x8BA4;&#x4E3A;&#x6CA1;&#x6709;&#x63A5;&#x6536;&#x5230;&#x62A5;&#x6587;&#x6BB5;&#x4F9D;&#x9760;&#x2014;&#x8BA1;&#x65F6;&#x5668;&#x8D85;&#x65F6;&#x3002;</p>
+<p><strong>&#x786E;&#x8BA4;</strong>&#x6700;&#x7B80;&#x5355;&#x7684;&#x786E;&#x8BA4;&#x505A;&#x6CD5;&#x5C31;&#x662F;&#xFF0C;&#x4E00;&#x65B9;&#x53D1;&#x9001;&#x62A5;&#x6587;&#x6BB5;&#xFF0C;&#x53E6;&#x4E00;&#x65B9;&#x518D;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x505A;<strong>&#x786E;&#x8BA4;</strong>&#x7684;&#x62A5;&#x6587;&#x6BB5;&#xFF0C;&#x4F46;&#x8FD9;&#x6837;&#x592A;&#x4F4E;&#x6548;&#x4E86;&#x3002;&#x4E0D;&#x5982;&#xFF0C;&#x5728;&#x53D1;&#x9001;&#x81EA;&#x5DF1;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x987A;&#x4FBF;<strong>&#x786E;&#x8BA4;</strong>&#x4E0B;&#x6240;&#x63A5;&#x53D7;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x3002;&#x4E0A;&#x9762;&#x8BF4;&#x7684;&#x8FD9;&#x4E2A;&#x51E0;&#x70B9;&#x5728;TCP&#x534F;&#x8BAE;&#x4E2D;&#x90FD;&#x6709;&#x4F53;&#x73B0;&#xFF0C;&#x66F4;&#x76F4;&#x63A5;&#x7684;&#x5728;TCP header&#x4E2D;&#x5C31;&#x6709;&#x4F53;&#x73B0;&#x3002;</p>
+<h3 id="TCP-Header"><a href="#TCP-Header" class="headerlink" title="TCP Header"></a>TCP Header</h3><p><img src="http://o79rgqboc.bkt.clouddn.com/blog_TCP_Header.png" alt="blog_TCP_Header"></p>
+<p>Source Port&#x548C;Destination Port&#x4EE3;&#x8868;&#x76EE;&#x7684;&#x548C;&#x6E90;&#x7AEF;&#x53E3;&#x3002;</p>
+<p>Sequence Number&#x4EE3;&#x8868;&#x62A5;&#x6587;&#x6BB5;&#x7684;&#x5E8F;&#x53F7;&#x6765;&#x8868;&#x793A;&#x987A;&#x5E8F;&#x3002;Acknowledgment Number&#x4EE3;&#x8868;&#x53D1;&#x9001;&#x65B9;&#x4F5C;&#x4E3A;&#x63A5;&#x6536;&#x65B9;&#x5DF2;&#x63A5;&#x6536;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#xFF0C;&#x5E76;&#x4E14;&#x671F;&#x671B;&#x6536;&#x5230;&#x4E0B;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#x7684;&#x5F00;&#x59CB;&#x5E8F;&#x5217;&#x53F7;&#x3002;TCP&#x5C06;&#x4F20;&#x9001;&#x6570;&#x636E;&#x770B;&#x505A;&#x6210;&#x6570;&#x636E;&#x7684;&#x5B57;&#x8282;&#x6D41;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x3002;&#x8FD9;&#x70B9;&#x4ECE;Sequence Number&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;Sequence Number&#x4EE5;&#x4F20;&#x9001;&#x7684;&#x5B57;&#x8282;&#x6570;&#x4F5C;&#x4E3A;&#x5355;&#x4F4D;&#xFF0C;&#x800C;&#x4E0D;&#x4EE5;&#x62A5;&#x6587;&#x6BB5;&#x7684;&#x6570;&#x91CF;&#x4F5C;&#x4E3A;&#x5355;&#x4F4D;&#x3002;</p>
+<p>Data Offset&#x4F5C;&#x4E3A;&#x5BF9;&#x9F50;&#x7684;&#x7A7A;&#x4F4D;&#xFF0C;Reserved&#x4F5C;&#x4E3A;&#x4FDD;&#x7559;&#x4F4D;&#x3002;</p>
+<p>Flag&#x5305;&#x62EC;Urgent&#x3001;Ack&#x3001;Push&#x3001;Reset&#x3001;Syn&#x3001;Fin&#x8FD9;6&#x4F4D;&#x3002;Urgent&#x4F5C;&#x4E3A;&#x62A5;&#x6587;&#x6BB5;&#x7684;&#x7D27;&#x6025;&#x6570;&#x636E;&#x6807;&#x8BC6;&#xFF0C;&#x4F46;&#x5177;&#x4F53;&#x5982;&#x4F55;&#x5904;&#x7406;&#x4EA4;&#x7ED9;&#x63A5;&#x6536;&#x65B9;&#x51B3;&#x5B9A;&#x3002;Reset&#x4F5C;&#x4E3A;&#x62A5;&#x6587;&#x6BB5;&#x7684;&#x8FDE;&#x63A5;&#x5F02;&#x5E38;&#x7ED3;&#x675F;&#x6216;&#x7AEF;&#x53E3;&#x53F7;&#x9519;&#x8BEF;&#x7684;&#x6807;&#x8BC6;&#x3002;&#x800C;Ack&#x786E;&#x8BA4;&#x3001;Syn&#x540C;&#x6B65;&#x3001;Fin&#x7ED3;&#x675F;&#x5728;&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x548C;&#x56DB;&#x6B21;&#x6325;&#x624B;&#x4E2D;&#x4F5C;&#x4E3A;&#x5173;&#x952E;&#x6807;&#x8BC6;&#x4F4D;&#x3002;Push&#x4EE3;&#x8868;TCP&#x4E0D;&#x518D;&#x7B49;&#x5F85;&#x662F;&#x5426;&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x62A5;&#x6587;&#x6BB5;&#x5230;&#x8FBE;&#xFF0C;&#x9A6C;&#x4E0A;&#x4EA4;&#x7ED9;&#x4E0A;&#x5C42;&#x5E94;&#x7528;&#x5C42;&#x3002;</p>
+<p>Window&#x4F4D;&#x4F5C;&#x4E3A;<strong>&#x6D41;&#x91CF;&#x63A7;&#x5236;</strong>&#x7684;&#x57FA;&#x7840;&#x3002;</p>
+<p>Check Sum&#x4F5C;&#x4E3A;&#x6821;&#x9A8C;&#x4F4D;&#xFF0C;&#x6821;&#x9A8C;&#x62A5;&#x6587;&#x6BB5;&#x662F;&#x5426;&#x5728;&#x4F20;&#x8F93;&#x8FC7;&#x7A0B;&#x4E2D;&#x53D7;&#x635F;&#x3002;Urgent Pointer&#x5728;Urgent&#x4F4D;&#x4E3A;1&#x65F6;&#xFF0C;&#x624D;&#x4F1A;&#x51FA;&#x73B0;&#xFF0C;&#x6307;&#x5411;&#x7D27;&#x6025;&#x6570;&#x636E;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#x3002;</p>
+<p>Options&#x5E38;&#x89C1;&#x7684;&#x6807;&#x8BC6;&#x6709;nop&#x3001;TS val(time stamp)&#x3001;ecr(echo reply)&#x3001;mss&#x3002;nop&#x6807;&#x8BC6;&#x7C7B;&#x4F3C;&#x6C14;&#x6CE1;&#x6307;&#x4EE4;&#xFF0C;&#x4F5C;&#x4E3A;&#x5360;&#x4F4D;&#x3002;&#x800C;TS val&#x548C;ecr&#x5206;&#x522B;&#x4EE3;&#x8868;&#x53D1;&#x9001;&#x65B9;&#x7684;&#x65F6;&#x95F4;&#x6233;&#x548C;&#x63A5;&#x6536;&#x65B9;&#x7684;&#x65F6;&#x95F4;&#x6233;&#xFF0C;&#x57FA;&#x4E8E;&#x8FD9;&#x4E24;&#x4E2A;&#x65F6;&#x95F4;&#x6233;&#x6765;&#x8BA1;&#x7B97;&#x51FA;RTT&#x5F80;&#x8FD4;&#x65F6;&#x95F4; (round-trip time) &#xFF0C;RTT&#x4F1A;&#x88AB;&#x7528;&#x6765;&#x8861;&#x91CF;&#x91CD;&#x4F20;&#x8BA1;&#x65F6;&#x5668;&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x957F;&#x3002;mss(Maximum Segment Size)&#x6307;&#x7684;&#x662F;&#xFF0C;&#x8FDE;&#x63A5;&#x5C42;&#x6BCF;&#x6B21;&#x4F20;&#x8F93;&#x7684;&#x6570;&#x636E;&#x6709;&#x4E2A;&#x6700;&#x5927;&#x9650;&#x5236;MTU(Maximum Transmission Unit)&#xFF0C;&#x4E00;&#x822C;&#x662F;1500&#x6BD4;&#x7279;&#xFF0C;&#x8D85;&#x8FC7;&#x8FD9;&#x4E2A;&#x91CF;&#x8981;&#x5206;&#x6210;&#x591A;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#xFF0C;mss&#x5219;&#x662F;&#x8FD9;&#x4E2A;&#x6700;&#x5927;&#x9650;&#x5236;&#x51CF;&#x53BB;TCP&#x7684;header&#xFF0C;&#x5149;&#x662F;&#x8981;&#x4F20;&#x8F93;&#x7684;&#x6570;&#x636E;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x4E00;&#x822C;&#x4E3A;1460&#x6BD4;&#x7279;&#x3002;</p>
+<h3 id="&#x4E09;&#x6B21;&#x63E1;&#x624B;"><a href="#&#x4E09;&#x6B21;&#x63E1;&#x624B;" class="headerlink" title="&#x4E09;&#x6B21;&#x63E1;&#x624B;"></a>&#x4E09;&#x6B21;&#x63E1;&#x624B;</h3><p>&#x4E09;&#x6B21;&#x63E1;&#x624B;&#xFF0C;&#x53EA;&#x80FD;&#x7531;&#x5BA2;&#x6237;&#x7AEF;&#x5411;&#x670D;&#x52A1;&#x7AEF;&#x53D1;&#x8D77;&#x3002;&#x7B2C;&#x4E00;&#x6B21;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;SYN&#x4E3A;1&#xFF0C;&#x5E8F;&#x5217;&#x53F7;seq&#x4E3A;&#x67D0;&#x5E8F;&#x5217;&#x53F7;&#xFF0C;&#x8868;&#x793A;&#x5BA2;&#x6237;&#x7AEF;&#x60F3;&#x8981;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x3002;&#x7B2C;&#x4E8C;&#x6B21;&#x670D;&#x52A1;&#x7AEF;&#x8FD4;&#x56DE;ACK&#x3001;SYN&#x90FD;&#x4E3A;1&#xFF0C;&#x5E8F;&#x5217;&#x53F7;seq&#x4E3A;&#x67D0;&#x5E8F;&#x5217;&#x53F7;&#xFF0C;&#x786E;&#x8BA4;&#x53F7;&#x4E3A;&#x63A5;&#x6536;&#x7684;&#x5E8F;&#x5217;&#x53F7;&#x52A0;1&#xFF0C;&#x8868;&#x793A;&#x786E;&#x8BA4;&#x670D;&#x52A1;&#x7AEF;&#x4E5F;&#x60F3;&#x8981;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x3002;&#x7B2C;&#x4E09;&#x6B21;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;ACK&#x4E3A;1&#xFF0C;&#x786E;&#x8BA4;&#x53F7;&#x4E3A;&#x6240;&#x63A5;&#x6536;&#x5E8F;&#x5217;&#x53F7;&#x52A0;1&#xFF0C;&#x518D;&#x6B21;&#x786E;&#x8BA4;&#xFF0C;&#x7136;&#x540E;&#x8FDE;&#x63A5;&#x5EFA;&#x7ACB;&#x3002;</p>
+<p>&#x800C;&#x8981;&#x63E1;&#x4E09;&#x6B21;&#x624B;&#x662F;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x5931;&#x6548;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x53C8;&#x5230;&#x8FBE;&#x4E86;&#x670D;&#x52A1;&#x7AEF;&#x4EA7;&#x751F;&#x9519;&#x8BEF;&#x8FDE;&#x63A5;&#x3002;&#x5047;&#x8BBE;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#x5EF6;&#x65F6;&#x5230;&#x8FBE;&#x4E86;&#x670D;&#x52A1;&#x7AEF;&#xFF0C;&#x8FD9;&#x4E2A;&#x62A5;&#x6587;&#x5E94;&#x88AB;&#x8BA4;&#x4E3A;&#x5931;&#x6548;&#x3002;&#x4F46;&#x670D;&#x52A1;&#x7AEF;&#x8BEF;&#x8BA4;&#x4E3A;&#x5BA2;&#x6237;&#x7AEF;&#x60F3;&#x8981;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x65B0;&#x8FDE;&#x63A5;&#xFF0C;&#x5C31;&#x53D1;&#x51FA;&#x4E86;&#x786E;&#x8BA4;&#xFF0C;&#x82E5;&#x6CA1;&#x6709;&#x7B2C;&#x4E09;&#x6B21;&#x786E;&#x8BA4;&#x518D;&#x5EFA;&#x7ACB;&#x8D77;&#x8FDE;&#x63A5;&#x3002;&#x670D;&#x52A1;&#x7AEF;&#x5C31;&#x9519;&#x8BEF;&#x5730;&#x5EFA;&#x7ACB;&#x8D77;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x5931;&#x8D25;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x5E76;&#x4E0D;&#x4F1A;&#x9A6C;&#x4E0A;&#x653E;&#x5F03;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x8FD8;&#x4F1A;&#x5C1D;&#x8BD5;&#x91CD;&#x65B0;&#x53D1;&#x9001;&#x786E;&#x8BA4;&#xFF0C;&#x9ED8;&#x8BA4;&#x91CD;&#x8BD5;5&#x6B21;&#xFF0C;&#x95F4;&#x9694;&#x4ECE;1&#x79D2;&#x5F00;&#x59CB;&#xFF0C;&#x540E;&#x6765;&#x6BCF;&#x6B21;&#x662F;&#x524D;&#x4E00;&#x6B21;&#x7684;2&#x500D;&#x3002;5&#x6B21;&#x91CD;&#x8BD5;&#x540E;&#xFF0C;&#x672A;&#x679C;&#x5219;&#x653E;&#x5F03;&#x8FDE;&#x63A5;&#x3002;</p>
+<h3 id="&#x56DB;&#x6B21;&#x6325;&#x624B;"><a href="#&#x56DB;&#x6B21;&#x6325;&#x624B;" class="headerlink" title="&#x56DB;&#x6B21;&#x6325;&#x624B;"></a>&#x56DB;&#x6B21;&#x6325;&#x624B;</h3><p>&#x56DB;&#x6B21;&#x6325;&#x624B;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x670D;&#x52A1;&#x7AEF;&#x90FD;&#x53EF;&#x4EE5;&#x53D1;&#x8D77;&#x3002;&#x7B2C;&#x4E00;&#x6B21;&#x53D1;&#x9001;&#x65B9;&#x53D1;&#x9001;FIN&#x4E3A;1&#x3001;ACK&#x4E3A;1&#xFF0C;&#x5E8F;&#x5217;&#x53F7;&#x4E3A;&#x67D0;&#x5E8F;&#x5217;&#x53F7;&#xFF0C;&#x8868;&#x793A;&#x53D1;&#x9001;&#x65B9;&#x60F3;&#x7ED3;&#x675F;&#x8FDE;&#x63A5;&#x3002;&#x7B2C;&#x4E8C;&#x6B21;&#x63A5;&#x6536;&#x65B9;&#x53D1;&#x9001;ACK&#x4E3A;1&#xFF0C;&#x786E;&#x8BA4;&#x53F7;&#x4E3A;&#x63A5;&#x6536;&#x5E8F;&#x5217;&#x53F7;&#x52A0;1&#xFF0C;&#x8868;&#x793A;&#x6211;&#x8FD8;&#x6CA1;&#x6709;&#x51C6;&#x5907;&#x597D;&#x7ED3;&#x675F;&#x8FDE;&#x63A5;&#x3002;&#x7B2C;&#x4E09;&#x6B21;&#x63A5;&#x6536;&#x65B9;&#x53D1;&#x9001;FIN&#x4E3A;1&#x3001;ACK&#x4E3A;1&#xFF0C;&#x5E8F;&#x5217;&#x53F7;&#x4E3A;&#x67D0;&#x5E8F;&#x5217;&#x53F7;&#xFF0C;&#x8868;&#x793A;&#x6211;&#x5DF2;&#x7ECF;&#x51C6;&#x5907;&#x597D;&#x7ED3;&#x675F;&#x8FDE;&#x63A5;&#x4E86;&#x3002;&#x7B2C;&#x56DB;&#x6B21;&#x53D1;&#x9001;&#x65B9;&#xFF0C;&#x53D1;&#x9001;ACK&#x4E3A;1&#xFF0C;&#x786E;&#x8BA4;&#x53F7;&#x4E3A;&#x6240;&#x63A5;&#x6536;&#x5E8F;&#x5217;&#x53F7;&#x52A0;1&#xFF0C;&#x8868;&#x793A;&#x786E;&#x8BA4;&#xFF0C;&#x7ED3;&#x675F;&#x8FDE;&#x63A5;&#x3002;</p>
+<h3 id="&#x534A;&#x5173;&#x95ED;"><a href="#&#x534A;&#x5173;&#x95ED;" class="headerlink" title="&#x534A;&#x5173;&#x95ED;"></a>&#x534A;&#x5173;&#x95ED;</h3><p>&#x5728;&#x56DB;&#x6B21;&#x6325;&#x624B;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x53D1;&#x9001;&#x65B9;&#x53EF;&#x4EE5;&#x5728;&#x63A5;&#x6536;&#x7B2C;&#x4E8C;&#x6B21;&#x63A5;&#x6536;&#x65B9;&#x53D1;&#x9001;ACK&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x5F62;&#x6210;&#x53D1;&#x9001;&#x65B9;&#x4E0D;&#x518D;&#x53D1;&#x9001;&#x62A5;&#x6587;&#x6BB5;&#xFF0C;&#x4F46;&#x4ECD;&#x7136;&#x63A5;&#x6536;&#x63A5;&#x6536;&#x65B9;&#x53D1;&#x9001;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x7684;&#x8FD9;&#x79CD;&#x73B0;&#x8C61;&#x3002;&#x8FD9;&#x5C31;&#x5F62;&#x6210;&#x4E86;&#x534A;&#x5173;&#x95ED;&#x3002;</p>
+<p>&#x5B66;&#x4E60;&#x534F;&#x8BAE;&#xFF0C;&#x5149;&#x770B;&#x4E66;&#x548C;&#x6982;&#x5FF5;&#xFF0C;&#x5473;&#x5982;&#x56BC;&#x8721;&#x3002;&#x8FD8;&#x662F;&#x52A8;&#x624B;&#x5B9E;&#x9A8C;&#xFF0C;&#x624D;&#x4F1A;&#x6709;&#x66F4;&#x6DF1;&#x7684;&#x4F53;&#x4F1A;&#xFF0C;&#x63A8;&#x8350;tcpdump&#x5DE5;&#x5177;&#x3002;<a href="http://mrpeak.cn/blog/tutorial-tcpdump/" target="_blank" rel="noopener">tcpdump&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x70B9;&#x6211;</a>&#x3002;&#x7528;tcpdump&#x622A;&#x7684;&#x51E0;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#xFF1A;</p>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/tcp_three_times_handshake.png" alt="TCP&#x4E09;&#x6B21;&#x63E1;&#x624B;"></p>
+<p>tcpdump&#x7B2C;&#x4E00;&#x884C;&#x622A;&#x5230;&#x7684;&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre><code class="lang-c">16:26:13.702723 IP 10.174.73.57.65133 &gt; 120.92.234.238.http: Flags[S], seq 37233370769
+       &#x2193;        &#x2193;         &#x2193;                    &#x2193;        &#x2193;       &#x2193;       &#x2193;               
+    &#x53D1;&#x9001;&#x65F6;&#x95F4;   IP&#x534F;&#x8BAE;    &#x6E90;IP.port      &#x5230;   &#x76EE;&#x7684;IP.port http&#x534F;&#x8BAE; Flags&#x4F4D; seq&#x786E;&#x8BA4;&#x53F7;     
+,win 65535,
+  &#x2193;
+ win&#x5927;&#x5C0F;
+options [mss 1460,nop,wscale 5,nop,nop,TS val 1021470802 ecr 0, sackOK, eol]
+                               &#x2193;                                            
+                            options&#x4F4D;                                  
+, length 0
+     &#x2193;
+&#x62A5;&#x6587;&#x6BB5;&#x4E0D;&#x5305;&#x542B;header&#x7684;&#x957F;&#x5EA6;
+</code></pre>
+<p>&#x56FE;&#x4E2D;&#x7684;&#x4E94;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#xFF0C;&#x5176;&#x4E2D;&#x7684;&#x4E09;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#x6B63;&#x662F;TCP&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x7684;&#x8FC7;&#x7A0B;&#x3002;</p>
+<p>TCP&#x56DB;&#x6B21;&#x6325;&#x624B;&#x8FC7;&#x7A0B;&#xFF1A;</p>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/blog_TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png" alt="TCP&#x56DB;&#x6B21;&#x6325;&#x624B;"></p>
+<h3 id="TCP&#x7684;&#x786E;&#x8BA4;&#x65B9;&#x5F0F;"><a href="#TCP&#x7684;&#x786E;&#x8BA4;&#x65B9;&#x5F0F;" class="headerlink" title="TCP&#x7684;&#x786E;&#x8BA4;&#x65B9;&#x5F0F;"></a>TCP&#x7684;&#x786E;&#x8BA4;&#x65B9;&#x5F0F;</h3><p>TCP&#x5728;&#x53D1;&#x9001;&#x62A5;&#x6587;&#x6BB5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x987A;&#x4FBF;&#x786E;&#x8BA4;&#x4E0B;&#x6240;&#x63A5;&#x53D7;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x3002;&#x8FD9;&#x5BFC;&#x81F4;TCP&#x786E;&#x8BA4;&#x4F1A;&#x5EF6;&#x8FDF;&#xFF0C;&#x53BB;&#x7B49;&#x5F85;&#x662F;&#x5426;&#x6709;&#x62A5;&#x6587;&#x6BB5;&#x53D1;&#x9001;&#xFF0C;&#x8BA9;&#x62A5;&#x6587;&#x6BB5;&#x634E;&#x4E0A;&#x786E;&#x8BA4;&#x3002;&#x5EF6;&#x8FDF;&#x4E00;&#x822C;&#x4E3A;200&#x6BEB;&#x79D2;&#x3002;</p>
+<p>TCP&#x4F7F;&#x7528;&#x4E86;<strong>&#x7D2F;&#x8BA1;&#x786E;&#x8BA4;</strong>&#x3002;&#x63A5;&#x6536;&#x65B9;&#x4E3A;&#x4E86;&#x4EA4;&#x4ED8;&#x7ED9;&#x5E94;&#x7528;&#x5C42;&#x6B63;&#x786E;&#x7684;&#x987A;&#x5E8F;&#xFF0C;&#x53EA;&#x6709;&#x987A;&#x5E8F;&#x6B63;&#x786E;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x4F1A;&#x88AB;&#x786E;&#x8BA4;&#x7136;&#x540E;&#x4EA4;&#x4ED8;&#x7ED9;&#x4E0A;&#x5C42;&#x3002;&#x53D1;&#x9001;&#x65B9;&#x5982;&#x679C;&#x6536;&#x5230;&#x4E86;&#x63A5;&#x6536;&#x65B9;&#x7684;&#x67D0;&#x4E2A;&#x786E;&#x8BA4;&#x53F7;&#xFF0C;&#x5373;&#x4F7F;&#x8FD9;&#x4E2A;&#x786E;&#x8BA4;&#x53F7;&#x4EE5;&#x524D;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x6CA1;&#x6709;&#x6536;&#x5230;&#x786E;&#x8BA4;&#x53F7;&#x4E5F;&#x4F1A;&#x88AB;&#x8BA4;&#x4E3A;&#x6B63;&#x786E;&#x63A5;&#x6536;&#x3002;</p>
+<p>TCP&#x8FD8;&#x4F1A;&#x4F7F;&#x7528;<strong>&#x9009;&#x62E9;&#x786E;&#x8BA4;</strong>(selective acknowledgement)&#x3002;&#x5047;&#x8BBE;&#xFF0C;&#x53D1;&#x9001;&#x65B9;&#x53D1;&#x9001;&#x4E86;&#x591A;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#xFF0C;&#x521D;&#x59CB;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x51FA;&#x73B0;&#x4E86;&#x95EE;&#x9898;&#xFF0C;&#x6CA1;&#x6709;&#x62B5;&#x8FBE;&#x63A5;&#x6536;&#x65B9;&#x3002;&#x53D1;&#x9001;&#x65B9;&#x4F1A;&#x4EC5;&#x4EC5;&#x8BA4;&#x4E3A;&#x8FD9;&#x4E2A;&#x521D;&#x59CB;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x5931;&#x6548;&#x4E86;&#xFF0C;&#x800C;&#x540E;&#x53D1;&#x9001;&#x7684;&#x51E0;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#x51C6;&#x786E;&#x5230;&#x8FBE;&#x4E86;&#x63A5;&#x6536;&#x65B9;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x540E;&#x53D1;&#x9001;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x867D;&#x7136;&#x6CA1;&#x6709;&#x63A5;&#x6536;&#x5230;&#x76F4;&#x63A5;&#x7684;&#x786E;&#x8BA4;&#xFF0C;&#x800C;&#x53D1;&#x9001;&#x65B9;&#x9009;&#x62E9;&#x6027;&#x7684;&#x786E;&#x8BA4;&#x4E86;&#x4ED6;&#x4EEC;&#x3002;&#x63A5;&#x6536;&#x65B9;&#x4F1A;&#x5C06;&#x540E;&#x53D1;&#x9001;&#x7684;&#x5931;&#x5E8F;&#x62A5;&#x6587;&#x6BB5;&#x5148;&#x653E;&#x5165;&#x7F13;&#x51B2;(buffer)&#x4E2D;&#x3002;&#x8FD9;&#x5C31;&#x662F;TCP&#x5B9E;&#x8DF5;&#x51FA;&#x771F;&#x77E5;&#x7684;&#x6700;&#x597D;&#x4F8B;&#x5B50;&#x3002;&#x7F51;&#x7EDC;&#x73AF;&#x5883;&#x6296;&#x52A8;&#x4E00;&#x822C;&#x4F1A;&#x5F71;&#x54CD;&#x5355;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#xFF0C;&#x800C;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x4E00;&#x5927;&#x7247;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x3002;</p>
+<p>&#x57FA;&#x4E8E;&#x4E0A;&#x9762;&#x6240;&#x8BF4;&#x7684;<strong>&#x7D2F;&#x8BA1;&#x786E;&#x8BA4;</strong>&#x548C;<strong>&#x9009;&#x62E9;&#x786E;&#x8BA4;</strong>&#xFF0C;&#x82E5;&#x662F;&#x62A5;&#x6587;&#x6BB5;&#x5931;&#x6548;&#xFF0C;&#x53D1;&#x9001;&#x53EF;&#x80FD;&#x4F1A;&#x6536;&#x5230;&#x591A;&#x6B21;&#x5BF9;&#x4E8E;&#x540C;&#x4E00;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#x7684;&#x5197;&#x4F59;&#x786E;&#x8BA4;&#xFF0C;&#x82E5;&#x662F;&#x6536;&#x5230;&#x4E86;&#x4E09;&#x6B21;&#x5197;&#x4F59;&#x786E;&#x8BA4;&#xFF0C;&#x5C31;&#x8BA4;&#x4E3A;&#x8FD9;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#x5931;&#x6548;&#x4E86;&#xFF0C;TCP&#x4E0D;&#x4F1A;&#x7B49;&#x5F85;&#x8BA1;&#x65F6;&#x5668;<strong>&#x8D85;&#x65F6;&#x91CD;&#x4F20;</strong>&#xFF0C;TCP&#x4F1A;&#x76F4;&#x63A5;&#x542F;&#x52A8;<strong>&#x5FEB;&#x901F;&#x91CD;&#x4F20;</strong>(fast retransmit)&#xFF0C;&#x76F4;&#x63A5;&#x91CD;&#x4F20;&#x3002;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x5C31;&#x662F;&#x4EE5;&#x65F6;&#x95F4;&#x548C;&#x6570;&#x636E;&#x91CF;&#x4E24;&#x4E2A;&#x6307;&#x6807;&#x4F5C;&#x4E3A;&#x8861;&#x91CF;&#x91CD;&#x4F20;&#x7684;&#x6761;&#x4EF6;&#x3002;</p>
+<p>&#x540C;&#x6837;&#xFF0C;&#x8FD8;&#x662F;&#x7528;&#x5DE5;&#x5177;&#x5B9E;&#x8DF5;&#x4E00;&#x4E0B;&#x6709;&#x610F;&#x601D;&#x4E00;&#x70B9;&#xFF0C;&#x63A8;&#x8350;&#x4F7F;&#x7528;WireShark&#xFF0C;WireShark&#x7684;Filter&#x975E;&#x5E38;&#x5F3A;&#x5927;&#xFF0C;&#x5728;&#x8FDB;&#x884C;&#x7F51;&#x7EDC;&#x8BCA;&#x65AD;&#x7684;&#x65F6;&#x5019;&#x975E;&#x5E38;&#x6709;&#x7528;&#x3002;WireShark&#x4F1A;&#x6839;&#x636E;TCP header&#x4E2D;&#x7684;Sequence Number&#xFF0C;&#x5206;&#x6790;&#x51FA;&#x5197;&#x4F59;ACK&#x3001;&#x5FEB;&#x901F;&#x91CD;&#x4F20;&#x7B49;&#x73B0;&#x8C61;&#xFF0C;<a href="https://wiki.wireshark.org/TCP_Analyze_Sequence_Numbers" target="_blank" rel="noopener">&#x5177;&#x4F53;&#x70B9;&#x6211;</a>&#x3002;WireShark&#x5728;Filter&#x4E2D;&#x8F93;&#x5165;tcp.analysis.fast_retransmission&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x627E;&#x51FA;&#x5FEB;&#x901F;&#x91CD;&#x4F20;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x3002;</p>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/blog_TCP_fast_retransmission.png" alt="TCP_fast_retransmission"></p>
+<h3 id="&#x6D41;&#x91CF;&#x63A7;&#x5236;"><a href="#&#x6D41;&#x91CF;&#x63A7;&#x5236;" class="headerlink" title="&#x6D41;&#x91CF;&#x63A7;&#x5236;"></a>&#x6D41;&#x91CF;&#x63A7;&#x5236;</h3><p><strong>&#x6D41;&#x91CF;&#x63A7;&#x5236;</strong>&#x662F;&#x53D1;&#x9001;&#x65B9;&#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x65B9;&#x5904;&#x7406;&#x901F;&#x5EA6;&#x5339;&#x914D;&#x7684;&#x8FC7;&#x7A0B;&#x3002;</p>
+<p>TCP&#x8FDE;&#x63A5;&#x53D1;&#x9001;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#xFF0C;&#x90FD;&#x4F1A;&#x653E;&#x5165;&#x4E0A;&#x6587;&#x6240;&#x8BF4;&#x7684;&#x7F13;&#x51B2;&#x4E2D;&#x7B49;&#x5F85;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x53D6;&#x51FA;&#x3002;&#x5982;&#x679C;&#x4E00;&#x7AEF;&#x6301;&#x7EED;&#x53D1;&#x9001;&#x62A5;&#x6587;&#x6BB5;&#xFF0C;&#x53E6;&#x4E00;&#x7AEF;&#x4E00;&#x76F4;&#x6CA1;&#x6709;&#x53CA;&#x65F6;&#x5904;&#x7406;&#x5B8C;&#x5E76;&#x63A5;&#x7740;&#x53D6;&#x51FA;&#x62A5;&#x6587;&#x6BB5;&#xFF0C;&#x5C31;&#x4F1A;&#x9020;&#x6210;&#x7F13;&#x51B2;&#x6EA2;&#x51FA;&#x3002;&#x8FD9;&#x65F6;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x53CC;&#x65B9;&#x7684;&#x901F;&#x5EA6;&#x5339;&#x914D;&#xFF0C;&#x8FDB;&#x884C;<strong>&#x6D41;&#x91CF;&#x63A7;&#x5236;</strong>&#x3002;&#x63A5;&#x6536;&#x65B9;&#x4F1A;&#x5C06;&#x81EA;&#x5DF1;&#x7684;&#x7F13;&#x51B2;&#x5269;&#x4F59;&#x7A7A;&#x95F4;rwnd&#x544A;&#x8BC9;&#x53D1;&#x9001;&#x65B9;&#xFF0C;&#x53D1;&#x9001;&#x65B9;&#x4E3A;&#x4E86;&#x63A7;&#x5236;&#x901F;&#x5EA6;&#xFF0C;&#x53EA;&#x80FD;&#x518D;&#x53D1;&#x9001;&#x6240;&#x5F97;&#x5230;&#x7684;&#x5269;&#x4F59;&#x7A7A;&#x95F4;rwnd&#x5BB9;&#x91CF;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x3002;&#x7531;&#x4E8E;&#x4E0A;&#x6587;&#x6240;&#x8BF4;TCP&#x91C7;&#x53D6;&#x7684;&#x786E;&#x8BA4;&#x65B9;&#x5F0F;&#xFF0C;&#x53D1;&#x9001;&#x65B9;&#x5F97;&#x5230;&#x7684;&#x8FD9;&#x4E2A;rwnd&#x5BB9;&#x91CF;&#x4E0D;&#x4F1A;&#x9650;&#x5236;&#x5DF2;&#x53D1;&#x9001;&#x800C;&#x672A;&#x5F97;&#x5230;&#x786E;&#x8BA4;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#xFF0C;&#x8FD9;&#x4E9B;&#x62A5;&#x6587;&#x6BB5;&#x5F88;&#x53EF;&#x80FD;&#x5DF2;&#x7ECF;&#x5728;&#x63A5;&#x6536;&#x65B9;&#x7684;&#x7F13;&#x51B2;&#x4E2D;&#x4E86;&#xFF0C;&#x53EA;&#x9650;&#x5236;&#x5C06;&#x8981;&#x53D1;&#x9001;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x3002;</p>
+<p>&#x5C06;&#x4F20;&#x9001;&#x6570;&#x636E;&#x770B;&#x505A;&#x6570;&#x636E;&#x6D41;&#x540E;&#xFF0C;&#x4E0A;&#x9762;&#x7684;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x5C31;&#x50CF;&#x5728;&#x4EE5;&#x5E8F;&#x53F7;&#x4F5C;&#x4E3A;&#x57FA;&#x51C6;&#x5728;&#x6570;&#x636E;&#x6D41;&#x4E0A;&#x79FB;&#x52A8;&#x7A97;&#x53E3;&#x4E00;&#x6837;&#xFF0C;&#x6240;&#x4EE5;&#x5F97;&#x540D;&#x6D41;&#x91CF;&#x7A97;&#x53E3;&#x3002;&#x800C;&#x5269;&#x4F59;&#x7A7A;&#x95F4;rwnd&#xFF0C;&#x4E5F;&#x5C31;&#x662F;TCP header&#x4E2D;&#x7684;window&#x4F4D;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x8FD8;&#x6709;&#x4E2A;&#x7ECF;&#x5178;&#x95EE;&#x9898;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x65B9;&#x63A5;&#x6536;&#x5230;&#x4E86;&#x96F6;&#x5269;&#x4F59;&#x7A7A;&#x95F4;&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x65B9;&#x5C31;&#x518D;&#x4E5F;&#x4E0D;&#x53D1;&#x9001;&#x62A5;&#x6587;&#x4E86;&#x3002;&#x8FD9;&#x6837;&#x5904;&#x7406;&#x5F53;&#x7136;&#x4E0D;&#x5408;&#x7406;&#xFF0C;TCP&#x4E3A;&#x5E94;&#x5BF9;&#x8FD9;&#x4E2A;&#x60C5;&#x51B5;&#x4F1A;&#x6709;&#x4E2A;&#x8BA1;&#x65F6;&#x5668;(persist timer)&#xFF0C;&#x51FA;&#x73B0;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x5C31;&#x4F1A;&#x8BA9;&#x8BA1;&#x65F6;&#x5668;&#x8BB0;&#x65F6;&#xFF0C;&#x5F53;&#x8BA1;&#x65F6;&#x5668;&#x89E6;&#x53D1;&#xFF0C;&#x8FD9;&#x65B9;&#x4F1A;&#x53D1;&#x9001;&#x4E2A;&#x5269;&#x4F59;&#x7A7A;&#x95F4;&#x63A2;&#x6D4B;&#x62A5;&#x6587;&#x6BB5;(window probe)&#xFF0C;&#x4EE5;&#x68C0;&#x6D4B;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x91CD;&#x65B0;&#x53D1;&#x9001;&#x62A5;&#x6587;&#x6BB5;&#x3002;&#x5982;&#x679C;&#x4E00;&#x76F4;&#x6CA1;&#x6709;&#x5269;&#x4F59;&#x7A7A;&#x95F4;&#xFF0C;&#x8BA1;&#x65F6;&#x5668;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x7EC8;&#x6B62;&#xFF0C;&#x4ECD;&#x4F1A;&#x505A;&#x91CD;&#x65B0;&#x8BB0;&#x65F6;&#x3001;&#x8D85;&#x65F6;&#x7684;&#x5FAA;&#x73AF;&#x3002;</p>
+<p>&#x5728;WireShark&#x4E2D;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;tcp.analysis.zero_window_probe&#x3001;tcp.analysis.window_full&#x627E;&#x51FA;&#x5269;&#x4F59;&#x7A7A;&#x95F4;&#x63A2;&#x6D4B;&#x62A5;&#x6587;&#x6BB5;&#x548C;&#x901A;&#x77E5;&#x53D1;&#x9001;&#x65B9;&#x63A5;&#x6536;&#x65B9;&#x7A7A;&#x95F4;&#x5DF2;&#x6EE1;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x3002;</p>
+<h3 id="&#x62E5;&#x585E;&#x63A7;&#x5236;-Congestion-Control"><a href="#&#x62E5;&#x585E;&#x63A7;&#x5236;-Congestion-Control" class="headerlink" title="&#x62E5;&#x585E;&#x63A7;&#x5236;(Congestion-Control)"></a>&#x62E5;&#x585E;&#x63A7;&#x5236;(Congestion-Control)</h3><p>TCP&#x5982;&#x679C;&#x4E0D;&#x7167;&#x987E;&#x7F51;&#x7EDC;&#x603B;&#x4F53;&#x72B6;&#x51B5;&#xFF0C;&#x4E00;&#x80A1;&#x8111;&#x7684;&#x4F20;&#x9001;&#x6570;&#x636E;&#x7684;&#x8BDD;&#xFF0C;&#x5728;&#x6781;&#x5DEE;&#x7684;&#x7F51;&#x7EDC;&#x73AF;&#x5883;&#x4E0B;&#x53EA;&#x4F1A;&#x6076;&#x6027;&#x5FAA;&#x73AF;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x641E;&#x762B;&#x7F51;&#x7EDC;&#x3002;&#x800C;&#x4F20;&#x9001;&#x6570;&#x636E;&#x592A;&#x5C0F;&#x5FC3;&#x7684;&#x8BDD;&#x53C8;&#x4E0D;&#x80FD;&#x5145;&#x5206;&#x5229;&#x7528;&#x5E26;&#x5BBD;&#x8D44;&#x6E90;&#x3002;&#x6240;&#x4EE5;&#xFF0C;<strong>&#x62E5;&#x585E;&#x63A7;&#x5236;</strong>&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x52A8;&#x6001;&#x5E73;&#x8861;&#x7684;&#x7B56;&#x7565;&#x3002;<strong>&#x62E5;&#x585E;&#x63A7;&#x5236;</strong>&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x7531;&#x4E09;&#x4E2A;&#x72B6;&#x6001;&#x7EC4;&#x6210;&#x7684;&#x6709;&#x9650;&#x72B6;&#x6001;&#x673A;(FSM)&#xFF0C;&#x8FD9;&#x4E09;&#x4E2A;&#x72B6;&#x6001;&#x662F;<strong>&#x6162;&#x542F;&#x52A8;</strong>(slow start)&#x3001;<strong>&#x62E5;&#x585E;&#x907F;&#x514D;</strong>(congestion avoid)&#x3001;<strong>&#x5FEB;&#x901F;&#x6062;&#x590D;</strong>(fast recovery)&#x3002;</p>
+<p>&#x5728;&#x4E00;&#x5934;&#x624E;&#x8FDB;&#x8FD9;&#x4E09;&#x4E2A;&#x72B6;&#x6001;&#x4E4B;&#x524D;&#xFF0C;&#x601D;&#x8003;&#x4E00;&#x4E0B;TCP&#x662F;&#x5982;&#x4F55;&#x8BA4;&#x77E5;&#x62E5;&#x585E;&#x7684;&#x3002;</p>
+<ul>
+<li>TCP&#x8981;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x7684;&#x6709;&#x9650;&#x4FE1;&#x606F;&#x5224;&#x5B9A;&#x7F51;&#x7EDC;&#x62E5;&#x585E;&#xFF0C;&#x53EA;&#x8981;&#x51FA;&#x73B0;&#x8D85;&#x65F6;&#x91CD;&#x4F20;&#x5C31;&#x8BA4;&#x4E3A;&#x7F51;&#x7EDC;&#x62E5;&#x585E;&#x4E86;&#x3002;</li>
+<li>TCP&#x8981;&#x5224;&#x5B9A;&#x4E0D;&#x662F;&#x7F51;&#x7EDC;&#x62E5;&#x585E;&#x800C;&#x53EA;&#x662F;&#x6296;&#x52A8;&#xFF0C;&#x53EA;&#x8981;&#x51FA;&#x73B0;&#x5FEB;&#x901F;&#x91CD;&#x4F20;&#x5C31;&#x88AB;&#x8BA4;&#x4E3A;&#x6296;&#x52A8;&#x3002;</li>
+<li>TCP&#x8981;&#x5224;&#x65AD;&#x5FEB;&#x8981;&#x62E5;&#x585E;&#x4E86;&#xFF0C;TCP&#x4F1A;&#x5728;&#x6BCF;&#x6B21;&#x53D1;&#x751F;&#x62E5;&#x585E;&#x540E;&#xFF0C;&#x8BB0;&#x5F55;&#x4E0B;&#x5BFC;&#x81F4;&#x53D1;&#x751F;&#x62E5;&#x585E;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x7684;&#x6570;&#x91CF;&#x7684;&#x4E00;&#x534A;&#xFF0C;&#x6700;&#x5C0F;&#x4E0D;&#x80FD;&#x5C0F;&#x4E8E;2&#x5355;&#x4F4D;(mss)&#x62A5;&#x6587;&#x6BB5;&#xFF0C;&#x8FD9;&#x4E2A;&#x503C;&#x88AB;&#x7528;&#x6765;&#x8861;&#x91CF;&#x4E0B;&#x6B21;&#x662F;&#x5426;&#x5FEB;&#x8981;&#x62E5;&#x585E;&#x3002;</li>
+<li>&#x76F8;&#x5BF9;&#x4E8E;&#x62E5;&#x585E;&#xFF0C;TCP&#x8FD8;&#x8981;&#x5224;&#x65AD;&#x7F51;&#x7EDC;&#x826F;&#x597D;&#xFF0C;&#x53EA;&#x8981;&#x6CA1;&#x6709;&#x53D1;&#x751F;&#x91CD;&#x4F20;&#xFF0C;TCP&#x5C31;&#x8BA4;&#x4E3A;&#x4E00;&#x5207;&#x987A;&#x5229;&#x3002;</li>
+</ul>
+<pre><code class="lang-c">|  &#x4E0D;&#x62E5;&#x585E;   |      &#x5FEB;&#x8981;&#x62E5;&#x585E;      |   &#x6296;&#x52A8;   |  &#x62E5;&#x585E;   |
+     &#x2191;               &#x2191;              &#x2191;        &#x2191;
+|&#x6B63;&#x5E38;&#x6536;&#x5230;ACK| &#x5230;&#x4E86;&#x4E0A;&#x6B21;&#x62E5;&#x585E;&#x4E00;&#x534A;&#x7684;&#x91CF; |  &#x5FEB;&#x901F;&#x91CD;&#x4F20; | &#x8D85;&#x65F6;&#x91CD;&#x4F20; |
+</code></pre>
+<p>TCP&#x6709;&#x4E86;&#x8FD9;&#x56DB;&#x4E2A;&#x8BA4;&#x77E5;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x6A21;&#x578B;&#x5316;&#x7684;&#x7167;&#x987E;&#x7F51;&#x7EDC;&#x603B;&#x4F53;&#x60C5;&#x51B5;&#x4E86;&#x3002;TCP&#x4EE5;cwnd&#x6807;&#x8BC6;&#x80FD;&#x591F;&#x53D1;&#x9001;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x7684;&#x91CF;&#xFF0C;<strong>&#x62E5;&#x585E;&#x63A7;&#x5236;</strong>&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E5F;&#x50CF;&#x662F;&#x5728;&#x6570;&#x636E;&#x6D41;&#x4E0A;&#x79FB;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x6240;&#x4EE5;&#x4E5F;&#x53EB;&#x62E5;&#x585E;&#x7A97;&#x53E3;&#x3002;</p>
+<p>&#x9996;&#x5148;&#xFF0C;<strong>&#x6162;&#x542F;&#x52A8;</strong>&#x3002;</p>
+<p>&#x5728;<strong>&#x6162;&#x542F;&#x52A8;</strong>&#x9636;&#x6BB5;&#xFF0C;TCP&#x4EE5;cwnd&#x4E3A;1&#x4F5C;&#x4E3A;&#x521D;&#x59CB;&#x91CF;&#xFF0C;&#x7136;&#x540E;&#x6BCF;&#x786E;&#x8BA4;&#x4E00;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#xFF0C;&#x90FD;&#x4F1A;&#x4E3A;cwnd&#x52A0;1&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x5982;&#x679C;TCP&#x4E00;&#x76F4;&#x4FDD;&#x6301;&#x6700;&#x5927;&#x9650;&#x5EA6;&#x7684;&#x53D1;&#x9001;&#x62A5;&#x6587;&#x6BB5;&#xFF0C;&#x6BCF;&#x8FC7;&#x4E00;&#x4E2A;RTT&#xFF0C;TCP&#x53D1;&#x9001;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x91CF;&#x5C31;&#x4F1A;&#x7FFB;&#x500D;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5728;<strong>&#x6162;&#x542F;&#x52A8;</strong>&#x9636;&#x6BB5;&#xFF0C;TCP&#x662F;&#x6307;&#x6570;&#x7EA7;&#x589E;&#x957F;&#x3002;<strong>&#x6162;&#x542F;&#x52A8;</strong>&#x7684;&#x8BED;&#x4E49;&#x662F;&#xFF0C;&#x73B0;&#x5728;&#x7F51;&#x7EDC;&#x72B6;&#x6001;&#x62E5;&#x585E;&#x4E86;&#xFF0C;&#x5F00;&#x59CB;&#x6781;&#x5C11;&#x7684;&#x53D1;&#x9001;&#xFF0C;&#x6162;&#x6162;&#x8FC7;&#x6E21;&#x589E;&#x52A0;&#x8D77;&#x6765;&#x53D1;&#x9001;&#x91CF;&#x3002;</p>
+<p>&#x5176;&#x6B21;&#xFF0C;<strong>&#x62E5;&#x585E;&#x907F;&#x514D;</strong>&#x3002;</p>
+<p>&#x5F53;cwnd&#x589E;&#x957F;&#x5230;&#x5FEB;&#x8981;&#x62E5;&#x585E;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x72B6;&#x6001;&#x8FC1;&#x79FB;&#x5230;<strong>&#x62E5;&#x585E;&#x907F;&#x514D;</strong>&#x3002;&#x4E0A;&#x6587;&#x8BF4;&#x5230;&#x4E3A;&#x6807;&#x5FD7;&#x5FEB;&#x8981;&#x62E5;&#x585E;&#x4F1A;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x503C;ssthresh(slow start threshold)&#xFF0C;&#x5F53;cwnd&#x5927;&#x4E8E;&#x7B49;&#x4E8E;ssthresh&#xFF0C;<strong>&#x6162;&#x542F;&#x52A8;</strong>&#x8FC1;&#x79FB;&#x5230;<strong>&#x62E5;&#x585E;&#x907F;&#x514D;</strong>&#x72B6;&#x6001;&#x3002;&#x8FDB;&#x5165;&#x62E5;&#x585E;&#x72B6;&#x6001;&#x540E;&#xFF0C;&#x6BCF;&#x786E;&#x8BA4;&#x4E00;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#xFF0C;&#x90FD;&#x4F1A;&#x4E3A;cwnd&#x52A0;1/cwnd&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x5982;&#x679C;TCP&#x4E00;&#x76F4;&#x4FDD;&#x6301;&#x6700;&#x5927;&#x9650;&#x5EA6;&#x7684;&#x53D1;&#x9001;&#x62A5;&#x6587;&#x6BB5;&#xFF0C;&#x6BCF;&#x8FC7;&#x4E00;&#x4E2A;RTT&#xFF0C;TCP&#x53D1;&#x9001;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x91CF;&#x4F1A;&#x52A0;1&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5728;<strong>&#x62E5;&#x585E;&#x907F;&#x514D;</strong>&#x72B6;&#x6001;&#xFF0C;TCP&#x662F;&#x7EBF;&#x6027;&#x589E;&#x957F;&#x3002;<strong>&#x62E5;&#x585E;&#x907F;&#x514D;</strong>&#x7684;&#x8BED;&#x4E49;&#x662F;&#xFF0C;&#x7F51;&#x7EDC;&#x72B6;&#x51B5;&#x5FEB;&#x8981;&#x62E5;&#x585E;&#xFF0C;&#x5C0F;&#x5FC3;&#x4E00;&#x70B9;&#x3002;</p>
+<p>&#x7136;&#x540E;&#xFF0C;<strong>&#x5FEB;&#x901F;&#x6062;&#x590D;</strong>&#x3002;</p>
+<p>&#x4E0D;&#x7BA1;&#x662F;<strong>&#x6162;&#x542F;&#x52A8;</strong>&#x8FD8;&#x662F;<strong>&#x62E5;&#x585E;&#x907F;&#x514D;</strong>&#xFF0C;&#x51FA;&#x73B0;&#x4E86;&#x5FEB;&#x901F;&#x91CD;&#x4F20;&#xFF0C;&#x90FD;&#x8FC1;&#x79FB;&#x5230;<strong>&#x5FEB;&#x901F;&#x6062;&#x590D;</strong>&#x3002;&#x65E2;&#x7136;&#x53D1;&#x751F;&#x4E86;&#x6296;&#x52A8;&#xFF0C;&#x90A3;&#x5C31;&#x9002;&#x5F53;&#x7684;&#x964D;&#x4F4E;cwnd&#xFF0C;&#x5C06;cwnd&#x9664;2&#xFF0C;&#x5E76;&#x4E14;&#x7EF4;&#x62A4;ssthresh&#x8BB0;&#x5F55;&#x62E5;&#x585E;&#x7684;&#x91CF;&#xFF0C;&#x5C06;cwnd&#x7684;&#x503C;&#x8D4B;&#x7ED9;ssthresh&#x3002;&#x53D1;&#x751F;<strong>&#x5FEB;&#x901F;&#x6062;&#x590D;</strong>&#x5C31;&#x8BF4;&#x660E;&#x51FA;&#x73B0;&#x4E86;3&#x6B21;&#x5197;&#x4F59;ACK&#xFF0C;TCP&#x57FA;&#x4E8E;&#x9009;&#x62E9;&#x786E;&#x8BA4;&#xFF0C;&#x8BA4;&#x4E3A;&#x5F15;&#x8D77;3&#x6B21;&#x5197;&#x4F59;ACK&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x987A;&#x5229;&#x5230;&#x8FBE;&#xFF0C;&#x5C06;cwnd&#x52A0;&#x4E0A;3&#x4E2A;&#x5355;&#x4F4D;(mss)&#x7684;&#x91CF;&#x3002;&#x5982;&#x679C;&#x518D;&#x6536;&#x5230;&#x8FD9;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#x7684;&#x5197;&#x4F59;ACK&#xFF0C;&#x4E3A;cwnd&#x52A0;1&#x3002;&#x5982;&#x679C;&#x6536;&#x5230;&#x4E86;&#x975E;&#x8FD9;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#x7684;&#x5197;&#x4F59;ACK&#xFF0C;&#x8868;&#x660E;&#x8FD9;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#x6B63;&#x786E;&#x5230;&#x8FBE;&#x4E86;&#xFF0C;&#x5C06;ssthresh&#x8D4B;&#x7ED9;cwnd&#xFF0C;&#x5E76;&#x7ED3;&#x675F;<strong>&#x5FEB;&#x901F;&#x6062;&#x590D;</strong>&#xFF0C;&#x8FC1;&#x79FB;&#x5230;<strong>&#x62E5;&#x585E;&#x907F;&#x514D;</strong>&#x72B6;&#x6001;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5728;<strong>&#x5FEB;&#x901F;&#x6062;&#x590D;</strong>&#x72B6;&#x6001;&#xFF0C;TCP&#x589E;&#x957F;&#x7684;&#x91CF;&#x7EA7;&#x5728;<strong>&#x62E5;&#x585E;&#x907F;&#x514D;</strong>&#x548C;<strong>&#x6162;&#x542F;&#x52A8;</strong>&#x4E4B;&#x95F4;&#x3002;<strong>&#x5FEB;&#x901F;&#x6062;&#x590D;</strong>&#x7684;&#x8BED;&#x4E49;&#x662F;&#xFF0C;&#x51FA;&#x4E86;&#x6296;&#x52A8;&#xFF0C;&#x5C11;&#x53D1;&#x9001;&#x4E00;&#x70B9;&#xFF0C;&#x5C3D;&#x5FEB;&#x7684;&#x628A;&#x7F3A;&#x5931;&#x7684;&#x8865;&#x4E0A;&#xFF0C;&#x56DE;&#x5230;&#x6B63;&#x8F68;&#x4E0A;&#x540E;&#x5C0F;&#x5FC3;&#x4E00;&#x70B9;&#x3002;</p>
+<p>&#x6700;&#x540E;&#xFF0C;&#x72B6;&#x6001;&#x53D8;&#x8FC1;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x51FA;&#x73B0;&#x8D85;&#x65F6;&#x91CD;&#x4F20;&#xFF0C;&#x65E0;&#x8BBA;&#x5728;&#x54EA;&#x4E2A;&#x72B6;&#x6001;&#x90FD;&#x8FC1;&#x79FB;&#x5230;<strong>&#x6162;&#x542F;&#x52A8;</strong>&#xFF0C;&#x5C06;cwnd&#x91CD;&#x7F6E;&#x4E3A;1&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x8FD9;&#x4E09;&#x4E2A;&#x72B6;&#x6001;&#x90FD;&#x53EF;&#x4EE5;&#x4E24;&#x4E24;&#x4E92;&#x76F8;&#x8FC1;&#x79FB;&#x5230;&#x3002;TCP&#x7684;<strong>&#x62E5;&#x585E;&#x63A7;&#x5236;</strong>&#x5C31;&#x5728;&#x8FC1;&#x79FB;&#x72B6;&#x6001;&#x4E2D;&#x5EA6;&#x8FC7;&#x3002;</p>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/blog_TCP_FSM.JPG" alt="TCP_FSM"></p>
+<h3 id="&#x7CCA;&#x6D82;&#x7A97;&#x53E3;&#x7EFC;&#x5408;&#x75C7;-Silly-Window-Syndrome-&#x4E0E;Nagle&#x7B97;&#x6CD5;"><a href="#&#x7CCA;&#x6D82;&#x7A97;&#x53E3;&#x7EFC;&#x5408;&#x75C7;-Silly-Window-Syndrome-&#x4E0E;Nagle&#x7B97;&#x6CD5;" class="headerlink" title="&#x7CCA;&#x6D82;&#x7A97;&#x53E3;&#x7EFC;&#x5408;&#x75C7;(Silly-Window-Syndrome)&#x4E0E;Nagle&#x7B97;&#x6CD5;"></a>&#x7CCA;&#x6D82;&#x7A97;&#x53E3;&#x7EFC;&#x5408;&#x75C7;(Silly-Window-Syndrome)&#x4E0E;Nagle&#x7B97;&#x6CD5;</h3><p><strong>&#x6D41;&#x91CF;&#x63A7;&#x5236;</strong>&#x5F88;&#x597D;&#x7684;&#x7167;&#x987E;&#x4E86;&#x63A5;&#x6536;&#x65B9;&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x5F15;&#x6765;&#x4E86;&#x95EE;&#x9898;&#xFF0C;&#x5982;&#x679C;&#x63A5;&#x6536;&#x65B9;&#x4E00;&#x76F4;&#x544A;&#x8BC9;&#x53D1;&#x9001;&#x65B9;&#x7684;&#x5269;&#x4F59;&#x7A7A;&#x95F4;rwnd&#x5F88;&#x5C0F;&#x3002;&#x90A3;&#x4E48;&#x53D1;&#x9001;&#x65B9;&#x5C06;&#x4E00;&#x76F4;&#x53D1;&#x9001;&#x5185;&#x5BB9;&#x5F88;&#x5C0F;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x3002;&#x76F8;&#x5BF9;&#x4E8E;TCP header20&#x5B57;&#x8282;&#xFF0C;&#x5982;&#x679C;&#x6BCF;&#x6B21;&#x5185;&#x5BB9;&#x53EA;&#x6709;&#x4E2A;&#x4F4D;&#x6570;&#x5B57;&#x8282;&#xFF0C;&#x90A3;&#x8FD9;&#x6837;&#x7F51;&#x7EDC;&#x57FA;&#x672C;&#x4E0A;&#x5C31;&#x90FD;&#x5728;&#x4F20;&#x8F93;&#x63A7;&#x5236;&#x4FE1;&#x606F;&#xFF0C;&#x7F51;&#x7EDC;&#x4F7F;&#x7528;&#x7387;&#x5C31;&#x592A;&#x4F4E;&#x4E86;&#x3002;&#x8FD9;&#x5C31;&#x51FA;&#x73B0;&#x4E86;&#x7CCA;&#x6D82;&#x7A97;&#x53E3;&#x7EFC;&#x5408;&#x75C7;&#x3002;&#x800C;&#x51FA;&#x73B0;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x53D1;&#x9001;&#x65B9;&#x548C;&#x63A5;&#x6536;&#x65B9;&#x81EA;&#x7136;&#x4E5F;&#x90FD;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x5E94;&#x5BF9;&#x529E;&#x6CD5;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x63A5;&#x6536;&#x65B9;&#x4E00;&#x822C;&#x4F1A;&#x4F7F;&#x7528;David D Clark&#x2019;s&#x7684;&#x7B56;&#x7565;&#xFF0C;&#x5C31;&#x662F;&#x201C;&#x6B3A;&#x9A97;&#x201D;&#x53D1;&#x9001;&#x65B9;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x5269;&#x4F59;&#x7A7A;&#x95F4;&#x5F88;&#x5C0F;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5E72;&#x8106;&#x5C31;&#x901A;&#x544A;&#x53D1;&#x9001;&#x65B9;&#x5269;&#x4F59;&#x7A7A;&#x95F4;&#x662F;&#x96F6;&#xFF0C;&#x8FD9;&#x6837;&#x53D1;&#x9001;&#x65B9;&#x5C31;&#x4E0D;&#x4F1A;&#x518D;&#x53D1;&#x9001;&#x5C0F;&#x5185;&#x5BB9;&#x4E86;&#x3002;&#x7B49;&#x5230;&#x5269;&#x4F59;&#x7A7A;&#x95F4;&#x8D85;&#x8FC7;1&#x5355;&#x4F4D;&#x6216;&#x8005;&#x5269;&#x4F59;&#x7A7A;&#x95F4;&#x8D85;&#x8FC7;&#x7F13;&#x51B2;&#x7684;&#x4E00;&#x534A;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x518D;&#x4E0D;&#x201C;&#x6B3A;&#x9A97;&#x201D;&#x53D1;&#x9001;&#x65B9;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x53D1;&#x9001;&#x65B9;&#x4F1A;&#x4F7F;&#x7528;Nagle&#x7B97;&#x6CD5;&#x3002;&#x5C31;&#x662F;&#x5BF9;&#x4E8E;&#x5C0F;&#x5185;&#x5BB9;&#x7684;&#x505C;&#x7B49;&#x534F;&#x8BAE;&#x3002;&#x5982;&#x679C;&#x662F;&#x5C0F;&#x5185;&#x5BB9;&#x7684;&#x8BDD;&#xFF0C;&#x8981;&#x67E5;&#x770B;&#x662F;&#x5426;&#x6240;&#x6709;&#x5DF2;&#x53D1;&#x9001;&#x7684;&#x5C0F;&#x5185;&#x5BB9;&#x90FD;&#x5DF2;&#x88AB;&#x786E;&#x8BA4;&#xFF0C;&#x90FD;&#x88AB;&#x786E;&#x8BA4;&#x624D;&#x80FD;&#x53D1;&#x9001;&#xFF0C;&#x8FD9;&#x5C31;&#x5F62;&#x6210;&#x4E86;&#x5BF9;&#x5C0F;&#x5185;&#x5BB9;&#x7684;&#x505C;&#x6B62;&#x53D1;&#x9001;&#x7B49;&#x5F85;&#x786E;&#x8BA4;&#x7684;&#x534F;&#x8BAE;&#x3002; Nagle&#x8BA4;&#x4E3A;&#x5C0F;&#x5185;&#x5BB9;&#x5C31;&#x662F;&#x5C0F;&#x4E8E;1&#x5355;&#x4F4D;(mss)&#x7684;&#x91CF;&#x3002;</p>
+<p>Nagle&#x7B97;&#x6CD5;&#x4E0D;&#x5149;&#x662F;&#x8BBE;&#x8BA1;&#x6765;&#x89E3;&#x51B3;&#x53D1;&#x9001;&#x65B9;&#x7684;&#x7CCA;&#x6D82;&#x7A97;&#x53E3;&#x7EFC;&#x5408;&#x5F81;&#xFF0C;&#x5B83;&#x8FD8;&#x51CF;&#x8F7B;&#x4E86;&#x62E5;&#x585E;&#x3002;&#x5B83;&#x53EF;&#x4EE5;&#x5C06;&#x591A;&#x4E2A;&#x7B49;&#x5F85;&#x7684;&#x5C0F;&#x5185;&#x5BB9;&#x5408;&#x5E76;&#x6210;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x62A5;&#x53D1;&#x9001;&#x3002;&#x8FD9;&#x6837;&#x76F4;&#x63A5;&#x7684;&#x51CF;&#x5C11;&#x6570;&#x636E;&#x62A5;&#x7684;&#x6570;&#x91CF;&#xFF0C;&#x4ECE;&#x800C;&#x51CF;&#x8F7B;&#x4E86;&#x62E5;&#x585E;&#x3002;</p>
+<h3 id="&#x603B;&#x7ED3;"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</h3><p>TCP&#x534F;&#x8BAE;&#x662F;&#x4E2A;&#x53EF;&#x9760;&#x534F;&#x8BAE;&#xFF0C;&#x901A;&#x8FC7;<strong>&#x5E8F;&#x53F7;</strong>&#x3001;<strong>&#x6821;&#x9A8C;&#x548C;</strong>&#x3001;<strong>&#x8D85;&#x65F6;&#x91CD;&#x4F20;</strong>&#x3001;<strong>&#x5FEB;&#x901F;&#x91CD;&#x4F20;</strong>&#x3001;<strong>&#x786E;&#x8BA4;</strong>&#x6765;&#x505A;&#x5230;&#x8FD9;&#x70B9;&#x3002;&#x5E76;&#x4E14;&#x8FD8;&#x8981;&#x7167;&#x987E;&#x63A5;&#x6536;&#x65B9;&#x548C;&#x7F51;&#x7EDC;&#x603B;&#x4F53;&#x72B6;&#x51B5;&#xFF0C;&#x4E3B;&#x8981;&#x4F53;&#x73B0;&#x5728;<strong>&#x6D41;&#x91CF;&#x63A7;&#x5236;</strong>&#x548C;<strong>&#x62E5;&#x585E;&#x63A7;&#x5236;</strong>&#x3002;&#x5B83;&#x8FD8;&#x662F;&#x4E2A;&#x4F1A;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x7684;&#x534F;&#x8BAE;&#xFF0C;&#x9700;&#x8981;&#x5728;&#x53CC;&#x65B9;&#x8BB0;&#x5F55;&#x4E00;&#x4E9B;&#x72B6;&#x6001;&#x53BB;&#x8DDF;&#x8E2A;&#x4F20;&#x8F93;&#x8FC7;&#x7A0B;&#x3002;&#x5E76;&#x63D0;&#x4F9B;&#x7AEF;&#x5230;&#x7AEF;&#x7684;&#x670D;&#x52A1;&#x3002;</p>
+<h2 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h2><p>IP&#x534F;&#x8BAE;&#x6700;&#x5927;&#x7684;&#x4EFB;&#x52A1;&#x5C31;&#x662F;&#x5BFB;&#x8DEF;&#xFF0C;&#x627E;&#x5230;&#x53D1;&#x5F80;&#x76EE;&#x7684;&#x5730;&#x7684;&#x8DEF;&#x5F84;&#x7136;&#x540E;&#x53D1;&#x9001;&#x8FC7;&#x53BB;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;IP&#x534F;&#x8BAE;&#x63D0;&#x4F9B;&#x201C;&#x70B9;&#x5230;&#x70B9;&#x201D;&#x7684;&#x670D;&#x52A1;&#x3002;IP&#x534F;&#x8BAE;&#x4E0D;&#x662F;&#x53EF;&#x9760;&#x4F20;&#x8F93;&#x534F;&#x8BAE;&#xFF0C;&#x53EA;&#x80FD;&#x5C3D;&#x529B;&#x5C06;&#x6570;&#x636E;&#x62A5;(digram)&#x53D1;&#x9001;&#x5230;&#x76EE;&#x7684;&#x5730;&#x3002;&#x8FD9;&#x4E5F;&#x4EE3;&#x8868;&#x7740;&#xFF0C;&#x6570;&#x636E;&#x62A5;&#x548C;&#x6570;&#x636E;&#x5305;&#x4E4B;&#x95F4;&#x662F;&#x72EC;&#x7ACB;&#x7684;&#xFF0C;&#x6CA1;&#x6709;&#x72B6;&#x6001;&#x3002;</p>
+<h3 id="IP&#x534F;&#x8BAE;&#x5BFB;&#x8DEF;"><a href="#IP&#x534F;&#x8BAE;&#x5BFB;&#x8DEF;" class="headerlink" title="IP&#x534F;&#x8BAE;&#x5BFB;&#x8DEF;"></a>IP&#x534F;&#x8BAE;&#x5BFB;&#x8DEF;</h3><p>IP&#x534F;&#x8BAE;&#x4E0D;&#x53EF;&#x80FD;&#x4E00;&#x6B21;&#x6027;&#x5C06;&#x6570;&#x636E;&#x62A5;&#x53D1;&#x9001;&#x5230;&#x76EE;&#x7684;&#x5730;&#xFF0C;&#x5FC5;&#x987B;&#x7ECF;&#x8FC7;&#x591A;&#x4E2A;&#x4E2D;&#x8F6C;&#x7AD9;&#x3002;&#x5982;&#x679C;&#x8981;&#x6C42;&#x4E00;&#x6B21;&#x6027;&#x53D1;&#x9001;&#x5230;&#x76EE;&#x7684;&#x5730;&#xFF0C;&#x8981;&#x6C42;&#x53CC;&#x65B9;&#x6709;&#x4E2A;&#x72EC;&#x6709;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x7136;&#x800C;&#x4E3A;&#x7F51;&#x7EDC;&#x4E0A;&#x6240;&#x6709;&#x4EBA;&#x90FD;&#x5EFA;&#x7ACB;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x662F;&#x4E0D;&#x53EF;&#x80FD;&#x7684;&#x3002;&#x5E76;&#x4E14;&#x8FD9;&#x4E2A;&#x4E2D;&#x8F6C;&#x7AD9;&#x4E0D;&#x53EF;&#x80FD;&#x5F3A;&#x5927;&#x5230;&#x77E5;&#x9053;&#x6574;&#x4E2A;&#x7F51;&#x7EDC;&#x7684;&#x62D3;&#x6251;&#x7ED3;&#x6784;&#xFF0C;&#x5B83;&#x53EA;&#x77E5;&#x9053;&#x5468;&#x56F4;&#x7684;&#x8282;&#x70B9;&#x7684;&#x62D3;&#x6251;&#x7ED3;&#x6784;&#x3002;</p>
+<p>&#x8FD9;&#x5C31;&#x5448;&#x73B0;&#x51FA;&#x4E86;IP&#x5BFB;&#x8DEF;&#x6A21;&#x578B;&#x3002;&#x8DEF;&#x7531;&#x5668;&#x5145;&#x5F53;&#x4E2D;&#x8F6C;&#x7AD9;&#x7684;&#x89D2;&#x8272;&#xFF0C;&#x4E3B;&#x673A;&#x548C;&#x8DEF;&#x7531;&#x5668;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x8868;&#xFF0C;&#x8DEF;&#x7531;&#x8868;&#x6307;&#x793A;&#x5468;&#x56F4;&#x8DEF;&#x7531;&#x5668;&#x7684;&#x62D3;&#x6251;&#x7ED3;&#x6784;&#xFF0C;&#x5C31;&#x50CF;&#x4E00;&#x4E2A;&#x5730;&#x56FE;&#x4E00;&#x6837;&#xFF0C;&#x6570;&#x636E;&#x62A5;&#x901A;&#x8FC7;&#x67E5;&#x8BE2;&#x8DEF;&#x7531;&#x8868;&#x7684;&#x7ED3;&#x679C;&#x5BFB;&#x8DEF;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x3002;&#x4E0B;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x4EE5;&#x540C;&#x6837;&#x65B9;&#x5F0F;&#x8D1F;&#x8D23;&#x5BFB;&#x8DEF;&#x5230;&#x518D;&#x4E0B;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x53EA;&#x8D1F;&#x8D23;&#x5230;&#x4E0B;&#x4E00;&#x8DF3;&#x8DEF;&#x7531;&#x5668;(next-hop router)&#x3002;&#x6700;&#x540E;IP&#x534F;&#x8BAE;&#x901A;&#x8FC7;&#x591A;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x5C31;&#x5230;&#x8FBE;&#x4E86;&#x76EE;&#x7684;&#x5730;&#x3002;&#x8DEF;&#x7531;&#x8868;&#x4E0D;&#x4EC5;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7CBE;&#x786E;&#x7684;&#x76EE;&#x7684;&#x5730;&#x4E3B;&#x673A;&#x53F7;&#x5BFB;&#x8DEF;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x4EE5;&#x5B50;&#x7F51;&#x7684;&#x7F51;&#x7EDC;&#x53F7;&#x5BFB;&#x8DEF;&#x3002;&#x5F53;&#x7136;&#x8FD8;&#x6709;&#x4FDD;&#x5E95;&#x7684;&#x9ED8;&#x8BA4;&#x8DEF;&#x5F84;&#x3002;</p>
+<p>&#x5B50;&#x7F51;&#x4F5C;&#x4E3A;&#x6BD4;&#x4E3B;&#x673A;&#x66F4;&#x5927;&#x7C92;&#x5EA6;&#x7684;&#x5212;&#x5206;&#x7F51;&#x7EDC;&#xFF0C;&#x4EE5;&#x5B50;&#x7F51;&#x5BFB;&#x8DEF;&#x53EF;&#x4EE5;&#x6781;&#x5927;&#x7684;&#x51CF;&#x5C11;&#x8DEF;&#x7531;&#x8868;&#x7684;&#x4F53;&#x79EF;&#x3002;&#x76F8;&#x5F53;&#x4E8E;&#x901A;&#x8FC7;&#x52A0;&#x5927;&#x5212;&#x5206;&#x7684;&#x7C92;&#x5EA6;&#xFF0C;&#x51CF;&#x5C11;&#x4E86;&#x7EF4;&#x62A4;&#x6574;&#x4E2A;&#x7F51;&#x7EDC;&#x7CFB;&#x7EDF;&#x7684;&#x6210;&#x672C;&#x3002;</p>
+<p>IP&#x534F;&#x8BAE;&#x5BFB;&#x8DEF;&#x8FD8;&#x6709;&#x66F4;&#x591A;&#x7684;&#x95EE;&#x9898;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x4E3B;&#x673A;&#x4E5F;&#x53EF;&#x4EE5;&#x5C06;&#x6570;&#x636E;&#x62A5;&#x4EE5;&#x53D1;&#x9001;&#x7ED9;&#x81EA;&#x5DF1;&#xFF0C;&#x5F53;&#x53D1;&#x73B0;IP&#x5730;&#x5740;&#x662F;&#x81EA;&#x5DF1;&#x65F6;&#xFF0C;&#x6570;&#x636E;&#x62A5;&#x4F1A;&#x4EA4;&#x7ED9;&#x4EE5;&#x592A;&#x7F51;&#x73AF;&#x56DE;&#x7A0B;&#x5E8F;&#xFF0C;&#x73AF;&#x56DE;&#x7A0B;&#x5E8F;&#x5C06;&#x6570;&#x636E;&#x62A5;&#x52A0;&#x5165;&#x672C;&#x5730;&#x7684;IP&#x961F;&#x5217;&#x4E0E;&#x5176;&#x4ED6;&#x6570;&#x636E;&#x62A5;&#x4E00;&#x89C6;&#x540C;&#x4EC1;&#x3002;</p>
+<p>&#x4E3B;&#x673A;&#x53EF;&#x4EE5;&#x88AB;&#x8BBE;&#x7F6E;&#x6210;&#x8DEF;&#x7531;&#x5668;&#x8F6C;&#x53D1;&#x6570;&#x636E;&#x62A5;&#xFF0C;&#x5982;&#x679C;&#x4E3B;&#x673A;&#x63A5;&#x6536;&#x5230;&#x4E86;&#x4E0D;&#x662F;&#x81EA;&#x5DF1;IP&#x5730;&#x5740;&#x7684;&#x6570;&#x636E;&#x62A5;&#xFF0C;&#x53EA;&#x8981;&#x88AB;&#x8BBE;&#x7F6E;&#x53EF;&#x4EE5;&#x8F6C;&#x53D1;&#x51FA;&#x53BB;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5BFB;&#x8DEF;&#x5230;&#x4E0B;&#x4E00;&#x8DF3;&#xFF0C;&#x4E3B;&#x673A;&#x8981;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;ICMP(&#x7F51;&#x7EDC;&#x63A7;&#x5236;&#x6D88;&#x606F;&#x534F;&#x8BAE;)&#xFF0C;&#x4EE3;&#x8868;&#x5DEE;&#x9519;&#x3002;</p>
+<p>ICMP&#x8FD8;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x91CD;&#x5B9A;&#x5411;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x4E3B;&#x673A;&#x60F3;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x62A5;&#x5230;&#x76EE;&#x7684;&#x5730;&#xFF0C;&#x53EF;&#x4EE5;&#x53D1;&#x9001;&#x7ED9;A&#x548C;B&#xFF0C;&#x5BFB;&#x8DEF;&#x7684;&#x7ED3;&#x679C;&#x4E0B;&#x4E00;&#x8DF3;&#x4E3A;A&#xFF0C;&#x4E3B;&#x673A;&#x53D1;&#x9001;&#x7ED9;&#x4E86;A&#x3002;A&#x5BFB;&#x8DEF;&#x7684;&#x4E0B;&#x4E00;&#x8DF3;&#x4E3A;B&#xFF0C;&#x53D1;&#x9001;&#x7ED9;&#x4E86;B&#xFF0C;A&#x53EF;&#x4EE5;&#x4FA6;&#x6D4B;&#x51FA;&#x8FD9;&#x4E2A;&#x60C5;&#x51B5;&#xFF0C;&#x7136;&#x540E;&#x53D1;&#x9001;&#x7ED9;&#x4E3B;&#x673A;&#x4E00;&#x4E2A;&#x91CD;&#x5B9A;&#x5411;ICMP&#xFF0C;&#x8BA9;&#x4E3B;&#x673A;&#x7684;&#x8DEF;&#x7531;&#x8868;&#x4FEE;&#x6539;&#x4E3A;&#x5BFB;&#x8DEF;&#x5230;B&#x3002;</p>
+<h3 id="&#x6570;&#x636E;&#x5206;&#x7247;-IP-Fragmentation"><a href="#&#x6570;&#x636E;&#x5206;&#x7247;-IP-Fragmentation" class="headerlink" title="&#x6570;&#x636E;&#x5206;&#x7247;(IP-Fragmentation)"></a>&#x6570;&#x636E;&#x5206;&#x7247;(IP-Fragmentation)</h3><p>&#x5F53;&#x6570;&#x636E;&#x62A5;&#x91CF;&#x8D85;&#x8FC7;&#x4E86;MTU&#xFF0C;&#x5BF9;&#x6BD4;&#x4E8E;TCP&#x7684;&#x5206;&#x6BB5;&#xFF0C;IP&#x8981;&#x5206;&#x7247;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x6B65;&#x9AA4;&#x4E92;&#x4E0D;&#x5E72;&#x6270;&#xFF0C;&#x662F;&#x5B8C;&#x5168;&#x9694;&#x79BB;&#x5F00;&#x7684;&#x3002;IP&#x5206;&#x7247;&#x540E;&#xFF0C;&#x63A5;&#x6536;&#x65B9;&#x63A5;&#x6536;&#x5230;&#x6570;&#x636E;&#x62A5;&#x540E;&#xFF0C;&#x5C06;&#x5206;&#x7247;&#x8981;&#x91CD;&#x65B0;&#x7EC4;&#x5408;&#x8D77;&#x6765;&#x3002;IP&#x5206;&#x7247;&#x5BF9;&#x4E8E;UDP&#x534F;&#x8BAE;&#x6BD4;&#x8F83;&#x6709;&#x7528;&#xFF0C;&#x5BF9;TCP&#x6CA1;&#x6709;&#x592A;&#x5927;&#x7528;&#x5904;&#xFF0C;TCP&#x66F4;&#x5E0C;&#x671B;&#x81EA;&#x5DF1;&#x6765;&#x5206;&#x6BB5;&#xFF0C;&#x800C;&#x4E0D;&#x9760;IP&#x53BB;&#x5206;&#x7247;&#x3002;IP&#x4E0D;&#x662F;&#x4E2A;&#x53EF;&#x9760;&#x534F;&#x8BAE;&#xFF0C;&#x5982;&#x679C;&#x5206;&#x7247;&#x5176;&#x4E2D;&#x7684;&#x4E00;&#x7247;&#x51FA;&#x4E86;&#x95EE;&#x9898;&#xFF0C;TCP&#x4E5F;&#x65E0;&#x6CD5;&#x91CD;&#x4F20;&#x5355;&#x4E2A;&#x5206;&#x7247;&#xFF0C;&#x81EA;&#x7136;TCP&#x5C31;&#x66F4;&#x5E0C;&#x671B;&#x81EA;&#x5DF1;&#x6765;&#x5206;&#x6BB5;&#xFF0C;&#x505A;&#x5230;&#x91CD;&#x4F20;&#x5355;&#x4E2A;&#x5206;&#x6BB5;&#x3002;</p>
+<h3 id="IP-Header"><a href="#IP-Header" class="headerlink" title="IP Header"></a>IP Header</h3><p>IP&#x534F;&#x8BAE;&#x5206;&#x4E3A;IPv4&#x548C;IPv6&#x7248;&#x672C;&#xFF0C;&#x4E24;&#x79CD;&#x7248;&#x672C;header&#x4E0D;&#x76F8;&#x540C;&#xFF0C;&#x7248;&#x672C;&#x5728;Version&#x533A;&#x57DF;&#x533A;&#x5206;&#x3002;&#x9996;&#x5148;IPv4&#xFF0C;</p>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/blog_IPv4_Header.png" alt="IP_Header"></p>
+<p>&#x5176;&#x6B21;&#xFF0C;IPv6</p>
+<p><img src="http://o79rgqboc.bkt.clouddn.com/blog_IPv6_Header.JPG" alt="IPv6_Header"></p>
+<p>IPv4 header&#x4E00;&#x822C;&#x4E3A;20&#x5B57;&#x8282;&#xFF0C;IPv6 header&#x4E00;&#x822C;&#x4E3A;40&#x5B57;&#x8282;&#x3002;IPv4&#x4E2D;address&#x4E3A;32&#x4F4D;&#xFF0C;&#x800C;IPv6&#x589E;&#x5927;&#x5230;&#x4E86;128&#x4F4D;&#x3002;&#x8FD9;&#x6837;&#x5C31;&#x4ECE;address&#x5206;&#x914D;&#x7D27;&#x5F20;&#x5230;&#x5730;&#x7403;&#x4E0A;&#x7684;&#x6BCF;&#x4E00;&#x9897;&#x7802;&#x783E;&#x90FD;&#x80FD;&#x6709;IP address&#x4E86;&#xFF01;</p>
+<p>TTL&#x548C;Hop Limit&#x90FD;&#x662F;&#x8868;&#x793A;IP&#x534F;&#x8BAE;&#x8FD8;&#x80FD;&#x8DF3;&#x7684;&#x8DEF;&#x7531;&#x5668;&#x6570;&#x91CF;&#xFF0C;&#x5982;&#x679C;&#x4E3A;&#x96F6;&#x4E86;&#xFF0C;&#x5219;&#x6570;&#x636E;&#x62A5;&#x4F1A;&#x88AB;&#x4E22;&#x5F03;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;ICMP&#x901A;&#x77E5;&#x6E90;&#x4E3B;&#x673A;&#x3002;Traceroute&#x7A0B;&#x5E8F;&#x5C31;&#x662F;&#x8FD9;&#x6837;&#x6536;&#x96C6;&#x6570;&#x636E;&#x62A5;&#x88AB;&#x4E22;&#x5F03;&#x540E;&#x53D1;&#x9001;&#x7684;ICMP&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
+<p>IPv4&#x7528;Identification&#x552F;&#x4E00;&#x8BC6;&#x522B;&#x6570;&#x636E;&#x62A5;(&#x5206;&#x7247;&#x6570;&#x636E;&#x62A5;&#x76F8;&#x540C;)&#xFF0C;Fragment offset&#x6807;&#x8BC6;&#x5206;&#x7247;&#x7684;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;&#x3002;&#x800C;&#x5728;IPv6&#x4E2D;&#x90FD;&#x53EF;&#x4EE5;&#x7528;&#x66F4;&#x52A0;&#x7075;&#x6D3B;&#x7684;Next Header&#x8868;&#x793A;&#xFF0C;Next Header&#x5C31;&#x50CF;&#x94FE;&#x8868;&#x4E00;&#x6837;&#xFF0C;&#x53EF;&#x4EE5;&#x8FDE;&#x63A5;&#x591A;&#x4E2A;&#x201D;Header&#x201D;&#xFF0C;&#x62D3;&#x5C55;&#x51FA;&#x591A;&#x4E2A;Header&#x3002;&#x9664;&#x4E86;&#x5206;&#x7247;&#x7684;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;&#x3001;&#x8FD8;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x540C;IPv4 protocol&#x4E00;&#x6837;&#x80FD;&#x8868;&#x793A;&#x7684;&#x4E0A;&#x5C42;&#x534F;&#x8BAE;&#x3002;</p>
+<h2 id="TLS"><a href="#TLS" class="headerlink" title="TLS"></a>TLS</h2><p>TLS&#x662F;&#x52A0;&#x5BC6;&#x901A;&#x4FE1;&#x7684;&#x5DE5;&#x4E1A;&#x6807;&#x51C6;&#xFF0C;&#x5176;&#x6807;&#x51C6;&#x4ECD;&#x5728;&#x4E0D;&#x65AD;&#x7684;&#x8FED;&#x4EE3;&#x4E2D;&#x3002;<strong>&#x73B0;&#x4EE3;&#x52A0;&#x5BC6;&#x901A;&#x4FE1;&#x6A21;&#x578B;&#x662F;&#x52A0;&#x5BC6;&#x52A0;&#x4E0A;&#x8BA4;&#x8BC1;</strong>&#x3002;&#x800C;&#x8FD9;&#x4E24;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E5F;&#x662F;TLS&#x63E1;&#x624B;&#x7684;&#x4E3B;&#x8981;&#x4EFB;&#x52A1;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x542B;&#x7684;&#x77E5;&#x8BC6;&#x70B9;&#x6BD4;&#x8F83;&#x591A;&#xFF0C;&#x5EFA;&#x8BAE;&#x5148;&#x638C;&#x63E1;&#x6A21;&#x578B;&#xFF0C;&#x518D;&#x638C;&#x63E1;&#x7B97;&#x6CD5;&#xFF0C;&#x6700;&#x540E;&#x518D;&#x770B;&#x6D41;&#x7A0B;&#x548C;&#x4F18;&#x5316;&#x3002;</p>
+<h3 id="&#x52A0;&#x5BC6;&#x6A21;&#x578B;"><a href="#&#x52A0;&#x5BC6;&#x6A21;&#x578B;" class="headerlink" title="&#x52A0;&#x5BC6;&#x6A21;&#x578B;"></a>&#x52A0;&#x5BC6;&#x6A21;&#x578B;</h3><p>&#x7531;&#x4E8E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x6BD4;&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x6548;&#x7387;&#x5FEB;&#x5F88;&#x591A;&#xFF0C;&#x5BFC;&#x81F4;TLS&#x4E0D;&#x53EF;&#x80FD;&#x4E00;&#x76F4;&#x4F7F;&#x7528;&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#xFF0C;&#x800C;&#x5149;&#x4F7F;&#x7528;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x53C8;&#x65E0;&#x6CD5;&#x4EA4;&#x6362;&#x79D8;&#x94A5;&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x822C;&#x8981;&#x642D;&#x914D;&#x4F7F;&#x7528;&#x3002;TLS&#x5728;&#x63E1;&#x624B;&#x9636;&#x6BB5;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#xFF0C;&#x901A;&#x4FE1;&#x9636;&#x6BB5;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x3002;</p>
+<p>&#x800C;&#x65E0;&#x8BBA;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x8FD8;&#x662F;&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#xFF0C;&#x90FD;&#x65E0;&#x6CD5;&#x6446;&#x8131;&#x4E2D;&#x95F4;&#x4EBA;&#x653B;&#x51FB;(Man-in-the-middle attack)&#xFF0C;&#x4E2D;&#x95F4;&#x4EBA;&#x6309;&#x7167;&#x901A;&#x4FE1;&#x4EA4;&#x6362;&#x79D8;&#x94A5;&#x89C4;&#x5219;&#xFF0C;&#x5728;&#x53D1;&#x9001;&#x65B9;&#x9762;&#x524D;&#x5145;&#x5F53;&#x63A5;&#x6536;&#x65B9;&#xFF0C;&#x5728;&#x63A5;&#x6536;&#x65B9;&#x9762;&#x524D;&#x5145;&#x5F53;&#x53D1;&#x9001;&#x65B9;&#xFF0C;&#x53CC;&#x65B9;&#x65E0;&#x4ECE;&#x77E5;&#x6653;&#x3002;&#x53EA;&#x80FD;&#x5F15;&#x8FDB;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x5C31;&#x662F;&#x6570;&#x5B57;&#x7B7E;&#x540D;&#x751F;&#x6210;&#x7684;&#x8BC1;&#x4E66;&#xFF0C;&#x6570;&#x5B57;&#x7B7E;&#x540D;&#x6307;&#x7684;&#x662F;&#x5C06;&#x5185;&#x5BB9;&#x54C8;&#x5E0C;&#xFF0C;&#x751F;&#x6210;&#x6D88;&#x606F;&#x6458;&#x8981;&#xFF0C;&#x7136;&#x540E;&#x7528;&#x79C1;&#x94A5;&#x52A0;&#x5BC6;&#xFF0C;&#x8FDE;&#x540C;&#x5185;&#x5BB9;&#x4E00;&#x8D77;&#x8FD4;&#x56DE;&#x3002;&#x63A5;&#x6536;&#x65B9;&#x7528;&#x516C;&#x94A5;&#x89E3;&#x5BC6;&#x5E76;&#x6BD4;&#x5BF9;&#x6458;&#x8981;&#x3002;</p>
+<p>&#x53D1;&#x9001;&#x65B9;&#x62FF;CA&#x9881;&#x53D1;&#x7684;&#x516C;&#x94A5;&#x53BB;&#x89E3;&#x63A5;&#x6536;&#x65B9;&#x4ECE;CA&#x62FF;&#x5230;&#x7684;&#x79C1;&#x94A5;&#xFF0C;&#x901A;&#x8FC7;CA&#xFF0C;&#x53D1;&#x9001;&#x65B9;&#x4FE1;&#x4EFB;&#x63A5;&#x6536;&#x65B9;&#x7684;&#x8EAB;&#x4EFD;&#x3002;</p>
+<h3 id="&#x9759;&#x6001;RSA&#x548C;&#x52A8;&#x6001;Diffie-Hellman"><a href="#&#x9759;&#x6001;RSA&#x548C;&#x52A8;&#x6001;Diffie-Hellman" class="headerlink" title="&#x9759;&#x6001;RSA&#x548C;&#x52A8;&#x6001;Diffie-Hellman"></a>&#x9759;&#x6001;RSA&#x548C;&#x52A8;&#x6001;Diffie-Hellman</h3><p>TLS&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;&#x4E3B;&#x8981;&#x6D89;&#x53CA;&#x4E24;&#x79CD;&#xFF1A;&#x9759;&#x6001;RSA&#x548C;&#x52A8;&#x6001;Diffe-Hellman&#xFF0C;&#x9759;&#x6001;RSA&#x7B97;&#x6CD5;&#x662F;&#x4E0D;&#x5177;&#x5907;&#x524D;&#x5411;&#x5B89;&#x5168;&#x6027;(forward-secure)&#x7684;&#xFF0C;TLS&#x5728;1.3&#x4E2D;&#x5E9F;&#x5F03;&#x4E86;&#x9759;&#x6001;RSA&#x3002;&#x524D;&#x5411;&#x5B89;&#x5168;&#x6027;&#x6307;&#x7684;&#x662F;&#xFF0C;&#x63A5;&#x6536;&#x65B9;&#x5728;&#x67D0;&#x6B21;&#x901A;&#x4FE1;&#x4E2D;&#x79C1;&#x94A5;&#x66B4;&#x9732;&#x4E86;&#xFF0C;&#x5176;&#x4E4B;&#x524D;&#x901A;&#x4FE1;&#x4ECD;&#x662F;&#x5B89;&#x5168;&#x7684;&#x3002;&#x5177;&#x5907;&#x524D;&#x5411;&#x5B89;&#x5168;&#x6027;&#x5C31;&#x8981;&#x6C42;&#x7528;&#x6765;&#x52A0;&#x5BC6;&#x7684;&#x79D8;&#x94A5;&#x4E0D;&#x80FD;&#x4E3A;&#x4E00;&#x6210;&#x4E0D;&#x53D8;&#x7684;&#xFF0C;&#x8981;&#x80FD;&#x505A;&#x5230;&#x5FEB;&#x901F;&#x52A8;&#x6001;&#x751F;&#x6210;&#x3002;</p>
+<p>RSA&#x7B97;&#x6CD5;&#x4E0D;&#x201C;&#x751F;&#x6210;&#x201D;&#x79D8;&#x94A5;&#xFF0C;&#x53EA;&#x7528;&#x975E;&#x5BF9;&#x79F0;&#x5BC6;&#x94A5;&#x52A0;&#x5BC6;&#x5BF9;&#x79F0;&#x79D8;&#x94A5;&#x3002;&#x7528;&#x6765;&#x52A0;&#x5BC6;&#x7684;&#x79D8;&#x94A5;&#x5BF9;&#x6BCF;&#x6B21;&#x90FD;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x88AB;&#x52A0;&#x5BC6;&#x7684;&#x5BF9;&#x79F0;&#x79D8;&#x94A5;&#x672C;&#x8D28;&#x662F;&#x7531;&#x4E09;&#x4E2A;&#x968F;&#x673A;&#x6570;&#x6784;&#x6210;&#x7684;&#xFF0C;&#x8FD9;&#x4E09;&#x4E2A;&#x968F;&#x673A;&#x6570;&#x4E3A;&#x5BC6;&#x94A5;&#x5F15;&#x5165;&#x968F;&#x673A;&#x6027;&#x3002;&#x800C;&#x5177;&#x4F53;&#x662F;&#x4E09;&#x6B21;&#x7684;&#x539F;&#x56E0;&#x662F;&#xFF0C;&#x5373;&#x4F7F;&#x6BCF;&#x6B21;&#x968F;&#x673A;&#x662F;&#x4F2A;&#x968F;&#x673A;&#xFF0C;&#x4E09;&#x6B21;&#x4F2A;&#x968F;&#x673A;&#x4E5F;&#x63A5;&#x8FD1;&#x201C;&#x771F;&#x201D;&#x968F;&#x673A;&#x4E86;&#x3002;</p>
+<p>DH&#x7B97;&#x6CD5;&#x7528;&#x975E;&#x5BF9;&#x79F0;&#x5BC6;&#x94A5;&#x201C;&#x751F;&#x6210;&#x201D;&#x5BF9;&#x79F0;&#x5BC6;&#x94A5;&#x3002;&#x7528;&#x6765;&#x52A0;&#x5BC6;&#x7684;&#x5BC6;&#x94A5;&#x662F;&#x6BCF;&#x6B21;&#x52A8;&#x6001;&#x751F;&#x6210;&#x7684;&#xFF0C;&#x88AB;&#x52A0;&#x5BC6;&#x7684;&#x5BF9;&#x79F0;&#x5BC6;&#x94A5;&#x672C;&#x8D28;&#x662F;&#x7531;&#x4E24;&#x4E2A;&#x968F;&#x673A;&#x6570;&#x548C;&#x5BF9;&#x65B9;&#x7684;&#x516C;&#x94A5;&#x548C;&#x81EA;&#x5DF1;&#x7684;&#x79C1;&#x94A5;&#x901A;&#x8FC7;&#x7B97;&#x6CD5;&#x201C;&#x751F;&#x6210;&#x201D;&#x7684;&#x3002;&#x8FD9;&#x5C31;&#x8981;&#x6C42;&#x901A;&#x4FE1;&#x53CC;&#x65B9;&#x638C;&#x63E1;&#x5BF9;&#x65B9;&#x7684;&#x516C;&#x94A5;&#x548C;&#x81EA;&#x5DF1;&#x7684;&#x79C1;&#x94A5;&#xFF0C;DH&#x7B97;&#x6CD5;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x5BF9;&#x65B9;&#x4F7F;&#x7528;&#x540C;&#x6837;&#x7684;&#x65B9;&#x6CD5;&#x201C;&#x751F;&#x6210;&#x201D;&#x7684;&#x79D8;&#x94A5;&#x662F;&#x4E00;&#x81F4;&#x7684;&#x3002;</p>
+<h3 id="TLS1-2-full-handshake"><a href="#TLS1-2-full-handshake" class="headerlink" title="TLS1.2 full handshake"></a>TLS1.2 full handshake</h3><p>TLS1.2&#x63E1;&#x624B;&#x9700;&#x8981;&#x7ECF;&#x8FC7;&#x56DB;&#x6B21;&#x901A;&#x4FE1;&#xFF0C;&#x5373;2-rtt&#x3002;&#x56DB;&#x6B21;&#x63E1;&#x624B;&#x7684;&#x4E3B;&#x8981;&#x76EE;&#x7684;&#x5C31;&#x662F;&#x5148;&#x5546;&#x5B9A;&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;&#x518D;&#x8BA1;&#x7B97;&#x51FA;&#x5BF9;&#x79F0;&#x79D8;&#x94A5;&#x3002;&#x5BF9;&#x79F0;&#x79D8;&#x94A5;&#x53EB;&#x505A;&#x4F1A;&#x8BDD;&#x79D8;&#x94A5;(session key)&#xFF0C;&#x6697;&#x793A;&#x6BCF;&#x6B21;&#x4F1A;&#x8BDD;&#x7684;&#x79D8;&#x94A5;&#x90FD;&#x4E0D;&#x540C;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F7F;&#x7528;&#x9759;&#x6001;RSA&#xFF0C;&#x524D;&#x4E09;&#x6B21;&#x901A;&#x4FE1;&#x65B9;&#x90FD;&#x8981;&#x7ED9;&#x5BF9;&#x65B9;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x6570;&#x3002;&#x7B2C;&#x4E8C;&#x6B21;&#x901A;&#x4FE1;&#x63A5;&#x6536;&#x65B9;&#x4F1A;&#x5C06;&#x516C;&#x94A5;&#x53D1;&#x9001;&#x8FC7;&#x6765;&#xFF0C;&#x7B2C;&#x4E09;&#x6B21;&#x968F;&#x673A;&#x6570;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#x53EB;&#x505A;premaster secret&#xFF0C;&#x7528;&#x516C;&#x94A5;&#x52A0;&#x5BC6;&#x540E;&#x4F20;&#x8F93;&#x3002;&#x800C;&#x516C;&#x94A5;&#x662F;&#x4EE5;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x5F62;&#x5F0F;&#x7ED9;&#x7684;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F7F;&#x7528;&#x52A8;&#x6001;DH&#xFF0C;&#x7B2C;&#x4E8C;&#x6B21;&#x4E0D;&#x4EC5;&#x8981;&#x628A;&#x516C;&#x94A5;&#x53D1;&#x9001;&#x8FC7;&#x6765;&#xFF0C;&#x8FD8;&#x8981;&#x5E26;&#x4E0A;DH&#x53C2;&#x6570;&#x3002;&#x7B2C;&#x4E09;&#x6B21;&#x901A;&#x4FE1;&#x751F;&#x6210;&#x81EA;&#x5DF1;&#x7684;&#x516C;&#x79C1;&#x94A5;&#x540E;&#xFF0C;&#x8981;&#x628A;&#x81EA;&#x5DF1;&#x7684;&#x516C;&#x94A5;&#x548C;DH&#x53C2;&#x6570;&#x53D1;&#x9001;&#x8FC7;&#x53BB;&#x3002;</p>
+<h3 id="TLS1-2-&#x4F1A;&#x8BDD;&#x6062;&#x590D;-session-resumption"><a href="#TLS1-2-&#x4F1A;&#x8BDD;&#x6062;&#x590D;-session-resumption" class="headerlink" title="TLS1.2 &#x4F1A;&#x8BDD;&#x6062;&#x590D;(session resumption)"></a>TLS1.2 &#x4F1A;&#x8BDD;&#x6062;&#x590D;(session resumption)</h3><p>&#x6BCF;&#x6B21;&#x901A;&#x4FE1;&#x90FD;&#x989D;&#x5916;&#x8981;2-rtt&#x6210;&#x4E86;&#x6027;&#x80FD;&#x74F6;&#x9888;&#xFF0C;&#x8981;&#x60F3;&#x529E;&#x6CD5;&#x901A;&#x8FC7;&#x77ED;&#x8DEF;(short-circuit)&#x53BB;&#x51CF;&#x5C11;rtt&#x3002;&#x5BF9;&#x4E8E;&#x540C;&#x4E2A;&#x4F1A;&#x8BDD;&#xFF0C;&#x53EF;&#x4EE5;&#x7F13;&#x5B58;&#x5BF9;&#x79F0;&#x79D8;&#x94A5;&#x4EE5;&#x51CF;&#x5C11;&#x63E1;&#x624B;&#x5230;1-rtt&#x3002;&#x8FD9;&#x8981;&#x6C42;&#x524D;&#x4E24;&#x6B21;&#x901A;&#x4FE1;&#x53CC;&#x65B9;&#x4EA4;&#x6362;&#x4F1A;&#x8BDD;&#x8BC6;&#x522B;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x81F4;&#x7684;&#x8BDD;&#xFF0C;&#x518D;&#x9700;&#x8981;&#x4E00;&#x6B21;&#x901A;&#x4FE1;&#x5C31;&#x53EF;&#x4EE5;&#x5EFA;&#x7ACB;&#x52A0;&#x5BC6;&#x901A;&#x4FE1;&#x4E86;&#x3002;</p>
+<h3 id="TLS1-3-full-handshake"><a href="#TLS1-3-full-handshake" class="headerlink" title="TLS1.3 full handshake"></a>TLS1.3 full handshake</h3><p>TLS1.3&#x4E2D;&#x79FB;&#x9664;&#x4E86;&#x9759;&#x6001;RSA&#xFF0C;&#x4E5F;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x5546;&#x5B9A;&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;&#x7684;&#x6D41;&#x7A0B;&#x4E86;&#xFF0C;&#x53EA;&#x8981;&#x6EE1;&#x8DB3;DH&#x8981;&#x6C42;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;&#x524D;&#x4E24;&#x6B21;&#x901A;&#x4FE1;&#xFF0C;&#x53CC;&#x65B9;&#x5C06;DH&#x53C2;&#x6570;&#x548C;&#x81EA;&#x5DF1;&#x7684;&#x516C;&#x94A5;&#x653E;&#x5728;KeyShare&#x62D3;&#x5C55;&#x4E2D;&#x53D1;&#x9001;&#x7ED9;&#x5BF9;&#x65B9;&#xFF0C;&#x4E4B;&#x6240;&#x4EE5;&#x5728;&#x62D3;&#x5C55;&#x4E2D;&#x662F;&#x4E3A;&#x4E86;&#x517C;&#x5BB9;TLS&#x4EE5;&#x524D;&#x7248;&#x672C;&#x3002;</p>
+<h3 id="TLS1-3-PSK-pre-share-key"><a href="#TLS1-3-PSK-pre-share-key" class="headerlink" title="TLS1.3 PSK(pre share key)"></a>TLS1.3 PSK(pre share key)</h3><p>TLS1.3&#x4E2D;&#x540C;&#x6837;&#x6709;&#x7C7B;&#x4F3C;&#x4F1A;&#x8BDD;&#x6062;&#x590D;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x77ED;&#x8DEF;&#x53BB;&#x51CF;&#x5C11;rtt&#x3002;&#x901A;&#x4FE1;&#x53CC;&#x65B9;&#x4E0D;&#x4EC5;&#x53EF;&#x4EE5;&#x590D;&#x7528;&#x5BF9;&#x79F0;&#x5BC6;&#x94A5;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x5C06;&#x8BA4;&#x8BC1;&#x4ECE;&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x7684;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x66FF;&#x6362;&#x6210;&#x5BF9;&#x79F0;&#x5BC6;&#x94A5;&#x52A0;&#x5BC6;&#xFF0C;&#x8FD9;&#x8981;&#x6C42;&#x63A5;&#x6536;&#x65B9;&#x4E0D;&#x4EC5;&#x8981;&#x5728;&#x63E1;&#x624B;&#x7ED3;&#x675F;&#x53D1;&#x9001;&#x8981;&#x590D;&#x7528;&#x7684;&#x5BF9;&#x79F0;&#x5BC6;&#x94A5;&#xFF0C;&#x8FD8;&#x8981;&#x53D1;&#x9001;&#x5BF9;&#x79F0;&#x5BC6;&#x94A5;&#x52A0;&#x5BC6;&#x540E;&#x7684;&#x4EA7;&#x7269;pre_shared_key&#xFF0C;&#x7528;&#x6765;&#x52A0;&#x5BC6;&#x7684;&#x5BF9;&#x79F0;&#x5BC6;&#x94A5;&#x4FDD;&#x7559;&#x5728;&#x63A5;&#x6536;&#x65B9;&#x3002;&#x518D;&#x901A;&#x4FE1;&#x65F6;&#xFF0C;&#x53D1;&#x9001;&#x65B9;&#x5C06;&#x52A0;&#x5BC6;&#x540E;&#x7684;&#x4EA7;&#x7269;&#x53D1;&#x9001;&#x8FC7;&#x53BB;&#xFF0C;&#x63A5;&#x6536;&#x65B9;&#x80FD;&#x591F;&#x89E3;&#x5BC6;&#x5F00;&#xFF0C;&#x5C31;&#x5F62;&#x6210;&#x4E86;&#x8BA4;&#x8BC1;&#x3002;</p>
+<h3 id="TLS1-3-0-rtt-draft"><a href="#TLS1-3-0-rtt-draft" class="headerlink" title="TLS1.3 0-rtt draft"></a>TLS1.3 0-rtt draft</h3><p>TLS&#x8FD8;&#x8D77;&#x8349;&#x4E86;0-rtt&#x8FD9;&#x6837;&#x7684;&#x201C;&#x65E0;&#x5EF6;&#x8FDF;&#x201D;&#x63E1;&#x624B;&#xFF0C;&#x82E5;&#x60F3;&#x505A;&#x5230;0-rtt&#xFF0C;&#x5FC5;&#x987B;&#x8981;&#x5728;&#x63E1;&#x624B;&#x7684;&#x540C;&#x65F6;&#x53D1;&#x9001;&#x52A0;&#x5BC6;&#x7684;&#x5E94;&#x7528;&#x6570;&#x636E;&#x3002;&#x800C;&#x52A0;&#x5BC6;&#x9700;&#x8981;&#x5BF9;&#x65B9;&#x7684;&#x516C;&#x94A5;&#x548C;DH&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x5C31;&#x8981;&#x6C42;&#x5BF9;&#x65B9;&#x5728;&#x4E0A;&#x6B21;&#x63E1;&#x624B;&#x5B8C;&#x6BD5;&#x540E;&#xFF0C;&#x9884;&#x7559;&#x516C;&#x94A5;&#x548C;DH&#x53C2;&#x6570;&#xFF0C;&#x800C;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x751F;&#x6210;&#x7684;&#x79D8;&#x94A5;&#x53EB;&#x505A;Static Secret&#x3002;&#x8FD9;&#x79CD;0-rtt&#x76F8;&#x5BF9;&#x4E8E;full handshake&#x6BCF;&#x6B21;&#x63E1;&#x624B;&#x52A8;&#x6001;&#x751F;&#x6210;&#x79D8;&#x94A5;&#xFF0C;&#x662F;&#x534A;&#x9759;&#x6001;&#x7684;(semi-static)&#x3002;</p>
+<h3 id="TLS1-3-0-rtt-draft-&#x52A8;&#x6001;&#x53D8;&#x79CD;"><a href="#TLS1-3-0-rtt-draft-&#x52A8;&#x6001;&#x53D8;&#x79CD;" class="headerlink" title="TLS1.3 0-rtt draft &#x52A8;&#x6001;&#x53D8;&#x79CD;"></a>TLS1.3 0-rtt draft &#x52A8;&#x6001;&#x53D8;&#x79CD;</h3><p>&#x534A;&#x9759;&#x6001;&#x7684;0-rtt&#x63E1;&#x624B;&#x662F;&#x4E22;&#x5931;&#x524D;&#x5411;&#x5B89;&#x5168;&#x6362;&#x56DE;&#x6765;&#x7684;&#xFF0C;&#x9488;&#x5BF9;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x53EF;&#x4EE5;&#x8981;&#x6C42;&#x7B2C;&#x4E8C;&#x6B21;&#x901A;&#x4FE1;&#x518D;&#x8BA1;&#x7B97;&#x65B0;&#x7684;&#x516C;&#x94A5;&#x548C;&#x79C1;&#x94A5;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x516C;&#x94A5;&#x548C;DH&#x53C2;&#x6570;&#x53D1;&#x9001;&#x8FC7;&#x6765;&#xFF0C;&#x4EE5;&#x540E;&#x901A;&#x4FE1;&#x7528;&#x65B0;&#x751F;&#x6210;&#x7684;&#x5BC6;&#x94A5;&#x52A0;&#x5BC6;&#x3002;&#x8FD9;&#x79CD;&#x52A8;&#x6001;&#x7684;&#x53D8;&#x79CD;&#x820D;&#x5F03;&#x4E86;&#x7B2C;&#x4E00;&#x6B21;&#x901A;&#x4FE1;&#x7684;&#x5E94;&#x7528;&#x6570;&#x636E;&#x7684;&#x5B89;&#x5168;&#x6027;&#xFF0C;&#x63D0;&#x5347;&#x4E86;&#x540E;&#x7EED;&#x7684;&#x5E94;&#x7528;&#x6570;&#x636E;&#x5B89;&#x5168;&#x6027;&#x3002;</p>
+<h2 id="&#x5F15;&#x7528;"><a href="#&#x5F15;&#x7528;" class="headerlink" title="&#x5F15;&#x7528;"></a>&#x5F15;&#x7528;</h2><p>TCP <a href="http://coolshell.cn/articles/11609.html" target="_blank" rel="noopener">http://coolshell.cn/articles/11609.html</a></p>
+<p>TCP/IP&#x8BE6;&#x89E3; &#x5377;1:&#x534F;&#x8BAE;</p>
+<p>&#x8BA1;&#x7B97;&#x673A;&#x7F51;&#x7EDC;&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x65B9;&#x6CD5;</p>
+<p>TLS handshake&#xFF1A;<a href="https://timtaubert.de/blog/2015/11/more-privacy-less-latency-improved-handshakes-in-tls-13/" target="_blank" rel="noopener">https://timtaubert.de/blog/2015/11/more-privacy-less-latency-improved-handshakes-in-tls-13/</a></p>
+<p>Diffie-Hellman&#xFF1A;<a href="https://l2x.gitbooks.io/understanding-cryptography/docs/chapter-3/diffie-hellman%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2.html" target="_blank" rel="noopener">https://l2x.gitbooks.io/understanding-cryptography/docs/chapter-3/diffie-hellman%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2.html</a></p>
+<p>&#x73B0;&#x4EE3;&#x52A0;&#x5BC6;&#x901A;&#x4FE1;&#x534F;&#x8BAE;&#xFF1A;<a href="https://blog.helong.info/blog/2015/09/07/tls-protocol-analysis-and-crypto-protocol-design/" target="_blank" rel="noopener">https://blog.helong.info/blog/2015/09/07/tls-protocol-analysis-and-crypto-protocol-design/</a></p>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            共享声明：本作品采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh">知识共享署名 4.0 国际许可协议</a> 转载时请注明作者和原文链接
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="http://blog.mrriddler.com/TCPIP协议族基础/">http://blog.mrriddler.com/TCPIP协议族基础/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 Gitalk -->
+<div id="gitalk-comment">
+    <!-- Gitalk 评论框 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+            clientID: '733efef7eec90bd2c27e',
+            clientSecret: 'd55768251fe00f869db35b201ba09118f3c68d3f',
+            repo: 'mrriddler.github.io',
+            owner: 'mrriddler',
+            admin: ['mrriddler'],
+            // facebook-like distraction free mode
+            distractionFreeMode: false
+        })
+   gitalk.render('gitalk-container')
+</script>
+</div>
+<style>
+    #gitalk-comment {
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/应用层长链接协议设计/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/浅谈客户端业务架构/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="mrriddler's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        robbieless21@outlook.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/10/">十月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">六月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/clang/">clang<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/iOS/">iOS<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/图片/">图片<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/存储体系/">存储体系<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构/">数据结构<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/架构/">架构<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/算法/">算法<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/网络/">网络<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机体系/">计算机体系<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/链接与装载/">链接与装载<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">21</span>
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+    <span id="footer-image">
+        <a href="https://wx.qq.com//" target="_blank" title="wechat_logo">
+            <img src="/img/qrcode.jpg" alt="wechat_logo"><!--
+     --></a>
+    </span>
+
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/robbie22" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/mrriddler" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+        <a href="https://www.linkedin.com/in/mrriddler" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-linkedin">
+                <span class="visuallyhidden">LinkedIn</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;谜语糖
+            
+                <br>
+                
+                    Abstract the whole universe.
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/lazyload.min.js", true)</script>
+
+
+
+    <script>lsloader.load("js_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/js.min.js", true)</script>
+
+
+
+    <script>lsloader.load("np_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/nprogress.js", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+   <!-- GitTalk -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/prettify.min.js", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 2016;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+    
+</html>
